@@ -537,6 +537,7 @@ classDiagram
     ReferenceItem ||--o{ ProductAggregation : "has"
     ProductData ||--|| ProductSource : "from"
 ```
+```
 
 ## Business Process Flow
 
