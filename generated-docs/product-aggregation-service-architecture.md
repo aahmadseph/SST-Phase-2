@@ -1,36 +1,36 @@
-# Inventory Availability Service Architecture Analysis
+# Product Aggregation Service Architecture Analysis
 
 ## Executive Summary
 
-The Inventory Availability Service is a critical component of the Sephora e-commerce platform that provides real-time inventory management and availability information. It handles inventory tracking, availability calculations, supply chain integration, and provides inventory data to other services in the ecosystem.
+The Product Aggregation Service is a critical component of the Sephora e-commerce platform that aggregates product data from multiple sources and provides a unified product catalog. It handles product data consolidation, enrichment, and provides aggregated product information to other services in the ecosystem.
 
 ### Key Technical Findings
-- **Real-time Inventory Management**: Provides real-time inventory tracking and availability
-- **CosmosDB Integration**: Uses Azure CosmosDB for scalable inventory data storage
-- **Multi-location Support**: Handles inventory across multiple locations and ship nodes
-- **Event-Driven Architecture**: Uses Kafka for inventory change notifications
+- **Product Data Aggregation**: Consolidates product data from multiple sources
+- **CosmosDB Integration**: Uses Azure CosmosDB for scalable product data storage
+- **Data Enrichment**: Enhances product data with additional information
+- **Event-Driven Architecture**: Uses Kafka for product change notifications
 - **Caching Strategy**: Implements Redis caching for performance optimization
 
 ### Critical Concerns and Risks
-- **Data Consistency**: Real-time inventory updates require consistency across services
-- **Performance**: High-frequency inventory queries may impact performance
-- **Scalability**: Inventory data volume may grow significantly
+- **Data Consistency**: Product data consistency across multiple sources
+- **Performance**: High-frequency product queries may impact performance
+- **Scalability**: Product catalog size may grow significantly
 - **Integration Complexity**: Multiple external system integrations
 
 ### High-Level Recommendations
-- Implement inventory data consistency patterns
+- Implement product data consistency patterns
 - Optimize database queries and caching strategy
-- Add comprehensive monitoring for inventory operations
+- Add comprehensive monitoring for product operations
 - Implement circuit breakers for external service dependencies
 
 ## Architecture Analysis
 
 ### System Architecture and Component Relationships
 
-The Inventory Availability Service follows a layered microservices architecture with clear separation of concerns:
+The Product Aggregation Service follows a layered microservices architecture with clear separation of concerns:
 
-- **Controller Layer**: REST API endpoints for inventory operations
-- **Service Layer**: Business logic for inventory management
+- **Controller Layer**: REST API endpoints for product operations
+- **Service Layer**: Business logic for product aggregation
 - **Repository Layer**: Data access abstraction for CosmosDB
 - **Integration Layer**: External service integrations
 - **Event Layer**: Kafka event publishing and consumption
@@ -39,28 +39,28 @@ The Inventory Availability Service follows a layered microservices architecture 
 ### Design Patterns and Architectural Decisions
 
 - **Repository Pattern**: Abstracts data access across CosmosDB
-- **Event-Driven Pattern**: Kafka-based event publishing for inventory changes
+- **Event-Driven Pattern**: Kafka-based event publishing for product changes
 - **Caching Pattern**: Redis-based caching for frequently accessed data
 - **Circuit Breaker Pattern**: External service dependency protection
-- **Saga Pattern**: Distributed transaction management for inventory operations
+- **Saga Pattern**: Distributed transaction management for product operations
 
 ### Integration Patterns and External Dependencies
 
-- **CosmosDB**: Primary data store for inventory information
+- **CosmosDB**: Primary data store for aggregated product information
 - **Redis Cache**: Performance optimization through caching
-- **Kafka**: Event streaming for inventory changes
-- **External Inventory Systems**: Integration with warehouse management systems
-- **Sourcing Service**: Integration for availability calculations
+- **Kafka**: Event streaming for product changes
+- **External Product Systems**: Integration with multiple product data sources
+- **Omni Product Service**: Integration for product data enrichment
 
 ### Data Flow and Messaging Architecture
 
-Inventory data flows through the system with the following pattern:
-1. Inventory updates from external systems
-2. Service layer processes business logic
+Product data flows through the system with the following pattern:
+1. Product updates from external systems
+2. Service layer processes aggregation logic
 3. Repository layer accesses CosmosDB
 4. Cache layer optimizes performance
-5. Event publishing for inventory changes
-6. Real-time availability calculations
+5. Event publishing for product changes
+6. Data enrichment and consolidation
 7. Response formatting and caching
 
 ## Security Analysis
@@ -69,28 +69,28 @@ Inventory data flows through the system with the following pattern:
 
 - **REST API Security**: Standard REST authentication and authorization
 - **Service-to-Service Security**: Secure integration with other services
-- **Data Access Control**: Role-based access to inventory data
-- **External System Security**: Secure integration with external inventory systems
+- **Data Access Control**: Role-based access to product data
+- **External System Security**: Secure integration with external product systems
 
 ### Security Vulnerabilities and Risks
 
-- **Data Exposure**: Sensitive inventory data exposure risks
+- **Data Exposure**: Sensitive product data exposure risks
 - **External Integration**: External system integration security
 - **Cache Security**: Potential data leakage through cache
-- **API Security**: Inventory API security vulnerabilities
+- **API Security**: Product API security vulnerabilities
 
 ### Data Protection and Encryption
 
 - **Database Encryption**: CosmosDB data encryption at rest
 - **Transport Security**: HTTPS for all API communications
 - **External API Security**: Secure external system integration
-- **Data Masking**: Sensitive inventory data masking
+- **Data Masking**: Sensitive product data masking
 
 ### Compliance and Regulatory Considerations
 
-- **Data Privacy**: Inventory data privacy compliance
-- **Audit Requirements**: Inventory change audit trails
-- **Data Retention**: Inventory data retention policies
+- **Data Privacy**: Product data privacy compliance
+- **Audit Requirements**: Product change audit trails
+- **Data Retention**: Product data retention policies
 - **Access Logging**: Comprehensive access logging
 
 ## Performance Analysis
@@ -98,21 +98,21 @@ Inventory data flows through the system with the following pattern:
 ### Database Performance and Optimization Opportunities
 
 - **Query Optimization**: CosmosDB query optimization and indexing
-- **Partitioning Strategy**: Proper partitioning for large inventory datasets
+- **Partitioning Strategy**: Proper partitioning for large product datasets
 - **Connection Management**: Optimize database connection management
-- **Caching Strategy**: Effective caching for inventory queries
+- **Caching Strategy**: Effective caching for product queries
 
 ### Application Performance Bottlenecks
 
-- **Real-time Updates**: High-frequency inventory update processing
+- **Data Aggregation**: High-frequency product aggregation processing
 - **External API Calls**: External system API performance
 - **Cache Management**: Cache invalidation and management overhead
 - **Event Processing**: Kafka event processing performance
 
 ### Caching Strategies and Effectiveness
 
-- **Inventory Caching**: Frequently accessed inventory data caching
-- **Availability Caching**: Real-time availability calculation caching
+- **Product Caching**: Frequently accessed product data caching
+- **Aggregation Caching**: Product aggregation result caching
 - **External Data Caching**: External system data caching
 - **Cache Invalidation**: Smart cache invalidation strategies
 
@@ -120,7 +120,7 @@ Inventory data flows through the system with the following pattern:
 
 - **Database Scaling**: CosmosDB scaling strategies
 - **Cache Scaling**: Redis cluster scaling
-- **Load Balancing**: Inventory API load balancing
+- **Load Balancing**: Product API load balancing
 - **Resource Allocation**: CPU and memory optimization
 
 ## Code Quality Assessment
@@ -180,7 +180,7 @@ Inventory data flows through the system with the following pattern:
 
 - **Automated Testing**: CI/CD pipeline integration
 - **Test Environment**: Isolated test environment setup
-- **Test Data Management**: Inventory test data management
+- **Test Data Management**: Product test data management
 - **Performance Testing**: Automated performance regression testing
 
 ## Authentication Flow
@@ -188,18 +188,18 @@ Inventory data flows through the system with the following pattern:
 ```mermaid
 sequenceDiagram
     participant Client
-    participant Inventory
+    participant ProductAgg
     participant Security
     participant Service
     participant Database
     
-    Client->>Inventory: Inventory Request
-    Inventory->>Security: Authenticate Request
+    Client->>ProductAgg: Product Request
+    ProductAgg->>Security: Authenticate Request
     Security->>Service: Validate Permissions
-    Service->>Database: Query Inventory Data
-    Database-->>Service: Inventory Data
-    Service-->>Inventory: Processed Data
-    Inventory-->>Client: Inventory Response
+    Service->>Database: Query Product Data
+    Database-->>Service: Product Data
+    Service-->>ProductAgg: Processed Data
+    ProductAgg-->>Client: Product Response
 ```
 
 ## Error Handling Flow
@@ -207,99 +207,99 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     participant Client
-    participant Inventory
+    participant ProductAgg
     participant Service
     participant External
     participant Database
     
-    Client->>Inventory: Inventory Request
-    Inventory->>Service: Process Request
+    Client->>ProductAgg: Product Request
+    ProductAgg->>Service: Process Request
     Service->>External: External System API
     External-->>Service: API Error
     Service->>Database: Fallback Query
     Database-->>Service: Database Data
-    Service-->>Inventory: Fallback Response
-    Inventory-->>Client: Inventory Data
+    Service-->>ProductAgg: Fallback Response
+    ProductAgg-->>Client: Product Data
 ```
 
-## Inventory Update Flow
+## Product Aggregation Flow
 
 ```mermaid
 sequenceDiagram
     participant External
-    participant Inventory
+    participant ProductAgg
     participant Service
     participant Database
     participant Kafka
     
-    External->>Inventory: Inventory Update
-    Inventory->>Service: Process Update
-    Service->>Database: Update Inventory
+    External->>ProductAgg: Product Update
+    ProductAgg->>Service: Process Aggregation
+    Service->>Database: Update Product Data
     Database-->>Service: Update Confirmation
-    Service->>Kafka: Publish Inventory Event
-    Service-->>Inventory: Update Complete
-    Inventory-->>External: Success Response
+    Service->>Kafka: Publish Product Event
+    Service-->>ProductAgg: Aggregation Complete
+    ProductAgg-->>External: Success Response
 ```
 
-## Inventory Query Flow
+## Product Query Flow
 
 ```mermaid
 sequenceDiagram
     participant Client
-    participant Inventory
+    participant ProductAgg
     participant Service
     participant Cache
     participant Database
     
-    Client->>Inventory: Inventory Query
-    Inventory->>Service: Retrieve Inventory
+    Client->>ProductAgg: Product Query
+    ProductAgg->>Service: Retrieve Product
     Service->>Cache: Check Cache
     Cache-->>Service: Cache Miss
     Service->>Database: Query Database
-    Database-->>Service: Inventory Data
+    Database-->>Service: Product Data
     Service->>Cache: Update Cache
-    Service-->>Inventory: Inventory Data
-    Inventory-->>Client: Inventory Response
+    Service-->>ProductAgg: Product Data
+    ProductAgg-->>Client: Product Response
 ```
 
-## Availability Calculation Flow
+## Data Enrichment Flow
 
 ```mermaid
 sequenceDiagram
     participant Client
-    participant Inventory
+    participant ProductAgg
     participant Service
-    participant Sourcing
+    participant OmniProduct
     participant Database
     
-    Client->>Inventory: Availability Request
-    Inventory->>Service: Calculate Availability
-    Service->>Database: Get Inventory Data
-    Database-->>Service: Inventory Data
-    Service->>Sourcing: Get Sourcing Options
-    Sourcing-->>Service: Sourcing Data
-    Service->>Service: Calculate Availability
-    Service-->>Inventory: Availability Result
-    Inventory-->>Client: Availability Response
+    Client->>ProductAgg: Enrichment Request
+    ProductAgg->>Service: Enrich Product Data
+    Service->>Database: Get Base Product Data
+    Database-->>Service: Product Data
+    Service->>OmniProduct: Get Additional Data
+    OmniProduct-->>Service: Enrichment Data
+    Service->>Service: Merge Data
+    Service-->>ProductAgg: Enriched Data
+    ProductAgg-->>Client: Enriched Response
 ```
 
-## Supply Update Flow
+## Product Update Flow
 
 ```mermaid
 sequenceDiagram
     participant External
-    participant Inventory
+    participant ProductAgg
     participant Service
     participant Database
     participant Kafka
     
-    External->>Inventory: Supply Update
-    Inventory->>Service: Process Supply Update
-    Service->>Database: Update Supply Data
+    External->>ProductAgg: Product Update
+    ProductAgg->>Service: Process Update
+    Service->>Database: Update Product
     Database-->>Service: Update Confirmation
-    Service->>Kafka: Publish Supply Event
-    Service-->>Inventory: Supply Updated
-    Inventory-->>External: Success Response
+    Service->>Kafka: Publish Update Event
+    Service-->>ProductAgg: Update Complete
+    ProductAgg-->>External: Success Response
 ```
 
 ## Deployment & DevOps Analysis
@@ -327,7 +327,7 @@ sequenceDiagram
 
 ### Monitoring and Observability Setup
 
-- **Inventory Metrics**: Inventory operation performance monitoring
+- **Product Metrics**: Product operation performance monitoring
 - **External API Monitoring**: External system API monitoring
 - **Database Monitoring**: CosmosDB performance monitoring
 - **Event Monitoring**: Kafka event monitoring
@@ -341,9 +341,9 @@ graph TB
     end
     
     subgraph "Application Tier"
-        APP1[Inventory Instance 1]
-        APP2[Inventory Instance 2]
-        APP3[Inventory Instance N]
+        APP1[Product Agg Instance 1]
+        APP2[Product Agg Instance 2]
+        APP3[Product Agg Instance N]
     end
     
     subgraph "Cache Tier"
@@ -357,7 +357,7 @@ graph TB
     end
     
     subgraph "External Systems"
-        WMS[Warehouse Management System]
+        OPS[Omni Product Service]
         KAFKA[Kafka Cluster]
     end
     
@@ -383,9 +383,9 @@ graph TB
     
     COSMOS1 --> COSMOS2
     
-    APP1 --> WMS
-    APP2 --> WMS
-    APP3 --> WMS
+    APP1 --> OPS
+    APP2 --> OPS
+    APP3 --> OPS
     
     APP1 --> KAFKA
     APP2 --> KAFKA
@@ -407,7 +407,7 @@ graph TB
 ```mermaid
 graph TB
     subgraph "Application Layer"
-        APP[Inventory Application]
+        APP[Product Agg Application]
         ACTUATOR[Spring Boot Actuator]
     end
     
@@ -450,117 +450,117 @@ graph TB
 
 ### Domain Model and Business Entities
 
-The Inventory Availability Service manages inventory entities with the following domain model:
+The Product Aggregation Service manages product entities with the following domain model:
 
-- **Inventory**: Core inventory entity with quantity and location information
-- **ShipNode**: Shipping node and location information
-- **Availability**: Real-time availability calculations
-- **Supply**: Supply chain and replenishment information
-- **InventoryControl**: Inventory control and management rules
+- **ReferenceItem**: Core product entity with aggregated information
+- **ProductData**: Product data from various sources
+- **ProductEnrichment**: Enriched product information
+- **ProductAggregation**: Aggregated product data
+- **ProductSource**: Source system information
 
 ### Business Processes and Workflows
 
-- **Inventory Management**: Create, read, update, delete inventory
-- **Availability Calculation**: Real-time availability calculations
-- **Supply Chain Integration**: Integration with supply chain systems
-- **Inventory Tracking**: Real-time inventory tracking
-- **Availability Reporting**: Inventory availability reporting
+- **Product Aggregation**: Consolidate product data from multiple sources
+- **Data Enrichment**: Enhance product data with additional information
+- **Product Updates**: Handle product data updates
+- **Data Synchronization**: Synchronize with external product systems
+- **Product Queries**: Handle product data queries
 
 ### Business Rules and Validation Logic
 
-- **Inventory Validation**: Inventory data validation rules
-- **Availability Rules**: Availability calculation rules
-- **Supply Chain Rules**: Supply chain integration rules
-- **Location Rules**: Multi-location inventory rules
-- **Threshold Rules**: Inventory threshold management
+- **Product Validation**: Product data validation rules
+- **Aggregation Rules**: Product aggregation business rules
+- **Enrichment Rules**: Data enrichment rules
+- **Source Rules**: External source integration rules
+- **Quality Rules**: Data quality validation rules
 
 ### Integration Points and External Services
 
-- **Warehouse Management System**: Primary inventory data source
-- **Sourcing Service**: Availability calculation integration
-- **Product Service**: Product information integration
-- **Order Service**: Order fulfillment integration
-- **Analytics Service**: Inventory analytics integration
+- **Omni Product Service**: Primary product data source
+- **External Product Systems**: Multiple external product data sources
+- **Inventory Service**: Inventory information integration
+- **Pricing Service**: Pricing information integration
+- **Analytics Service**: Product analytics integration
 
 ## Domain Model Diagram
 
 ```mermaid
 classDiagram
-    class Inventory {
+    class ReferenceItem {
         +String id
         +String itemId
-        +String enterpriseCode
-        +String shipNode
-        +Long quantity
-        +String threshold
-        +Boolean infinite
-        +Long modifyts
-    }
-    
-    class ShipNode {
-        +String id
         +String name
-        +String enterpriseCode
-        +String nodeType
-        +String timeZone
-        +String status
+        +String description
+        +String brand
+        +String category
+        +Map attributes
+        +List images
+        +DateTime createdAt
+        +DateTime updatedAt
     }
     
-    class Availability {
-        +String availabilityId
-        +String itemId
-        +String location
-        +Integer availableQuantity
-        +Boolean available
-        +DateTime calculatedAt
-    }
-    
-    class Supply {
-        +String supplyId
+    class ProductData {
+        +String dataId
         +String itemId
         +String source
-        +Integer quantity
-        +DateTime expectedDate
-        +String status
+        +String dataType
+        +Object data
+        +DateTime receivedAt
     }
     
-    class InventoryControl {
-        +String controlId
+    class ProductEnrichment {
+        +String enrichmentId
         +String itemId
-        +String controlType
-        +String value
-        +Boolean active
+        +String enrichmentType
+        +Object enrichmentData
+        +DateTime enrichedAt
     }
     
-    Inventory ||--|| ShipNode : "belongs_to"
-    Inventory ||--o{ Availability : "has"
-    Inventory ||--o{ Supply : "has"
-    Inventory ||--o{ InventoryControl : "has"
+    class ProductAggregation {
+        +String aggregationId
+        +String itemId
+        +List sources
+        +Object aggregatedData
+        +DateTime aggregatedAt
+    }
+    
+    class ProductSource {
+        +String sourceId
+        +String sourceName
+        +String sourceType
+        +String status
+        +DateTime lastSync
+    }
+    
+    ReferenceItem ||--o{ ProductData : "has"
+    ReferenceItem ||--o{ ProductEnrichment : "has"
+    ReferenceItem ||--o{ ProductAggregation : "has"
+    ProductData ||--|| ProductSource : "from"
 ```
 
 ## Business Process Flow
 
 ```mermaid
 flowchart TD
-    A[Inventory Update Request] --> B{Validate Inventory Data}
+    A[Product Update Request] --> B{Validate Product Data}
     B -->|Invalid| C[Return Validation Error]
-    B -->|Valid| D[Update Inventory Record]
+    B -->|Valid| D[Aggregate Product Data]
     
-    D --> E[Calculate Availability]
+    D --> E[Enrich Product Data]
     E --> F[Update Cache]
-    F --> G[Publish Inventory Event]
+    F --> G[Publish Product Event]
     G --> H[Return Success Response]
     
     C --> I[Log Error]
     H --> J[Log Success]
     
-    K[Availability Request] --> L{Check Cache}
+    K[Product Query] --> L{Check Cache}
     L -->|Hit| M[Return Cached Data]
     L -->|Miss| N[Query Database]
     
-    N --> O[Calculate Real-time Availability]
+    N --> O[Aggregate from Sources]
     O --> P[Update Cache]
-    P --> Q[Return Availability Data]
+    P --> Q[Return Product Data]
     
     M --> R[Return Response]
     Q --> R
@@ -570,73 +570,73 @@ flowchart TD
 
 ```mermaid
 erDiagram
-    inventory {
+    reference_item {
         String id PK
         String itemId
-        String enterpriseCode
-        String shipNode
-        Long quantity
-        String threshold
-        Boolean infinite
-        Long modifyts
-    }
-    
-    ship_node {
-        String id PK
         String name
-        String enterpriseCode
-        String nodeType
-        String timeZone
-        String status
+        String description
+        String brand
+        String category
+        String attributes
+        String images
+        DateTime createdAt
+        DateTime updatedAt
     }
     
-    availability {
-        String availabilityId PK
-        String itemId
-        String location
-        Integer availableQuantity
-        Boolean available
-        DateTime calculatedAt
-    }
-    
-    supply {
-        String supplyId PK
+    product_data {
+        String dataId PK
         String itemId
         String source
-        Integer quantity
-        DateTime expectedDate
-        String status
+        String dataType
+        String data
+        DateTime receivedAt
     }
     
-    inventory_control {
-        String controlId PK
+    product_enrichment {
+        String enrichmentId PK
         String itemId
-        String controlType
-        String value
-        Boolean active
+        String enrichmentType
+        String enrichmentData
+        DateTime enrichedAt
     }
     
-    inventory ||--|| ship_node : "belongs_to"
-    inventory ||--o{ availability : "has"
-    inventory ||--o{ supply : "has"
-    inventory ||--o{ inventory_control : "has"
+    product_aggregation {
+        String aggregationId PK
+        String itemId
+        String sources
+        String aggregatedData
+        DateTime aggregatedAt
+    }
+    
+    product_source {
+        String sourceId PK
+        String sourceName
+        String sourceType
+        String status
+        DateTime lastSync
+    }
+    
+    reference_item ||--o{ product_data : "has"
+    reference_item ||--o{ product_enrichment : "has"
+    reference_item ||--o{ product_aggregation : "has"
+    product_data ||--|| product_source : "from"
 ```
 
 ## Risk Assessment
 
 ### Technical Risks and Vulnerabilities
 
-- **Data Consistency**: Real-time inventory consistency challenges
-- **Performance**: High-frequency inventory query performance
+- **Data Consistency**: Product data consistency challenges
+- **Performance**: High-frequency product query performance
 - **External Dependencies**: External system integration risks
-- **Scalability**: Inventory data volume scaling challenges
+- **Scalability**: Product catalog size scaling challenges
 - **Cache Management**: Cache invalidation complexity
 
 ### Business Continuity Risks
 
-- **External System Dependency**: Warehouse management system availability
-- **Data Loss**: Inventory data loss risks
-- **Performance Degradation**: Slow inventory queries impact business
+- **External System Dependency**: External product system availability
+- **Data Loss**: Product data loss risks
+- **Performance Degradation**: Slow product queries impact business
 - **Integration Failures**: External system integration failures
 
 ### Performance and Scalability Concerns
@@ -648,7 +648,7 @@ erDiagram
 
 ### Security Threats and Mitigation Strategies
 
-- **Data Exposure**: Encrypt sensitive inventory data
+- **Data Exposure**: Encrypt sensitive product data
 - **External API Security**: Secure external system integration
 - **Access Control**: Implement proper authorization
 - **Audit Logging**: Comprehensive audit trails
@@ -657,8 +657,8 @@ erDiagram
 
 ### Immediate Actions (High Priority)
 
-1. **Performance Optimization**: Optimize inventory query performance
-2. **Data Consistency**: Implement inventory consistency patterns
+1. **Performance Optimization**: Optimize product query performance
+2. **Data Consistency**: Implement product data consistency patterns
 3. **External Service Resilience**: Add circuit breakers for external systems
 4. **Performance Monitoring**: Implement comprehensive performance monitoring
 5. **Error Handling**: Improve error handling and recovery mechanisms
@@ -675,7 +675,7 @@ erDiagram
 
 1. **Microservices Evolution**: Consider breaking down into smaller services
 2. **Database Migration**: Evaluate database optimization strategies
-3. **Event Sourcing**: Implement event sourcing for inventory changes
+3. **Event Sourcing**: Implement event sourcing for product changes
 4. **API Gateway**: Implement API gateway for enhanced security
 5. **Multi-Region Deployment**: Implement multi-region deployment
 
@@ -683,7 +683,7 @@ erDiagram
 
 ### Phase 1: Critical Fixes (1-2 weeks)
 
-- Optimize inventory query performance
+- Optimize product query performance
 - Add circuit breakers for external services
 - Optimize database queries and indexing
 - Improve error handling and logging

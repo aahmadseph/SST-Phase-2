@@ -2,30 +2,32 @@
 
 ## API Overview
 
-The ConfigHub service provides centralized configuration management capabilities for the Sephora microservices ecosystem. It enables dynamic configuration updates without requiring application restarts and maintains an audit trail of all configuration changes.
+The ConfigHub service provides a centralized configuration management API that enables dynamic configuration updates across the Sephora microservices ecosystem. This service implements the Spring Cloud Config Server pattern, allowing services to retrieve and update configuration properties in real-time without requiring application restarts.
 
 ### Service Purpose and Scope
 - **Configuration Management**: Create, read, update, and delete configuration properties
-- **Dynamic Updates**: Real-time configuration updates via Spring Cloud Bus
-- **Audit Trail**: Complete audit logging of configuration changes
-- **Configuration Groups**: Logical grouping of related configurations
-- **Validation**: Input validation and schema enforcement for configuration values
+- **Configuration Validation**: Validate configuration values and constraints
+- **Audit Trail**: Comprehensive audit logging for all configuration changes
+- **Configuration Deployment**: Deploy configurations to target environments
+- **Configuration Rollback**: Rollback configuration changes when needed
 
 ### API Versioning Strategy
 - **Current Version**: v1
-- **Base URL**: `/v1/configuration`
-- **Backward Compatibility**: Maintained through additive changes only
-- **Deprecation Policy**: 6-month notice for breaking changes
+- **Versioning Approach**: URL path versioning (`/v1/configuration`)
+- **Backward Compatibility**: Maintained through additive changes
+- **Deprecation Policy**: 6-month deprecation notice for breaking changes
 
 ### Base URL and Endpoints
-- **Base URL**: `https://confighub-service-svc/v1/configuration`
-- **Health Check**: `/actuator/health`
-- **API Documentation**: `/swagger-ui.html`
+- **Base URL**: `/v1/configuration`
+- **Authentication**: Required for all endpoints
+- **Content-Type**: `application/json`
+- **Response Format**: JSON
 
 ### Authentication Requirements
-- **Service-to-Service**: Mutual TLS or API key authentication
-- **Admin Operations**: Role-based access control (RBAC)
-- **Audit Operations**: Read-only access for audit trail queries
+- **Authentication Type**: Bearer Token
+- **Authorization**: Role-based access control
+- **Required Headers**: `Authorization: Bearer <token>`
+- **API Key**: Alternative authentication method available
 
 ## Request/Response Contracts
 
@@ -33,12 +35,12 @@ The ConfigHub service provides centralized configuration management capabilities
 
 **Description**: Create a new configuration property
 
-**Authentication**: Required - Admin role
+**Authentication**: Required
 
 **Request Headers**:
-- `Content-Type: application/json`
-- `Authorization: Bearer {token}`
-- `X-Request-ID: {uuid}`
+- `Authorization: Bearer <token>` (required)
+- `Content-Type: application/json` (required)
+- `X-Request-ID: <uuid>` (optional)
 
 **Request Body**:
 ```json
@@ -48,7 +50,9 @@ The ConfigHub service provides centralized configuration management capabilities
   "valType": "string",
   "description": "string",
   "groupId": "string",
-  "uiConsume": "string"
+  "application": "string",
+  "profile": "string",
+  "label": "string"
 }
 ```
 
@@ -62,25 +66,27 @@ The ConfigHub service provides centralized configuration management capabilities
 - `409 Conflict`: Configuration already exists
 - `500 Internal Server Error`: Server error
 
-**Success Response** (201):
+**Success Response (201)**:
 ```json
 {
   "status": "success",
   "data": {
     "configId": 123,
     "prop": "database.url",
-    "val": "jdbc:mysql://localhost:3306/config",
+    "val": "jdbc:mysql://localhost:3306/configdb",
     "valType": "string",
     "description": "Database connection URL",
     "groupId": "database",
-    "uiConsume": "true",
+    "application": "GLOBAL",
+    "profile": "DEFAULT",
+    "label": "MASTER",
     "createdDate": "2024-01-15T10:30:00Z",
     "modifiedDate": "2024-01-15T10:30:00Z"
   }
 }
 ```
 
-**Error Response** (400):
+**Error Response (400)**:
 ```json
 {
   "status": "error",
@@ -92,7 +98,7 @@ The ConfigHub service provides centralized configuration management capabilities
     },
     {
       "field": "val",
-      "message": "Value cannot be empty"
+      "message": "Property value is required"
     }
   ]
 }
@@ -100,23 +106,24 @@ The ConfigHub service provides centralized configuration management capabilities
 
 ### Endpoint: `GET /v1/configuration`
 
-**Description**: Retrieve all configurations with pagination and filtering
+**Description**: Retrieve all configurations with optional filtering and pagination
 
-**Authentication**: Required - Read access
+**Authentication**: Required
 
 **Request Headers**:
-- `Authorization: Bearer {token}`
-- `X-Request-ID: {uuid}`
+- `Authorization: Bearer <token>` (required)
+- `X-Request-ID: <uuid>` (optional)
 
 **Request Body**: None
 
 **Request Parameters**:
 - `pageNumber` (integer, optional): Page number for pagination (default: 0)
 - `pageSize` (integer, optional): Number of items per page (default: 20)
-- `sort` (string, optional): Sort field and direction (e.g., "prop,asc")
+- `sort` (string, optional): Sort field (default: "configId")
 - `group` (string, optional): Filter by configuration group
-- `application` (string, optional): Filter by application name
-- `profile` (string, optional): Filter by profile name
+- `application` (string, optional): Filter by application
+- `profile` (string, optional): Filter by profile
+- `label` (string, optional): Filter by label
 
 **Response Codes**:
 - `200 OK`: Configurations retrieved successfully
@@ -124,7 +131,7 @@ The ConfigHub service provides centralized configuration management capabilities
 - `403 Forbidden`: Insufficient permissions
 - `500 Internal Server Error`: Server error
 
-**Success Response** (200):
+**Success Response (200)**:
 ```json
 {
   "status": "success",
@@ -133,19 +140,23 @@ The ConfigHub service provides centralized configuration management capabilities
       {
         "configId": 123,
         "prop": "database.url",
-        "val": "jdbc:mysql://localhost:3306/config",
+        "val": "jdbc:mysql://localhost:3306/configdb",
         "valType": "string",
         "description": "Database connection URL",
         "groupId": "database",
-        "uiConsume": "true",
+        "application": "GLOBAL",
+        "profile": "DEFAULT",
+        "label": "MASTER",
         "createdDate": "2024-01-15T10:30:00Z",
         "modifiedDate": "2024-01-15T10:30:00Z"
       }
     ],
-    "totalElements": 100,
-    "totalPages": 5,
-    "currentPage": 0,
-    "pageSize": 20
+    "totalElements": 1,
+    "totalPages": 1,
+    "size": 20,
+    "number": 0,
+    "first": true,
+    "last": true
   }
 }
 ```
@@ -154,11 +165,11 @@ The ConfigHub service provides centralized configuration management capabilities
 
 **Description**: Retrieve a specific configuration by ID
 
-**Authentication**: Required - Read access
+**Authentication**: Required
 
 **Request Headers**:
-- `Authorization: Bearer {token}`
-- `X-Request-ID: {uuid}`
+- `Authorization: Bearer <token>` (required)
+- `X-Request-ID: <uuid>` (optional)
 
 **Request Body**: None
 
@@ -172,25 +183,27 @@ The ConfigHub service provides centralized configuration management capabilities
 - `404 Not Found`: Configuration not found
 - `500 Internal Server Error`: Server error
 
-**Success Response** (200):
+**Success Response (200)**:
 ```json
 {
   "status": "success",
   "data": {
     "configId": 123,
     "prop": "database.url",
-    "val": "jdbc:mysql://localhost:3306/config",
+    "val": "jdbc:mysql://localhost:3306/configdb",
     "valType": "string",
     "description": "Database connection URL",
     "groupId": "database",
-    "uiConsume": "true",
+    "application": "GLOBAL",
+    "profile": "DEFAULT",
+    "label": "MASTER",
     "createdDate": "2024-01-15T10:30:00Z",
     "modifiedDate": "2024-01-15T10:30:00Z"
   }
 }
 ```
 
-**Error Response** (404):
+**Error Response (404)**:
 ```json
 {
   "status": "error",
@@ -203,12 +216,12 @@ The ConfigHub service provides centralized configuration management capabilities
 
 **Description**: Update an existing configuration
 
-**Authentication**: Required - Admin role
+**Authentication**: Required
 
 **Request Headers**:
-- `Content-Type: application/json`
-- `Authorization: Bearer {token}`
-- `X-Request-ID: {uuid}`
+- `Authorization: Bearer <token>` (required)
+- `Content-Type: application/json` (required)
+- `X-Request-ID: <uuid>` (optional)
 
 **Request Body**:
 ```json
@@ -218,12 +231,14 @@ The ConfigHub service provides centralized configuration management capabilities
   "valType": "string",
   "description": "string",
   "groupId": "string",
-  "uiConsume": "string"
+  "application": "string",
+  "profile": "string",
+  "label": "string"
 }
 ```
 
 **Request Parameters**:
-- `configId` (long, required): Configuration ID to update
+- `configId` (long, required): Configuration ID
 
 **Response Codes**:
 - `200 OK`: Configuration updated successfully
@@ -233,18 +248,20 @@ The ConfigHub service provides centralized configuration management capabilities
 - `404 Not Found`: Configuration not found
 - `500 Internal Server Error`: Server error
 
-**Success Response** (200):
+**Success Response (200)**:
 ```json
 {
   "status": "success",
   "data": {
     "configId": 123,
     "prop": "database.url",
-    "val": "jdbc:mysql://localhost:3306/config_updated",
+    "val": "jdbc:mysql://localhost:3306/updateddb",
     "valType": "string",
     "description": "Updated database connection URL",
     "groupId": "database",
-    "uiConsume": "true",
+    "application": "GLOBAL",
+    "profile": "DEFAULT",
+    "label": "MASTER",
     "createdDate": "2024-01-15T10:30:00Z",
     "modifiedDate": "2024-01-15T11:45:00Z"
   }
@@ -255,16 +272,16 @@ The ConfigHub service provides centralized configuration management capabilities
 
 **Description**: Delete a configuration
 
-**Authentication**: Required - Admin role
+**Authentication**: Required
 
 **Request Headers**:
-- `Authorization: Bearer {token}`
-- `X-Request-ID: {uuid}`
+- `Authorization: Bearer <token>` (required)
+- `X-Request-ID: <uuid>` (optional)
 
 **Request Body**: None
 
 **Request Parameters**:
-- `configId` (long, required): Configuration ID to delete
+- `configId` (long, required): Configuration ID
 
 **Response Codes**:
 - `200 OK`: Configuration deleted successfully
@@ -273,7 +290,7 @@ The ConfigHub service provides centralized configuration management capabilities
 - `404 Not Found`: Configuration not found
 - `500 Internal Server Error`: Server error
 
-**Success Response** (200):
+**Success Response (200)**:
 ```json
 {
   "status": "success",
@@ -286,11 +303,11 @@ The ConfigHub service provides centralized configuration management capabilities
 
 **Description**: Retrieve audit trail for a specific configuration
 
-**Authentication**: Required - Read access
+**Authentication**: Required
 
 **Request Headers**:
-- `Authorization: Bearer {token}`
-- `X-Request-ID: {uuid}`
+- `Authorization: Bearer <token>` (required)
+- `X-Request-ID: <uuid>` (optional)
 
 **Request Body**: None
 
@@ -306,7 +323,7 @@ The ConfigHub service provides centralized configuration management capabilities
 - `404 Not Found`: Configuration not found
 - `500 Internal Server Error`: Server error
 
-**Success Response** (200):
+**Success Response (200)**:
 ```json
 {
   "status": "success",
@@ -315,15 +332,15 @@ The ConfigHub service provides centralized configuration management capabilities
       {
         "configAuditId": 456,
         "userId": "admin@sephora.com",
-        "val": "jdbc:mysql://localhost:3306/config_old",
+        "val": "jdbc:mysql://localhost:3306/olddb",
         "configId": 123,
         "createdDate": "2024-01-15T10:30:00Z"
       }
     ],
-    "totalElements": 5,
+    "totalElements": 1,
     "totalPages": 1,
-    "currentPage": 0,
-    "pageSize": 20
+    "size": 20,
+    "number": 0
   }
 }
 ```
@@ -332,11 +349,11 @@ The ConfigHub service provides centralized configuration management capabilities
 
 **Description**: Retrieve all configuration groups
 
-**Authentication**: Required - Read access
+**Authentication**: Required
 
 **Request Headers**:
-- `Authorization: Bearer {token}`
-- `X-Request-ID: {uuid}`
+- `Authorization: Bearer <token>` (required)
+- `X-Request-ID: <uuid>` (optional)
 
 **Request Body**: None
 
@@ -348,7 +365,7 @@ The ConfigHub service provides centralized configuration management capabilities
 - `403 Forbidden`: Insufficient permissions
 - `500 Internal Server Error`: Server error
 
-**Success Response** (200):
+**Success Response (200)**:
 ```json
 {
   "status": "success",
@@ -381,20 +398,20 @@ The ConfigHub service provides centralized configuration management capabilities
   "valType": "string",
   "description": "string",
   "groupId": "string",
-  "uiConsume": "string"
+  "application": "string",
+  "profile": "string",
+  "label": "string"
 }
 ```
 
 #### UpdatePropertyValuesDto
 ```json
 {
-  "configId": "long",
   "prop": "string",
   "val": "string",
   "valType": "string",
   "description": "string",
-  "groupId": "string",
-  "uiConsume": "string"
+  "groupId": "string"
 }
 ```
 
@@ -409,7 +426,9 @@ The ConfigHub service provides centralized configuration management capabilities
   "valType": "string",
   "description": "string",
   "groupId": "string",
-  "uiConsume": "string",
+  "application": "string",
+  "profile": "string",
+  "label": "string",
   "createdDate": "datetime",
   "modifiedDate": "datetime"
 }
@@ -421,22 +440,10 @@ The ConfigHub service provides centralized configuration management capabilities
   "content": "array",
   "totalElements": "long",
   "totalPages": "int",
-  "currentPage": "int",
-  "pageSize": "int"
-}
-```
-
-#### ErrorListDto
-```json
-{
-  "status": "string",
-  "message": "string",
-  "errors": [
-    {
-      "field": "string",
-      "message": "string"
-    }
-  ]
+  "size": "int",
+  "number": "int",
+  "first": "boolean",
+  "last": "boolean"
 }
 ```
 
@@ -445,82 +452,91 @@ The ConfigHub service provides centralized configuration management capabilities
 #### Configuration Entity
 ```json
 {
-  "configId": "long (Primary Key)",
-  "prop": "string (Property name)",
-  "val": "string (Property value)",
-  "valType": "string (Value type)",
-  "description": "string (Description)",
-  "groupId": "string (Group ID - Foreign Key)",
-  "userId": "string (User who updated)",
-  "createdDate": "datetime (Creation timestamp)",
-  "modifiedDate": "datetime (Last modification timestamp)",
-  "uiConsume": "string (UI consumption flag)"
+  "configId": "Long (Primary Key)",
+  "prop": "String (Property name)",
+  "val": "String (Property value)",
+  "valType": "String (Value type)",
+  "description": "String (Description)",
+  "groupId": "String (Group ID)",
+  "userId": "String (Updated by)",
+  "createdDate": "LocalDateTime (Creation timestamp)",
+  "modifiedDate": "LocalDateTime (Modification timestamp)",
+  "uiConsume": "String (UI consumption flag)",
+  "auditLogs": "List<AuditConfiguration> (Audit trail)"
 }
 ```
 
 #### ConfigurationGroup Entity
 ```json
 {
-  "configId": "long (Primary Key)",
-  "groupName": "string (Group name)",
-  "createdDate": "datetime (Creation timestamp)",
-  "modifiedDate": "datetime (Last modification timestamp)"
+  "configId": "Long (Primary Key)",
+  "groupName": "String (Group name)",
+  "createdDate": "LocalDateTime (Creation timestamp)",
+  "modifiedDate": "LocalDateTime (Modification timestamp)"
 }
 ```
 
 #### AuditConfiguration Entity
 ```json
 {
-  "configAuditId": "long (Primary Key)",
-  "userId": "string (User who made the change)",
-  "val": "string (Previous value)",
-  "configId": "string (Configuration ID - Foreign Key)",
-  "createdDate": "datetime (Audit timestamp)"
+  "configAuditId": "Long (Primary Key)",
+  "userId": "String (User who made change)",
+  "val": "String (Old value)",
+  "configId": "String (Configuration ID)",
+  "createdDate": "LocalDateTime (Audit timestamp)",
+  "configuration": "Configuration (Related configuration)"
 }
 ```
 
 ### Validation Rules
 
 #### Configuration Property Validation
-- **prop**: Required, max length 256 characters, alphanumeric and underscore only
+- **prop**: Required, max length 256 characters, alphanumeric with dots and underscores
 - **val**: Required, max length 16MB (MEDIUMTEXT)
 - **valType**: Optional, max length 50 characters
-- **description**: Optional, max length 65535 characters (TEXT)
+- **description**: Optional, max length 65KB (TEXT)
 - **groupId**: Required, must reference existing configuration group
-- **uiConsume**: Optional, boolean string ("true"/"false")
+- **application**: Required, enum values: ["GLOBAL"]
+- **profile**: Required, enum values: ["DEFAULT"]
+- **label**: Required, enum values: ["MASTER"]
+- **userId**: Required for updates, max length 256 characters
 
 #### Configuration Group Validation
 - **groupName**: Required, max length 256 characters, unique
-- **createdDate**: Auto-generated timestamp
-- **modifiedDate**: Auto-updated timestamp
+- **configId**: Auto-generated, positive integer
 
 #### Audit Configuration Validation
 - **userId**: Required, max length 256 characters
-- **val**: Required, max length 16MB (MEDIUMTEXT)
+- **val**: Optional, max length 16MB
 - **configId**: Required, must reference existing configuration
-- **createdDate**: Auto-generated timestamp
 
 ## Integration Contracts
 
 ### External Service Dependencies
 
 #### Spring Cloud Config Server
-- **Purpose**: Provides configuration server capabilities
-- **Integration**: Native Spring Cloud integration
-- **Health Check**: `/actuator/health`
-- **Configuration**: Spring Cloud Config properties
-
-#### Kafka Event Bus
-- **Purpose**: Configuration change event propagation
-- **Topic**: `Sephora.ConfigHub.Client.ConfigUpdate_Dev`
-- **Message Format**: JSON configuration change events
-- **Consumer Groups**: Service-specific consumer groups
+- **Purpose**: Configuration server capabilities
+- **Integration Type**: Framework integration
+- **Dependencies**: Spring Cloud Config Server starter
+- **Configuration**: Config server properties in application.yml
 
 #### MySQL Database
-- **Purpose**: Persistent configuration storage
-- **Connection**: JDBC with HikariCP connection pooling
-- **Schema**: Configuration tables with audit trail
-- **Backup**: Regular automated backups
+- **Purpose**: Primary data store for configuration persistence
+- **Integration Type**: Database connection
+- **Dependencies**: MySQL connector, Spring Data JPA
+- **Configuration**: Database connection properties
+
+#### Redis Cache
+- **Purpose**: Performance optimization through caching
+- **Integration Type**: Cache integration
+- **Dependencies**: Spring Boot Redis starter
+- **Configuration**: Redis connection properties
+
+#### Spring Cloud Bus
+- **Purpose**: Event-driven configuration change propagation
+- **Integration Type**: Message bus integration
+- **Dependencies**: Spring Cloud Bus starter
+- **Configuration**: Bus properties and Kafka configuration
 
 ### Event Contracts
 
@@ -528,13 +544,13 @@ The ConfigHub service provides centralized configuration management capabilities
 ```json
 {
   "eventType": "CONFIGURATION_CHANGED",
-  "timestamp": "2024-01-15T10:30:00Z",
-  "configId": 123,
-  "prop": "database.url",
-  "oldValue": "jdbc:mysql://localhost:3306/config_old",
-  "newValue": "jdbc:mysql://localhost:3306/config_new",
-  "userId": "admin@sephora.com",
-  "groupId": "database"
+  "configId": "long",
+  "prop": "string",
+  "oldValue": "string",
+  "newValue": "string",
+  "userId": "string",
+  "timestamp": "datetime",
+  "source": "string"
 }
 ```
 
@@ -542,130 +558,130 @@ The ConfigHub service provides centralized configuration management capabilities
 ```json
 {
   "eventType": "CONFIGURATION_DELETED",
-  "timestamp": "2024-01-15T10:30:00Z",
-  "configId": 123,
-  "prop": "database.url",
-  "userId": "admin@sephora.com",
-  "groupId": "database"
+  "configId": "long",
+  "prop": "string",
+  "userId": "string",
+  "timestamp": "datetime",
+  "source": "string"
 }
 ```
 
 ### Database Contracts
 
-#### Database Schema Relationships
-- **config_group** (1) → (N) **config**: One group can have many configurations
-- **config** (1) → (N) **config_audit**: One configuration can have many audit records
+#### Database Schema Overview
+The ConfigHub service uses a MySQL database with the following schema:
+
+- **config**: Main configuration table storing all configuration properties
+- **config_group**: Configuration groups for logical organization
+- **config_audit**: Audit trail for all configuration changes
+- **config_group_roles**: Role-based access control for configuration groups
+
+#### Database Relationships
+- **config_group** (1) → **config** (many): One group can have many configurations
+- **config** (1) → **config_audit** (many): One configuration can have many audit records
+- **config_group** (1) → **config_group_roles** (many): One group can have many role assignments
 
 #### Database Constraints
 - **Primary Keys**: All tables have auto-incrementing primary keys
-- **Foreign Keys**: config.groupId references config_group.config_group_id
-- **Unique Constraints**: config_group.group_name must be unique
-- **Indexes**: Indexes on frequently queried fields (prop, groupId, createdDate)
-
-#### Database Performance
-- **Connection Pooling**: HikariCP with configurable pool size
-- **Query Optimization**: Prepared statements and parameterized queries
-- **Caching**: Application-level caching for frequently accessed configurations
-- **Partitioning**: Consider partitioning for large audit tables
+- **Foreign Keys**: Proper foreign key constraints for referential integrity
+- **Unique Constraints**: Configuration property names are unique within application/profile/label combination
+- **Check Constraints**: Enum values for application, profile, and label fields
 
 ## API Endpoint Map
 
 ```mermaid
 graph TB
-    subgraph "Configuration Management"
-        POST_CREATE[POST /v1/configuration]
-        GET_ALL[GET /v1/configuration]
-        GET_BY_ID[GET /v1/configuration/{id}]
-        PUT_UPDATE[PUT /v1/configuration/{id}]
-        DELETE_CONFIG[DELETE /v1/configuration/{id}]
+    subgraph "ConfigHub API"
+        API[API Gateway]
+        
+        subgraph "Configuration Management"
+            CREATE[POST /v1/configuration]
+            READ[GET /v1/configuration]
+            READ_ID[GET /v1/configuration/{id}]
+            UPDATE[PUT /v1/configuration/{id}]
+            DELETE[DELETE /v1/configuration/{id}]
+        end
+        
+        subgraph "Audit Management"
+            AUDIT[GET /v1/configuration/audit/{id}]
+        end
+        
+        subgraph "Group Management"
+            GROUPS[GET /v1/configuration/groups]
+        end
     end
     
-    subgraph "Audit Management"
-        GET_AUDIT[GET /v1/configuration/audit/{id}]
-    end
-    
-    subgraph "Group Management"
-        GET_GROUPS[GET /v1/configuration/groups]
-    end
-    
-    subgraph "Health & Monitoring"
-        HEALTH[GET /actuator/health]
-        METRICS[GET /actuator/metrics]
-        INFO[GET /actuator/info]
-    end
-    
-    subgraph "Documentation"
-        SWAGGER[GET /swagger-ui.html]
-        API_DOCS[GET /v3/api-docs]
-    end
+    API --> CREATE
+    API --> READ
+    API --> READ_ID
+    API --> UPDATE
+    API --> DELETE
+    API --> AUDIT
+    API --> GROUPS
 ```
 
 ## Request/Response Flow
 
 ```mermaid
-flowchart TD
-    A[Client Request] --> B{Request Type}
+sequenceDiagram
+    participant Client
+    participant API
+    participant Controller
+    participant Service
+    participant Repository
+    participant Database
+    participant Cache
+    participant EventBus
     
-    B -->|POST| C[Create Configuration]
-    B -->|GET| D[Retrieve Configuration]
-    B -->|PUT| E[Update Configuration]
-    B -->|DELETE| F[Delete Configuration]
-    
-    C --> G[Validate Input]
-    D --> H[Check Permissions]
-    E --> G
-    F --> H
-    
-    G -->|Valid| I[Save to Database]
-    G -->|Invalid| J[Return Validation Error]
-    
-    H -->|Authorized| K[Execute Operation]
-    H -->|Unauthorized| L[Return Forbidden]
-    
-    I --> M[Create Audit Record]
-    K --> N[Return Success Response]
-    
-    M --> O[Publish Event]
-    O --> P[Update Cache]
-    P --> Q[Return Response]
-    
-    J --> Q
-    L --> Q
-    N --> Q
+    Client->>API: HTTP Request
+    API->>Controller: Route Request
+    Controller->>Service: Process Business Logic
+    Service->>Cache: Check Cache (if applicable)
+    Service->>Repository: Database Operation
+    Repository->>Database: Execute Query
+    Database-->>Repository: Return Data
+    Repository-->>Service: Return Result
+    Service->>Cache: Update Cache (if applicable)
+    Service->>EventBus: Publish Event (if applicable)
+    Service-->>Controller: Return Response
+    Controller-->>API: Return Response
+    API-->>Client: HTTP Response
 ```
 
 ## Data Model Relationships
 
 ```mermaid
 erDiagram
-    Configuration {
-        long configId PK
-        string prop
-        string val
-        string valType
-        string description
-        string groupId FK
-        string userId
-        datetime createdDate
-        datetime modifiedDate
-        string uiConsume
+    config {
+        MEDIUMINT config_id PK
+        varchar prop
+        MEDIUMTEXT val
+        varchar val_type
+        TEXT description
+        varchar application
+        varchar profile
+        varchar label
+        TINYINT config_group_id FK
+        varchar updated_by
+        DATETIME create_dttm
+        DATETIME update_dttm
     }
     
-    ConfigurationGroup {
-        long configId PK
-        string groupName
-        datetime createdDate
-        datetime modifiedDate
+    config_group {
+        TINYINT config_group_id PK
+        varchar group_name
+        DATETIME create_dttm
+        DATETIME update_dttm
     }
     
-    AuditConfiguration {
-        long configAuditId PK
-        string userId
-        string val
-        string configId FK
-        datetime createdDate
+    config_audit {
+        MEDIUMINT config_audit_id PK
+        varchar updated_by
+        varchar old_val
+        varchar config_id FK
+        DATETIME create_dttm
     }
     
-    Configuration ||--o{ AuditConfiguration : "audited_by"
-    ConfigurationGroup ||--o{ Configuration : "contains"
+    config_group ||--o{ config : "contains"
+    config ||--o{ config_audit : "audited_by"
 ```
