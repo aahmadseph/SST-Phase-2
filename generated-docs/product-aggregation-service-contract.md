@@ -459,6 +459,7 @@ graph TB
     ENRICH --> KAFKA
     SYNC --> OPS
 ```
+```
 
 ## Request/Response Flow
 
@@ -492,6 +493,7 @@ sequenceDiagram
     Service->>EventBus: Publish Event
     Service-->>API: Service Response
     API-->>Client: API Response
+```
 ```
 
 ## Data Model Relationships
