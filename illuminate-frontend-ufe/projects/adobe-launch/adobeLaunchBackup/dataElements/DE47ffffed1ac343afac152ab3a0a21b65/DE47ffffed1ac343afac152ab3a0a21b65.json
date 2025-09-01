@@ -1,0 +1,97 @@
+{
+    "id": "DE47ffffed1ac343afac152ab3a0a21b65",
+    "type": "data_elements",
+    "attributes": {
+        "created_at": "2024-08-14T15:59:19.175Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "[TMS] Parse productString Fx",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2024-08-14T15:59:19.175Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "clean_text": false,
+        "default_value": null,
+        "delegate_descriptor_id": "core::dataElements::custom-code",
+        "force_lower_case": false,
+        "review_status": "unsubmitted",
+        "storage_duration": null,
+        "settings": "{\"source\":\"return function parseProductString(productString) {\\n  \\n    productString = productString || '';\\n  \\n    // Split the product string by commas to separate multiple products\\n    const productsArray = productString.split(',');\\n    \\n    // Map over the array to create an array of product objects\\n    return productsArray.map(productEntry =\\u003e {\\n        const productDetails = productEntry.split(';');\\n\\n        // Extract custom events and merchandising eVars if they exist\\n        const customEvents = productDetails[4] ? productDetails[4].split('|') : [];\\n        const merchandisingEVars = productDetails[5] ? productDetails[5].split('|') : [];\\n\\n        return {\\n            category: productDetails[0] || '',\\n            product: productDetails[1] || '',\\n            quantity: productDetails[2] || '1',\\n            totalPrice: productDetails[3] || '0',\\n            customEvents: customEvents,\\n            merchandisingEVars: merchandisingEVars\\n        };\\n    });\\n}\"}"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE47ffffed1ac343afac152ab3a0a21b65/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE47ffffed1ac343afac152ab3a0a21b65/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE47ffffed1ac343afac152ab3a0a21b65/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE47ffffed1ac343afac152ab3a0a21b65/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE47ffffed1ac343afac152ab3a0a21b65/origin"
+            },
+            "data": {
+                "id": "DE47ffffed1ac343afac152ab3a0a21b65",
+                "type": "data_elements"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE47ffffed1ac343afac152ab3a0a21b65/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE47ffffed1ac343afac152ab3a0a21b65/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE47ffffed1ac343afac152ab3a0a21b65/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/data_elements/DE47ffffed1ac343afac152ab3a0a21b65",
+        "self": "https://reactor.adobe.io/data_elements/DE47ffffed1ac343afac152ab3a0a21b65",
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74"
+    },
+    "meta": {
+        "latest_revision_number": 1
+    }
+}

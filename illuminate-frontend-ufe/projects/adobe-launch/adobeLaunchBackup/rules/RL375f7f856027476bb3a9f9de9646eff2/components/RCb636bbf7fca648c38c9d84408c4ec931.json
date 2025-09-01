@@ -1,0 +1,91 @@
+{
+    "id": "RCb636bbf7fca648c38c9d84408c4ec931",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2023-01-04T23:01:33.854Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: facebook_sameDayDeliveryEvent",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": false,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-07-01T14:39:52.893Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "niltoncesar.santos@sephora.com",
+        "updated_by_display_name": "niltoncesar santos",
+        "settings": "{\"source\":\"var contents = [];\\nvar skuIds = digitalData.transaction.attributes.sdd.skuIds;\\nvar skuQty = digitalData.transaction.attributes.sdd.itemQty;\\nvar biAccountId = Sephora.Util.getUserInfoCache()?.profile?.beautyInsiderAccount?.biAccountId || '';\\n\\nvar eventId = 'sdd-' + _satellite.getVar('[UEID] :: Universal Event ID Fx')(event);\\n\\nif (skuIds.length) {\\n  for (var i = 0; i \\u003c skuIds.length; i++) {\\n    var item = {};\\n    item.id = skuIds[i];\\n    item.quantity = skuQty[i];\\n    contents.push(item);\\n  }\\n}\\n\\n// AQME-4645: Discrepancy between AL and SOT. Tags should send CAD when using Canadian site\\nvar currency = digitalData.page.pageInfo.country === 'US' ? 'USD' : 'CAD';\\n\\nvar transactionSubTotal = digitalData.transaction.total.sdd.transactionSubtotal || '0';\\nvar cleanedTransactionSubTotal = transactionSubTotal.replace(\\\"$\\\", \\\"\\\").replace(',', '.');\\nvar subtotal = Number(cleanedTransactionSubTotal).toFixed(2); \\nvar value = subtotal || 0;\\nvar discount = parseFloat(digitalData.transaction.total.promotionDiscount) || 0;\\nvalue = value - discount;\\n\\nvar data = {\\n  contents: contents,\\n  content_type: 'product',\\n  value: value,\\n  currency: currency,\\n  delivery_option: 'Same Day_delivery option',\\n  customer_type: _satellite.getVar('[TMS] Pixel :: Facebook :: BI Status'),\\n  content_local: _satellite.getVar('[TMS] Page :: Language/Locale'), \\n  order_id: _satellite.getVar('[TMS] Page :: Order Number') \\n};\\n\\nwindow.addEventListener(\\n  'FacebookBasePixelInitialized',\\n  function () {\\n    if (biAccountId) {\\n      Sephora.analytics.utils.hashString(biAccountId).then(hashedBiId =\\u003e {\\n        fbq('trackCustom', 'sameDayDelivery', { ...data, external_id: hashedBiId }, { eventID: eventId });\\n      });\\n    } else {\\n       fbq('trackCustom', 'sameDayDelivery', data, { eventID: eventId }); \\n    }\\n  }\\n);\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCb636bbf7fca648c38c9d84408c4ec931/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCb636bbf7fca648c38c9d84408c4ec931/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCb636bbf7fca648c38c9d84408c4ec931/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCb636bbf7fca648c38c9d84408c4ec931/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCb636bbf7fca648c38c9d84408c4ec931/origin"
+            },
+            "data": {
+                "id": "RCb636bbf7fca648c38c9d84408c4ec931",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCb636bbf7fca648c38c9d84408c4ec931/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RCb636bbf7fca648c38c9d84408c4ec931",
+        "rules": "https://reactor.adobe.io/rule_components/RCb636bbf7fca648c38c9d84408c4ec931/rules",
+        "self": "https://reactor.adobe.io/rule_components/RCb636bbf7fca648c38c9d84408c4ec931"
+    },
+    "meta": {
+        "latest_revision_number": 14
+    }
+}

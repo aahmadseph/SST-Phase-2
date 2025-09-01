@@ -1,0 +1,4 @@
+import ItemSubstitutionRecommendation from 'components/ItemSubstitution/ItemSubstitutionRecommendation/ItemSubstitutionRecommendation';
+import { withItemSubstitutionRecommendationProps } from 'viewModel/itemSubstitution/itemSubstitutionRecommendation/withItemSubstitutionRecommendationProps';
+
+export default withItemSubstitutionRecommendationProps(ItemSubstitutionRecommendation);

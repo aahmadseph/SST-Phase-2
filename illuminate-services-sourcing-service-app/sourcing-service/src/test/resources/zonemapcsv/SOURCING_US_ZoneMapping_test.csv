@@ -1,0 +1,10 @@
+Record,Zip Code,Preferred DC1,Preferred DC2,Preferred DC3,Preferred DC4,State
+zone,002,0701,1001,0801,1021,NY
+zone,005,0701,1001,0801,1021,NY
+zone,006,0701,,,,PR
+zone,007,0701,,,,PR
+zone,010,0701,1001,0801,1021,MA
+zone,011,0701,1001,0801,1021,MA
+zone,012,0701,1001,0801,1021,MA
+zone,013,0701,1001,0801,1021,MA
+EndOfRecords

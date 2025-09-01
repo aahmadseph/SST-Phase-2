@@ -1,0 +1,91 @@
+{
+    "id": "RC8dc31872a7774aae84674407407ef136",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2022-12-16T17:53:45.485Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: doubleClick_sameDayDelivery",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2024-01-10T16:03:29.005Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"/* Note: Any data that come in here needs to have certain characters like slashes and signle quotes removed */\\n\\n/* Store things in variables to debug why we are getting \\\"unexpected\\\" token console.error(); */\\nvar allowCustomScripts = true;\\nvar value = _satellite.getVar(\\\"[TMS] Pixel :: Double Click SDD :: Order Subtotal\\\");\\nvar transactionId = _satellite.getVar(\\\"[TMS] Page :: Order Number\\\");\\nvar u1 = _satellite.getVar(\\\"[TMS] Page :: Name\\\");\\nvar u2 = _satellite.getVar(\\\"[TMS] Pixel :: Page Url For DoubleClick\\\");\\nvar u3 = _satellite.getVar(\\\"[TMS] Pixel :: Double Click :: Brand Names (Piped)\\\");\\n\\nvar value = _satellite.getVar(\\\"[TMS] Pixel :: Double Click SDD :: Order Subtotal\\\") || 0;\\nvar discount = parseFloat(digitalData.transaction.total.promotionDiscount) || 0;\\nvalue = value - discount;\\n\\n// _satellite.getVar(\\\"[TMS] Pixel :: Sku List  SDD :: Piped\\\");\\nvar u4 = digitalData.transaction.attributes.sdd.skuIds ? digitalData.transaction.attributes.sdd.skuIds.join('|') : ''; \\n\\nvar u5 = _satellite.getVar(\\\"[TMS] Pixel :: Double Click :: Price List (Piped)\\\");\\nvar u6 = _satellite.getVar(\\\"[TMS] Pixel :: Double Click :: Product Ratings (Piped)\\\");\\nvar u8 = _satellite.getVar(\\\"[TMS] User :: BI Points\\\");\\nvar u9 = _satellite.getVar(\\\"[TMS] User :: ATG ID - pageLoadEvent\\\");\\nvar u10 = _satellite.getVar(\\\"[TMS] User :: BI Status\\\");\\nvar u11 = _satellite.getVar(\\\"[TMS] Pixel :: LinkShare SDD :: qList\\\");\\nvar u12 = _satellite.getVar(\\\"[TMS] Page :: Order Number\\\");\\nvar u13 = _satellite.getVar(\\\"[TMS] Async :: Country\\\");\\nvar u14 = value;\\nvar u15 = \\\"USD\\\";\\nvar u16 = _satellite.getVar(\\\"[TMS] Page :: Promo Code\\\");\\nvar u17 = _satellite.getVar(\\\"[TMS] Pixel :: Double Click :: Sample Ids (Piped)\\\");\\nvar u19 = _satellite.getVar(\\\"[TMS] User :: Play Status\\\");\\nvar u20 = _satellite.getVar(\\\"[TMS] Pixel :: Sku Type List (Piped)\\\");\\nvar u21 = _satellite.getVar(\\\"[TMS] Pixel :: Sku VariationType List (Piped)\\\");\\nvar u22 = _satellite.getVar(\\\"[TMS] Pixel :: Sku VariationValue List (Piped)\\\");\\nvar u23 = _satellite.getVar(\\\"[TMS] User :: BI Points\\\");\\nvar u24 = _satellite.getVar(\\\"[TMS] Pixel :: Double Click :: Price List Merch Totals (Piped)\\\");\\nvar u30 = _satellite.getVar(\\\"[TMS] Pixel :: Double Click :: Order Confirmation :: Categories (Piped)\\\");\\nvar u31 = _satellite.getVar(\\\"[TMS] Pixel :: Double Click :: Order Confirmation :: Subcategories (Piped)\\\");\\nvar u37 = _satellite.getVar(\\\"[TMS] DoubleClick ::  Payment Method :: Piped\\\");\\n\\n// _satellite.getVar(\\\"[TMS] BI Account Number - asyncPageLoad\\\")\\nvar dc_custom_params = { 'match_id': digitalData.user[0].segment.biAccountId, 'origin': 'doubleClick_sameDayDelivery' }; \\n\\nvar category = _satellite.getVar(\\\"[TMS] Pixel :: Double Click :: Confirm :: SDD-Categorys\\\");\\nvar sendToString = \\\"DC-5878462/sales0/\\\" + category + \\\"+transactions\\\";\\nvar itemsShort = _satellite.getVar(\\\"[TMS] Pixel :: Double Click :: Items Short\\\"); // \\u003c----\\nvar language = _satellite.getVar(\\\"[TMS] Pixel :: Double Click :: Order Confirmation :: Language\\\");\\nlanguage = language.toLowerCase();\\n\\nvar data = {\\n    allow_custom_scripts: allowCustomScripts,\\n    value: value,\\n    transaction_id: transactionId,\\n    u1: u1,\\n    u2: u2,\\n    u3: u3,\\n    u4: u4,\\n    u5: u5,\\n    u6: u6,\\n    u8: u8,\\n    u9: u9,\\n    u10: u10,\\n    u11: u11,\\n    u12: u12,\\n    u13: u13,\\n    u14: u14,\\n    u15: u15,\\n    u16: u16,\\n    u17: u17,\\n    u19: u19,\\n    u20: u20,\\n    u21: u21,\\n    u22: u22,\\n    u23: u23,\\n    u24: u24,\\n    u30: u30,\\n    u31: u31,\\n    u37: u37,\\n    dc_custom_params: dc_custom_params,\\n    send_to: sendToString,\\n    items: itemsShort,\\n    country: u13,\\n    language: language\\n};\\n\\n_satellite.getVar('[TMS] CM360 Enchanced Conversion Data').then(enhancedData =\\u003e {\\n  data.user_data = enhancedData.user_data || {};\\n  gtag('event', 'purchase', data);\\n});\\n\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8dc31872a7774aae84674407407ef136/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8dc31872a7774aae84674407407ef136/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8dc31872a7774aae84674407407ef136/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8dc31872a7774aae84674407407ef136/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8dc31872a7774aae84674407407ef136/origin"
+            },
+            "data": {
+                "id": "RC8dc31872a7774aae84674407407ef136",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8dc31872a7774aae84674407407ef136/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC8dc31872a7774aae84674407407ef136",
+        "rules": "https://reactor.adobe.io/rule_components/RC8dc31872a7774aae84674407407ef136/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC8dc31872a7774aae84674407407ef136"
+    },
+    "meta": {
+        "latest_revision_number": 10
+    }
+}

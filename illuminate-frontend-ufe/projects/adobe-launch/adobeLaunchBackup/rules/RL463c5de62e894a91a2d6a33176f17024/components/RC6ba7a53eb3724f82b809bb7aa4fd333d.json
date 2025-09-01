@@ -1,0 +1,91 @@
+{
+    "id": "RC6ba7a53eb3724f82b809bb7aa4fd333d",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2022-10-12T15:45:51.248Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "Tag: doubleClick_servicesBookingConfirmationEvent",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-02-13T16:02:03.294Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"\\u003cscript\\u003e\\n // Replacing this Data Element: _satellite.getVar('[TMS] BI Account Number - asyncPageLoad')\\n var doubleClick_biAccountId = digitalData.user[0].segment.biAccountId;\\n  \\n var u8 = _satellite.getVar(\\\"[TMS] User :: BI Points\\\");\\n u8 = u8 !== undefined ? String(u8) : ''; \\n var u23 = _satellite.getVar(\\\"[TMS] User :: BI Points\\\");\\n u23 = u23 !== undefined ? String(u23) : '';\\n  \\n gtag('event', 'conversion', {\\n    'allow_custom_scripts': true,\\n    'u1': _satellite.getVar(\\\"[TMS] Page :: Name\\\"),\\n    'u2': _satellite.getVar(\\\"[TMS] Pixel :: Page Url For DoubleClick\\\"), \\n    'u8': u8,\\n    'u10': _satellite.getVar(\\\"[TMS] User :: BI Status\\\"),\\n    'u23': u23,\\n    'u26': _satellite.getVar(\\\"[TMS] Page :: Experience Store ID - pageLoadEvent\\\"),\\n    'u32': _satellite.getVar(\\\"[TMS] Pixel :: User :: Login Status\\\"),\\n    'u36': _satellite.getVar(\\\"[TMS] Page :: Experience BookingId\\\"),\\n    'dc_custom_params': { 'match_id': doubleClick_biAccountId, 'origin':'Adobe Launch - doubleClick_servicesBookingConfirmationEvent'},\\n    'send_to': 'DC-5878462/produ0/booki0+standard'\\n  });\\n\\n\\u003c/script\\u003e\\n\\u003cnoscript\\u003e\\n\\u003cimg src=\\\"https://ad.doubleclick.net/ddm/activity/src=5878462;type=produ0;cat=booki0;u1=%[TMS] Page :: Name%;u2=%[TMS] Pixel :: Page Url For DoubleClick%;u8=%[TMS] User :: BI Points%;u10=%[TMS] User :: BI Status%;u23=%[TMS] User :: BI Points%;u26=%[TMS] Page :: Experience Store ID - pageLoadEvent%;u32=%[TMS] Pixel :: User :: Login Status%;u36=%[TMS] Page :: Experience BookingId%;match_id= '%[TMS] BI Account Number - asyncPageLoad%';dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;npa=;ord=1?\\\" width=\\\"1\\\" height=\\\"1\\\" alt=\\\"\\\"/\\u003e\\n\\u003c/noscript\\u003e\\n\\u003c!-- End of event snippet: Please do not remove --\\u003e\",\"language\":\"html\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC6ba7a53eb3724f82b809bb7aa4fd333d/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC6ba7a53eb3724f82b809bb7aa4fd333d/updated_with_extension"
+            },
+            "data": {
+                "id": "EX06a7afc619ae4214a074cb5399abf9fa",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC6ba7a53eb3724f82b809bb7aa4fd333d/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC6ba7a53eb3724f82b809bb7aa4fd333d/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC6ba7a53eb3724f82b809bb7aa4fd333d/origin"
+            },
+            "data": {
+                "id": "RC6ba7a53eb3724f82b809bb7aa4fd333d",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC6ba7a53eb3724f82b809bb7aa4fd333d/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC6ba7a53eb3724f82b809bb7aa4fd333d",
+        "rules": "https://reactor.adobe.io/rule_components/RC6ba7a53eb3724f82b809bb7aa4fd333d/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC6ba7a53eb3724f82b809bb7aa4fd333d"
+    },
+    "meta": {
+        "latest_revision_number": 5
+    }
+}

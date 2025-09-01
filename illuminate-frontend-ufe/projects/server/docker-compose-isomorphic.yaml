@@ -1,0 +1,139 @@
+version: "3.9"
+networks:
+  jerri-ufe-network:
+    ipam:
+      config:
+        - subnet: 172.25.0.0/24
+services:
+  base-docker-image:
+    image: sephora-docker.artifactory/sephora_ufe_base/local:latest
+    build:
+      context: ../../
+      dockerfile: projects/server/tools/dockerfiles/Dockerfile.base
+  ufe-isomorphic:
+    deploy:
+      resources:
+        limits:
+          memory: 4096M
+    depends_on:
+      - base-docker-image
+    build:
+      args:
+        UFE_BASE_VERSION: local
+        UFE_BASE_TAG_VERSION: latest
+      context: ../../
+      dockerfile: projects/server/tools/dockerfiles/Dockerfile.ufe
+    ports:
+      - 3000:3000
+      - 10001-10005:10001-10005
+    hostname: local.sephora.com
+    environment:
+      WORKERS: 4
+      UFE_ENV: LOCAL
+      ROUTER_SERVER_PORT: 4000
+      ROUTER_SERVER_NAME: local.sephora.com
+      BUILD_MODE: isomorphic
+      IMAGE_HOST: $IMAGE_HOST
+    volumes:
+      - "./logs:/home/node/app/projects/server/logs:rw"
+      - "~/ssl-keys:/home/node/app/projects/server/ssl-keys/:rw"
+      - "./projects/ui/src:/home/node/app/projects/ui/src:rw"
+    networks:
+      jerri-ufe-network:
+        ipv4_address: 172.25.0.5
+  jerri-web-server:
+    depends_on:
+      - base-docker-image
+    restart: always
+    build:
+      args:
+        UFE_BASE_VERSION: local
+        UFE_BASE_TAG_VERSION: latest
+        UFE_APPLICATION_NAME: jerri
+        UFE_MAX_OLD_SPACE_SIZE: 2900
+      context: ../../
+      dockerfile: projects/server/tools/dockerfiles/Dockerfile.jerri
+    hostname: local.sephora.com
+    ports:
+      - 4000:4000
+      - 443:443
+      - 9229-9231:9229-9231
+      - 10000:10000
+    environment:
+      CLUSTER_WORKERS: 1
+      ROUTER_SERVER_PORT: 4000
+      ROUTER_SERVER_NAME: local.sephora.com
+      DEVICE_ID: $DEVICE_ID
+      ACCESS_TOKEN: $ACCESS_TOKEN
+      PROXY_HOST: $PROXY_HOST
+      API_HOST: $API_HOST
+      API_PORT: $API_PORT
+      IMAGE_HOST: $IMAGE_HOST
+      RENDER_HOST: 172.25.0.5
+      RENDER_HOST_PORT: 3000
+      ENABLE_REDIS: "true"
+      REDIS_HOST: 172.25.0.6
+      REDIS_PORT: 6379
+      LOG_LEVEL: verbose
+      DISABLE_SSL: "true"
+      UFE_ENV: LOCAL
+      DISABLE_REDIS_CLUSTER_MODE: "true"
+    volumes:
+      - "./logs:/home/node/app/projects/server/logs:rw"
+      - "~/ssl-keys:/home/node/app/projects/server/ssl-keys/:rw"
+    networks:
+      jerri-ufe-network:
+        ipv4_address: 172.25.0.7
+  jerri-redis-server:
+    # image: grokzen/redis-cluster
+    image: redis
+    restart: always
+    hostname: local.sephora.com
+    ports:
+      - 6379:6379
+      - 7000:6379
+      # - 7001:7001
+      # - 7002:7002
+      # - 7003:7003
+      # - 7004:7004
+      # - 7005:7005
+    networks:
+      jerri-ufe-network:
+        ipv4_address: 172.25.0.6
+  woody-api-server:
+    depends_on:
+      - base-docker-image
+    restart: always
+    build:
+      args:
+        UFE_BASE_VERSION: local
+        UFE_BASE_TAG_VERSION: latest
+        UFE_APPLICATION_NAME: woody
+        UFE_MAX_OLD_SPACE_SIZE: 1634
+      context: ../../
+      dockerfile: projects/server/tools/dockerfiles/Dockerfile.apis
+    hostname: local.sephora.com
+    ports:
+      - 5000:5000
+    environment:
+      API_CLUSTER_WORKERS: 1
+      API_ROUTER_SERVER_PORT: 5000
+      API_ROUTER_SERVER_NAME: local.sephora.com
+      DEVICE_ID: $DEVICE_ID
+      ACCESS_TOKEN: $ACCESS_TOKEN
+      PROXY_HOST: $PROXY_HOST
+      API_HOST: $API_HOST
+      API_PORT: $API_PORT
+      IMAGE_HOST: $IMAGE_HOST
+      ENABLE_REDIS: "false"
+      REDIS_HOST: 172.25.0.6
+      REDIS_PORT: 7000
+      LOG_LEVEL: verbose
+      DISABLE_SSL: "true"
+      UFE_ENV: LOCAL
+    volumes:
+      - "./logs:/home/node/app/projects/server/logs:rw"
+      - "~/ssl-keys:/home/node/app/projects/server/ssl-keys/:rw"
+    networks:
+      jerri-ufe-network:
+        ipv4_address: 172.25.0.8

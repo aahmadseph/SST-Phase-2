@@ -1,0 +1,187 @@
+#!/bin/bash
+# Symlink this into the .git/hooks/ directory.
+
+export NODE_PATH=projects/ui
+
+######################################################################
+# GraphQL: Prevent unexpected changes in queries and/or mutations
+######################################################################
+echo "[1/9] Update GraphQL queries and mutations"
+INITIAL_GQL_STATE=$(git ls-tree -r HEAD projects/ui/src/constants/gql)
+npm run update-gql-operations --workspace=ui
+UPDATED_GQL_STATE=$(git ls-tree -r HEAD projects/ui/src/constants/gql)
+if [ "$INITIAL_GQL_STATE" != "$UPDATED_GQL_STATE" ]; then
+    echo "    Changes detected in 'projects/ui/src/constants/gql/' after running update-gql-operations."
+    echo "    Please review and commit these changes separately."
+    echo
+    echo "    Commit aborted."
+
+    exit 1
+fi
+
+######################################################################
+# Unit Tests: Prevent commit with fit, fdescribe, xit or xdescribe
+######################################################################
+echo "[2/9] Prevent commit with 'fit', 'fdescribe', 'xit' or 'xdescribe'."
+DISABLED_TESTS=$(git diff --cached --diff-filter=ACMR -U0 "*.spec.js" | grep -e "^\+" | grep -v "^\+++" | grep -e "fdescribe('" -e "fit('" -e "xdescribe('" -e "xit('")
+if [ "$DISABLED_TESTS" != "" ]; then
+    echo "    List of tests to fix:"
+    echo "$DISABLED_TESTS"
+    echo
+    echo "    You forgot to un-F or un-X an it/describe!"
+    echo
+    echo "    Commit aborted."
+
+    exit 1
+else
+    echo "    No disabled tests were found."
+fi
+
+######################################################################
+# Code Quality: Abort the commit if ufeApi.makeRequest is used in an improper place.
+######################################################################
+echo "[3/9] Abort the commit if 'ufeApi.makeRequest' is used in an improper place."
+ufe_api_calls=$(grep ufeApi.makeRequest -rn projects/ui/src | grep -v projects/ui/src/services)
+if [[ -n $ufe_api_calls ]]; then
+    echo "    Please refactor your code so that ufeApi.makeRequest is used only in the services/api layer."
+    echo -n "$ufe_api_calls"
+    echo
+    echo "    Commit aborted."
+
+    exit 1
+fi
+
+######################################################################
+# Run the custom require check to detect new require() statements
+######################################################################
+echo "[4/9] Check for new 'require()' statements."
+npm run eslint:check-modified-required
+EXIT_CODE=$?
+if [[ ${EXIT_CODE} -ne 0 ]]; then
+    exit 1
+fi
+
+echo "    Pre-commit checks for require statements passed."
+
+######################################################################
+# Format Code: Run Prettier first and ESLint after
+# https://prettier.io/docs/en/precommit.html#option-6-shell-script
+######################################################################
+FILES=$(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g')
+echo "[5/9] Format code using Prettier and ESLint."
+if [ "$FILES" != "" ]; then
+    echo "    Run Prettier code formatter..."
+    echo "$FILES" | xargs ./node_modules/.bin/prettier --ignore-unknown --write --loglevel error
+    EXIT_CODE=$?
+
+    if [[ ${EXIT_CODE} -ne 0 ]]; then
+        echo "    Failed to format code using Prettier."
+        echo "    [ERRROR] code = $EXIT_CODE"
+        echo
+        echo "    Commit aborted."
+
+        exit 1
+    fi
+
+    echo "    Run ESLint code formatter ..."
+    echo "$FILES" | xargs ./node_modules/.bin/eslint --fix --quiet
+    EXIT_CODE=$?
+
+    if [[ ${EXIT_CODE} -ne 0 ]]; then
+        echo "    Failed to format code using ESLint."
+        echo "    [ERRROR] code = $EXIT_CODE"
+        echo
+        echo "    Commit aborted."
+
+        exit 1
+    fi
+
+    echo "    Add back the modified/prettified files to staging..."
+    echo "$FILES" | xargs git add
+    EXIT_CODE=$?
+
+    if [[ ${EXIT_CODE} -ne 0 ]]; then
+        echo "    Failed to add back the modified/prettified files to staging."
+        echo "    [ERRROR] code = $EXIT_CODE"
+        echo
+        echo "    Commit aborted."
+
+        exit 1
+    fi
+else
+    echo "    Skipping code formatting step because no files to format."
+fi
+
+######################################################################
+# ESLINT
+######################################################################
+echo "[6/9] Run ESLint check."
+npm run eslint:check-modified
+EXIT_CODE=$?
+if [[ ${EXIT_CODE} -ne 0 ]]; then
+    echo "    ESLint has found some style issues in the modified javascript files. Please resolve them first."
+    echo "    [ERRROR] code = $EXIT_CODE"
+    echo
+    echo "    Commit aborted."
+
+    exit 1
+else
+    echo "    ESLint completed successfully."
+fi
+
+######################################################################
+# UI Tests: Run Jasmine tests/specs before committing
+######################################################################
+echo "[7/9] Run UI Jasmine tests."
+npm run test-no-map --workspace=ui
+EXIT_CODE=$?
+if [[ ${EXIT_CODE} -ne 0 ]]; then
+    echo "    Karma Unit Tests failed."
+    echo "    [ERRROR] code = " ${EXIT_CODE}
+    echo
+    echo "    Commit aborted."
+
+    exit 1
+else
+    echo "    Karma Unit Tests completed successfully."
+fi
+
+######################################################################
+# UI Tests: Run Jest tests/specs before committing
+######################################################################
+echo "[8/9] Run UI Jest tests."
+npm run test --workspace=ui
+EXIT_CODE=$?
+if [[ ${EXIT_CODE} -ne 0 ]]; then
+    echo "    Jest tests failed."
+    echo "    [ERRROR] code = " ${EXIT_CODE}
+    echo
+    echo "    Commit aborted."
+
+    exit 1
+else
+    echo "    Jest tests completed successfully."
+fi
+
+######################################################################
+# Server Unit Tests: Run unit tests/server/specs before committing
+######################################################################
+echo "[9/9] Run Server unit tests."
+SERVER_MODIFIED=$(git status -s ./projects/server/src projects/server/tests/ | awk '{ if ($1 == "R") { print $4; } else if ($1 == "??") { } else if ($1 != "D") { print $2; } }')
+if [ "$SERVER_MODIFIED" != "" ]; then
+    npm run build:ui
+    npm run test:server
+    EXIT_CODE=$?
+    if [[ "$EXIT_CODE" -ne 0 && "$EXIT_CODE" -ne 1 ]]; then
+        echo "    Server Unit Tests failed."
+        echo "    [ERRROR] code = $EXIT_CODE"
+        echo
+        echo "    Commit aborted."
+
+        exit 1
+    else
+        echo "    Server Unit Tests completed successfully."
+    fi
+else
+    echo "    Skipping 'Run Server unit tests' step because no files were modified."
+fi

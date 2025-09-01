@@ -1,0 +1,6 @@
+import AccountDeactivatedModal from 'components/GlobalModals/AccountDeactivatedModal/AccountDeactivatedModal';
+import { withAccountDeactivatedModalProps } from 'viewModel/globalModals/AccountDeactivatedModal/withAccountDeactivatedModalProps';
+
+const ConnectedAccountDeactivatedModal = withAccountDeactivatedModalProps(AccountDeactivatedModal);
+
+export default ConnectedAccountDeactivatedModal;

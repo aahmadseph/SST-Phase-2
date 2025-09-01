@@ -1,0 +1,25 @@
+{
+    "manifest_version": 3,
+    "name": "Mirror",
+    "icons": {
+        "48": "48.png",
+        "128": "128.png"
+    },
+    "description": "This extension allows Client Service Beauty Advisors to mirror a client’s experience on Sephora.com.",
+    "version": "1.1.7",
+    "minimum_chrome_version": "100",
+    "incognito": "split",
+    "background": {
+        "service_worker": "background.js"
+    },
+
+    "permissions": ["tabs", "activeTab", "webRequest", "declarativeNetRequest", "storage", "cookies", "scripting", "browsingData"],
+    "content_scripts": [
+        {
+            "matches": ["*://orion.sephora.com/*", "*://orion-qa.sephora.com/*", "*://orion-dev.sephora.com/*", "*://orion-perf.sephora.com/*"],
+            "js": ["content-script-orion.js"],
+            "run_at": "document_end"
+        }
+    ],
+    "host_permissions": ["*://*.sephora.com/*"]
+}

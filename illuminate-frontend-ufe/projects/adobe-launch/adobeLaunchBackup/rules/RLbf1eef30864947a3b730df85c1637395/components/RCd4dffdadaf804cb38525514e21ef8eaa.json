@@ -1,0 +1,91 @@
+{
+    "id": "RCd4dffdadaf804cb38525514e21ef8eaa",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2023-03-01T22:32:44.805Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "Facebook Pixel Loader (SDK For JS)",
+        "negate": false,
+        "order": 7,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": false,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2024-06-19T19:58:56.467Z",
+        "created_by_email": "rachel.joss@sephora.com",
+        "created_by_display_name": "rachel joss",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"window.fbAsyncInit = function() {\\n  FB.init({\\n    appId            : Sephora.configurationSettings.openGraph.fbAppId,\\n    autoLogAppEvents : true,\\n    xfbml            : true,\\n    version          : 'v10.0'\\n  });\\n};\\n\\nconst fbscript = document.createElement('script');\\n\\nfbscript.src = \\\"https://connect.facebook.net/en_US/sdk.js\\\";\\nfbscript.async = true;\\nfbscript.defer = true;\\nfbscript.crossorigin = \\\"anonymous\\\"\\n\\nconst frstScript = document.getElementsByTagName('script')[0];\\nfrstScript.parentNode.insertBefore(fbscript, frstScript);\\n\\n// Facebook Pixel Code\\n    \\n/* Begin Facebook code */\\n  !function(f,b,e,v,n,t,s)\\n  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?\\n  n.callMethod.apply(n,arguments):n.queue.push(arguments)};\\n  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';\\n  n.queue=[];t=b.createElement(e);t.async=!0;\\n  t.src=v;s=b.getElementsByTagName(e)[0];\\n  s.parentNode.insertBefore(t,s)}(window, document,'script',\\n  'https://connect.facebook.net/en_US/fbevents.js');\\n/* End Facebook code */\\n\\n\\n// Initialize Meta Pixel\\nfbq('init', _satellite.getVar('[TMS] Facebook Pixel ID'), {\\n  em: digitalData.user[0].profile[0].profileInfo.email\\n});\\n\\n// Facebook LDU\\nfbq('dataProcessingOptions', ['LDU'], 0, 0);\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd4dffdadaf804cb38525514e21ef8eaa/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd4dffdadaf804cb38525514e21ef8eaa/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd4dffdadaf804cb38525514e21ef8eaa/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd4dffdadaf804cb38525514e21ef8eaa/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd4dffdadaf804cb38525514e21ef8eaa/origin"
+            },
+            "data": {
+                "id": "RCd4dffdadaf804cb38525514e21ef8eaa",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd4dffdadaf804cb38525514e21ef8eaa/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RCd4dffdadaf804cb38525514e21ef8eaa",
+        "rules": "https://reactor.adobe.io/rule_components/RCd4dffdadaf804cb38525514e21ef8eaa/rules",
+        "self": "https://reactor.adobe.io/rule_components/RCd4dffdadaf804cb38525514e21ef8eaa"
+    },
+    "meta": {
+        "latest_revision_number": 137
+    }
+}

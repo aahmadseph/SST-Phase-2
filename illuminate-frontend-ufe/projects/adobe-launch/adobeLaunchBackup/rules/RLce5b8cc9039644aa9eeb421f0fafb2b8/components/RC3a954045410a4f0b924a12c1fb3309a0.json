@@ -1,0 +1,91 @@
+{
+    "id": "RC3a954045410a4f0b924a12c1fb3309a0",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2022-09-09T20:39:56.140Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: blueCore_orderConfirmationView",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-01-25T18:38:28.514Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"function safelyReadProperty(attributePath, objectInfo) {\\n    return Sephora.analytics.utils.safelyReadProperty(attributePath, objectInfo);\\n}\\n\\nvar orderId, isGuestOrder, orderTotal, productIds, currencyCode, bluecorePixelUrl, userEmail, isDiscountApplied, discountName, bluecorePixel;\\nvar sduProps = safelyReadProperty(\\\"profile.userSubscriptions\\\", Sephora.Util.getUserInfoCache());\\nvar isTrialEligibleSdu = sduProps \\u0026\\u0026 sduProps[0].isTrialEligible;\\nvar statusSdu = sduProps \\u0026\\u0026 sduProps[0].status;\\nvar typeSdu = sduProps \\u0026\\u0026 sduProps[0].type;\\n\\nisGuestOrder = digitalData.page.attributes.isGuestOrder || false;\\nif (digitalData.transaction) {\\n    // userEmail = digitalData.user[0].profile[0].profileInfo.email;\\n    atgID = digitalData.user[0].profile[0].profileInfo.profileID;\\n    orderId = digitalData.transaction.transactionID;\\n    orderTotal = digitalData.transaction.total.transactionTotal;\\n    orderTotal = orderTotal.replace(/(?:[a-z$\\\\s])/ig, '');\\n    currencyCode = digitalData.transaction.attributes.isoCurrency;\\n    productIds = digitalData.transaction.item.map(item =\\u003e item.sku.skuId).toString();\\n    isDiscountApplied = digitalData.transaction.attributes.promoCode ? true : false;\\n    discountName = digitalData.transaction.attributes.promoCode;\\n    bluecorePixelUrl = `https://www.bluecore.com/api/track/purchase_pixel?\\ntoken=sephora\\u0026distinct_id=${atgID}\\u0026total=${orderTotal}\\u0026order_id=${orderId}\\u0026product_ids=${productIds}\\u0026currency=${currencyCode}\\u0026is_guest_checkout=${isGuestOrder}\\u0026order_level_discount_applied=${isDiscountApplied}\\u0026order_level_discount_name=${encodeURI(discountName)}\\u0026sotV222=${isTrialEligibleSdu}\\u0026sotV223=${statusSdu}\\u0026sotV224=${typeSdu}`;\\n    bluecorePixel = document.createElement(\\\"img\\\");\\n    bluecorePixel.id = 'bluecore_purchase_pixel';\\n    bluecorePixel.src = bluecorePixelUrl;\\n    bluecorePixel.style.display = 'none';\\n\\n    document.body.appendChild(bluecorePixel);\\n}\\nreturn true;\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC3a954045410a4f0b924a12c1fb3309a0/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC3a954045410a4f0b924a12c1fb3309a0/updated_with_extension"
+            },
+            "data": {
+                "id": "EX06a7afc619ae4214a074cb5399abf9fa",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC3a954045410a4f0b924a12c1fb3309a0/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC3a954045410a4f0b924a12c1fb3309a0/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC3a954045410a4f0b924a12c1fb3309a0/origin"
+            },
+            "data": {
+                "id": "RC3a954045410a4f0b924a12c1fb3309a0",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC3a954045410a4f0b924a12c1fb3309a0/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC3a954045410a4f0b924a12c1fb3309a0",
+        "rules": "https://reactor.adobe.io/rule_components/RC3a954045410a4f0b924a12c1fb3309a0/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC3a954045410a4f0b924a12c1fb3309a0"
+    },
+    "meta": {
+        "latest_revision_number": 10
+    }
+}

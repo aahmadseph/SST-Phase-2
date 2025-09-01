@@ -1,0 +1,188 @@
+"""This is a scalar for DateTime."""
+scalar DateTime
+
+extend schema @contact(
+description: "Send urgent issues to safeer.ahameed@sephora.com",
+name : "safeer.ahameed@sephora.com",
+url : ""
+)
+
+directive @contact(
+    "Contact title of the subgraph owner"
+    name: String!,
+    "Other relevant notes can be included here; supports markdown"
+    description: String,
+    "URL where the subgraph can be reached"
+    url: String
+) on SCHEMA
+
+"Input type request for Available Inventory."
+input AvailableInventoryInput {
+    "The date and time when the request was made in ISO 8601 format. for eg: 2021-11-17T02:12:48.926-07:00"
+    currentDateTime: DateTime!
+    "A boolean flag indicating whether to evaluate capacity or not."
+    evaluateCapacity: Boolean
+    "A boolean flag indicating whether to evaluate network availability or not."
+    evaluateNetworkAvail: Boolean!
+    "List of locations by fulfillment type."
+    locationsByFulfillmentType: [LocationsByFulfillmentTypeInput!]!
+    "List of unique identifier for each product."
+    products: [ID!]!
+    "The origin of the request, such as Default."
+    requestOrigin: String!
+    "The selling channel, such as SEPHORAUS and SEPHORACA."
+    sellingChannel: SellingChannel!
+}
+
+"Input type request for Locations By Fulfillment Type."
+input LocationsByFulfillmentTypeInput {
+    "The type of fulfillment, such as SHIPTOHOME, PICK, SAMEDAY and SHIP."
+    fulfillmentType: FulfillmentType!
+    "The list of unique identifier for the location (such as the store, fulfilment centre) where the item is sourced from."
+    locations: [ID!]!
+}
+
+"Type associated to Available Inventory Response."
+type AvailableInventoryResponse {
+    "The selling channel, such as SEPHORAUS and SEPHORACA."
+    sellingChannel: SellingChannel!
+    "A list availability details associated with each product."
+    availabilityByProducts: [AvailabilityByProduct!]!
+}
+
+"Type associated to Availability By Product."
+type AvailabilityByProduct @key(fields: "productId") {
+    "The unique identifier for the product."
+    productId: ID!
+    "A Boolean flag indicating whether the product is on-hold or not."
+    onhold: Boolean
+    "The availability details associated with the product. If there is no value it will passed as null"
+    availabilityDetails: AvailabilityDetail!
+}
+
+"Type associated to Availability Detail."
+type AvailabilityDetail {
+    "The quantity of product that is available. If atp is not computed it will passed as null"
+    atp: Float
+    "Indicating whether the product is INSTOCK or OOS.If atp is not computed atpStatus will passed as null"
+    atpStatus: NetworkAtpStatus
+    "A list availability details associated with each fulfillment type."
+    availabilityByFT: [AvailabilityByFT]
+}
+
+"Type associated to Availability By Fulfillment Type."
+type AvailabilityByFT {
+    "The type of fulfillment, such as SHIPTOHOME, PICK, SAMEDAY and SHIP."
+    fulfillmentType: FulfillmentType!
+    "A list of availability details associated with the location."
+    locations: [AvailabilityByLocation!]!
+}
+
+"Type associated to Availability By Location."
+type AvailabilityByLocation {
+    "The unique identifier for the location."
+    location: ID!
+    "The quantity of product that is available."
+    atp: Float
+    "Indicating whether the product is INSTOCK or OOS."
+    atpStatus: AtpStatus
+    "List of arrival dates of in-transit inventory."
+    arrivalDates: [ArrivalDate]
+}
+
+"Type associated to in-transit inventory arrival date."
+type ArrivalDate {
+    "The arrival date in YY-MM-DD format."
+    date: String!
+    "The quantity of sku."
+    quantity: Int!
+}
+
+"Fulfillment Type Enum"
+enum FulfillmentType {
+    "Standard shipping to a specified address."
+    SHIP
+    "Direct shipping to a home address."
+    SHIPTOHOME
+    "Pickup from a designated location or store."
+    PICK
+    "Delivery on the same day the order is placed."
+    SAMEDAY
+}
+
+"Selling Channel Enum"
+enum SellingChannel {
+    "Selling channel for Sephora US."
+    SEPHORAUS
+    "Selling channel for Sephora Canada."
+    SEPHORACA
+}
+
+"Network ATP Status Enum"
+enum NetworkAtpStatus {
+    "Status indicating item has highly availability."
+    HIGH
+    "Status indicating item has medium availability."
+    MEDIUM
+    "Status indicating item has low availability."
+    LOW
+    "Status indicating item is available."
+    INSTOCK
+    "Status indicating item is not available."
+    OOS
+    "Status indicating item has limited stock."
+    LIMITEDSTOCK
+}
+
+"ATP Status Enum"
+enum AtpStatus {
+    "Status indicating item is available."
+    INSTOCK
+    "Status indicating item is not available."
+    OOS
+    "Status indicating item has limited stock."
+    LIMITEDSTOCK
+}
+
+"""This is the query field"""
+type Query {
+    """
+    Retrieves the inventory availability details for a given search criteria.
+    - input: The input parameters for the available inventory query.
+    - details: A flag indicating whether to include detailed information in the response. Defaults to false.
+    """
+    availableInventory(input: AvailableInventoryInput!, details: Boolean = false): AvailableInventoryResponse!
+
+    """
+    Retrieves the availability details for a given site page.
+    """
+    availabilityForSite (input: SitePageAvailabilityDtoV2!): AvailableInventoryResponse!
+}
+
+"Input type request for Available for site."
+input SitePageAvailabilityDtoV2 {
+    "The date and time when the request was made in ISO 8601 format. for eg: 2021-11-17T02:12:48.926-07:00"
+    currentDateTime: DateTime!
+    "A boolean flag indicating whether to evaluate capacity or not."
+    evaluateCapacity: Boolean
+    "A boolean flag indicating whether to evaluate network availability or not."
+    evaluateNetworkAvail: Boolean!
+    "List of locations by fulfillment type."
+    locationsByFulfillmentType: [LocationsByFulfillmentTypeV2!]!
+    "List of unique identifier for each product."
+    products: [ID]
+    "The origin of the request, such as Default."
+    requestOrigin: String!
+    "The selling channel, such as SEPHORAUS and SEPHORACA."
+    sellingChannel: SellingChannel!
+}
+
+"Input type request for Locations By Fulfillment Type."
+input LocationsByFulfillmentTypeV2 {
+    "The type of fulfillment, such as SHIPTOHOME, PICK, SAMEDAY and SHIP."
+    fulfillmentType: FulfillmentType!
+    "The list of unique identifier for the location (such as the store, fulfilment centre) where the item is sourced from."
+    locations: [ID]
+    "The list of unique identifier for the location (such as the store, fulfilment centre) where the item is sourced from."
+    productsByLocation: [ID]
+}

@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/config?allowPublicKeyRetrieval=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=US/Pacific&autoreconnect=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-timeout: 5000
+      maximum-pool-size: 10
+  jpa:
+    show-sql: true
+  cloud:
+    bus:
+      destination: Sephora.ConfigHub.Client.ConfigUpdate_Dev
+      trace:
+        enabled: true
+    stream:
+      bindings:
+        springCloudBusInput:
+          destination: Sephora.ConfigHub.Client.ConfigUpdate_Dev
+          group: Sephora.ConfigHub.Client.${spring.application.name}
+      kafka:
+        binder:
+          brokers:
+          - localhost:9092
+test:
+  value1: test11
+  value2: test22
+configserver:
+  integration:
+    self:
+      serviceUrl: http://localhost:8080/confighub

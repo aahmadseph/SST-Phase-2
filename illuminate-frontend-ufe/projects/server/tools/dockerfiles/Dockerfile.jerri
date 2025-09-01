@@ -1,0 +1,110 @@
+# build this after building Dockerfile.base as it requires that
+# to build this
+# docker build --force-rm -f tools/dockerfiles/Dockerfile.jerri \
+#    --build-arg UFE_BASE_VERSION=$UFE_BASE_VERSION
+#    -t sephora-docker.artifactory/sephora_jerri/$UFE_BASE_VERSION:latest .
+#
+# to run this container
+# sudo docker container run --rm --name sephora_jerri \
+#     --net host sephora-docker.artifactory/sephora_jerri/$UFE_BASE_VERSION:latest
+#
+# build number or default is latest
+ARG UFE_BASE_VERSION=dev
+ARG UFE_BASE_TAG_VERSION=latest
+FROM sephora-docker.artifactory/sephora_ufe_base/${UFE_BASE_VERSION}:${UFE_BASE_TAG_VERSION}
+
+USER node
+
+# setup environment
+# these should not change
+ENV NODE_HOME /home/node
+ENV UFE_HOME $NODE_HOME/app
+ENV NODE_PATH $UFE_HOME/node_modules:$UFE_HOME/projects/ui/src
+ENV SERVER_HOME $UFE_HOME/projects/server
+ENV UI_HOME $UFE_HOME/projects/ui
+
+# node stuff 
+ENV UV_THREADPOOL_SIZE 512
+ENV ENABLE_PROMETHEUS true
+ENV PROMETHEUS_PORT 9400
+
+ENV APPLICATION_NAME jerri
+
+# any ENV var can be set and does not need to be put here
+ENV API_HOST localhost
+ENV API_PORT 80
+
+# things for redis
+ENV ENABLE_REDIS false
+ENV REDIS_CONFIG $SERVER_HOME/src/config/redisConfig.mjs
+ENV REDIS_CONNECTION_POOL_SIZE 2
+ENV REDIS_HOST 'redis.sephora.com'
+ENV REDIS_PORT 6380
+ENV REDIS_AUTH_PASS false
+ENV REDIS_PREFIX 'local'
+ENV REDIS_USE_SSL false
+
+# things for JERRI to talk to UFE
+ENV RENDER_HOST local.sephora.com
+ENV RENDER_HOST_PORT 3000
+
+# things for JERRI/woody
+ENV CLUSTER_WORKERS 1
+ENV API_CLUSTER_WORKERS 1
+ENV ENABLE_SEO false
+ENV ROUTER_SERVER_PORT 4000
+ENV ROUTER_SERVER_NAME local.sephora.com
+ENV API_ROUTER_SERVER_PORT 5000
+ENV API_ROUTER_SERVER_NAME local.sephora.com
+ENV HOSTNAME localhost
+ENV LOG_LEVEL info
+ENV DUMP_HASH_MISSES_DATA false
+ENV ENABLE_MEMORY_CACHE true
+ENV ENABLE_PREVIEW false
+ENV AGENT_AWARE_SITE_ENABLED false
+
+# defaults that should only change locally
+ENV BUILD_MODE isomorphic
+ENV ENABLE_GC_COLLECTION false
+ENV LOG_GC_PROFILE false
+ENV MAX_REQUEST_SIZE 2e6
+ENV NODE_ENV production
+ENV DISABLE_SSL true
+ENV PROXY_HOST 0.0.0.0
+ENV PROXY_PORT 443
+ENV UFE_ENV LOCAL
+
+# ufe specific
+ENV MAX_MEMORY_ITEMS 20000
+ENV WORKERS 4
+ENV AUTOMATION_TARGETS true
+ENV ENABLE_COMPONENT_CACHING true
+ENV MEMOIZE true
+ENV SERVER_IP_ADDR 0.0.0.0
+ENV SHOW_ROOT_COMPS false
+ENV PURGE_ITEM_PERCENT 30
+ENV START_UFE false
+ENV ENABLE_EMBEDDED_UFE=false
+
+ENV NODE_EXTRA_CA_CERTS=$UFE_HOME/projects/server/src/config/certificates/DigiCertCA.crt
+
+ENV MAX_HTTP_HEADER_SIZE 20000
+ENV MAX_OLD_SPACE_SIZE 2600
+ENV GARBAGE_COLLECTION_INTERVAL 100
+# node options for memory management
+# node --v8-options
+# --gc-interval=100
+# limit heap to 2.8G
+# --max_old_space_size=<some value in Megs>
+ENV NODE_OPTIONS "--max-http-header-size=$MAX_HTTP_HEADER_SIZE --max_old_space_size=$MAX_OLD_SPACE_SIZE"
+
+# setup for embedded UFE and one app
+ENV ENABLE_EMBEDDED_UFE false
+
+# start jerri
+WORKDIR $UFE_HOME
+
+EXPOSE $API_ROUTER_SERVER_PORT
+EXPOSE $ROUTER_SERVER_PORT
+CMD cd $UFE_HOME && node --predictable-gc-schedule --dns-result-order=ipv4first  \
+    --gc_interval=$GARBAGE_COLLECTION_INTERVAL $SERVER_HOME/src/index.mjs

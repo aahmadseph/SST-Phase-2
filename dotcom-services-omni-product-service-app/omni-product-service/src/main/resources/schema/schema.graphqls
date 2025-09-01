@@ -1,0 +1,872 @@
+"""Contact details of the subgraph maintainer"""
+directive @contact(
+    "Contact title of the subgraph owner"
+    name: String!,
+    "Other relevant notes can be included here; supports markdown"
+    description: String,
+    "URL where the subgraph can be reached"
+    url: String
+) on SCHEMA
+
+
+extend schema @contact(
+    description: "Send urgent issues to Vitaliy Oleksiyenko <Vitaliy.Oleksiyenko@sephora.com>, Alexey.Zalivko <Alexey.Zalivko@sephora.com>",
+    name : "{Your Team}"
+    url: "https://omni-product-service-eus1-qa1.lower.internal.sephora.com/omni-product-service/graphql"
+)
+
+"""DateTime"""
+scalar DateTime
+"""ID"""
+scalar ID
+
+type Query {
+    """Get product list by product id-s and locale"""
+    products(productIds: [ID], locale: StandardLocale  =  EN_US): [Product]
+    """Get sku list by sku id-s and locale"""
+    skus(skuIds: [ID], locale: StandardLocale =  EN_US): [Sku]
+}
+
+"""product model"""
+type Product @key(fields: "productId") {
+    """"product Id"""
+    productId: ID!
+    """product locale"""
+    locale: StandardLocale!
+
+    """product name"""
+    name: String
+
+    """variation type"""
+    variationType: ProductVariationType
+    """swatch type"""
+    swatchType: ProductSwatchType
+
+    """category id's array"""
+    categoryIds: [ID]
+
+    """primary category id"""
+    primaryCategoryId: ID
+
+    """product sephora product type. This is not enum. The type defined as string"""
+    sephoraProductType: String
+    """product type"""
+    type: ProductType
+
+    """product use it with title"""
+    useItWithTitle: String
+    """product sku selector type"""
+    skuSelectorType: SkuSelectorType
+
+    """product brand"""
+    brandId: ID
+
+    """product short description"""
+    shortDescription: String
+    """product long description"""
+    longDescription: String
+    """product suggested usage"""
+    suggestedUsage: String
+    """product quick look description"""
+    quickLookDescription : String
+
+    """product active flag"""
+    active: Boolean
+
+    """product start date"""
+    activationDate: DateTime
+    """product end date"""
+    endDate: DateTime
+
+    """product temporary deactivation date"""
+    tempDeactivationDate: DateTime
+    """product temporary deactivation reason"""
+    temporaryDeactivationReason: String
+
+    """product restricted fro paypal flag"""
+    payPalRestricted: Boolean
+    """product restricted states"""
+    restrictedStates: [String]
+    """product restricted provinces"""
+    restrictedProvinces: [String]
+    """product effective available countries"""
+    effectivelyAvailableCountries: [StandardCountry]
+
+    """product ancillary sku keys"""
+    ancillarySkuKeys: [ID]
+
+    """
+    Media related fields
+    product primary images
+    """
+    primaryImages: [Image]
+    """product alternative images"""
+    alternativeImages: [Image]
+    """product videos"""
+    videos: [Video]
+    """ product default image"""
+    productImage: String
+
+    """
+    Seo related fields
+    product seo name
+    """
+    seoName: String
+    """product seo friendly url"""
+    seoFriendlyUrl: String
+    """product seo meta description"""
+    seoMetaDescription: String
+    """ product seo url prefix"""
+    seoUrlPrefix: String
+    """product seo canonical tag"""
+    seoCanonicalTag: String
+    """product seo page title"""
+    seoPageTitle: String
+    """product seo priority"""
+    seoPriority: String
+
+    """product final title"""
+    finalTitle: String
+    """ product final meta description"""
+    finalMetaDescription: String
+
+    """product keywords. Defined as localized string"""
+    keywords: String
+    """product enable noindex meta tag flag"""
+    enableNoindexMetaTag: Boolean
+    """product exclude from sitemap flag"""
+    excludeFromSitemap: Boolean
+
+    """product returnable flag"""
+    returnable: Boolean
+
+    """product zone1 list. Defined list of string values.
+    This is finite list.
+    Values example: ['29LohdS43QAav6EDtvZ4Nk', '5jKjlpaOI4AbqlXBhj6ORN']"""
+    zone1: [String]
+    """product zone2 list"""
+    zone2: [String]
+    """product zone3 list"""
+    zone3: [String]
+
+    """
+    Merchant specific
+    product has product samples flag
+    """
+    hasProductSamples: Boolean
+
+    """sku array"""
+    skus: [Sku]
+}
+
+"""Sku model"""
+type Sku @key(fields: "skuId") {
+    """sku id"""
+    skuId: ID!
+    """sku locale"""
+    locale: StandardLocale!
+    """ sku name"""
+    name: String
+    """sku upc"""
+    upc: String
+
+    """sku seo friendly url"""
+    seoFriendlyUrl: String
+
+    """sku primary product id"""
+    primaryProductId: ID
+
+    """sku parent products array"""
+    parentProducts: [Product]
+
+    """sku state"""
+    state: SkuState
+
+    """sku ingredients description. Information on ingredients tab"""
+    ingredientDesc: String
+
+    """
+    Variation type related
+
+    sku 'size' variation value
+    """
+    size: String
+    """sku 'color' variation value. Localized string"""
+    color: String
+    """sku 'scent' variation value. Localized string"""
+    scent: String
+    """sku 'formulation' variation value. Localized string"""
+    formulation: String
+    """sku 'concentration' variation value. Localized string"""
+    concentration: String
+
+    """sku 'formulation' refinement value. Localized string"""
+    formulationRefinement: String
+    """sku 'finish' refinement value. Localized string"""
+    finishRefinement: String
+    """sku 'size' refinement value. Localized string"""
+    sizeRefinement: String
+    """sku 'color' refinement value. Localized string"""
+    colorFamily: String
+    """sku variation description"""
+    variationDesc: String
+    """sku sephora type. Contains information about value description type"""
+    sephoraType: String
+
+    """sku type"""
+    type: SkuType
+
+    """Country,state, province restrictions fields
+
+    sku restricted countries
+    """
+    restrictedCountryList: [StandardCountry]
+    """sku restricted states"""
+    restrictedStates: [String]
+    """sku restricted provinces"""
+    restrictedProvinces: [String]
+
+    """
+    Inventory related
+
+    sku on hold flag
+    """
+    onHold: Boolean
+    """sku out of stock treatment"""
+    oosTreatment: OutOfStockTreatment
+
+    """
+    Coming soon related
+
+    sku coming soon flag
+    """
+    comingSoon: Boolean
+    """sku coming soon start date"""
+    comingSoonSkuEndDate: DateTime
+
+    """sku shipping related fields
+
+    sku hazmat flag"""
+    hazmat: Boolean
+    """sku hawaii hazmat flag"""
+    hawaiiHazmatFlag: Boolean
+    """sku prop65 flag"""
+    prop65: Boolean
+    """sku gift wrappable flag"""
+    giftWrappable: Boolean
+    """sku shipping information"""
+    shippingInformation: String
+
+    """
+    BI related
+    sku bi type NO data on CT
+    """
+    biType: String
+    """ sku bi exclusive level. Used with sku image"""
+    biExclusiveLevel: BiExclusiveLevel
+    """ sku bi description"""
+    biDescription: String
+
+    """ sku bi only flag. Used with sku image"""
+    biOnly: Boolean
+    """ sku bi only start date"""
+    biOnlyStartDate: DateTime
+    """ sku bi only end date"""
+    biOnlyEndDate: DateTime
+
+    """sku online only flag"""
+    onlineOnly: Boolean
+    """sku online only end date"""
+    onlineOnlyEndDate: DateTime
+
+    """sku active flag"""
+    active: Boolean
+    """ sku start date. Can be different for different locales"""
+    startDate: DateTime
+    """sku end date. Can be different for different locales"""
+    endDate: DateTime
+
+    """sku temporary deactivation date"""
+    tempDeactivationDate: DateTime
+    """ sku temporary deactivation reason"""
+    temporaryDeactivationReason: String
+
+    """
+    sku limited time offer related
+
+    sku limited time offer enabled flag
+    """
+    limitedTimeOfferFlag: Boolean
+    """sku limited time offer start date"""
+    limitedTimeOfferStartDate: DateTime
+    """ sku limited time offer end date"""
+    limitedTimeOfferEndDate: DateTime
+    """sku limited time offer restricted countries"""
+    limitedTimeOfferRestrictedCountries: [StandardCountry]
+
+    """
+    sku first access related
+
+    sku first access enabled flag
+    """
+    firstAccessFlag: Boolean
+    """sku first access start date"""
+    firstAccessStartDate: DateTime
+    """ sku first access end date"""
+    firstAccessEndDate: DateTime
+    """ sku first access restricted countries"""
+    firstAccessRestrictedCountries: [StandardCountry]
+
+    """
+    sku app exclusive related
+
+    sku app exclusive enabled flag
+    """
+    appExclusiveFlag: Boolean
+    """sku app exclusive start date"""
+    appExclusiveStartDate: DateTime
+    """sku app exclusive end date"""
+    appExclusiveEndDate: DateTime
+    """sku app exclusive restricted countries"""
+    appExclusiveRestrictedCountries: [StandardCountry]
+
+    """sku sephora exclusive flag"""
+    sephoraExclusive: Boolean
+    """sku sephora exclusive end date"""
+    sephoraExclusiveUntilDate: DateTime
+
+    """sku trial eligible flag"""
+    trialEligible: Boolean
+    """sku trial prirod """
+    trialPeriod: String
+
+    """sku max purchase quantity"""
+    maxPurchaseQuantity: Int
+    """sku temp max purchase quantity start date"""
+    tempMaxPurchaseQuantity: Int
+    """sku temp max purchase quantity start date"""
+    tempMaxPurchaseQuantityStartDate: DateTime
+    """sku temp max purchase quantity end date"""
+    tempMaxPurchaseQuantityEndDate: DateTime
+
+    """sku new flag"""
+    new: Boolean
+    """sku new until date"""
+    newUntilDate: DateTime
+
+    """cku calculate tax flag"""
+    calculateTax: Boolean
+    """sku tax code"""
+    taxCode: Float
+
+    """sku store only flag"""
+    storeOnly: Boolean
+    """sku payPal pay later eligible flag"""
+    payPalPayLaterEligible: Boolean
+    """sku payPal restricted flag"""
+    paypalRestricted: Boolean
+    """sku hide from sale flag"""
+    hideFromSale: Boolean
+    """sku exclude from search flag"""
+    excludeFromSearch: Boolean
+    """sku reservations enabled flag"""
+    reservationsEnabled: Boolean
+    """sku externally sellable flag"""
+    externallySellable: Boolean
+
+    """sku limited edition flag"""
+    limitedEdition: Boolean
+    """sku returnable flag"""
+    returnable: Boolean
+    """sku not sent to warehouse flag"""
+    notSentToWarehouse: Boolean
+    """sku discountable flag"""
+    discountable: Boolean
+    """sku call center only flag"""
+    callCenterOnly: Boolean
+
+    """sku natural organic flag. Used with sku image"""
+    naturalOrganic: Boolean
+    """sku natural sephora flag. Used with sku image"""
+    naturalSephora: Boolean
+
+    """ sku display sku as product in search result flag"""
+    displaySkuAsProductInSearchResult: Boolean
+
+    """sku lab code"""
+    labCode: String
+    """sku fulfiller"""
+    fulfiller: String
+
+    """
+    Media related fields
+
+    sku primary images
+    """
+    primaryImages: [Image]
+    """sku alternative images"""
+    alternativeImages: [Image]
+
+    """sku highlights"""
+    highlights: [Highlight]
+
+    """sku badges"""
+    badges: [Badge]
+
+    """sku fraud risk level"""
+    fraudRiskLevel: SkuFraudRiskLevel
+    """sku best for skin types"""
+    bestForSkinTypes: [SkuSkinType]
+    """sku primary concern"""
+    primaryConcern: String
+    """sku class number"""
+    classNumber: String
+    """sku department number. The value can be department code(number). Leave as string for future compatibility"""
+    departmentNumber: String
+    """sku country of manufacture. The value can by country code or country name"""
+    countryOfManufacture: String
+    """sku efficacy ingredient"""
+    efficacyIngredient: String
+    """sku efficacy"""
+    efficacy: SkuEfficacy
+    """sku shop number. Get from MCS."""
+    shopNumber: String
+    """sku subclass number"""
+    subclassNumber: String
+    """sku product line"""
+    productLine: SkuProductLine
+
+    """
+    Merchant related fields
+
+    sku configurable flag"""
+    configurable: Boolean
+    """sku configurable property"""
+    configurableProperty: ConfigurableProperty
+
+    """
+    Replenishment related fields
+
+    sku replenishment enabled flag
+    """
+    replenishmentEnabled: Boolean
+    """ sku replenishment plan"""
+    replenishmentPlan: ReplenishmentPlan
+    """ sku accelerated replenishment plan"""
+    acceleratedReplenishmentPlan: ReplenishmentPlan
+    """sku subscription country list"""
+    subscriptionCountryList: [StandardCountry]
+    """sku subscription frequency number"""
+    subscriptionFreqNum: Int
+    """ sku subscription frequency type"""
+    subscriptionFreqType: SubscriptionFreq
+
+    """sku sequence number"""
+    sequence: Int
+    """sku value price."""
+    valuePrice: Float
+
+    """
+    Non sellable specific fields
+
+    sku non sellable flag"""
+    nonsellable: Boolean
+
+    """sku non sellable type"""
+    nonSellableType: String
+
+    """sku full sized sku id"""
+    fullSizeSkuId: ID
+    """sku full size sku"""
+    fullSizeSku: Sku
+    """sku full size product id"""
+    fullSizeProductId: ID
+
+    """
+    Reward sku related fields
+
+    sku reward active flag
+    """
+    rewardActive: Boolean
+    """sku reward type"""
+    rewardType: RewardType
+    """sku reward sub type"""
+    rewardSubType: RewardSubType
+    """sku reward currency amount"""
+    rewardCurrencyAmount: Float
+    """sku reward points"""
+    rewardPoints: Float
+
+    """sku sample type"""
+    sampleType: SampleType
+    """sku original sample product"""
+    originalSampleProduct: Sku
+    """sku original sample product id"""
+    originalSampleProductId: ID
+}
+"""Possible product variation types"""
+enum ProductVariationType {
+    """color variation type"""
+    COLOR,
+    """formulation variation type"""
+    FORMULATION,
+    """none variation"""
+    NONE,
+    """scent variation type"""
+    SCENT,
+    """size variation type"""
+    SIZE,
+    """size concentration variation type"""
+    SIZE_CONCENTRATION,
+    """size concentration formulation variation type"""
+    SIZE_CONCENTRATION_FORMULATION,
+    """type variation type"""
+    TYPE
+}
+"""Possible sku states"""
+enum SkuState {
+    """sku state retired"""
+    RETIRED,
+    """sku state not retired"""
+    NOT_RETIRED
+}
+"""Possible sample types"""
+enum SampleType {
+    """product sample type"""
+    PRODUCT,
+    """smart sample type"""
+    SMART
+}
+"""Possible subscription frequency type"""
+enum SubscriptionFreq {
+    """monthly"""
+    MONTH,
+    """weekly"""
+    WEEK
+}
+"""replenishment plan model"""
+type ReplenishmentPlan {
+    """replenishment plan id"""
+    replenishmentPlanId: ID!
+    """replenishment plan enabled flag"""
+    enabled: Boolean
+    """replenishment plan tier. Text data"""
+    planTier: String
+    """replenishment plan promotion id"""
+    promotionId: ID
+    """replenishment plan promotion order count"""
+    promotionOrderCount: Int
+    """replenishment plan promotion duration"""
+    promoDuration: Int
+    """replenishment plan promotion excluded countries"""
+    promoExcludedCountries: [StandardCountry]
+}
+"""image model"""
+type Image {
+    """image id"""
+    imageId: ID!
+    """image alt text"""
+    altText: String
+    """image base Url"""
+    baseUrl: String
+}
+"""video model"""
+type Video {
+    """video id"""
+    videoId: ID!
+    """video brightcove Id.
+    The identifier used in Brightcove video service.
+    This is something like '6273901524001'"""
+    brightcoveId : String
+    """video title"""
+    title: String
+    """ video file name"""
+    fileName: String
+    """video start image"""
+    webStartImage: String
+    """video mobile web start image"""
+    mobileWebStartImage: String
+    """video start date"""
+    startDate: DateTime
+    """video end date"""
+    endDate: DateTime
+}
+"""configurable property model"""
+type ConfigurableProperty {
+    """configurable property Id"""
+    configurablePropertyId: ID!
+    """configurable property display name"""
+    displayName: String
+    """configurable property title"""
+    title: String
+    """configurable property description"""
+    description: String
+    """configurable property image path"""
+    imagePath: String
+    """configurable property image copy"""
+    imageCopy: String
+    """"configurable property free flag"""
+    free: Boolean
+    """configurable property configuration options"""
+    configurationOptions: [ConfigurationOption]
+}
+"""configuration option model"""
+type ConfigurationOption {
+    """configuration option Id"""
+    configurationOptionId: ID
+    """configuration option type"""
+    type: ConfigurationOptionType
+    """configuration option upc"""
+    upc: String
+    """configuration option sku Id"""
+    skuId: ID
+    """configuration option product Id"""
+    productId: ID
+    """configuration option primary product id"""
+    primaryProductId: ID
+}
+"""highlight model"""
+type Highlight {
+    """highlight Id"""
+    highlightId: ID!
+    """highlight name"""
+    name: String
+    """highlight description"""
+    description: String
+    """highlight alt text"""
+    altText: String
+    """highlight image url"""
+    imageUrl: String
+    """highlight apps image url"""
+    appsImageUrl: String
+}
+"""badge model"""
+type Badge {
+    """badge Id"""
+    badgeId: ID!
+    """badge name"""
+    name: String
+    """badge alt text"""
+    altText: String
+    """badge image url"""
+    imageUrl: String
+}
+
+"Possible countries"
+enum StandardCountry {
+    "CA country type"
+    CA
+    "US country type"
+    US
+}
+
+enum StandardLocale {
+    "English locale for Canada. Should be mapped to en-CA"
+    EN_CA
+    "fr-CA locale"
+    FR_CA
+    "en-US locale"
+    EN_US
+}
+
+"""Possible sku types"""
+enum SkuType {
+    """standard sku type"""
+    STANDARD
+    """sample sku type"""
+    SAMPLE
+    """gift sku type"""
+    GWP
+    """subscription sku type"""
+    SUBSCRIPTION
+    """ playbox sku type"""
+    PLAYBOX
+    """ sdu sku type"""
+    SDU
+    """ gift card sku type"""
+    GIFT_CARD
+    """bag fee sku type"""
+    BAG_FEE
+    """gift wrap sku type"""
+    GIFT_WRAP_OPTION
+    """e-certificate sku type"""
+    E_CERTIFICATE
+    """flash sku type"""
+    FLASH_SKU
+    """retail delivery fee sku type"""
+    RETAIL_DELIVERY_FEE
+}
+"""Possible product types"""
+enum ProductType {
+    """vertical product type"""
+    VERTICAL
+    """collection product type"""
+    COLLECTION
+    """standard product type"""
+    STANDARD
+}
+"""Possible sku selector types"""
+enum SkuSelectorType{
+    """image sku selector type"""
+    IMAGE
+    """color sku selector type"""
+    TEXT
+    """ no sku selector type"""
+    NONE
+}
+
+"""Possible product swatch types"""
+enum ProductSwatchType {
+    """ image swatch type rectangle"""
+    IMAGE_RECTANGLE
+    """ image swatch type 42"""
+    IMAGE_42
+    """ image swatch type 36"""
+    IMAGE_36
+    """ image swatch type 62"""
+    IMAGE_62
+    """ other swatch type"""
+    OTHER
+}
+"""Possible configuration option types"""
+enum ConfigurationOptionType {
+    """configuration option type sku"""
+    SKU
+    """configuration option type product"""
+    PRODUCT
+}
+"""Possible skin types"""
+enum SkuSkinType {
+    """dry skin type"""
+    DRY
+    """oily skin type"""
+    OILY
+    """combination skin type"""
+    COMBINATION
+    """sensitive skin type"""
+    SENSITIVE
+    """normal skin type"""
+    NORMAL
+}
+"""Possible bi exclusive levels"""
+enum BiExclusiveLevel {
+    """bi exclusive level BI"""
+    BI
+    """bi exclusive level VIB"""
+    VIB
+    """bi exclusive level ROUGE"""
+    ROUGE
+    """ no bi exclusive level"""
+    NONE
+}
+
+"""Possible efficacy values"""
+enum SkuEfficacy {
+    """efficacy A"""
+    EFFICACY_A
+    """efficacy B"""
+    EFFICACY_B
+    """efficacy C"""
+    EFFICACY_C
+    """efficacy D"""
+    EFFICACY_D
+    """efficacy E"""
+    EFFICACY_E
+    """efficacy 2"""
+    EFFICACY_2
+    """efficacy 3"""
+    EFFICACY_3
+    """efficacy 4"""
+    EFFICACY_4
+    """efficacy 5"""
+    EFFICACY_5
+    """other efficacy"""
+    OTHER
+}
+"""Possible fraud risk levels for sku"""
+enum SkuFraudRiskLevel {
+    """fraud risk level HIGH"""
+    HIGH
+    """fraud risk level MEDIUM"""
+    MEDIUM
+    """fraud risk level LOW"""
+    LOW
+    """fraud risk level NONE"""
+    NONE
+}
+
+"""Possible out of stock treatments for sku"""
+enum OutOfStockTreatment {
+    """Show SKU - With Back-in-Stock Reminder (Used for Sellable)"""
+    SHOW_SKU_WITH_BACK_IN_STOCK_REMINDER
+    """Show SKU - WITHOUT Back-in-Stock Reminder (Used for Sellable & Rewards, Default for all GWP)"""
+    SHOW_SKU_WITHOUT_BACK_IN_STOCK_REMINDER
+    """Show SKU - Show as Store Only (Used for Sellable)"""
+    SHOW_SKU_AS_STORE_ONLY
+    """Do Not Show SKU (Used for Sellable, Rewards)"""
+    DO_NOT_SHOW_SKU
+}
+"""Possible product lines for sku"""
+enum SkuProductLine {
+    """product line merch"""
+    MERCH,
+    """product line service"""
+    SERVICE
+}
+
+"""Possible reward types"""
+enum RewardType {
+    """celebration vib reward type"""
+    CELEBRATION_VIB
+    """curtains up vib reward type"""
+    CURTAINS_UP_VIB
+    """curtains up rouge reward type"""
+    CURTAINS_UP_ROUGE
+    """celebration rouge reward type"""
+    CELEBRATION_ROUGE
+    """welcome kit rouge reward type"""
+    ROUGE_WELCOME_KIT
+    """birthday gift reward type"""
+    BD_GIFT
+    """points reward type"""
+    POINTS
+    """vib welcome kit reward type"""
+    VIB_WK
+    """rouge welcome kit reward type"""
+    ROUGE_WK
+    """rouge welcome kit"""
+    ROUGE_RQ_WK
+    """reward card reward type"""
+    REWARD_CARD
+    """other reward type"""
+    OTHER
+}
+"""Possible reward sub types"""
+enum RewardSubType {
+    """bonus points reward sub type"""
+    BONUS_POINTS
+    """makeover vib reward sub type"""
+    MAKEOVER
+    """flash reward sub type"""
+    FLASH
+    """free shipping vib reward sub type"""
+    FREE_SHIPPING_VIB
+    """reward card reward sub type"""
+    REWARD_CARD
+    """experiential concierge reward sub type"""
+    EXPERIENTIAL_CONCIERGE
+    """experiential personalization reward sub type"""
+    EXPERIENTIAL_PERSONALIZATION
+    """experiential makeover reward sub type"""
+    EXPERIENTIAL_MAKEOVER
+    """experiential notrigger reward sub type"""
+    EXPERIENTIAL_NOTRIGGER
+    """product reward sub type"""
+    PRODUCT
+    """charity reward sub type"""
+    CHARITY
+    """charity ca reward sub type"""
+    CHARITY_CA
+    """other reward sub type"""
+    OTHER
+}

@@ -1,0 +1,91 @@
+{
+    "id": "RCcd3718e6c12d457a965ff78cb7dbfc6d",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2025-03-18T15:44:14.278Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: Optimove Product Page View",
+        "negate": false,
+        "order": 1,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": false,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-04-17T00:16:53.725Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"if (optimoveSDK) { \\n  var profileId = digitalData?.user[0]?.profile[0]?.profileInfo?.profileID || '';\\n  var biAccountId = Sephora.Util.getUserInfoCache()?.profile?.beautyInsiderAccount?.biAccountId || '';\\n  \\n  // Formats the Price.\\n  \\n  var om_price = digitalData.product[0].attributes.price || '';  \\n  om_price = om_price.replace(',', '.');\\n  om_price = om_price.replace('$', '');\\n  om_price = om_price.trim();\\n  // om_price = Sephora.analytics.utils.convertToUSD(om_price);\\n  \\n  var om_original_price = digitalData.product[0].attributes.price || '';  \\n  om_original_price = om_original_price.replace(',', '.');\\n  om_original_price = om_original_price.replace('$', '');\\n  om_original_price = om_original_price.trim();\\n  // om_original_price = Sephora.analytics.utils.convertToUSD(om_original_price);\\n  \\n  var productData = digitalData?.product[0];\\n  \\n  if (productData) {\\n    \\n      const getLastNestedId = (obj, keyField, childKey) =\\u003e {\\n        const id = obj[keyField];\\n        if (obj[childKey] === undefined) {\\n          return id;\\n        }\\n        return getLastNestedId(obj[childKey], keyField, childKey);\\n      };\\n    \\n      var productId = productData?.productInfo.productID || '';\\n      var om_is_new = productData?.attributes?.isNew === undefined ? false : productData?.attributes?.isNew;\\n      var om_out_of_stock = productData?.attributes?.isOutOfStock === undefined ? false : productData?.attributes?.isOutOfStock;\\n      var om_is_limited_edition = productData?.attributes?.isLimitedEdition === undefined ? false : productData?.attributes?.isLimitedEdition;\\n      var om_is_app_exclusive = productData?.attributes?.isAppExclusive === undefined ? false : productData?.attributes?.isAppExclusive;\\n    \\n      // Key Identifying the department or highest level of category.\\n      var om_department_id = getLastNestedId(productData?.attributes?.parentCategory || {}, 'categoryId', 'parentCategory');\\n      var om_department_name = getLastNestedId(productData?.attributes?.parentCategory || {}, 'displayName', 'parentCategory');\\n      \\n      var om_category_id = productData?.attributes?.nthLevelCategoryId || '';\\n      var om_category_name = productData?.attributes.nthLevelCategory || '';\\n    \\n      var parameters = {\\n        \\\"userid\\\": \\\"\\\",\\n        \\\"biId\\\": \\\"\\\",\\n        \\\"eventdatetime\\\": _satellite.getVar('[TMS] Event Datetime With Millisecond Format'),\\n        \\\"currency\\\": Sephora.renderQueryParams.country === 'CA' ? \\\"CAD\\\" : \\\"USD\\\",\\n        \\\"sku_id\\\": productData?.attributes?.skuId || '',\\n        \\\"product_id\\\": productId,\\n        \\\"Item_name\\\": productData?.productInfo?.productName || '',\\n        \\\"brand\\\": productData?.productInfo?.manufacturer || '',\\n        \\\"price\\\": Number(om_price || ''),\\n        // Bluecore Mapped Parameters\\n        \\\"image\\\": productData?.attributes?.image || '',\\n        \\\"url\\\": productData?.attributes?.productUrl || '',        \\n        \\\"p_name\\\": productData?.productInfo?.productName || '',\\n        \\\"is_rewards_product\\\": productData?.attributes?.isBiReward || '',\\n        \\\"p_brand\\\": productData?.productInfo?.manufacturer || '',\\n        \\\"division\\\": productData?.attributes?.world || '',\\n        \\\"p_category\\\": productData?.attributes?.nthLevelCategory || '',\\n        \\\"category\\\": productData?.attributes?.nthLevelCategory || '',\\n        \\\"parent_category\\\": productData?.attributes?.parentCategory?.displayName || '',\\n        \\\"parent_category_id\\\": productData?.attributes?.parentCategory?.categoryId || '',\\n        \\\"avg_rating\\\": productData?.attributes?.rating || 0,\\n        \\\"rating\\\": productData?.attributes?.rating || 0,\\n        \\\"variant_type\\\": productData?.attributes?.variationType || '',\\n        \\\"how_to_instructions\\\": productData?.attributes?.suggestedUsage || '', // New\\n        \\\"is_app_exclusive\\\": om_is_app_exclusive, \\n        \\\"is_limited_edition\\\": om_is_limited_edition,\\n        \\\"is_new\\\": om_is_new,\\n        \\\"is_new_product\\\": om_is_new,\\n        \\\"review_count\\\": productData?.attributes?.reviews || 0, // New\\n        \\\"loves_count\\\": productData?.attributes?.lovesCount || 0, // New\\n        \\\"description\\\": productData?.productInfo?.description || '',\\n        \\\"department_id\\\": om_department_id || '',\\n        \\\"department_name\\\": om_department_name || '',\\n        \\\"category_id\\\": om_category_id || '',\\n        \\\"category_name\\\": om_category_name || '',\\n        \\\"Source\\\": \\\"Optimove SDK\\\"\\n        // --- N/A parameters... ---\\n        // \\\"bluecore_parent_id\\\":,\\n        // \\\"is_bluecore_parent\\\":,\\n        // \\\"has_refill_variant\\\": \\\"\\\",\\n        // \\\"is_refill_variant\\\": \\\"\\\",\\n        // \\\"is_mini\\\": \\\"\\\",\\n        // \\\"ca_on_sale\\\": \\\"\\\",\\n        // \\\"ca_klarna_pricing\\\": \\\"\\\",\\n        // \\\"ca_has_bis_signup_button\\\": \\\"\\\",\\n      };\\n    \\n      if (Sephora.renderQueryParams.country === 'CA') {\\n          parameters = {\\n              ...parameters,\\n              // Canada (EN/FR) Only Parameters...\\n              \\\"ca_price\\\": Number(om_price || ''),\\n              \\\"ca_original_price\\\": Number(om_original_price || ''),\\n              \\\"ca_out_of_stock\\\": om_out_of_stock,\\n              \\\"ca_is_sephora_exclusive\\\": productData?.attributes?.isSephoraExclusive || ''\\n          }\\n      }\\n    \\n      if (Sephora.renderQueryParams.language === 'fr') {\\n          parameters = {\\n              ...parameters,\\n              // Canada (FR) Only Parameters...\\n              \\\"fr_name\\\": productData?.productInfo?.productName || '',\\n              \\\"fr_category\\\": productData?.attributes?.nthLevelCategory || '',\\n              \\\"fr_image\\\": productData?.attributes?.image || '',\\n              \\\"fr_how_to_instructions\\\": productData?.attributes?.suggestedUsage || '' // New\\n          }\\n      }\\n    \\n      Sephora.analytics.utils.hashString(profileId).then(hashedProfileId =\\u003e {\\n        parameters = {\\n          ...parameters,\\n          \\\"userid\\\": hashedProfileId\\n        };\\n        Sephora.analytics.utils.hashString(biAccountId).then(hashedBiId =\\u003e {\\n          parameters = {\\n            ...parameters,\\n            \\\"biId\\\": hashedBiId\\n          };\\n\\n          optimoveSDK.API.reportEvent('ootb_product_view', parameters);\\n        });\\n      });\\n  }\\n}\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCcd3718e6c12d457a965ff78cb7dbfc6d/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCcd3718e6c12d457a965ff78cb7dbfc6d/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCcd3718e6c12d457a965ff78cb7dbfc6d/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCcd3718e6c12d457a965ff78cb7dbfc6d/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCcd3718e6c12d457a965ff78cb7dbfc6d/origin"
+            },
+            "data": {
+                "id": "RCcd3718e6c12d457a965ff78cb7dbfc6d",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCcd3718e6c12d457a965ff78cb7dbfc6d/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RCcd3718e6c12d457a965ff78cb7dbfc6d",
+        "rules": "https://reactor.adobe.io/rule_components/RCcd3718e6c12d457a965ff78cb7dbfc6d/rules",
+        "self": "https://reactor.adobe.io/rule_components/RCcd3718e6c12d457a965ff78cb7dbfc6d"
+    },
+    "meta": {
+        "latest_revision_number": 19
+    }
+}

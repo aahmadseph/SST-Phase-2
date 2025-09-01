@@ -1,0 +1,3 @@
+import LayoutCreditCardApplication from 'components/Content/ContentLayout/LayoutCreditCardApplication/LayoutCreditCardApplication';
+
+export default LayoutCreditCardApplication;

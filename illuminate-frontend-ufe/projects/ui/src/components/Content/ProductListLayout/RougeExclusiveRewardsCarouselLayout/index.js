@@ -1,0 +1,3 @@
+import RougeExclusiveRewardsCarouselLayout from 'components/Content/ProductListLayout/RougeExclusiveRewardsCarouselLayout/RougeExclusiveRewardsCarouselLayout';
+
+export default RougeExclusiveRewardsCarouselLayout;

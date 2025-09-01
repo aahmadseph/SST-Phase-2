@@ -1,0 +1,91 @@
+{
+    "id": "RC24d30a2b33434aa3a7003ae60900ad52",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2023-03-06T21:58:12.656Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: GA4_serviceBooking",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-03-06T21:58:12.656Z",
+        "created_by_email": "Tingting.chang@sephora.com",
+        "created_by_display_name": "Tingting chang",
+        "updated_by_email": "Tingting.chang@sephora.com",
+        "updated_by_display_name": "Tingting chang",
+        "settings": "{\"source\":\"var biAccountNumber = digitalData.user[0].segment.biAccountId; // _satellite.getVar('[TMS] BI Account Number - asyncPageLoad');\\n\\ngtag('event', 'service_booking', { \\n  'send_to': 'G-HX1JZMWBCJ', \\n  'user_id': biAccountNumber \\n});\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC24d30a2b33434aa3a7003ae60900ad52/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC24d30a2b33434aa3a7003ae60900ad52/updated_with_extension"
+            },
+            "data": {
+                "id": "EX06a7afc619ae4214a074cb5399abf9fa",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC24d30a2b33434aa3a7003ae60900ad52/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC24d30a2b33434aa3a7003ae60900ad52/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC24d30a2b33434aa3a7003ae60900ad52/origin"
+            },
+            "data": {
+                "id": "RC24d30a2b33434aa3a7003ae60900ad52",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC24d30a2b33434aa3a7003ae60900ad52/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC24d30a2b33434aa3a7003ae60900ad52",
+        "rules": "https://reactor.adobe.io/rule_components/RC24d30a2b33434aa3a7003ae60900ad52/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC24d30a2b33434aa3a7003ae60900ad52"
+    },
+    "meta": {
+        "latest_revision_number": 1
+    }
+}

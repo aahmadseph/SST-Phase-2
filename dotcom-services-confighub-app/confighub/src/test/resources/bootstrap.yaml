@@ -1,0 +1,24 @@
+
+spring:
+  application:
+    name: confighub-service
+
+  cloud:
+    kubernetes:
+      enabled: false
+      discovery:
+        enabled: false
+      reload:
+        enabled: true
+        mode: event
+        monitoring-config-maps: true
+        strategy: refresh
+#      config:
+#        enabled: true
+#        namespace: dev2
+#        name: example-cm
+
+management:
+  endpoint:
+    restart:
+      enabled: true

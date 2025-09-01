@@ -1,0 +1,28 @@
+const PICKUP = 'filters[Pickup]';
+const SAME_DAY = 'filters[SameDay]';
+const PICKUP_FILTER_START = 'filters[Pickup]';
+const SAME_DAY_FILTER_START = 'filters[SameDay]';
+const SHIP_TO_HOME = 'filters[ShipToHome]';
+const SHIP_TO_HOME_FILTER_START = 'filters[ShipToHome]';
+const UPPER_FUNNEL_REFINEMENTS = [PICKUP, SAME_DAY, SHIP_TO_HOME];
+const ZIP_CODE_REFINEMENTS = [SAME_DAY, SHIP_TO_HOME];
+const STORE_ID_REFINEMENTS = [PICKUP];
+
+const PICKUP_ARIA_DESCRIBED_BY = 'pickupDescribe';
+const SAME_DAY_ARIA_DESCRIBED_BY = 'sameDayDescribe';
+const SHIP_TO_HOME_ARIA_DESCRIBED_BY = 'shipToHomeDescribe';
+
+export {
+    PICKUP,
+    SAME_DAY,
+    PICKUP_FILTER_START,
+    SAME_DAY_FILTER_START,
+    SHIP_TO_HOME,
+    SHIP_TO_HOME_FILTER_START,
+    UPPER_FUNNEL_REFINEMENTS,
+    ZIP_CODE_REFINEMENTS,
+    STORE_ID_REFINEMENTS,
+    PICKUP_ARIA_DESCRIBED_BY,
+    SAME_DAY_ARIA_DESCRIBED_BY,
+    SHIP_TO_HOME_ARIA_DESCRIBED_BY
+};

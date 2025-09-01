@@ -1,0 +1,69 @@
+{
+    "id": "RLf5069e22bff44c9a8c69ab27852fbdac",
+    "type": "rules",
+    "attributes": {
+        "created_at": "2024-08-06T15:49:31.742Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "[TMS] Postie Retargeting Pixel",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-05-05T23:18:29.726Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "review_status": "unsubmitted"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RLf5069e22bff44c9a8c69ab27852fbdac/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RLf5069e22bff44c9a8c69ab27852fbdac/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RLf5069e22bff44c9a8c69ab27852fbdac/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RLf5069e22bff44c9a8c69ab27852fbdac/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RLf5069e22bff44c9a8c69ab27852fbdac/origin"
+            },
+            "data": {
+                "id": "RLf5069e22bff44c9a8c69ab27852fbdac",
+                "type": "rules"
+            }
+        },
+        "rule_components": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RLf5069e22bff44c9a8c69ab27852fbdac/rule_components"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/rules/RLf5069e22bff44c9a8c69ab27852fbdac",
+        "self": "https://reactor.adobe.io/rules/RLf5069e22bff44c9a8c69ab27852fbdac",
+        "rule_components": "https://reactor.adobe.io/rules/RLf5069e22bff44c9a8c69ab27852fbdac/rule_components"
+    },
+    "meta": {
+        "latest_revision_number": 14
+    }
+}

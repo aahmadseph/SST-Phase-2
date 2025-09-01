@@ -1,0 +1,91 @@
+{
+    "id": "RC11a80d039b3745228015477960792ef0",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2022-11-09T06:27:22.657Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: googleAds_eventPurchase",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-02-23T16:06:29.943Z",
+        "created_by_email": "luis.booth@sephora.com",
+        "created_by_display_name": "Luis booth",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"\\u003cscript type=\\\"text/javascript\\\"\\u003e\\nvar orderSubtotal = _satellite.getVar(\\\"[TMS] Pixel :: Double Click :: Order Subtotal\\\");\\norderSubtotal = Math.round(orderSubtotal);    \\nvar orderCountry = _satellite.getVar(\\\"[TMS] Async :: Country\\\");\\norderCountry = orderCountry.toUpperCase();\\n\\ngtag('event', 'purchase', {\\n  \\\"send_to\\\": \\\"AW-969432509/8UuKCP7x9oUBEL27oc4D\\\",\\n  \\\"transaction_id\\\": _satellite.getVar(\\\"[TMS] Page :: Order Number\\\"),\\n  \\\"value\\\": orderSubtotal,\\n  \\\"currency\\\": \\\"USD\\\",\\n  \\\"aw_merchant_id\\\": \\\"1552181\\\",\\n  \\\"aw_feed_country\\\": orderCountry,\\n  \\\"aw_feed_language\\\": _satellite.getVar(\\\"[TMS] Pixel :: Double Click :: Order Confirmation :: Language\\\"),\\n  \\\"items\\\": _satellite.getVar(\\\"[TMS] Pixel :: Double Click :: Items Short\\\")\\n});\\n\\u003c/script\\u003e\",\"language\":\"html\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC11a80d039b3745228015477960792ef0/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC11a80d039b3745228015477960792ef0/updated_with_extension"
+            },
+            "data": {
+                "id": "EX06a7afc619ae4214a074cb5399abf9fa",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC11a80d039b3745228015477960792ef0/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC11a80d039b3745228015477960792ef0/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC11a80d039b3745228015477960792ef0/origin"
+            },
+            "data": {
+                "id": "RC11a80d039b3745228015477960792ef0",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC11a80d039b3745228015477960792ef0/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC11a80d039b3745228015477960792ef0",
+        "rules": "https://reactor.adobe.io/rule_components/RC11a80d039b3745228015477960792ef0/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC11a80d039b3745228015477960792ef0"
+    },
+    "meta": {
+        "latest_revision_number": 5
+    }
+}

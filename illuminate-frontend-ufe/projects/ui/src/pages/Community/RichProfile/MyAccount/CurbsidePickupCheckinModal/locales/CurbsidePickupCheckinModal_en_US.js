@@ -1,0 +1,41 @@
+module.exports = function getResource(label, vars = []) {
+    const resources = {
+        title: 'Curbside Pickup',
+        subtitle: 'Help us find you by filling out the information below.',
+        characters: 'characters',
+        vehicleColor: 'Vehicle Color:',
+        vehicleMakeModelPlaceholder: 'Car Make & Model  (i.e., Honda Civic)',
+        commentPlaceholder: 'Tell us more about your location (optional)',
+        contactPhonePlaceholder: 'Mobile Phone Number',
+        contactPhoneConsent: 'Sharing your phone number will allow Sephora Beauty Advisor to call you if they are not able to find you. Your phone number will not be used for any other purposes.',
+        isMultipleOrdersLabel: 'I have multiple orders ready for pickup',
+        submit: 'Notify Store',
+        vehicleColorError: 'Please select vehicle color.',
+        vehicleMakeModelEmptyError: 'Please enter a car make & model.',
+        contactPhoneEmptyError: 'Please enter a mobile phone number.',
+        contactPhoneInvalidError: 'Please enter a valid mobile phone number.',
+        landingTitle: 'Are you at the store?',
+        landingSubtitle: 'Let us know when you have arrived at the store for curbside pickup.',
+        landingCta: 'I Have Arrived',
+        storeInfoPrefix: 'If you have any questions, please call',
+        duringStoreHours: 'during store operation hours at',
+        confirmationTitle: 'Your beauty is on its way!',
+        confirmationSubtitle: 'We’ve received your information. A Beauty Advisor will bring your order out to you shortly.',
+        confirmationSubtitleSecondary: 'Please show your pickup barcode to the Beauty Advisor.',
+        pickUpOrderNumber: 'Pickup Order Number',
+        genericIntegrationErrorMessage: 'We are experiencing technical difficulties. Please try back later or contact our customer service.',
+        unavailableLandingTitle: 'Curbside is unavailable at this time, but you can also pick up in store during store hours.',
+        curbsideHours: 'Curbside pickup hours:',
+        storeHours: 'Store operation hours:',
+        gotIt: 'Got It',
+        curbsideNotAvailableLandingTitle: 'Sorry, your order is no longer available for pickup.',
+        curbsideNotAvailableSubtitle: 'You can order the items again for pickup or get them shipped instead.',
+        curbsideNotAvailableSubtitleSecondary: 'You will not be charged for this order. If you used a gift card, the same gift card will be re-credited in 1-2 days. If you used Beauty Insider points for a discount, the points will be returned to your account in 1-2 days.',
+        parkingLotNumberPlaceholder: 'Parking Space Number',
+        parkingLotNumberEmptyError: 'Please enter a one- or two-digit number.',
+        notifiedMessage: 'The store has already been notified. Your order will be brought to you soon.',
+        errorMessage: 'Oops! Something went wrong and the store could not be notified. Please try again later.'
+    };
+
+    return resources[label];
+};

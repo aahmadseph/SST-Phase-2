@@ -1,0 +1,6 @@
+import BeautyPreferencesWorld from 'components/BeautyPreferencesWorld/BeautyPreferencesWorld';
+import { withBeautyPreferencesWorldProps } from 'components/BeautyPreferencesWorld/withBeautyPreferencesWorldProps';
+
+const ConnectedBeautyPreferencesWorld = withBeautyPreferencesWorldProps(BeautyPreferencesWorld);
+
+export default ConnectedBeautyPreferencesWorld;

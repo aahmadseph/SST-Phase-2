@@ -1,0 +1,6 @@
+import AutoReplenishEmptyHub from 'components/RichProfile/MyAccount/AutoReplenishment/AutoReplenishEmptyHub/AutoReplenishEmptyHub';
+import { withAutoReplenishEmptyHubProps } from 'viewModel/richProfile/myAccount/autoReplenishment/autoReplenishEmptyHub/withAutoReplenishEmptyHubProps';
+
+const ConnectedAutoReplenishEmptyHub = withAutoReplenishEmptyHubProps(AutoReplenishEmptyHub);
+
+export default ConnectedAutoReplenishEmptyHub;

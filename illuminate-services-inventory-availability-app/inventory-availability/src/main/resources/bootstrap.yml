@@ -1,0 +1,43 @@
+server:
+  port: 8055
+  servlet:
+    context-path: /inventory-availability
+
+  tomcat:
+    mbeanregistry:
+      enabled: true
+    accesslog:
+      enabled: false
+      log4j: true
+      pattern: combined
+    max-threads: 100
+    accept-count: 200
+    max-connections: 200
+    min-spare-threads: 10
+
+spring:
+  application:
+    name: inventory-availability-service
+  config:
+    import:
+      - optional:configserver:${CONFIGHUB_SERVER_URI}
+  cloud:
+    config:
+      enabled: true
+      name: GLOBAL
+      label: MASTER
+      profile: DEFAULT
+      fail-fast: false
+      retry:
+        max-attempts: 1
+    httpclientfactories:
+      apache:
+        enabled: true
+    kubernetes:
+      client:
+        namespace: default
+      enabled:  false
+      discovery:
+        enabled: false
+      config:
+        enabled: true

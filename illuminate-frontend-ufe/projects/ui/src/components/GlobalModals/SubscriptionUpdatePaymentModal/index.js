@@ -1,0 +1,6 @@
+import SubscriptionUpdatePaymentModal from 'components/GlobalModals/SubscriptionUpdatePaymentModal/SubscriptionUpdatePaymentModal';
+import { withSubscriptionUpdatePaymentModalProps } from 'viewModel/globalModals/subscriptionUpdatePaymentModal/withSubscriptionUpdatePaymentModalProps';
+
+const ConnectedSubscriptionUpdatePaymentModal = withSubscriptionUpdatePaymentModalProps(SubscriptionUpdatePaymentModal);
+
+export default ConnectedSubscriptionUpdatePaymentModal;

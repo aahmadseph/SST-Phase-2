@@ -1,0 +1,13 @@
+#! /bin/sh
+
+CLOUD_HOST=$1
+
+export DEVICE_ID="cce99fbc15072aa89aaa297983eda15d806e49e51d6a064ef1c61fe934613d48"
+export ACCESS_TOKEN="614e31c79b6b8e15198213f2573d1984c90ad5466402c7b69032c36b471cc646"
+export PROXY_HOST=$CLOUD_HOST.sephora.com
+
+# API_PROXY is haproxy?
+export API_HOST=$PROXY_HOST
+export API_PORT=4580
+
+export IMAGE_HOST=https://qa3.sephora.com

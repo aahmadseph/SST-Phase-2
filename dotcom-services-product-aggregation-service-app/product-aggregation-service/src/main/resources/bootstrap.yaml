@@ -1,0 +1,39 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /product-aggregation-service
+
+  tomcat:
+    accesslog:
+      enabled: false
+      log4j: true
+      pattern: combined
+    max-threads: 50
+    accept-count: 100
+    max-connections: 100
+    min-spare-threads: 10
+
+spring:
+  application:
+    name: product-aggregation-service-service
+
+  cloud:
+    bootstrap:
+      enabled: true
+    kubernetes:
+      discovery:
+        enabled: false
+      reload:
+        enabled: true
+        mode: event
+        monitoring-config-maps: true
+        strategy: refresh
+#      config:
+#        enabled: true
+#        namespace: dev2
+#        name: example-cm
+
+management:
+  endpoint:
+    restart:
+      enabled: true

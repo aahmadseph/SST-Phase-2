@@ -1,0 +1,91 @@
+{
+    "id": "RC58f697b7c78446a498f9d1218129b9a2",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2024-11-19T15:20:25.323Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "Checks UTM parameters",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2024-11-19T16:43:23.138Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"const expirationInDays = 60;\\nconst expirationTime = new Date().getTime() + expirationInDays * 86400000;\\nconst utmParametersKey = 'utmParameters';\\n\\nfunction getUtmParameters() {\\n  var utmParametersObject = {\\n      expiration: expirationTime\\n  };\\n  const currentTime = new Date().getTime();\\n\\n  // Pull previously stored parameters\\n  var storedParameters = JSON.parse(localStorage.getItem(utmParametersKey));\\n  \\n  if (storedParameters !== undefined \\u0026\\u0026 storedParameters !== null) {\\n    if (storedParameters.expiration) {\\n      if (currentTime \\u003e storedParameters.expiration) {\\n        localStorage.removeItem(utmParametersKey); \\n      }\\n      else {\\n        utmParametersObject = storedParameters;\\n      }\\n    }\\n  }\\n  \\n  return utmParametersObject;\\n}\\n\\nfunction setUtmParameters(currentParameters) {\\n  // Get the current URL\\n  const url = new URL(window.location.href);\\n\\n  // Get the query string parameters\\n  const params = new URLSearchParams(url.search);\\n  \\n  var changed = false;\\n\\n  var utmParameters = ['utm_id', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_source_platform', 'utm_term', 'utm_content', 'utm_creative_format', 'utm_marketing_tactic'];\\n\\n  // Checks if parameter exists and stores it into the local storage\\n  utmParameters.forEach(u =\\u003e {\\n      const utmParam = params.get(u); \\n      if (utmParam !== undefined \\u0026\\u0026 utmParam !== null) {\\n        currentParameters[u] = utmParam;\\n        changed = true;\\n      }\\n  });\\n  \\n  if (changed) {\\n    currentParameters.expiration = expirationTime;\\n  }\\n  \\n  return currentParameters;\\n}\\n\\nconst newParameters = setUtmParameters(getUtmParameters());\\nlocalStorage.setItem(utmParametersKey, JSON.stringify(newParameters));\\n\\n\\n\\n\\n\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC58f697b7c78446a498f9d1218129b9a2/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC58f697b7c78446a498f9d1218129b9a2/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC58f697b7c78446a498f9d1218129b9a2/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC58f697b7c78446a498f9d1218129b9a2/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC58f697b7c78446a498f9d1218129b9a2/origin"
+            },
+            "data": {
+                "id": "RC58f697b7c78446a498f9d1218129b9a2",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC58f697b7c78446a498f9d1218129b9a2/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC58f697b7c78446a498f9d1218129b9a2",
+        "rules": "https://reactor.adobe.io/rule_components/RC58f697b7c78446a498f9d1218129b9a2/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC58f697b7c78446a498f9d1218129b9a2"
+    },
+    "meta": {
+        "latest_revision_number": 3
+    }
+}

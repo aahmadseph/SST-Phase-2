@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Headers</title>
+
+    <style type="text/css">
+        body {
+            font-size: 1em;
+        }
+
+        form {
+            margin: 0.4em;
+        }
+
+        fieldset {
+            margin-left: 0.4em;
+            margin-right: 0.4em;
+            margin-top: 0.2em;
+            border: none;
+        }
+
+        div {
+            min-width: 20em;
+        }
+        table, table td, table th {
+            border: 1px solid black;
+            padding: 0.25em;
+        }
+        table td {
+            font-size: 0.8em;
+            text-align: left;
+            vertical-align: top;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <form>
+            <fieldset>
+                <label>Channel</label>
+                <select id="mobile-desktop">
+                    <option value="auto">auto</option>
+                    <option value="FS">Desktop</option>
+                    <option value="MW">Mobile Web</option>
+                </select>
+
+            </fieldset>
+            <fieldset>
+                <label>Locale</label>
+                <select id="country-language">
+                    <option value="auto">auto</option>
+                    <option value="US-EN">US English</option>
+                    <option value="CA-EN">Canada English</option>
+                    <option value="CA-FR">Canada French</option>
+                </select>
+            </fieldset>
+            <fieldset">
+                Akamai HEADERS are enabled when this extension is enabled!
+                <br>Check dev console network tab to see headers
+            </fieldset>
+            <fieldset style="display: none;">
+                <label>Enable Akamai Headers</label>
+                <input type="checkbox" id="enable-akamai-headers">
+            </fieldset>
+        </form>
+        <div id="page-load-info"></div>
+        <div id="cache-header-data"></div>
+    </div>
+    <script src="js/menu-options.js"></script>
+
+</body>
+
+</html>

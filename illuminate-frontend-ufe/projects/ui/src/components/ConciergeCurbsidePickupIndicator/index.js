@@ -1,0 +1,3 @@
+import ConciergeCurbsidePickupIndicator from 'components/ConciergeCurbsidePickupIndicator/ConciergeCurbsidePickupIndicator';
+
+export default ConciergeCurbsidePickupIndicator;

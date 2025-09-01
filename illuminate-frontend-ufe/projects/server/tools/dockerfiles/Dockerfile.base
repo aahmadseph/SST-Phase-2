@@ -1,0 +1,63 @@
+# base image for UFE and JERRI as they share the same code repo
+# to build this
+# docker build --force-rm -f tools/dockerfiles/Dockerfile.base \
+#    -t sephora-docker.artifactory/sephora_ufe_base:$UFE_BASE_VERSION .
+FROM node:22.12.0-alpine
+#FROM artifactory.lipstack.sephoraus.com/goldenimage-nodejs-node20/final:latest
+
+RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/main" > /etc/apk/repositories
+
+ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
+
+WORKDIR /
+
+RUN apk upgrade --update
+RUN apk add --update tzdata
+RUN apk add ca-certificates
+RUN mkdir -p /etc/ssl/certs/ 
+# RUN update-ca-certificates --fresh
+
+RUN ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+RUN echo "America/Los_Angeles" > /etc/timezone
+RUN date
+
+# make nodejs home directory and app folder
+RUN mkdir -p /home/node/app
+
+# put nodejs in /opt/nodejs for now
+# when we use golden image it will be part of path
+RUN mkdir -p /opt/nodejs
+#USER root 
+
+ENV NODE_HOME /home/node
+ENV NODE_BASE /opt/nodejs
+ENV UFE_HOME $NODE_HOME/app
+
+# change working directory to app dir
+WORKDIR $UFE_HOME
+
+# add necessary packages
+COPY config $UFE_HOME/config
+COPY projects/ui $UFE_HOME/projects/ui
+COPY projects/server $UFE_HOME/projects/server
+COPY package.json $UFE_HOME/
+COPY package-lock.json $UFE_HOME/
+COPY tools/install.js $UFE_HOME/tools/install.js
+COPY .eslintrc $UFE_HOME/.eslintrc
+COPY .eslintignore $UFE_HOME/.eslintignore
+COPY .npmrc $UFE_HOME/.npmrc
+RUN node --version | sed 's/v//' > $UFE_HOME/.nvmrc
+
+# make this all owned by nodejs:nodejs
+RUN chown -R node:node $NODE_HOME
+
+# we are now the limited user
+USER node
+
+ARG BUILD_NUMBER=UFE-node.js-docker
+ARG PROJECT_VERSION=Unknown-Local-docker
+ARG CODE_BRANCH=Unknown-Local-docker
+ARG GIT_BRANCH=Unknown-Local-docker
+ARG GIT_COMMIT=Unknown-Local-docker
+
+RUN npm ci

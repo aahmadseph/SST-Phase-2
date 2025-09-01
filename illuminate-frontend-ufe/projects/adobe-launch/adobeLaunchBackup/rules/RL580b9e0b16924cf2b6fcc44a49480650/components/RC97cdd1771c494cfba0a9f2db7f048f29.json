@@ -1,0 +1,91 @@
+{
+    "id": "RC97cdd1771c494cfba0a9f2db7f048f29",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2024-07-15T18:27:56.547Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "Tag: Clinch Purchase",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2024-07-23T16:30:01.300Z",
+        "created_by_email": "niltoncesar.santos@sephora.com",
+        "created_by_display_name": "niltoncesar santos",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"const eventId = `purchase-${_satellite.getVar(\\\"[UEID] :: Universal Event ID Fx\\\")(event)}`;\\nconst transactionId = digitalData.transaction.transactionID || null;\\nconst sddSkuIds = digitalData.transaction.attributes.sdd.skuIds;\\n\\nfunction FormatPrice(item) {\\n\\tlet price ='0.00';\\n\\tif (item.sku.listPrice !== 'FREE') {\\n\\t\\tprice = item.sku.listPrice;\\n\\t\\tprice = price.replace(/\\\\s+/g, \\\"\\\");\\n\\t\\tprice = price.match(/\\\\d+(?:\\\\.\\\\d+|\\\\,\\\\d+\\\\.\\\\d+|\\\\,\\\\d+)|\\\\d+/)[0];\\n\\t\\tif (digitalData.page.pageInfo.language.toLowerCase() === 'fr') { \\n\\t\\t\\tprice = price.replace(',', '.'); \\n\\t\\t} \\n\\t\\telse { \\n\\t\\t\\tprice = price.replace(',', ''); \\n\\t\\t}\\n\\t\\tprice = Sephora.analytics.utils.convertToUSD(price);\\n\\t}\\n\\treturn price;\\n}\\n\\nfunction GetFormattedItems(items) {\\n\\tconst item_skus = items.map(p =\\u003e p.sku.skuId) || [];\\n\\tconst item_qty = items.map(p =\\u003e p.qty).join(',') || '';\\n\\tconst item_categories = items.map(p =\\u003e p.sku.parentCategory.displayName) || [];\\n\\tconst item_prices = items.map(p =\\u003e FormatPrice(p)).join(',');\\n    const item_brands = items.map(p =\\u003e p.sku.brandName) || [];\\n    let totalPrice = item_prices.split(',').reduce(function (result, item) {\\n      return result + Number(item);\\n    }, 0);\\n    totalPrice = Math.round(totalPrice*100)/100;\\n\\treturn { item_skus, item_qty, item_categories, item_prices, item_brands, totalPrice }\\n}\\n\\n// Standard Delivery\\nconst stdItems = digitalData.transaction.item.filter(p =\\u003e \\n\\tp.sku.type === 'Standard' \\u0026\\u0026 \\n\\tp.sku.listPrice.indexOf('Points') \\u003c= -1 \\u0026\\u0026\\n\\tsddSkuIds.indexOf(p.sku.skuId) == -1);\\n\\n// Same Day Delivery\\nconst sddItems = digitalData.transaction.item.filter(p =\\u003e sddSkuIds.indexOf(p.sku.skuId) \\u003e= 0);\\n\\nif (clq) {\\n  \\n  // Standard Delivery\\n  if (stdItems.length \\u003e 0) {\\n    const { item_skus, totalPrice } = GetFormattedItems(stdItems);\\n    \\n    clq(\\n      'track', \\n      'Purchase',{ \\n        // eventId: eventId,\\n        value: totalPrice, \\n        currency: 'USD', \\n        content_type: 'product', \\n        content_ids: item_skus, \\n        order_id: transactionId, \\n        subType: 'standard'\\n      }\\n    );\\n  }\\n  \\n  // SDD Order\\n  if (sddItems.length \\u003e 0) {\\n\\tconst { item_skus, totalPrice } = GetFormattedItems(sddItems);\\n\\n\\tclq(\\n      'track', \\n      'Purchase',{ \\n        // eventId: eventId,\\n        value: totalPrice, \\n        currency: 'USD', \\n        content_type: 'product', \\n        content_ids: item_skus, \\n        order_id: transactionId + '-sdd', \\n        subType: 'sdd'\\n      }\\n    );\\n  }\\n}\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC97cdd1771c494cfba0a9f2db7f048f29/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC97cdd1771c494cfba0a9f2db7f048f29/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC97cdd1771c494cfba0a9f2db7f048f29/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC97cdd1771c494cfba0a9f2db7f048f29/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC97cdd1771c494cfba0a9f2db7f048f29/origin"
+            },
+            "data": {
+                "id": "RC97cdd1771c494cfba0a9f2db7f048f29",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC97cdd1771c494cfba0a9f2db7f048f29/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC97cdd1771c494cfba0a9f2db7f048f29",
+        "rules": "https://reactor.adobe.io/rule_components/RC97cdd1771c494cfba0a9f2db7f048f29/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC97cdd1771c494cfba0a9f2db7f048f29"
+    },
+    "meta": {
+        "latest_revision_number": 10
+    }
+}

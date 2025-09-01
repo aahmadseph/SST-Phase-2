@@ -1,0 +1,91 @@
+{
+    "id": "RC12201657cfa84508a400ddd776ada7ea",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2025-04-24T12:08:15.581Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "Session AI Init",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-06-05T16:33:03.892Z",
+        "created_by_email": "roman.zhelieznov@sephora.com",
+        "created_by_display_name": "roman zhelieznov",
+        "updated_by_email": "roman.zhelieznov@sephora.com",
+        "updated_by_display_name": "roman zhelieznov",
+        "settings": "{\"source\":\"(async function () {\\n    if (window.ZineOne || !Sephora.configurationSettings.isSessionAIEnabled) {\\n      return;\\n    }\\n  \\n    const apiKeysMap = {\\n      ['us_en']: Sephora.configurationSettings.sessionAISDKApiKeyUS,\\n      ['ca_en']: Sephora.configurationSettings.sessionAISDKApiKeyCAEN,\\n      ['ca_fr']: Sephora.configurationSettings.sessionAISDKApiKeyCAFR\\n    }\\n  \\n    const cookies = Sephora.Util.cookieStore() || {};\\n    const { site_locale = '', site_language = '' } = cookies;\\n  \\n    const sessionAIApiKey = apiKeysMap[`${site_locale}_${site_language}`];\\n  \\n    try {\\n        const response = await fetch('https://cdn.zineone.com/cloud/latest/z1m.js');\\n\\n        if (!response.ok) {\\n            console.error(`Session AI: Failed to load script: ${response.statusText}`);\\n            return;\\n        }\\n\\n        const scriptContent = await response.text();\\n\\n        const scriptElement = document.createElement('script');\\n        scriptElement.textContent = scriptContent;\\n        document.body.appendChild(scriptElement);\\n\\n        if (sessionAIApiKey) {\\n            window.ZineOne.initialize(sessionAIApiKey);\\n        }\\n    } catch (error) {\\n        console.error('Session AI: Error loading or executing script:', error);\\n    }\\n})();\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC12201657cfa84508a400ddd776ada7ea/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC12201657cfa84508a400ddd776ada7ea/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC12201657cfa84508a400ddd776ada7ea/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC12201657cfa84508a400ddd776ada7ea/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC12201657cfa84508a400ddd776ada7ea/origin"
+            },
+            "data": {
+                "id": "RC12201657cfa84508a400ddd776ada7ea",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC12201657cfa84508a400ddd776ada7ea/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC12201657cfa84508a400ddd776ada7ea",
+        "rules": "https://reactor.adobe.io/rule_components/RC12201657cfa84508a400ddd776ada7ea/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC12201657cfa84508a400ddd776ada7ea"
+    },
+    "meta": {
+        "latest_revision_number": 19
+    }
+}

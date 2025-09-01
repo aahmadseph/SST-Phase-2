@@ -1,0 +1,50 @@
+"""This is a scalar for DateTime."""
+scalar DateTime
+
+"Input type request for location by priority query"
+input LocationsByPriorityInput {
+    "The date and time when the request was made in ISO 8601 format. for eg: 2025-05-12T16:51:48.926-07:00"
+    currentDateTime: DateTime!
+    "Zip code for which preferred DCs needs to be retrieved."
+    zipCode : String!
+    "The origin of the request, such as Default, PAS, etc."
+    requestOrigin: String!
+    "The country such as US and CA."
+    country: Country!
+}
+
+"Type associated to location by priority response."
+type LocationsByPriorityResponse {
+    "The zip code requested for location priorities."
+    zipCode : String!
+    "The country such as US and CA."
+    country: Country!
+    "A list of location priorities associated with the given country and zip code."
+    locationPriorities: [LocationPriorities!]
+}
+
+"Type associated to location priorities."
+type LocationPriorities {
+    "The location Id corresponds to the DC."
+    locationId: String!
+    "The priority of the DC."
+    priority: String!
+
+}
+
+"Country Enum"
+enum Country {
+    "Country for Sephora US."
+    US
+    "Country for Sephora Canada."
+    CA
+}
+
+"""This is the query field"""
+type Query {
+    """
+    Retrieves the location priorities for a given zip code.
+    - input: The input parameters for the locationByPriority query.
+    """
+    locationsByPriority(input: LocationsByPriorityInput!): LocationsByPriorityResponse!
+}

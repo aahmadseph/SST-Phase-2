@@ -1,0 +1,6 @@
+import BeautyPreferencesModal from 'components/GlobalModals/BeautyPreferencesModal/BeautyPreferencesModal';
+import { withBeautyPreferencesModalProps } from 'viewModel/globalModals/beautyPreferencesModal/withBeautyPreferencesModalProps';
+
+const ConnectedBeautyPreferencesModal = withBeautyPreferencesModalProps(BeautyPreferencesModal);
+
+export default ConnectedBeautyPreferencesModal;

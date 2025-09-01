@@ -1,0 +1,97 @@
+{
+    "id": "DEb60e2f66559f4d1585c87ae3680c5d16",
+    "type": "data_elements",
+    "attributes": {
+        "created_at": "2025-02-27T13:50:28.257Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "[TMS] Basket :: Cart Cumulative Total",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-02-27T13:50:28.257Z",
+        "created_by_email": "niltoncesar.santos@sephora.com",
+        "created_by_display_name": "niltoncesar santos",
+        "updated_by_email": "niltoncesar.santos@sephora.com",
+        "updated_by_display_name": "niltoncesar santos",
+        "clean_text": false,
+        "default_value": null,
+        "delegate_descriptor_id": "core::dataElements::custom-code",
+        "force_lower_case": false,
+        "review_status": "unsubmitted",
+        "storage_duration": null,
+        "settings": "{\"source\":\"function getCartCumulativeValue() {\\n  var itemsByBasket = digitalData.cart.itemsByBasket || [];\\n  var cartCumulativeValue = 0, itemPrice = 0;\\n\\n  for (var i = 0; i \\u003c itemsByBasket.length; i++) {\\n    var item = itemsByBasket[i].items;\\n\\n    for (var j = 0; j \\u003c item.length; j++) {\\n      if (item[j].salePriceSubtotal) {\\n        itemPrice = Number(item[j].salePriceSubtotal.slice(1));\\n      } else {\\n        itemPrice = Number(item[j].listPriceSubtotal.slice(1));\\n      }\\n      cartCumulativeValue += isNaN(itemPrice) ? 0 : itemPrice;\\n    }\\n  }\\n\\n  return cartCumulativeValue;\\n}\\n\\nreturn getCartCumulativeValue();\"}"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEb60e2f66559f4d1585c87ae3680c5d16/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEb60e2f66559f4d1585c87ae3680c5d16/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEb60e2f66559f4d1585c87ae3680c5d16/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEb60e2f66559f4d1585c87ae3680c5d16/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEb60e2f66559f4d1585c87ae3680c5d16/origin"
+            },
+            "data": {
+                "id": "DEb60e2f66559f4d1585c87ae3680c5d16",
+                "type": "data_elements"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEb60e2f66559f4d1585c87ae3680c5d16/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEb60e2f66559f4d1585c87ae3680c5d16/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEb60e2f66559f4d1585c87ae3680c5d16/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/data_elements/DEb60e2f66559f4d1585c87ae3680c5d16",
+        "self": "https://reactor.adobe.io/data_elements/DEb60e2f66559f4d1585c87ae3680c5d16",
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74"
+    },
+    "meta": {
+        "latest_revision_number": 1
+    }
+}

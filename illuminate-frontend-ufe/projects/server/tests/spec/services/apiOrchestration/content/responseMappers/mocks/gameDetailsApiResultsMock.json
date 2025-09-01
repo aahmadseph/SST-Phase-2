@@ -1,0 +1,505 @@
+{
+    "gamificationSettings": {
+        "data": {
+            "type": "GamificationSettings",
+            "sid": "Gamification-Settings",
+            "completed": "Completed",
+            "dayLeft": "DAY LEFT",
+            "daysLeft": "DAYS LEFT",
+            "ended": "Ended",
+            "challengeEnded": "CHALLENGE ENDED",
+            "challengeCtaLabel": "LEARN MORE ▸",
+            "gameCompletedDescription": "You completed the ‘{0}’ Challenge and earned total {1} points! Complete another challenge to earn more points!",
+            "gameCompletedTitle": "You did it!",
+            "gameJoinedDescription": "Let’s get started!  Complete a task and earn {0} points. ",
+            "gameJoinedTitle": "Thanks for joining the ‘{0}’ Challenge!",
+            "gameStatusCompleted": "Completed  •  Total {0} pts earned",
+            "gameStatusEarned": "Joined  • {0} pts earned",
+            "gameStatusJoined": "Joined",
+            "gameStatusPending": "Joined",
+            "gameStatusEndedJ": "Joined",
+            "gameStatusEndedE": "Joined  • {0} points earned",
+            "gotIt": "Got It",
+            "joinTheChallenge": "Join the Challenge",
+            "redeemPtsLabel": "Redeem Your Points",
+            "lastDay": "LAST DAY",
+            "pendingInfoDescription": "Pending points will be credited when delivery is confirmed. It may take up to 24 hours to be posted.",
+            "pendingInfoTitle": "Pending Points",
+            "points": "pts",
+            "pointsEarned": "points earned",
+            "pointsPending": "pts pending",
+            "challengeCtaLabelNj": "JOIN CHALLENGE ▸",
+            "challengeCtaLabelJ": "COMPLETE TASKS ▸",
+            "challengeCtaLabelC": "SEE POINTS EARNED ▸",
+            "gameCompletedImage": {
+                "sid": "Gamification-Media-Game-Modal-Image",
+                "src": "https://images.ctfassets.net/37lvxp3wt7oq/1V1err7IJNH8jLLxdBQOTT/b6cff22c961bb5bb9bce4cc847dccca3/Game_Modal_Image.png",
+                "width": 343,
+                "height": 160
+            },
+            "gameJoinedImage": {
+                "sid": "Gamification-Media-Game-Modal-Image",
+                "src": "https://images.ctfassets.net/37lvxp3wt7oq/1V1err7IJNH8jLLxdBQOTT/b6cff22c961bb5bb9bce4cc847dccca3/Game_Modal_Image.png",
+                "width": 343,
+                "height": 160
+            },
+            "redeemPtsAction": {
+                "type": "ActionLinkExternal",
+                "sid": "BI screen",
+                "targetUrl": "/profile/BeautyInsider"
+            },
+            "fallbackCopyActiveGames": {
+                "json": {
+                    "data": {},
+                    "content": [
+                        {
+                            "data": {},
+                            "content": [
+                                {
+                                    "data": {},
+                                    "marks": [],
+                                    "value": "Check back soon for new Challenges!",
+                                    "nodeType": "text"
+                                }
+                            ],
+                            "nodeType": "paragraph"
+                        }
+                    ],
+                    "nodeType": "document"
+                }
+            },
+            "fallbackCopyGamesHistory": {
+                "json": {
+                    "data": {},
+                    "content": [
+                        {
+                            "data": {},
+                            "content": [
+                                {
+                                    "data": {},
+                                    "marks": [],
+                                    "value": "Nothing to report - yet!",
+                                    "nodeType": "text"
+                                }
+                            ],
+                            "nodeType": "paragraph"
+                        }
+                    ],
+                    "nodeType": "document"
+                }
+            },
+            "fallbackCopyOtherGames": {
+                "json": {
+                    "data": {},
+                    "content": [
+                        {
+                            "data": {},
+                            "content": [
+                                {
+                                    "data": {},
+                                    "marks": [],
+                                    "value": "There’s no other beauty challenge.\nCheck back soon!",
+                                    "nodeType": "text"
+                                }
+                            ],
+                            "nodeType": "paragraph"
+                        }
+                    ],
+                    "nodeType": "document"
+                }
+            },
+            "fallbackCopySoftLaunch": {
+                "json": {
+                    "data": {},
+                    "content": [
+                        {
+                            "data": {},
+                            "content": [
+                                {
+                                    "data": {},
+                                    "marks": [],
+                                    "value": "Soft Launch Fallback!",
+                                    "nodeType": "text"
+                                }
+                            ],
+                            "nodeType": "paragraph"
+                        }
+                    ],
+                    "nodeType": "document"
+                }
+            },
+            "gameDetailsCopy": {
+                "json": {
+                    "data": {},
+                    "content": [
+                        {
+                            "data": {},
+                            "content": [
+                                {
+                                    "data": {},
+                                    "marks": [],
+                                    "value": "By tapping “Join the Challenge”, you agree and have read Sephora’s ",
+                                    "nodeType": "text"
+                                },
+                                {
+                                    "data": {
+                                        "target": {
+                                            "sys": {
+                                                "id": "6LJpBOf5PYJ4yinWkt1xfP",
+                                                "type": "Link",
+                                                "linkType": "Entry"
+                                            }
+                                        }
+                                    },
+                                    "content": [
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "Privacy Policy ",
+                                            "nodeType": "text"
+                                        }
+                                    ],
+                                    "nodeType": "entry-hyperlink"
+                                },
+                                {
+                                    "data": {},
+                                    "marks": [],
+                                    "value": "and ",
+                                    "nodeType": "text"
+                                },
+                                {
+                                    "data": {
+                                        "target": {
+                                            "sys": {
+                                                "id": "XE7jQa8ty3c33nak8HL8r",
+                                                "type": "Link",
+                                                "linkType": "Entry"
+                                            }
+                                        }
+                                    },
+                                    "content": [
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "TERMS & CONDITION",
+                                            "nodeType": "text"
+                                        }
+                                    ],
+                                    "nodeType": "entry-hyperlink"
+                                },
+                                {
+                                    "data": {},
+                                    "marks": [],
+                                    "value": ".",
+                                    "nodeType": "text"
+                                }
+                            ],
+                            "nodeType": "paragraph"
+                        }
+                    ],
+                    "nodeType": "document"
+                },
+                "links": {
+                    "entries": {
+                        "hyperlink": [
+                            {
+                                "sys": {
+                                    "id": "6LJpBOf5PYJ4yinWkt1xfP"
+                                },
+                                "type": "ActionLinkExternal",
+                                "sid": "gamification_privacy_policy_link_external",
+                                "targetUrl": "/privacy-policy"
+                            },
+                            {
+                                "sys": {
+                                    "id": "XE7jQa8ty3c33nak8HL8r"
+                                },
+                                "type": "ActionLinkExternal",
+                                "sid": "gamification_terms_and_conditions_link_external",
+                                "targetUrl": "/beauty/challenge-terms-conditions"
+                            }
+                        ]
+                    }
+                }
+            },
+            "joinCtaCopy": {
+                "json": {
+                    "data": {},
+                    "content": [
+                        {
+                            "data": {},
+                            "content": [
+                                {
+                                    "data": {},
+                                    "marks": [],
+                                    "value": "Already joined? ",
+                                    "nodeType": "text"
+                                },
+                                {
+                                    "data": {
+                                        "target": {
+                                            "sys": {
+                                                "id": "6m6vdqIDgdC6fAgWdqvlJW",
+                                                "type": "Link",
+                                                "linkType": "Entry"
+                                            }
+                                        }
+                                    },
+                                    "content": [
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "Sign in",
+                                            "nodeType": "text"
+                                        }
+                                    ],
+                                    "nodeType": "entry-hyperlink"
+                                },
+                                {
+                                    "data": {},
+                                    "marks": [],
+                                    "value": " to see progress.",
+                                    "nodeType": "text"
+                                }
+                            ],
+                            "nodeType": "paragraph"
+                        }
+                    ],
+                    "nodeType": "document"
+                },
+                "links": {
+                    "entries": {
+                        "hyperlink": [
+                            {
+                                "sys": {
+                                    "id": "6m6vdqIDgdC6fAgWdqvlJW"
+                                },
+                                "type": "ActionCustom",
+                                "sid": "Action-Custom-SignIn",
+                                "actionType": "SignIn"
+                            }
+                        ]
+                    }
+                }
+            },
+            "fallbackCopyGamesHistoryAnonymous": {
+                "json": {
+                    "data": {},
+                    "content": [
+                        {
+                            "data": {},
+                            "content": [
+                                {
+                                    "data": {},
+                                    "marks": [],
+                                    "value": "",
+                                    "nodeType": "text"
+                                },
+                                {
+                                    "data": {
+                                        "target": {
+                                            "sys": {
+                                                "id": "6m6vdqIDgdC6fAgWdqvlJW",
+                                                "type": "Link",
+                                                "linkType": "Entry"
+                                            }
+                                        }
+                                    },
+                                    "content": [
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "Sign in",
+                                            "nodeType": "text"
+                                        }
+                                    ],
+                                    "nodeType": "entry-hyperlink"
+                                },
+                                {
+                                    "data": {},
+                                    "marks": [],
+                                    "value": " to join and track progress",
+                                    "nodeType": "text"
+                                }
+                            ],
+                            "nodeType": "paragraph"
+                        }
+                    ],
+                    "nodeType": "document"
+                },
+                "links": {
+                    "entries": {
+                        "hyperlink": [
+                            {
+                                "sys": {
+                                    "id": "6m6vdqIDgdC6fAgWdqvlJW"
+                                },
+                                "type": "ActionCustom",
+                                "sid": "Action-Custom-SignIn",
+                                "actionType": "SignIn"
+                            }
+                        ]
+                    }
+                }
+            },
+            "allGames": [
+                {
+                    "sid": "Gamification-Game-Ready-Set-Sephora-1",
+                    "gameId": "274",
+                    "promoId": "Ready_set_sephora",
+                    "title": "Ready, Set, Sephora",
+                    "description": "Earn 100 points for each eligible task, and unlock extra 100 points for completing all 4 tasks. That’s 500 points!",
+                    "backgroundColor": "#F1FDFA",
+                    "bonusEarnTitle": "Earn an additional 100 points",
+                    "bonusEarnedTitle": "You earned an additional 100 points",
+                    "bonusEarnDescription": "by completing all tasks",
+                    "bonusEarnedDescription": "for completing all tasks!",
+                    "image": {
+                        "sid": "Gamification-Media-Best-Of-Sephora",
+                        "src": "/contentimages/gamfication/challenges/readysetsephora/2023-bi-gamification-phase1-readysetsephora-challenge-card.jpg",
+                        "width": 1200,
+                        "height": 800
+                    },
+                    "additionalEarningsMedia": {
+                        "sid": "Gamification-Media-Game-Additional-Points",
+                        "src": "https://images.ctfassets.net/37lvxp3wt7oq/Klv1SmjFdhMfMqEG2d7uT/f3d001595a67da06b5a1ef883c048f6d/Additional_Points.png",
+                        "width": 56,
+                        "height": 56
+                    },
+                    "action": {
+                        "type": "ActionLinkInternal",
+                        "sid": "Gamification-InternalLink-Game-ReadySetSephora",
+                        "page": {
+                            "type": "PageContent",
+                            "slug": "challenges-ready-set-sephora",
+                            "layout": {
+                                "type": "LayoutOpen"
+                            }
+                        }
+                    }
+                },
+                {
+                    "sid": "Gamification-Game-Passport-To-Beauty-2",
+                    "gameId": "282",
+                    "promoId": "challenge_passport_to_beauty",
+                    "title": "Passport to Beauty",
+                    "description": "Earn 100 points for each task. Earn 500 points by completing all 5 tasks, and redeem for $10 Beauty Insider Cash!",
+                    "backgroundColor": "#F6FBFF",
+                    "bonusEarnTitle": "Earn an additional 100 points",
+                    "bonusEarnedTitle": "You earned an additional 100 points",
+                    "bonusEarnDescription": "by completing all tasks",
+                    "bonusEarnedDescription": "for completing all tasks!",
+                    "image": {
+                        "sid": "Gamification-Media-Passport-To-Beauty",
+                        "src": "/contentimages/gamfication/challenges/readysetsephora/2023-bi-gamification-phase1-readysetsephora-challenge-card.jpg",
+                        "width": 1200,
+                        "height": 800
+                    },
+                    "additionalEarningsMedia": {
+                        "sid": "Gamification-Media-Game-Additional-Points",
+                        "src": "https://images.ctfassets.net/37lvxp3wt7oq/Klv1SmjFdhMfMqEG2d7uT/f3d001595a67da06b5a1ef883c048f6d/Additional_Points.png",
+                        "width": 56,
+                        "height": 56
+                    },
+                    "action": {
+                        "type": "ActionLinkInternal",
+                        "sid": "Gamification-InternalLink-Game-PassportToBeauty",
+                        "page": {
+                            "type": "PageContent",
+                            "slug": "challenges-passport-to-beauty",
+                            "layout": {
+                                "type": "LayoutOpen"
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "gamificationGameDetails": {
+        "currentGame": {
+            "gameDetails": {
+                "gameId": 189,
+                "name": "Ready, Set, Sephora",
+                "description": "Discover ways to make shopping at Sephora even better. Earn 100 points for each task, and an additional 100 for completing all 4 tasks",
+                "gameTotalPoints": 500,
+                "daysLeft": 94,
+                "promoId": "Ready_set_sephora",
+                "customerNotified": false,
+                "gameStatus": "NOT_JOINED",
+                "pointsEarned": 0,
+                "endDateTime": "2030-12-31T23:59:00-08:00"
+            },
+            "tasks": [
+                {
+                    "name": "Get Shade-Matched in Store",
+                    "description": "",
+                    "taskTotalPoints": 100,
+                    "promoId": "actv_get_shaded_matched_in_store",
+                    "customerNotified": false,
+                    "bonusReward": false,
+                    "taskId": "185"
+                },
+                {
+                    "name": "Sign Up for Text Updates",
+                    "description": "",
+                    "taskTotalPoints": 100,
+                    "promoId": "actv_sign_up_for_text_updates",
+                    "customerNotified": false,
+                    "bonusReward": false,
+                    "taskId": "186"
+                },
+                {
+                    "name": "Order with Buy Online, Pick Up in Store",
+                    "description": "",
+                    "taskTotalPoints": 100,
+                    "promoId": "actv_order_with_bopis",
+                    "customerNotified": false,
+                    "bonusReward": false,
+                    "taskId": "187"
+                },
+                {
+                    "name": "Get a Free Sample with an Online Purchase",
+                    "description": "",
+                    "taskTotalPoints": 100,
+                    "promoId": "actv_free_sample_with_order",
+                    "customerNotified": false,
+                    "bonusReward": false,
+                    "taskId": "188"
+                },
+                {
+                    "name": "Ready, Set, Sephora - Bonus Reward",
+                    "description": "Earn an additional 100 points by completing all tasks",
+                    "taskTotalPoints": 100,
+                    "promoId": "actv_ready_set_sephora_bonus_reward",
+                    "customerNotified": false,
+                    "bonusReward": true,
+                    "taskId": "191"
+                }
+            ]
+        },
+        "otherActiveGames": [
+            {
+                "gameId": 267,
+                "promoId": "GAM_Chal_PTB_092723_4_1",
+                "daysLeft": 85,
+                "totalOfPointsToReward": 500,
+                "endDateTime": "2030-12-22T23:59:00-08:00"
+            },
+            {
+                "gameId": 1038,
+                "promoId": "GAM_Chal_RSS_080223_4_1",
+                "daysLeft": 85,
+                "totalOfPointsToReward": 0,
+                "endDateTime": "2030-12-22T23:59:00-08:00"
+            },
+            {
+                "gameId": 1039,
+                "promoId": "GAM_Task_RSS_080223_3",
+                "daysLeft": 85,
+                "totalOfPointsToReward": 0,
+                "endDateTime": "2030-12-22T23:59:00-08:00"
+            }
+        ]
+    }
+}

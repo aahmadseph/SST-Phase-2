@@ -1,0 +1,91 @@
+{
+    "id": "RC2af4fcefd4124d3a97e5c059cdee7d92",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2025-04-22T17:15:21.580Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: Postie Add to Basket Pixel",
+        "negate": false,
+        "order": 1,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-06-02T16:42:46.637Z",
+        "created_by_email": "niltoncesar.santos@sephora.com",
+        "created_by_display_name": "niltoncesar santos",
+        "updated_by_email": "niltoncesar.santos@sephora.com",
+        "updated_by_display_name": "niltoncesar santos",
+        "settings": "{\"source\":\"var environmentKey = _satellite.getVar('[TMS] Postie Environment Key');\\n\\nvar getWorldFromSku = _satellite.getVar('[TMS] Get world from SKU Fx');\\n\\n(function(z,i,p,c,o,d,e){z[c]||(z[c]=function(){(z[c].q=z[c].q||[]).\\npush(arguments)},z[c].q=z[c].q||[],d=i.createElement(p),d.async=1,d.\\nsrc=o,e=i.getElementsByTagName(p)[0],e.parentNode.insertBefore(d,e))\\n})(window,document,\\\"script\\\",\\\"letterpress\\\", environmentKey);\\n\\nvar eventData = event?.detail?.data || undefined;\\n\\n// `world` param is coming from, in order:\\n// 1) from the event data\\n// 2) then from the SKU's event data\\n// 3) and then, as a fallback, from the digitalData\\nvar world = eventData?.world || getWorldFromSku(eventData?.sku) || digitalData?.page?.attributes?.world?.toLowerCase();\\n\\nvar productURL = eventData?.sku?.targetUrl;\\nvar qrCode = 'https://sephora.com/basket';\\n\\nvar cartData = digitalData?.cart?.item || [];\\nvar pricesList = cartData.map(c =\\u003e {\\n  // Formats the Price and Converts to USD when applicable.\\n  var cartItem = c?.listPriceSubtotal || '';  \\n  cartItem = cartItem.replace(',', '.');\\n  cartItem = cartItem.replace('$', '');\\n  cartItem = cartItem.trim();\\n  cartItem = Sephora.analytics.utils.convertToUSD(cartItem);\\n\\n  // The basket shows the total without multiplying by the qty. This tag should refflect the same.\\n  return Number(cartItem || 0);\\n});\\n\\nvar cartTotal = pricesList.reduce((accumulatedPrice, currentPrice) =\\u003e  accumulatedPrice + currentPrice, 0);\\n\\nwindow.letterpress(\\n  'trackStructEvent',\\n  'addToCart',\\n  world,\\n  productURL,\\n  qrCode,\\n  cartTotal\\n);\\n\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC2af4fcefd4124d3a97e5c059cdee7d92/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC2af4fcefd4124d3a97e5c059cdee7d92/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC2af4fcefd4124d3a97e5c059cdee7d92/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC2af4fcefd4124d3a97e5c059cdee7d92/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC2af4fcefd4124d3a97e5c059cdee7d92/origin"
+            },
+            "data": {
+                "id": "RC2af4fcefd4124d3a97e5c059cdee7d92",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC2af4fcefd4124d3a97e5c059cdee7d92/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC2af4fcefd4124d3a97e5c059cdee7d92",
+        "rules": "https://reactor.adobe.io/rule_components/RC2af4fcefd4124d3a97e5c059cdee7d92/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC2af4fcefd4124d3a97e5c059cdee7d92"
+    },
+    "meta": {
+        "latest_revision_number": 9
+    }
+}

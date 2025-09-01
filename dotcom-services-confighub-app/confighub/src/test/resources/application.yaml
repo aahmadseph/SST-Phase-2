@@ -1,0 +1,59 @@
+
+server:
+  port: 8082
+  servlet:
+    context-path: /confighub
+
+spring:
+  sql:
+    init:
+      mode: never
+  datasource:
+    url: jdbc:mysql://localhost:3306/config?allowPublicKeyRetrieval=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=US/Pacific&autoreconnect=true
+    username: root
+    password: root
+    driverClassName: com.mysql.cj.jdbc.Driver
+    testOnBorrow: true
+    hikari:
+      connection-timeout: 5000
+      maximum-pool-size: 10
+  jpa:
+    show-sql: true
+  cloud:
+    bus:      enabled: false
+    config:
+      server:
+        enabled: false
+      
+    kubernetes:
+      enables: false
+      discovery:
+        enabled: false
+    httpclientfactories:
+      apache:
+        enabled: true
+kafka:
+  bootstrap: pkc-lqzgd.westus2.azure.confluent.cloud:9092
+  saslJaasConfig: org.apache.kafka.common.security.plain.PlainLoginModule required username="RWUHYGWNUJGIVW2V" password="ciyWAn4l5CUief46xi5nlqMhwhLx2HI+P4pSgx0qhNqspXb3KUNSCxpSPw7EwqAA";
+  identificationAlgorithm: https
+  securityProtocol: SASL_SSL
+  saslMechanism: PLAIN
+  useSSL: true
+  schemaRegistryUrl: https://psrc-42jp1.westus2.azure.confluent.cloud
+  schemaRegistryBasicAuthInfo: 67HEDJWNG527AAMD:2nJZTp72YKViU+6S5prfp43qsMC6+C7t0jx+808WcKdGfja3LX3FVYtkiltGNO/Q
+  schemaRegistryCredentialsSource: USER_INFO
+  autoOffsetReset: earliest
+  enableAutoCommit: true
+  # Enable sending messages to kafka
+  produceMessages: true
+  # Enable receiving messages from kafka
+  consumeMessages: false
+  topic:
+    configurationCreate:
+      name: Sephora.ConfigHub.Client.ConfigUpdate_QA1
+      topicName: Sephora.ConfigHub.Client.ConfigUpdate_QA1
+      producer:
+        enabled: true
+        clientId: Sephora.ConfigHub.Client.ConfigUpdate_QA1   
+  main.allow-bean-definition-overriding: true
+

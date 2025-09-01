@@ -1,0 +1,6 @@
+import GiftAddressWarningModal from 'components/GlobalModals/GiftAddressWarningModal/GiftAddressWarningModal';
+import { withGiftAddressWarningModalProps } from 'viewModel/globalModals/giftAddressWarningModal/withGiftAddressWarningModalProps';
+
+const ConnectedGiftAddressWarningModal = withGiftAddressWarningModalProps(GiftAddressWarningModal);
+
+export default ConnectedGiftAddressWarningModal;

@@ -1,0 +1,3 @@
+import DiscountLimitBox from 'components/RwdBasket/RwdBasketLayout/TopContentMessages/TopContentCustomerLimitMessage/DiscountLimitBox/DiscountLimitBox';
+
+export default DiscountLimitBox;

@@ -1,0 +1,44 @@
+const STATUS = {
+    UPCOMING: 'UPCOMING',
+    PAST: 'PAST',
+    CANCELLED: 'CANCELLED',
+    NO_SHOW: 'NO_SHOW'
+};
+
+const WAITLIST_STATUS = {
+    WAITLIST: 'WAITLIST',
+    WAITLIST_HOLD: 'WAITLIST_HOLD',
+    WAITLIST_EXPIRED: 'WAITLIST_EXPIRED',
+    WAITLIST_CANCELED: 'WAITLIST_CANCELED'
+};
+
+const CANCELLED_SUBSTATUS = {
+    CANCELLED: 'CANCELLED',
+    CANCELLED_BY_STORE: 'CANCELLED_BY_STORE',
+    LATE_CANCELLATION: 'LATE_CANCELLATION',
+    NO_SHOW: 'NO_SHOW'
+};
+
+const STATUS_ICONS = {
+    [STATUS.UPCOMING]: 'filled-checkmark.svg',
+    [STATUS.PAST]: 'filled-blue-checkmark.svg',
+    [STATUS.CANCELLED]: 'remove-text.svg',
+    [STATUS.NO_SHOW]: 'remove-text.svg'
+};
+
+const WAITLIST_STATUS_ICONS = {
+    [WAITLIST_STATUS.WAITLIST]: 'filled-yellow-warning.svg',
+    [WAITLIST_STATUS.WAITLIST_HOLD]: 'filled-yellow-warning.svg',
+    [WAITLIST_STATUS.WAITLIST_EXPIRED]: 'remove-text.svg',
+    [WAITLIST_STATUS.WAITLIST_CANCELED]: 'remove-text.svg'
+};
+
+const EXPERIENCES = {
+    SERVICES: 'services',
+    EVENTS: 'events',
+    WAITLIST: 'waitlist'
+};
+
+export {
+    STATUS, STATUS_ICONS, EXPERIENCES, CANCELLED_SUBSTATUS, WAITLIST_STATUS, WAITLIST_STATUS_ICONS
+};

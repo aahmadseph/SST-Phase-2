@@ -1,0 +1,6 @@
+import { withProductQuickLookModalProps } from 'viewModel/globalModals/productQuickLookModal/withProductQuickLookModalProps';
+import ProductQuickLookModal from 'components/GlobalModals/QuickLookModal/ProductQuickLookModal/ProductQuickLookModal';
+
+const ConnectedProductQuickLookModal = withProductQuickLookModalProps(ProductQuickLookModal);
+
+export default ConnectedProductQuickLookModal;

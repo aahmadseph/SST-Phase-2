@@ -1,0 +1,21 @@
+{
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file",
+    "[javascript]": {
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    },
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "vs-code-prettier-eslint.prettierLast": false,
+    "jest.virtualFolders": [
+        {
+            "name": "UI tests",
+            "rootPath": "projects/ui"
+        }
+    ],
+    "jest.jestCommandLine": "../../node_modules/.bin/jest"
+}

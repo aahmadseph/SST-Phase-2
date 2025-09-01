@@ -1,0 +1,6 @@
+import ModifySubscriptionErrorModal from 'components/GlobalModals/ModifySubscriptionErrorModal/ModifySubscriptionErrorModal';
+import { withModifySubscriptionErrorModalProps } from 'viewModel/globalModals/modifySubscriptionErrorModal/withModifySubscriptionErrorModalProps';
+
+const ConnectedModifySubscriptionErrorModal = withModifySubscriptionErrorModalProps(ModifySubscriptionErrorModal);
+
+export default ConnectedModifySubscriptionErrorModal;

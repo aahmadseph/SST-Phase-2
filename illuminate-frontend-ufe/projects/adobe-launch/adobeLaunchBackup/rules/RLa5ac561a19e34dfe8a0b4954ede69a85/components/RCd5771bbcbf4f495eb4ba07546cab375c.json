@@ -1,0 +1,91 @@
+{
+    "id": "RCd5771bbcbf4f495eb4ba07546cab375c",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2023-02-14T21:47:21.886Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: GA4_beginCheckout",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-04-12T14:54:46.616Z",
+        "created_by_email": "rachel.joss@sephora.com",
+        "created_by_display_name": "rachel joss",
+        "updated_by_email": "Nikolai.Shilin@sephora.com",
+        "updated_by_display_name": "Nikolai Shilin",
+        "settings": "{\"source\":\"var safelyConvertToUSD = function(price) {\\n    /* Remove any currency from the front or back of the string */\\n    price = price.match(/\\\\d+(?:\\\\.\\\\d+|\\\\,\\\\d+\\\\.\\\\d+|\\\\,\\\\d+)|\\\\d+/)[0]; /* Remove any commas because they break the convertToUSD method */ /* Adding decimals in place of commas for CA/FR */\\n    if (digitalData.page.pageInfo.language.toLowerCase() === 'fr') {\\n        price = price.replace(',', '.');\\n    } else {\\n        price = price.replace(',', '');\\n    } /* Convert to USD using Signal Library */\\n    //price = Sephora.analytics.utils.convertToUSD(price);\\n    return price;\\n};\\n\\nvar itemList = digitalData.cart.item;\\n\\nvar items = [];\\n\\nitemList.forEach((item) =\\u003e {\\n    let itemObj = {};\\n    itemObj.item_id = item.sku.skuId;\\n    itemObj.item_name = item.sku.productName + ' -\\u003e AL';\\n    itemObj.item_brand = item.sku.brandName || '';\\n    itemObj.item_category = item.sku.parentCategory \\u0026\\u0026 item.sku.parentCategory.displayName || '';\\n    itemObj.item_variant = item.sku.variationValue || '';\\n    itemObj.quantity = item.qty;\\n    let price = 0;\\n    let itemPriceToSend = (item.sku.type === 'Standard' \\u0026\\u0026 !item.sku.biType) || item.sku.type === 'Flash SKU' || item.sku.type === 'Gift Card';\\n    if (itemPriceToSend) {\\n        price = safelyConvertToUSD(item.sku.salePrice || item.sku.listPrice);\\n    }\\n    itemObj.price = Number(price).toFixed(2);\\n    items.push(itemObj);\\n});\\n\\nvar value = items.reduce(function (acc, obj) { return acc + (obj.price*obj.quantity); }, 0);\\n\\ngtag('event', 'begin_checkout', { \\n  'send_to': _satellite.getVar('[TMS] GA4 Measurement Id'), \\n  'value': value, \\n  'currency': 'USD', \\n  items: items\\n});\\n\\n//gtag('event', 'begin_checkout', {\\n//    'items': items,\\n//});\\n\\n\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd5771bbcbf4f495eb4ba07546cab375c/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd5771bbcbf4f495eb4ba07546cab375c/updated_with_extension"
+            },
+            "data": {
+                "id": "EX06a7afc619ae4214a074cb5399abf9fa",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd5771bbcbf4f495eb4ba07546cab375c/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd5771bbcbf4f495eb4ba07546cab375c/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd5771bbcbf4f495eb4ba07546cab375c/origin"
+            },
+            "data": {
+                "id": "RCd5771bbcbf4f495eb4ba07546cab375c",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd5771bbcbf4f495eb4ba07546cab375c/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RCd5771bbcbf4f495eb4ba07546cab375c",
+        "rules": "https://reactor.adobe.io/rule_components/RCd5771bbcbf4f495eb4ba07546cab375c/rules",
+        "self": "https://reactor.adobe.io/rule_components/RCd5771bbcbf4f495eb4ba07546cab375c"
+    },
+    "meta": {
+        "latest_revision_number": 7
+    }
+}

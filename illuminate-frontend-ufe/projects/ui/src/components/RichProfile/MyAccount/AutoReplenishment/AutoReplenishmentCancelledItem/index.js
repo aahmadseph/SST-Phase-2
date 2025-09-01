@@ -1,0 +1,4 @@
+import AutoReplenishmentCancelledItem from 'components/RichProfile/MyAccount/AutoReplenishment/AutoReplenishmentCancelledItem/AutoReplenishmentCancelledItem';
+import { withAutoReplenishCancelledItemProps } from 'viewModel/richProfile/myAccount/autoReplenishment/autoReplenishCancelledItem/withAutoReplenishCancelledItemProps';
+
+export default withAutoReplenishCancelledItemProps(AutoReplenishmentCancelledItem);

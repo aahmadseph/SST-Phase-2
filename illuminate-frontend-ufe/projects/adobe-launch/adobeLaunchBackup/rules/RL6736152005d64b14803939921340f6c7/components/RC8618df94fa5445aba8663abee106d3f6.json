@@ -1,0 +1,91 @@
+{
+    "id": "RC8618df94fa5445aba8663abee106d3f6",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2022-10-20T00:57:08.160Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: doubleClick_creditCardSubmission",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-02-13T16:01:08.213Z",
+        "created_by_email": "luis.booth@sephora.com",
+        "created_by_display_name": "Luis booth",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"\\u003cscript\\u003e\\n  (function () {\\n\\n    var u1 = _satellite.getVar('[TMS] Page :: Name');\\n    var u9 = _satellite.getVar('[TMS] User :: ATG ID - pageLoadEvent');\\n    var u10 = _satellite.getVar('[TMS] User :: BI Status');\\n\\n    // Replacing this Data Element: _satellite.getVar('[TMS] BI Account Number - asyncPageLoad')\\n    var doubleClick_biAccountId = digitalData.user[0].segment.biAccountId;\\n\\n    // This data element has multiple implementations.\\n    var dc_custom_params = { 'match_id': doubleClick_biAccountId, \\n                            'origin': 'Adobe Launch Tag - doubleClick_creditCardSubmission' };\\n\\n    var data = {\\n        'allow_custom_scripts': true,\\n        u1: u1,\\n        u9: u9,\\n        u10: u10,\\n        dc_custom_params: dc_custom_params,\\n        'send_to': 'DC-5878462/produ0/credi0+standard',\\n    };\\n\\n    gtag('event', 'conversion', data);\\n  }());\\n\\u003c/script\\u003e\\n\\u003cnoscript\\u003e\\n  \\u003cimg src=\\\"https://ad.doubleclick.net/ddm/activity/src=5878462;type=produ0;cat=credi0;u1=%[TMS] Page :: Name%;u9=%[TMS] User :: ATG ID%;u10=%[TMS] User :: BI Status%;match_id=%[TMS] BI Account Number%;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;npa=;ord=1?\\\" width=\\\"1\\\" height=\\\"1\\\" alt=\\\"\\\"/\\u003e\\n\\u003c/noscript\\u003e\",\"language\":\"html\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8618df94fa5445aba8663abee106d3f6/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8618df94fa5445aba8663abee106d3f6/updated_with_extension"
+            },
+            "data": {
+                "id": "EX06a7afc619ae4214a074cb5399abf9fa",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8618df94fa5445aba8663abee106d3f6/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8618df94fa5445aba8663abee106d3f6/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8618df94fa5445aba8663abee106d3f6/origin"
+            },
+            "data": {
+                "id": "RC8618df94fa5445aba8663abee106d3f6",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8618df94fa5445aba8663abee106d3f6/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC8618df94fa5445aba8663abee106d3f6",
+        "rules": "https://reactor.adobe.io/rule_components/RC8618df94fa5445aba8663abee106d3f6/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC8618df94fa5445aba8663abee106d3f6"
+    },
+    "meta": {
+        "latest_revision_number": 3
+    }
+}

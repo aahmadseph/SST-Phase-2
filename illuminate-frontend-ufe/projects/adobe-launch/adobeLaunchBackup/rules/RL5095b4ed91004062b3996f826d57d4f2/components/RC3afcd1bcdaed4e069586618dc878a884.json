@@ -1,0 +1,91 @@
+{
+    "id": "RC3afcd1bcdaed4e069586618dc878a884",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2024-04-19T15:36:33.745Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: GA4_AffiliateEventsTracking",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2024-11-19T20:23:27.676Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"let affiliateParameters = localStorage.getItem('affiliateGatewayParameters');\\n\\nfunction getPSTTime() {\\n  // Get current time in UTC\\n  let currentUTC = new Date();\\n\\n  // Offset for PST in milliseconds (UTC -8 hours)\\n  let offset = -8 * 60 * 60 * 1000;\\n\\n  // Apply the offset to get PST time\\n  let pstTime = new Date(currentUTC.getTime() + offset);\\n  \\n  const options = {\\n    year: 'numeric',\\n    month: 'numeric',\\n    day: 'numeric',\\n  };\\n  \\n  let pstTimePart = pstTime.toLocaleTimeString('en-US');\\n  let pstDatePart = pstTime.toLocaleDateString('en-US', options);\\n  return `${pstDatePart} ${pstTimePart}`;\\n}\\n\\nfunction splitStringIntoChunks(str, chunkSize) {\\n    const chunks = [];\\n    for (let i = 0; i \\u003c str.length; i += chunkSize) {\\n        chunks.push(str.slice(i, i + chunkSize));\\n    }\\n    return chunks;\\n}\\n\\nif (affiliateParameters) {\\n  let parsedParameters = JSON.parse(localStorage.getItem('affiliateGatewayParameters'));\\n  let linkShareTime = _satellite.readCookie('linkShareTime');\\n  if (parsedParameters.data) {\\n    \\n    let params = parsedParameters.data.params;\\n    let eventName = 'Rakuten_Gateway_Order';\\n    let siteID = params.siteID;\\n    let storedURL = params.url;\\n    \\n    // A Custom Event Parameter should be 100 characters and under...\\n    let parsedUrl = Array.isArray(storedURL) \\u0026\\u0026 storedURL.length \\u003e 0 ? storedURL[0] : '';\\n    \\n    gtag('event', eventName, {\\n     'send_to': _satellite.getVar('[TMS] GA4 Measurement Id'), \\n     'siteID': Array.isArray(siteID) \\u0026\\u0026 siteID.length \\u003e 0 ? siteID[0] : '',\\n     'affiliateURL': parsedUrl,\\n     'linkShareTime': linkShareTime,\\n     'transactionTime': getPSTTime(),\\n     'order_ID': digitalData.transaction.transactionID,\\n     'orderSource': 'web'\\n    });\\n    \\n  }\\n}\\n\\n\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC3afcd1bcdaed4e069586618dc878a884/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC3afcd1bcdaed4e069586618dc878a884/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC3afcd1bcdaed4e069586618dc878a884/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC3afcd1bcdaed4e069586618dc878a884/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC3afcd1bcdaed4e069586618dc878a884/origin"
+            },
+            "data": {
+                "id": "RC3afcd1bcdaed4e069586618dc878a884",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC3afcd1bcdaed4e069586618dc878a884/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC3afcd1bcdaed4e069586618dc878a884",
+        "rules": "https://reactor.adobe.io/rule_components/RC3afcd1bcdaed4e069586618dc878a884/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC3afcd1bcdaed4e069586618dc878a884"
+    },
+    "meta": {
+        "latest_revision_number": 13
+    }
+}

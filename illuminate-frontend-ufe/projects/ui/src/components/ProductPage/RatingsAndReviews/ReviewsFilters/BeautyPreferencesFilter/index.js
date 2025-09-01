@@ -1,0 +1,4 @@
+import BeautyPreferencesFilter from 'components/ProductPage/RatingsAndReviews/ReviewsFilters/BeautyPreferencesFilter/BeautyPreferencesFilter';
+import { withBeautyPreferencesFilterProps } from 'viewModel/productPage/ratingsAndReviews/reviewsFilters/beautyPreferencesFilter/withBeautyPreferencesFilterProps';
+
+export default withBeautyPreferencesFilterProps(BeautyPreferencesFilter);

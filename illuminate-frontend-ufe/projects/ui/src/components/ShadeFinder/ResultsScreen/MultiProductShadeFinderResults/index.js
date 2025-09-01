@@ -1,0 +1,6 @@
+import MultiProductShadeFinderResults from 'components/ShadeFinder/ResultsScreen/MultiProductShadeFinderResults/MultiProductShadeFinderResults';
+import { withMultiProductShadeFinderResultsProps } from 'viewModel/shadeFinder/resultsScreen/multiProductShadeFinderResults/withMultiProductShadeFinderResultsProps';
+
+const ConnectedMultiProductShadeFinderResults = withMultiProductShadeFinderResultsProps(MultiProductShadeFinderResults);
+
+export default ConnectedMultiProductShadeFinderResults;

@@ -1,0 +1,87 @@
+version: "3.9"
+networks:
+  jerri-ufe-network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+services:
+  base-docker-image:
+    image: sephora-docker.artifactory/sephora_ufe_base/local:latest
+    build:
+      context: ../../
+      dockerfile: projects/server/tools/dockerfiles/Dockerfile.base
+  ufe-frontend:
+    depends_on:
+      - base-docker-image
+    build:
+      args:
+        UFE_BASE_VERSION: local
+        UFE_BASE_TAG_VERSION: latest
+      context: ../../
+      dockerfile: projects/server/tools/dockerfiles/Dockerfile.ufe
+    ports:
+      - 3000:3000
+      - 10001-10005:10001-10005
+    hostname: local.sephora.com
+    environment:
+      UFE_ENV: LOCAL
+      ROUTER_SERVER_PORT: 443
+      ROUTER_SERVER_NAME: local.sephora.com
+      BUILD_MODE: frontend
+      DEVICE_ID: $DEVICE_ID
+      ACCESS_TOKEN: $ACCESS_TOKEN
+      PROXY_HOST: $PROXY_HOST
+      API_HOST: $API_HOST
+      API_PORT: $API_PORT
+      IMAGE_HOST: $IMAGE_HOST
+      DISABLE_SSL: "false"
+      START_UFE: "true"
+    volumes:
+      - "./logs:/home/node/app/projects/server/logs:rw"
+      - "~/ssl-keys:/home/node/app/projects/server/ssl-keys/:rw"
+      - "./projects/ui/src:/home/node/app/projects/ui/src:rw"
+    networks:
+      jerri-ufe-network:
+        ipv4_address: 172.20.0.6
+  jerri-web-server:
+    depends_on:
+      - base-docker-image
+    restart: always
+    build:
+      args:
+        UFE_BASE_VERSION: local
+        UFE_BASE_TAG_VERSION: latest
+        UFE_APPLICATION_NAME: jerri
+        UFE_MAX_OLD_SPACE_SIZE: 2900
+      context: ../../
+      dockerfile: projects/server/tools/dockerfiles/Dockerfile.jerri
+    hostname: local.sephora.com
+    ports:
+      - 4000:4000
+      - 443:443
+      - 9229-9231:9229-9231
+      - 10000:10000
+    environment:
+      CLUSTER_WORKERS: 1
+      ROUTER_SERVER_PORT: 443
+      ROUTER_SERVER_NAME: local.sephora.com
+      DEVICE_ID: $DEVICE_ID
+      ACCESS_TOKEN: $ACCESS_TOKEN
+      PROXY_HOST: $PROXY_HOST
+      API_HOST: $API_HOST
+      API_PORT: $API_PORT
+      IMAGE_HOST: $IMAGE_HOST
+      RENDER_HOST: 172.20.0.6
+      RENDER_HOST_PORT: 3000
+      ENABLE_REDIS: "false"
+      REDIS_HOST: 172.17.0.2
+      REDIS_PORT: 7000
+      LOG_LEVEL: verbose
+      DISABLE_SSL: "false"
+      UFE_ENV: LOCAL
+    volumes:
+      - "./logs:/home/node/app/projects/server/logs:rw"
+      - "~/ssl-keys:/home/node/app/projects/server/ssl-keys/:rw"
+    networks:
+      jerri-ufe-network:
+        ipv4_address: 172.20.0.7

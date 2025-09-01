@@ -1,0 +1,50 @@
+import React from 'react';
+
+const ModalHeader = ({ title, onClose }) => {
+    const modalHeaderStyles = {
+        display: 'flex',
+        padding: '16px',
+        borderBottom: '1px solid #EEEEEE'
+    };
+
+    const modalHeaderTitleStyles = {
+        flex: 1,
+        textAlign: 'center',
+        fontSize: '16px',
+        fontWeight: 700
+    };
+
+    const modalHeaderCloseStyles = {
+        width: '24px',
+        height: '24px'
+    };
+
+    return (
+        <div style={modalHeaderStyles}>
+            <h3 style={modalHeaderTitleStyles}>{title}</h3>
+            <button
+                role='button'
+                style={modalHeaderCloseStyles}
+                onClick={onClose}
+                title='Close dialog'
+            >
+                <svg
+                    width='24'
+                    height='24'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    xmlns='http://www.w3.org/2000/svg'
+                >
+                    <path
+                        fillRule='evenodd'
+                        clipRule='evenodd'
+                        d='M6.28033 5.21967C5.98744 4.92678 5.51256 4.92678 5.21967 5.21967C4.92678 5.51256 4.92678 5.98744 5.21967 6.28033L10.9393 12L5.21967 17.7197C4.92678 18.0126 4.92678 18.4874 5.21967 18.7803C5.51256 19.0732 5.98744 19.0732 6.28033 18.7803L12 13.0607L17.7197 18.7803C18.0126 19.0732 18.4874 19.0732 18.7803 18.7803C19.0732 18.4874 19.0732 18.0126 18.7803 17.7197L13.0607 12L18.7803 6.28033C19.0732 5.98744 19.0732 5.51256 18.7803 5.21967C18.4874 4.92678 18.0126 4.92678 17.7197 5.21967L12 10.9393L6.28033 5.21967Z'
+                        fill='black'
+                    />
+                </svg>
+            </button>
+        </div>
+    );
+};
+
+export default ModalHeader;

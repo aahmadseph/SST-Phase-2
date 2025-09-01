@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+  <Properties>
+    <Property name="LOG_PATTERN">
+      %d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${hostName} --- [%15.15t] %-40.40c{1.} : %m%n%ex
+    </Property>
+    <Property name="SEPHORA_LOG_PATTERN">
+      %d{yyyy-MM-dd HH:mm:ss,SSS} %d{UNIX} %-5p [%c{1.}] (%t %X{requestMethod} %X{requestUri} %X{correlationId}) %m%n
+    </Property>
+  </Properties>
+
+  <Appenders>
+    <Console name="ConsoleAppender" target="SYSTEM_OUT">
+      <JsonLayout complete="false"
+                  compact="true"
+                  eventEol="true"
+                  objectMessageAsJsonObject="true"
+                  properties="true" />
+    </Console>
+
+  </Appenders>
+  <Loggers>
+
+    <Logger name="com.sephora.services" level="debug" additivity="false">
+      <AppenderRef ref="ConsoleAppender"/>
+    </Logger>
+
+    <Logger name="org.apache.tomcat" level="info" additivity="false">
+      <AppenderRef ref="ConsoleAppender"/>
+    </Logger>
+
+    <Logger name="org.apache.catalina" level="info" additivity="false">
+      <AppenderRef ref="ConsoleAppender"/>
+    </Logger>
+
+    <Root level="info">
+      <AppenderRef ref="ConsoleAppender"/>
+    </Root>
+  </Loggers>
+</Configuration>

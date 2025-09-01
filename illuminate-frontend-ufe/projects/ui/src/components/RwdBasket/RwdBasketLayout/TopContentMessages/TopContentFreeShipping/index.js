@@ -1,0 +1,3 @@
+import TopContentFreeShipping from 'components/RwdBasket/RwdBasketLayout/TopContentMessages/TopContentFreeShipping/TopContentFreeShipping';
+
+export default TopContentFreeShipping;

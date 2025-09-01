@@ -1,0 +1,8 @@
+query ReservationSensitiveDetails($confirmationId: ID!) {
+  reservationSensitiveDetails(confirmationId: $confirmationId) {
+    clientDetails {
+      email
+      phone
+    }
+  }
+}

@@ -1,0 +1,128 @@
+/**
+ * FORMAT
+ * timeZoneName: [STANDARD TIME UTC OFFSET, DAYLIGHT SAVING TIME UTC OFFSET]
+ */
+const TimeZones = {
+    //UTC-10
+    'GMT-10': [-10, -10],
+    'America/Adak': [-10, -9],
+    'America/Atka': [-10, -9],
+    HST: [-10, -10],
+    'Pacific/Honolulu': [-10, -10],
+    'Pacific/Johnston': [-10, -10],
+    'US/Aleutian': [-10, -9],
+    'US/Hawaii': [-10, -10],
+
+    //UTC-9
+    'GMT-9': [-9, -9],
+    'America/Anchorage': [-9, -8],
+    'America/Juneau': [-9, -8],
+    'America/Metlakatla': [-9, -8],
+    'America/Nome': [-9, -8],
+    'America/Sitka': [-9, -8],
+    'America/Yakutat': [-9, -8],
+    'US/Alaska': [-9, -8],
+
+    // UTC-8
+    'GMT-8': [-8, -8],
+    PST8PDT: [-8, -7],
+    PST: [-8, -7],
+    'America/Los_Angeles': [-8, -7],
+    'US/Pacific': [-8, -7],
+    'US/Pacific-New': [-8, -7],
+    'Canada/Pacific': [-8, -7],
+    'Canada/Yukon': [-8, -7],
+    'America/Dawson': [-8, -7],
+    'America/Vancouver': [-8, -7],
+    'America/Whitehorse': [-8, -7],
+
+    //UTC-7
+    'GMT-7': [-7, -7],
+    MST: [-7, -7],
+    MST7MDT: [-7, -6],
+    'America/Boise': [-7, -6],
+    'America/Denver': [-7, -6],
+    'America/Phoenix': [-7, -7],
+    'US/Arizona': [-7, -7],
+    'US/Mountain': [-7, -6],
+    'Canada/Mountain': [-7, -6],
+    'America/Cambridge_Bay': [-7, -6],
+    'America/Creston': [-7, -7],
+    'America/Dawson_Creek': [-7, -7],
+    'America/Edmonton': [-7, -6],
+    'America/Fort_Nelson': [-7, -7],
+    'America/Inuvik': [-7, -6],
+    'America/Yellowknife': [-7, -6],
+    PDT: [-8, -7],
+
+    //UTC-6
+    'GMT-6': [-6, -6],
+    CST: [-6, -6],
+    CST6CDT: [-6, -5],
+    'America/Chicago': [-6, -5],
+    'America/Indiana/Knox': [-6, -5],
+    'America/Indiana/Tell_City': [-6, -5],
+    'America/Menominee': [-6, -5],
+    'America/North_Dakota/Beulah': [-6, -5],
+    'America/North_Dakota/Center': [-6, -5],
+    'America/North_Dakota/New_Salem': [-6, -5],
+    'US/Central': [-6, -5],
+    'US/Indiana-Starke': [-6, -5],
+    'Canada/Saskatchewan': [-6, -6],
+    'America/Knox_IN': [-6, -5],
+    'Canada/Central': [-6, -5],
+    'America/Rainy_River': [-6, -5],
+    'America/Rankin_Inlet': [-6, -5],
+    'America/Regina': [-6, -6],
+    'America/Resolute': [-6, -5],
+    'America/Swift_Current': [-6, -6],
+    'America/Winnipeg': [-6, -5],
+
+    //UTC-5
+    'GMT-5': [-5, -5],
+    EST: [-5, -5],
+    EST5EDT: [-5, -4],
+    'America/Detroit': [-5, -4],
+    'America/Indiana/Indianapolis': [-5, -4],
+    'America/Indiana/Marengo': [-5, -4],
+    'America/Indiana/Petersburg': [-5, -4],
+    'America/Indiana/Vevay': [-5, -4],
+    'America/Indiana/Vincennes': [-5, -4],
+    'America/Indiana/Winamac': [-5, -4],
+    'America/Indianapolis': [-5, -4],
+    'America/Kentucky/Louisville': [-5, -4],
+    'America/Kentucky/Monticello': [-5, -4],
+    'America/Fort_Wayne': [-5, -4],
+    'America/Louisville': [-5, -4],
+    'America/New_York': [-5, -4],
+    'US/Eastern': [-5, -4],
+    'US/East-Indiana': [-5, -4],
+    'US/Michigan': [-5, -4],
+    'Canada/Eastern': [-5, -4],
+    'America/Atikokan': [-5, -5],
+    'America/Coral_Harbour': [-5, -5],
+    'America/Iqaluit': [-5, -4],
+    'America/Montreal': [-5, -4],
+    'America/Nipigon': [-5, -4],
+    'America/Pangnirtung': [-5, -4],
+    'America/Thunder_Bay': [-5, -4],
+    'America/Toronto': [-5, -4],
+
+    //UTC-4
+    'GMT-4': [-4, -4],
+    'Canada/Atlantic': [-4, -3],
+    'America/Blanc-Sablon': [-4, -4],
+    'America/Glace_Bay': [-4, -3],
+    'America/Goose_Bay': [-4, -3],
+    'America/Halifax': [-4, -3],
+    'America/Moncton': [-4, -3],
+    'America/Puerto_Rico': [-4, -4],
+    AST: [-4, -4],
+
+    //UTC-3
+    'GMT-3': [-3, -3],
+    'America/St_Johns': [-3.5, -2.5],
+    'Canada/Newfoundland': [-3.5, -2.5]
+};
+
+export default TimeZones;

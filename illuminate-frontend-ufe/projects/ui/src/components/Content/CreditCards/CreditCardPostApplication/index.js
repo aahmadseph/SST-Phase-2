@@ -1,0 +1,4 @@
+import CreditCardPostApplication from 'components/Content/CreditCards/CreditCardPostApplication/CreditCardPostApplication';
+import { withCreditCardApplicationProps } from 'viewModel/content/creditCards/creditCardApplication/withCreditCardApplicationProps';
+
+export default withCreditCardApplicationProps(CreditCardPostApplication);

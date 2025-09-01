@@ -1,0 +1,4 @@
+import ItemSubstitutionModal from 'components/ItemSubstitution/ItemSubstitutionModal/ItemSubstitutionModal';
+import { withItemSubstitutionModalProps } from 'viewModel/itemSubstitution/itemSubstitutionModal/withItemSubstitutionModalProps';
+
+export default withItemSubstitutionModalProps(ItemSubstitutionModal);

@@ -1,0 +1,91 @@
+{
+    "id": "RC98d78e7a01e04952bd46c44c4be78eb2",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2024-08-01T14:06:41.745Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "Tag: Clinch Search",
+        "negate": false,
+        "order": 1,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2024-08-01T14:17:27.858Z",
+        "created_by_email": "niltoncesar.santos@sephora.com",
+        "created_by_display_name": "niltoncesar santos",
+        "updated_by_email": "niltoncesar.santos@sephora.com",
+        "updated_by_display_name": "niltoncesar santos",
+        "settings": "{\"source\":\"const eventId = `search-${_satellite.getVar(\\\"[UEID] :: Universal Event ID Fx\\\")(event)}`;\\nconst skuIds = digitalData.page.attributes.search.productsDisplayed?.map(product =\\u003e product.currentSku.skuId) || [];\\nconst searchString = digitalData.page.attributes.search.searchTerm;\\nconst contentCategory = '';\\n\\nif(clq) {\\n  clq(\\n    'track',\\n    'Search',\\n    {\\n      eventId: eventId,\\n      content_type: 'product',\\n      content_ids: skuIds,\\n      search_string: searchString,\\n      content_category: contentCategory\\n    }\\n  );\\n}\\n\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC98d78e7a01e04952bd46c44c4be78eb2/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC98d78e7a01e04952bd46c44c4be78eb2/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC98d78e7a01e04952bd46c44c4be78eb2/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC98d78e7a01e04952bd46c44c4be78eb2/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC98d78e7a01e04952bd46c44c4be78eb2/origin"
+            },
+            "data": {
+                "id": "RC98d78e7a01e04952bd46c44c4be78eb2",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC98d78e7a01e04952bd46c44c4be78eb2/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC98d78e7a01e04952bd46c44c4be78eb2",
+        "rules": "https://reactor.adobe.io/rule_components/RC98d78e7a01e04952bd46c44c4be78eb2/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC98d78e7a01e04952bd46c44c4be78eb2"
+    },
+    "meta": {
+        "latest_revision_number": 1
+    }
+}

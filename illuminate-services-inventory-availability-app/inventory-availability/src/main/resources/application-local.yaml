@@ -1,0 +1,72 @@
+spring:
+  redis:
+    cluster:
+      nodes: SephRedisCluster.redis.cache.windows.net:6379
+    password: DGCxQHOtpn4DLvER0m0xFnKAGt1CNWHSPGtR1fSeLZY=
+  messages:
+    basename: messages
+
+discovery:
+  client:
+    currentServiceId: inventory-availability-svc
+
+logging:
+  config: classpath:log4j2.xml
+  level:
+    root: DEBUG
+
+request:
+  log:
+    jsonBodies: true
+    maxPayloadLength: 1000
+    excludeUrlPatterns: /actuator/health,/actuator/liveness,/actuator/prometheus
+
+inventory:
+  async:
+    corePoolSize : 500
+    maxPoolSize : 1000
+    queueCapacity : 0
+    keepAlive : 180
+    waitTimeoutInSeconds : 5
+    batchSize : 5
+  useShardedApproach: false
+  defaultOrgId : SEPHORA
+  defaultTransactioType : DEFAULT
+  defaultSegment : DEFAULT
+  defaultSellingChannel : SEPHORAUS
+ 
+management:
+  endpoint:
+    restart:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+          - loggers
+          - health
+          - caches
+          - liveness
+          - prometheus
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+feign:
+  yantriks:
+    serviceUrl: http://localhost:9099
+    #serviceUrl: https://sephora-yas-ingress.yantriks.in
+    #serviceUrl: https://sephora-dev-availability.yantriks.com
+    defaultMaxPerRouteConnections: 1000
+    maxTotalConnections: 2000
+    socketTimeout: 5000
+    connectionTimeout: 5000
+    connectionRequestTimeout: 5000
+yantriks:
+  enabled: true
+  jwtToken : Bearer eyJraWQiOiIyMmM0MzI1MjNlNjNiYzVhYjQxMzQyM2E0ODcyM2E5NDAxOGNjNzQ0IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJhcGlhdXRoQHNlcGhvcmEtMjcyNDA2LmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoic2Fhcy15YW50cmlrcy1zZXBob3JhLXBlcmYiLCJpc3MiOiJhcGlhdXRoQHNlcGhvcmEtMjcyNDA2LmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiZXhwIjoxNTg4MjM5MjQyLCJpYXQiOjE1ODcwMjk2NDJ9.bfbz8GaTKfjLQOfT2q7gS7QGOBIy9HhiQzHFwpinHNr99fCoKKhMbYjid2V0jUX58KFBK5pDM3brPC9P49X-cI5n_YODSIiqP3SW83GM2juTz_MTzLFeDRGhkWPrAtfLXUCAR-sfBgDzhISwxfKapbaXEyjfXhqA7mBADgGUwajb8RSAyxrQQg-dn9oi3_fVDNaHYm1ULpzcj-GaydiXN3GiFnsqIVhMqQdpEuTr4NsWCBZcW5ZyMsu6UvTCpUbFAOguqZsor13anFMCT3PzQtIo1uF0Yqw9LACSw0Nu4bYgQWIJFQ4kUqlNLxrLMl6DUCCHDL4_VKzW7S8S5cl2eA
+  
+sephora:
+  cache:
+      type: jcache
+      

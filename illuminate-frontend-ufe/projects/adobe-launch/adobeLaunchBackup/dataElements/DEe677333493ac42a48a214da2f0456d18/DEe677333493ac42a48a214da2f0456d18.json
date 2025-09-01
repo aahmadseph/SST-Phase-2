@@ -1,0 +1,97 @@
+{
+    "id": "DEe677333493ac42a48a214da2f0456d18",
+    "type": "data_elements",
+    "attributes": {
+        "created_at": "2022-09-06T16:27:04.212Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "[TMS] Refinement Selections",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2022-09-06T16:27:04.212Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "clean_text": false,
+        "default_value": null,
+        "delegate_descriptor_id": "core::dataElements::custom-code",
+        "force_lower_case": false,
+        "review_status": "unsubmitted",
+        "storage_duration": null,
+        "settings": "{\"source\":\"/* This is fired by Olapic.\\n** All selections are mutually exclusive right now\\n** but we can adjust this code to handle mutiple selections\\n** if we need to in the future */\\n\\nvar data = (event.detail.data || []),\\n    currData,\\n    currString,\\n    selectionsArray = [],\\n    catsAndSelections = [],\\n    i, j;\\n\\n//Only add the name once\\nvar name = data[0].refinementName + \\\"=\\\";\\n\\nfor (i = 0; i \\u003c (data || []).length; i++){\\n    currString = \\\"\\\";\\n    selectionsArray = [];\\n    currData = data[i];\\n\\n    if (currData.refinementType){\\n        currString += currData.refinementType + \\\":\\\";\\n    }\\n\\n    for (j = 0; j \\u003c currData.refinementSelections.length; j++){\\n        selectionsArray.push(currData.refinementSelections[j]);\\n    }\\n\\n    currString += selectionsArray.join(\\\",\\\");\\n\\n    catsAndSelections.push(currString);\\n\\n}\\n\\nreturn name + catsAndSelections.join(\\\";\\\") ;\\n\\n\"}"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEe677333493ac42a48a214da2f0456d18/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEe677333493ac42a48a214da2f0456d18/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEe677333493ac42a48a214da2f0456d18/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEe677333493ac42a48a214da2f0456d18/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEe677333493ac42a48a214da2f0456d18/origin"
+            },
+            "data": {
+                "id": "DEe677333493ac42a48a214da2f0456d18",
+                "type": "data_elements"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEe677333493ac42a48a214da2f0456d18/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEe677333493ac42a48a214da2f0456d18/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEe677333493ac42a48a214da2f0456d18/updated_with_extension"
+            },
+            "data": {
+                "id": "EX3abc0ad4a5fc4a94a4952aeea2507888",
+                "type": "extensions"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/data_elements/DEe677333493ac42a48a214da2f0456d18",
+        "self": "https://reactor.adobe.io/data_elements/DEe677333493ac42a48a214da2f0456d18",
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74"
+    },
+    "meta": {
+        "latest_revision_number": 1
+    }
+}

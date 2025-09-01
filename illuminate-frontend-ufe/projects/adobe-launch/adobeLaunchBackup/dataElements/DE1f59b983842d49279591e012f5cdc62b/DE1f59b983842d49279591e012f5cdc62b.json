@@ -1,0 +1,97 @@
+{
+    "id": "DE1f59b983842d49279591e012f5cdc62b",
+    "type": "data_elements",
+    "attributes": {
+        "created_at": "2022-09-06T16:16:06.256Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "[TMS] Pixel :: Pinterest :: Order Subtotal",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-07-03T22:15:59.399Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "clean_text": false,
+        "default_value": null,
+        "delegate_descriptor_id": "core::dataElements::custom-code",
+        "force_lower_case": false,
+        "review_status": "unsubmitted",
+        "storage_duration": null,
+        "settings": "{\"source\":\"/*\\n** This is a temporary fix needed becuase we are getting NaN for transactionSubtotalInUSD.\\n** The permanent fix should probably be for back end to send us a pure Javascript Number \\n** without any symbols or currency to use instead.\\n*/\\n\\nvar subtotalInUSD = digitalData.transaction.total.transactionSubtotalInUSD;\\n\\n/*\\nif (Sephora.renderQueryParams.country.toLowerCase() == 'us') {\\n    subtotalInUSD = digitalData.transaction.total.transactionSubtotalInUSD;\\n}\\n*/\\n\\n/* This runs on all pages, so don't do anything unless we have something */\\n\\nif(subtotalInUSD) {\\n    /*Remove whitespace - FR/CA uses spaces*/\\n    subtotalInUSD = digitalData.transaction.total.transactionSubtotalInUSD.replace(/\\\\s+/g, \\\"\\\");\\n    /* Remove any currency from the front or back of the string */\\n    subtotalInUSD = subtotalInUSD.match(/\\\\d+(?:\\\\.\\\\d+|\\\\,\\\\d+\\\\.\\\\d+|\\\\,\\\\d+)|\\\\d+/)[0];\\n    /* Remove any commas because they break the convertToUSD method */\\n    if (digitalData.page.pageInfo.language.toLowerCase() === \\\"fr\\\") {\\n        subtotalInUSD = subtotalInUSD.replace(',', '.');\\n    } else {\\n        subtotalInUSD = subtotalInUSD.replace(',', '');\\n    }\\n\\n    var itemList = digitalData.transaction.item;\\n    itemList.map((item) =\\u003e {\\n        if (item.sku.type == 'Flash SKU' || item.sku.type == 'Gift Card') {\\n            var skuPrice = item.sku.salePrice || item.sku.listPrice;\\n            skuPrice =  skuPrice.replace(/\\\\s+/g, \\\"\\\");\\n            skuPrice =  Sephora.analytics.utils.removeCurrencySymbol(skuPrice);\\n            subtotalInUSD = subtotalInUSD - skuPrice;\\n        }\\n    });\\n    /* Convert to USD using Signal Library */\\n    /*\\n    if (Sephora.renderQueryParams.country.toLowerCase() == 'us') {\\n        subtotalInUSD = Sephora.analytics.utils.convertToUSD(subtotalInUSD); \\n    }\\n    */\\n}\\n\\nreturn subtotalInUSD;\"}"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE1f59b983842d49279591e012f5cdc62b/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE1f59b983842d49279591e012f5cdc62b/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE1f59b983842d49279591e012f5cdc62b/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE1f59b983842d49279591e012f5cdc62b/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE1f59b983842d49279591e012f5cdc62b/origin"
+            },
+            "data": {
+                "id": "DE1f59b983842d49279591e012f5cdc62b",
+                "type": "data_elements"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE1f59b983842d49279591e012f5cdc62b/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE1f59b983842d49279591e012f5cdc62b/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE1f59b983842d49279591e012f5cdc62b/updated_with_extension"
+            },
+            "data": {
+                "id": "EX06a7afc619ae4214a074cb5399abf9fa",
+                "type": "extensions"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/data_elements/DE1f59b983842d49279591e012f5cdc62b",
+        "self": "https://reactor.adobe.io/data_elements/DE1f59b983842d49279591e012f5cdc62b",
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74"
+    },
+    "meta": {
+        "latest_revision_number": 6
+    }
+}

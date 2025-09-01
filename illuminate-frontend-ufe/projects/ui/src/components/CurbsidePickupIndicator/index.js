@@ -1,0 +1,3 @@
+import CurbsidePickupIndicator from 'components/CurbsidePickupIndicator/CurbsidePickupIndicator';
+
+export default CurbsidePickupIndicator;

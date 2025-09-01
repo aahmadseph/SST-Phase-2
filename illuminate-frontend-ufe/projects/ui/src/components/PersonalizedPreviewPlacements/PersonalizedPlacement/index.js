@@ -1,0 +1,4 @@
+import PersonalizedPlacement from 'components/PersonalizedPreviewPlacements/PersonalizedPlacement/PersonalizedPlacement';
+import { withPersonalizedPlacementProps } from 'viewModel/personalizedPreviewPlacements/withPersonalizedPlacementProps';
+
+export default withPersonalizedPlacementProps(PersonalizedPlacement);

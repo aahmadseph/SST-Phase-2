@@ -1,0 +1,6 @@
+import OrderStatusProgressionDetail from 'components/OrderConfirmation/FulfillmentStatus/OrderStatusProgressionDetail/OrderStatusProgressionDetail';
+import { withOrderStatusProgressionDetailProps } from 'viewModel/orderConfirmation/fulfillmentStatus/orderStatusProgressionDetail/withOrderStatusProgressionDetailProps';
+
+const ConnectedOrderStatusProgressionDetail = withOrderStatusProgressionDetailProps(OrderStatusProgressionDetail);
+
+export default ConnectedOrderStatusProgressionDetail;

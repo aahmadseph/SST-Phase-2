@@ -1,0 +1,91 @@
+{
+    "id": "RC191099126bfb435aa8030404c5af9e2d",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2023-01-16T19:18:24.940Z",
+        "delegate_descriptor_id": "adobe-analytics::actions::set-variables",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: Olapic Beauty Board :: Filter :: AJAX Page-load",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-01-16T19:20:14.422Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"customSetup\":{\"source\":\"s.linkTrackVars += \\\",prop19,events,list1\\\";\\ns.linkTrackEvents = events;\\n\\ns.prop19 = (typeof(Visitor) != \\\"undefined\\\" ? \\\"VisitorAPI Present\\\" : \\\"VisitorAPI Missing\\\");\\ns.events = _satellite.getVar('[TMS] Async Event Strings');\\ns.list1 = 'D=v56';\\n\"},\"trackerProperties\":{\"eVars\":[{\"name\":\"eVar56\",\"type\":\"value\",\"value\":\"%[TMS] Refinement Selections%\"}],\"channel\":\"%[TMS] Channel%\",\"campaign\":{\"type\":\"value\",\"value\":\"%[TMS] Campaign :: Marketing Channel%\"},\"pageName\":\"%[TMS] Page :: Name%\"}}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC191099126bfb435aa8030404c5af9e2d/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPbf7b42aa08bc4f10879b1484195e80d1",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC191099126bfb435aa8030404c5af9e2d/updated_with_extension"
+            },
+            "data": {
+                "id": "EX16451747593d45df83aaa5c7ab0a87f9",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC191099126bfb435aa8030404c5af9e2d/extension"
+            },
+            "data": {
+                "id": "EX736ba666267c4e5fa9e44940816ea84b",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC191099126bfb435aa8030404c5af9e2d/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC191099126bfb435aa8030404c5af9e2d/origin"
+            },
+            "data": {
+                "id": "RC191099126bfb435aa8030404c5af9e2d",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC191099126bfb435aa8030404c5af9e2d/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX736ba666267c4e5fa9e44940816ea84b",
+        "origin": "https://reactor.adobe.io/rule_components/RC191099126bfb435aa8030404c5af9e2d",
+        "rules": "https://reactor.adobe.io/rule_components/RC191099126bfb435aa8030404c5af9e2d/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC191099126bfb435aa8030404c5af9e2d"
+    },
+    "meta": {
+        "latest_revision_number": 1
+    }
+}

@@ -1,0 +1,6 @@
+import RedirectProfileContent from 'components/Header/BeautyPreferences/RedirectProfileContent/RedirectProfileContent';
+import { withRedirectProfileContentProps } from 'viewModel/header/beautyPreferences/redirectProfileContent/withRedirectProfileContentProps';
+
+const ConnectedRedirectProfileContent = withRedirectProfileContentProps(RedirectProfileContent);
+
+export default ConnectedRedirectProfileContent;

@@ -1,0 +1,3 @@
+import TopContentBBQMessage from 'components/RwdBasket/RwdBasketLayout/TopContentMessages/TopContentBBQMessage/TopContentBBQMessage';
+
+export default TopContentBBQMessage;

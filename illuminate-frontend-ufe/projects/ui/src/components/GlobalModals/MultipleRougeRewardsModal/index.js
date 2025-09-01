@@ -1,0 +1,6 @@
+import MultipleRougeRewardsModal from 'components/GlobalModals/MultipleRougeRewardsModal/MultipleRougeRewardsModal';
+import { withMultipleRougeRewardsModalProps } from 'viewModel/globalModals/multipleRougeRewardsModal/withMultipleRougeRewardsModalProps';
+
+const ConnectedMultipleRougeRewardsModalProps = withMultipleRougeRewardsModalProps(MultipleRougeRewardsModal);
+
+export default ConnectedMultipleRougeRewardsModalProps;

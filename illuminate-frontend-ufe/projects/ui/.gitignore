@@ -1,0 +1,8 @@
+config/babel/sephora-gql-plugin-config.json
+__tests__/coverage
+src/constants/PageTemplates.js
+src/pages/index.js
+src/thirdparty
+src/utils/locales/allResources.js
+tests/output
+tests/spec/locales/ResourceList.js

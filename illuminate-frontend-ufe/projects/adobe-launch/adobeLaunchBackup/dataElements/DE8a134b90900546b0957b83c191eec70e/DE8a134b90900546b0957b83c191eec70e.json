@@ -1,0 +1,97 @@
+{
+    "id": "DE8a134b90900546b0957b83c191eec70e",
+    "type": "data_elements",
+    "attributes": {
+        "created_at": "2022-09-05T19:41:42.640Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "[TMS] Pixel :: Double Click :: Order Subtotal",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2022-10-26T00:04:17.908Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "luis.booth@sephora.com",
+        "updated_by_display_name": "Luis booth",
+        "clean_text": false,
+        "default_value": null,
+        "delegate_descriptor_id": "core::dataElements::custom-code",
+        "force_lower_case": false,
+        "review_status": "unsubmitted",
+        "storage_duration": null,
+        "settings": "{\"source\":\"var subtotalInUSD = Number(digitalData.transaction.total.transactionSubtotalInUSD).toFixed(2); \\nif (subtotalInUSD \\u0026\\u0026 subtotalInUSD !== 'NaN') { return subtotalInUSD; }\"}"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE8a134b90900546b0957b83c191eec70e/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE8a134b90900546b0957b83c191eec70e/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE8a134b90900546b0957b83c191eec70e/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE8a134b90900546b0957b83c191eec70e/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE8a134b90900546b0957b83c191eec70e/origin"
+            },
+            "data": {
+                "id": "DE8a134b90900546b0957b83c191eec70e",
+                "type": "data_elements"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE8a134b90900546b0957b83c191eec70e/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE8a134b90900546b0957b83c191eec70e/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE8a134b90900546b0957b83c191eec70e/updated_with_extension"
+            },
+            "data": {
+                "id": "EX3abc0ad4a5fc4a94a4952aeea2507888",
+                "type": "extensions"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/data_elements/DE8a134b90900546b0957b83c191eec70e",
+        "self": "https://reactor.adobe.io/data_elements/DE8a134b90900546b0957b83c191eec70e",
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74"
+    },
+    "meta": {
+        "latest_revision_number": 9
+    }
+}

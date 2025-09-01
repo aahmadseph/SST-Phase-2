@@ -1,0 +1,45 @@
+export default function getResource(label, vars = []) {
+    const resources = {
+        emailAddress: 'Adresse de courriel',
+        asMText: 'Si vous ne souhaitez plus recevoir d’avis, saisissez l’adresse courriel que vous désirez supprimer et cliquez sur « Supprimer ».',
+        asMBText: 'Cesser les notifications par courriel',
+        nsMText: 'Sephora enverra un courriel d’avis de produit en stock à :',
+        nsMBText: 'Terminer',
+        empty: 'Veuillez saisir votre adresse courriel.',
+        invalid: 'Veuillez saisir une adresse courriel au format nomutilisateur@domaine.com.',
+        enterValidEmail: 'Veuillez saisir une adresse courriel valide.',
+        subscribe: 'Votre courriel d’avis de produit en stock sera envoyé à ',
+        remove: 'Vous ne devriez plus recevoir d’avis de produit en stock par courriel à',
+        emailSmsNotifications: 'Notifications par courriel et par textos',
+        emailMe: 'Notification par courriel',
+        smsMe: 'Notification par textos',
+        emailTied: 'Nous pouvons seulement envoyer un avis au courriel lié à votre compte.',
+        BIOnly: '(Membre Sephora Beauty Insider seulement)',
+        emailLabel: 'Sephora enverra un courriel d’avis de produit en stock à :',
+        emailNoLonger: 'Si vous ne souhaitez plus recevoir d’avis de retour en stock, cliquez sur « Cesser les notifications par courriel »',
+        needTo: 'Vous devez ',
+        signInLink: 'ouvrir une session',
+        createAccountLink: 'créer un compte',
+        or: ' ou ',
+        toSet: ' pour configurer les notifications par SMS de Sephora.',
+        mobileLabel: 'Numéro de téléphone cellulaire',
+        completeButton: 'Terminer',
+        gotIt: 'Compris',
+        signInCapitalize: 'Ouvrir une session',
+        createAccountCapitalize: 'Créer un compte',
+        errorMessagesSms: 'Vous devez accepter les modalités avant de continuer.',
+        checkboxAgree: 'Je choisis de m’inscrire aux alertes de retour en stock par message texte pour cet article.',
+        subscribedByPhone: `Veuillez vérifier votre application de messagerie texte à ${vars[0]} pour confirmer votre abonnement aux alertes de retour en stock ou votre abonnement aux alertes par texto de Sephora.`,
+        errorMsg: 'Un problème est survenu lors du traitement de votre soumission. Veuillez réessayer plus tard.',
+        noValidPhoneMsg: 'Veuillez saisir un numéro de téléphone cellulaire valable.',
+        unsubscribeTitle: `Pour vous désabonner des avis de produit en stock au numéro ci-dessous, textez « *STOP* » au *${vars[0]}*.`,
+        unsubscribeBody:
+            `Si vous êtes abonné pour recevoir des notifications de produit en stock ou à venir pour plusieurs produits, vous cesserez de recevoir toutes les notifications pour tous les produits pour lesquels vous vous êtes abonné. \n\nSe désinscrire des notifications de produit de retour en stock ou à venir ne vous désinscrit pas des textos marketing. Pour ne plus recevoir de textos marketing, textez « *STOP* » au *${vars[0]}*.`,
+        termsAndConditionsUS:
+            `En entrant mon numéro de téléphone et en cochant la ou les cases que j’ai sélectionnées ci-dessus, en cliquant sur « Terminer » et en confirmant mon inscription, j’accepte de recevoir des messages texte d’alertes de retour en stock ou des textos promotionnels comme indiqué, comprenant qu’ils peuvent être envoyés à toute heure de la journée, je consens à être lié par les [*MODALITÉS PAR TEXTO*|${vars[0]}] de Sephora, je confirme avoir lu la [*POLITIQUE DE CONFIDENTIALITÉ*|${vars[1]}] de Sephora, et je consens expressément à recevoir des messages promotionnels automatiques, y compris des rappels de panier abandonné. La fréquence des messages varie. Le consentement n’est pas une condition d’achat. Des frais de messagerie texte et de données peuvent s’appliquer. Textez ARRET pour annuler en tout temps. Textez AIDE pour obtenir de l’aide.`,
+        termsAndConditionsCA: `En entrant votre numéro de téléphone, en cliquant sur Terminer et en confirmant votre inscription, vous consentez aux [*MODALITÉS DES TEXTOS*|${vars[0]}] et à recevoir (selon vos choix) des messages textes de marketing automatiques récurrents avec des offres exclusives et des mises à jour sur les produits (y compris des rappels de paniers abandonnés), et (ou) des notifications de retour en stock. La fréquence des messages varie. Des frais de messagerie texte et de données peuvent s’appliquer. Consultez notre [*POLITIQUE DE CONFIDENTIALITÉ*|${vars[1]}]. Textez ARRET pour annuler en tout temps. AIDE pour obtenir de l’aide. Sephora : 160, rue Bloor Est, Bureau 1100, Toronto (Ontario) M4W 0A2, Canada. 1-877-737-4672.`,
+        textAlerts: 'J’aimerais aussi m’inscrire aux alertes par texto de Sephora.',
+        phoneNumberRejected: 'Type de téléphone non valide. Veuillez vérifier votre saisie ou utiliser des données valides.'
+    };
+    return resources[label];
+}

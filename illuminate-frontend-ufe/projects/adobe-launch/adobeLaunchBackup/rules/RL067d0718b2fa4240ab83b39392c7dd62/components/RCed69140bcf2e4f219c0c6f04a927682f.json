@@ -1,0 +1,91 @@
+{
+    "id": "RCed69140bcf2e4f219c0c6f04a927682f",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2022-11-09T16:12:21.927Z",
+        "delegate_descriptor_id": "adobe-analytics::actions::set-variables",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "Adobe Analytics - Set Variables",
+        "negate": false,
+        "order": 2,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": false,
+        "published": false,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-07-03T18:43:04.085Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "sai.nikhilreddygudibandi@sephora.com",
+        "updated_by_display_name": "Sai nikhilreddygudibandi",
+        "settings": "{\"customSetup\":{\"source\":\"var products = _satellite.getVar('[TMS] Product String :: On-load');\\n// Sets the variables as undefined when empty to avoid sending it to adobe analytics.\\nif (Array.isArray(products) \\u0026\\u0026 products.length === 0) {\\n\\tproducts = '';\\n}\\n\\ns.linkTrackVars += \\\",events,products,pageType,pev2\\\";\\n\\n// _satellite.getVar('[TMS] Page :: Event Strings');\\nlet pageLoadEventStrings = digitalData.page.attributes.pageLoadEventStrings;\\nlet eventStrings = digitalData.page.attributes.eventStrings || [];\\n\\nif(pageLoadEventStrings) {\\n  eventStrings = eventStrings.concat(pageLoadEventStrings)\\n} \\n\\nvar events = eventStrings.join(','); \\n\\ns.events = events;\\ns.products = products;\\ns.pageType = digitalData.page.category.pageType;\\ns.list3 = digitalData.page.attributes.p13nAnalyticsData;\\ns.points = _satellite.getVar('[TMS] BI Points :: On-load');\\n\\ns.pev2 = _satellite.getVar('[TMS] Page :: Certona Impression');\\n\\ns.linkTrackEvents = events;\\n\\ns.currencyCode = _satellite.getVar('[TMS] Transaction :: ISO :: Currency');\\n\\n// Reset values\\ndigitalData.page.attributes.pageLoadEventStrings = undefined;\\n\\n// *** Activity Map Exclusions *** \\n  \\ns.ActivityMap.regionExclusions = _satellite.getVar('[TMS] Activity Map Region Exclusions') || '';\\ns.ActivityMap.linkExclusions = _satellite.getVar('[TMS] Activity Map Link Exclusions') || '';\\n  \\n// ** End of Activity Map Exclusions **\"},\"trackerProperties\":{\"eVars\":[{\"name\":\"eVar1\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Search :: Search Term%\"},{\"name\":\"eVar6\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Page Name for eVar6 - pageLoadEvent%\"},{\"name\":\"eVar14\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Order :: Shipping Method%\"},{\"name\":\"eVar15\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Order :: Payment Method%\"},{\"name\":\"eVar16\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Promo Code%\"},{\"name\":\"eVar17\",\"type\":\"value\",\"value\":\"D=c27\"},{\"name\":\"eVar18\",\"type\":\"value\",\"value\":\"D=c9\"},{\"name\":\"eVar19\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Platform%\"},{\"name\":\"eVar21\",\"type\":\"value\",\"value\":\"%[TMS] eVar21 - Experience Platform%\"},{\"name\":\"eVar25\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Order Number%\"},{\"name\":\"eVar28\",\"type\":\"value\",\"value\":\"%[TMS] Campaign :: Marketing Channel%\"},{\"name\":\"eVar32\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Certona Audience Id%\"},{\"name\":\"eVar35\",\"type\":\"value\",\"value\":\"%[TMS] Campaign :: Affiliate ID%\"},{\"name\":\"eVar36\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Audience Segmentation%\"},{\"name\":\"eVar39\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Day of Week%\"},{\"name\":\"eVar40\",\"type\":\"value\",\"value\":\"D=g\"},{\"name\":\"eVar42\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Search Type - pageLoadEvent%\"},{\"name\":\"eVar44\",\"type\":\"value\",\"value\":\"%[TMS] Campaign :: URS :: Channel%\"},{\"name\":\"eVar45\",\"type\":\"value\",\"value\":\"%[TMS] Campaign :: Email Harmony Deployment Id%\"},{\"name\":\"eVar46\",\"type\":\"value\",\"value\":\"%[TMS] Campaign :: Harmony Link ID%\"},{\"name\":\"eVar47\",\"type\":\"value\",\"value\":\"%[TMS] Campaign :: Harmony Customer Key%\"},{\"name\":\"eVar49\",\"type\":\"value\",\"value\":\"%[TMS] Campaign : Email ATG ID%\"},{\"name\":\"eVar50\",\"type\":\"value\",\"value\":\"D=c6\"},{\"name\":\"eVar55\",\"type\":\"value\",\"value\":\"D=c8\"},{\"name\":\"eVar56\",\"type\":\"value\",\"value\":\"%[TMS] Category Filters%\"},{\"name\":\"eVar58\",\"type\":\"value\",\"value\":\"D=User-Agent\"},{\"name\":\"eVar59\",\"type\":\"value\",\"value\":\"D=c9\"},{\"name\":\"eVar62\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Language/Locale%\"},{\"name\":\"eVar63\",\"type\":\"value\",\"value\":\"D=g\"},{\"name\":\"eVar64\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Previous Navigation Information%\"},{\"name\":\"eVar67\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Search Term Dynamic Var%\"},{\"name\":\"eVar70\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Name%\"},{\"name\":\"eVar74\",\"type\":\"value\",\"value\":\"%[TMS] User :: BIFlash%\"},{\"name\":\"eVar75\",\"type\":\"value\",\"value\":\"%[TMS] Internal Campaign%\"},{\"name\":\"eVar87\",\"type\":\"value\",\"value\":\"%[TMS] Campaign :: Bluecore Campaign ID%\"},{\"name\":\"eVar93\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Type%\"},{\"name\":\"eVar94\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Page Detail%\"},{\"name\":\"eVar95\",\"type\":\"value\",\"value\":\"%[TMS] Page :: World%\"},{\"name\":\"eVar97\",\"type\":\"value\",\"value\":\"D=pageName\"},{\"name\":\"eVar101\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Is Apple Pay Eligible%\"},{\"name\":\"eVar102\",\"type\":\"value\",\"value\":\"%[TMS] Campaign :: Epsilon Audience ID%\"},{\"name\":\"eVar103\",\"type\":\"value\",\"value\":\"%[TMS] Page :: ATG Version%\"},{\"name\":\"eVar104\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Experience Store ID - pageLoadEvent%\"},{\"name\":\"eVar107\",\"type\":\"value\",\"value\":\"%[TMS] Page :: biChipType%\"},{\"name\":\"eVar108\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Search Results Algorithm Type%\"},{\"name\":\"eVar110\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Certona Experience Ids%\"},{\"name\":\"eVar113\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Product :: nthLevelCategory%\"},{\"name\":\"eVar116\",\"type\":\"value\",\"value\":\"%[TMS] Page :: BreakPoint%\"},{\"name\":\"eVar117\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Experience Type%\"},{\"name\":\"eVar119\",\"type\":\"value\",\"value\":\"A.L. - Page Load Tracking With Plugin\"},{\"name\":\"eVar122\",\"type\":\"value\",\"value\":\"%[TMS] Page :: contentful personalization%\"},{\"name\":\"eVar123\",\"type\":\"value\",\"value\":\"%[TMS] Page :: personalized email track%\"},{\"name\":\"eVar126\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Replacement Order Number%\"},{\"name\":\"eVar127\",\"type\":\"value\",\"value\":\"%[TMS] Optimizely%\"},{\"name\":\"eVar129\",\"type\":\"value\",\"value\":\"%[TMS] Page :: eVar129%\"}],\"props\":[{\"name\":\"prop4\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Search Term%\"},{\"name\":\"prop5\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Number of Results - pageLoadEvent%\"},{\"name\":\"prop6\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Previous Page Name%\"},{\"name\":\"prop7\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Previous Page Type%\"},{\"name\":\"prop8\",\"type\":\"value\",\"value\":\"%[TMS] User :: BI Status%\"},{\"name\":\"prop9\",\"type\":\"value\",\"value\":\"%[TMS] User :: ATG ID - pageLoadEvent%\"},{\"name\":\"prop11\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Certona Placement :: ProductPage Tracking%\"},{\"name\":\"prop13\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Content Country%\"},{\"name\":\"prop19\",\"type\":\"value\",\"value\":\"%[TMS] Adobe Analytics - Prop19%\"},{\"name\":\"prop20\",\"type\":\"value\",\"value\":\"%[TMS] Prop20 Ecom Flag%\"},{\"name\":\"prop22\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Search API Correlation ID%\"},{\"name\":\"prop25\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Date%\"},{\"name\":\"prop27\",\"type\":\"value\",\"value\":\"%[TMS] User :: Sign In Status%\"},{\"name\":\"prop31\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Order :: Same Day Delivery Info%\"},{\"name\":\"prop32\",\"type\":\"value\",\"value\":\"%[TMS] prop32%\"},{\"name\":\"prop34\",\"type\":\"value\",\"value\":\"%[TMS] User :: Accepted Advertising Cookies%\"},{\"name\":\"prop36\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Community User Id%\"},{\"name\":\"prop44\",\"type\":\"value\",\"value\":\"%[TMS] prop44%\"},{\"name\":\"prop46\",\"type\":\"value\",\"value\":\"D=v62\"},{\"name\":\"prop47\",\"type\":\"value\",\"value\":\"%[TMS] Event :: Last Refresh%\"},{\"name\":\"prop52\",\"type\":\"value\",\"value\":\"%[TMS] prop52%\"},{\"name\":\"prop53\",\"type\":\"value\",\"value\":\"%[TMS] User :: Play Status%\"},{\"name\":\"prop55\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Previous Link Data%\"},{\"name\":\"prop56\",\"type\":\"value\",\"value\":\"%[TMS] Page :: checkout :: Default Payment Method%\"},{\"name\":\"prop61\",\"type\":\"value\",\"value\":\"%[TMS] Page :: BI Overlay Tiers%\"},{\"name\":\"prop62\",\"type\":\"value\",\"value\":\"%[TMS] Percentage Page Viewed%\"},{\"name\":\"prop63\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Variant Keys%\"},{\"name\":\"prop67\",\"type\":\"value\",\"value\":\"%[TMS] Dynamic Category Filter%\"},{\"name\":\"prop70\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Country%\"}],\"channel\":\"%[TMS] Channel%\",\"pageURL\":\"%[TMS] Page :: URL%\",\"campaign\":{\"type\":\"value\",\"value\":\"%[TMS] Campaign :: URS :: Channel%\"},\"pageName\":\"%[TMS] Page :: Name%\",\"referrer\":\"%[TMS] Page :: Referrer%\",\"purchaseID\":\"%[TMS] Page :: Order Number%\"}}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCed69140bcf2e4f219c0c6f04a927682f/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPef068a8d6dd34a43866d9a80cc98baab",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCed69140bcf2e4f219c0c6f04a927682f/updated_with_extension"
+            },
+            "data": {
+                "id": "EXf690fb1811134551a54bf3ba76dc737b",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCed69140bcf2e4f219c0c6f04a927682f/extension"
+            },
+            "data": {
+                "id": "EX736ba666267c4e5fa9e44940816ea84b",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCed69140bcf2e4f219c0c6f04a927682f/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCed69140bcf2e4f219c0c6f04a927682f/origin"
+            },
+            "data": {
+                "id": "RCed69140bcf2e4f219c0c6f04a927682f",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCed69140bcf2e4f219c0c6f04a927682f/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX736ba666267c4e5fa9e44940816ea84b",
+        "origin": "https://reactor.adobe.io/rule_components/RCed69140bcf2e4f219c0c6f04a927682f",
+        "rules": "https://reactor.adobe.io/rule_components/RCed69140bcf2e4f219c0c6f04a927682f/rules",
+        "self": "https://reactor.adobe.io/rule_components/RCed69140bcf2e4f219c0c6f04a927682f"
+    },
+    "meta": {
+        "latest_revision_number": 100
+    }
+}

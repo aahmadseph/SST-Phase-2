@@ -1,0 +1,97 @@
+{
+    "id": "DE06ba408da79c476db8a290f648af073e",
+    "type": "data_elements",
+    "attributes": {
+        "created_at": "2022-09-05T20:40:33.254Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "[TMS] Pixel :: Facebook :: Order Subtotal",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2022-09-05T20:40:33.254Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "clean_text": false,
+        "default_value": null,
+        "delegate_descriptor_id": "core::dataElements::custom-code",
+        "force_lower_case": false,
+        "review_status": "unsubmitted",
+        "storage_duration": null,
+        "settings": "{\"source\":\"/* ** \\nThis is a temporary fix needed becuase we are getting NaN for transactionSubtotalInUSD. \\n** The permanent fix should probably be for back end to send us a \\npure Javascript Number ** without any symbols or currency to use instead. */ \\nvar subtotalInUSD = digitalData.transaction.total.transactionSubtotalInUSD; \\nvar transactionTotal = digitalData.transaction.total.transactionSubtotal;\\nvar promotionDiscount = parseFloat(digitalData.transaction.total.promotionDiscount); \\n/* This runs on all pages, so don't do anything unless we have something */ \\nvar isCanada = digitalData.page.pageInfo.country === 'CA' ? true : false; \\nif(!isCanada \\u0026\\u0026 subtotalInUSD) {\\n    /* Remove any currency from the front or back of the string */ \\n    subtotalInUSD = digitalData.transaction.total.transactionSubtotalInUSD.match(/\\\\d+(?:\\\\.\\\\d+|\\\\,\\\\d+\\\\.\\\\d+|\\\\,\\\\d+)|\\\\d+/)[0]; \\n    /* Remove any commas because they break the convertToUSD method */ \\n    subtotalInUSD = subtotalInUSD.replace(',', ''); \\n    return parseFloat(subtotalInUSD) - promotionDiscount;\\n} \\nelse { \\n    if (transactionTotal) { \\n    /* Remove any currency from the front or back of the string */ \\n    transactionTotal = digitalData.transaction.total.transactionSubtotal.match(/\\\\d+(?:\\\\.\\\\d+|\\\\,\\\\d+\\\\.\\\\d+|\\\\,\\\\d+)|\\\\d+/)[0]; \\n    /* Remove any commas because they break the convertToUSD method */ \\n    transactionTotal = transactionTotal.replace(',', ''); \\n    return parseFloat(transactionTotal) - promotionDiscount; \\n    } \\n}\"}"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE06ba408da79c476db8a290f648af073e/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE06ba408da79c476db8a290f648af073e/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE06ba408da79c476db8a290f648af073e/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE06ba408da79c476db8a290f648af073e/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE06ba408da79c476db8a290f648af073e/origin"
+            },
+            "data": {
+                "id": "DE06ba408da79c476db8a290f648af073e",
+                "type": "data_elements"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE06ba408da79c476db8a290f648af073e/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE06ba408da79c476db8a290f648af073e/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE06ba408da79c476db8a290f648af073e/updated_with_extension"
+            },
+            "data": {
+                "id": "EX3abc0ad4a5fc4a94a4952aeea2507888",
+                "type": "extensions"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/data_elements/DE06ba408da79c476db8a290f648af073e",
+        "self": "https://reactor.adobe.io/data_elements/DE06ba408da79c476db8a290f648af073e",
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74"
+    },
+    "meta": {
+        "latest_revision_number": 1
+    }
+}

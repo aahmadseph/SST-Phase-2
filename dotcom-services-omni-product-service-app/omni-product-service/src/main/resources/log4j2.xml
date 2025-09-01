@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <!-- https://logging.apache.org/log4j/2.x/manual/json-template-layout.html#event-template-resolvers -->
+            <!-- Set maxStringLength to 12Kb for avoid log line truncation. Currently max log line 16Kb-->
+            <JsonTemplateLayout eventTemplateUri="classpath:LoggingJsonLayout.json"
+                                stackTraceEnabled="true"
+                                maxStringLength="12288">
+            </JsonTemplateLayout>
+        </Console>
+        <Async name="AsyncAppender" bufferSize="100">
+            <AppenderRef ref="ConsoleAppender"/>
+        </Async>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="AsyncAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>

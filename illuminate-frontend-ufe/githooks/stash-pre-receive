@@ -1,0 +1,79 @@
+#!/bin/sh
+
+# IMPORTANT! Make sure the remote repository has receive.denyCurrentBranch
+# config value set set to "ignore".
+
+# This has to be adapted to specific platform.
+. $(brew --prefix nvm)/nvm.sh
+
+nvm use 6.9.5 > /dev/null
+
+unset GIT_DIR
+cd ..
+PATH="$PATH:$(pwd)/node_modules/eslint/bin"
+
+run_eslint_check () {
+    local oldrev=$1
+    local newrev=$2
+    local refname=$3
+    local return_code=0
+
+    echo "Running ESLINT check for $refname on new HEAD $newrev."
+    echo
+
+    git checkout -f $newrev > /dev/null 2> /dev/null
+
+    local modified_javascripts=$(
+        git diff --name-only --diff-filter=ACMR $oldrev $newrev -- projects/ui/src/ \
+            | grep -v .json$
+    )
+
+    if [ -n "$modified_javascripts" ]; then
+        echo "Modified/new/renamed javascript files detected:"
+        echo $modified_javascripts | xargs -n 1{} echo "-"
+        echo
+        echo
+
+        eslint $modified_javascripts
+
+        if [ $? -ne 0 ]; then
+            return_code=1
+        fi
+    fi
+
+    return $return_code
+}
+
+exit_code=0
+while read oldrev newrev refname
+do
+    echo
+    echo "Processing $refname change from $oldrev to $newrev."
+    echo
+
+    run_eslint_check $oldrev $newrev $refname
+
+    if [ $? -ne 0 ]; then
+        exit_code=1
+    fi
+done
+
+
+if [ $exit_code -eq 1 ]; then
+    echo
+    echo "ESLINT has found issues with javascript code style in the modified files (see details above)."
+    echo "Please resolve the issues for the change to be accepted."
+    echo
+    echo "Typically, you should not see this message if your pre-commit hook is working. "
+    echo "So first off, please make sure that the pre-receive hook is properly installed in your local repository. Refer to the README for instructions."
+    echo
+    exit 1
+else
+    echo
+    echo "All files are good. ESLINT check is passed now."
+    echo
+fi
+
+git checkout -f master > /dev/null 2> /dev/null
+
+exit $exit_code

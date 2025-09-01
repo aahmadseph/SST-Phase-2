@@ -1,0 +1,97 @@
+{
+    "id": "DE4de9e8b26b8f4330a5992303dc1d427f",
+    "type": "data_elements",
+    "attributes": {
+        "created_at": "2025-04-22T05:50:51.984Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "[SOT] Page :: event_date_PST",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-04-24T08:00:44.609Z",
+        "created_by_email": "abhinav.alkuchi@sephora.com",
+        "created_by_display_name": "abhinav alkuchi",
+        "updated_by_email": "abhinav.alkuchi@sephora.com",
+        "updated_by_display_name": "abhinav alkuchi",
+        "clean_text": false,
+        "default_value": null,
+        "delegate_descriptor_id": "core::dataElements::custom-code",
+        "force_lower_case": false,
+        "review_status": "unsubmitted",
+        "storage_duration": null,
+        "settings": "{\"source\":\"const date = new Date();\\nconst pstDateTime = date.toLocaleString(\\\"en-US\\\", {\\n  timeZone: \\\"America/Los_Angeles\\\",\\n  year: \\\"numeric\\\",\\n  month: \\\"2-digit\\\",\\n  day: \\\"2-digit\\\",\\n  hour: \\\"2-digit\\\",\\n  minute: \\\"2-digit\\\",\\n  second: \\\"2-digit\\\",\\n  hour12: false // Ensures 24-hour format\\n}).replace(/(\\\\d{2})\\\\/(\\\\d{2})\\\\/(\\\\d{4}), (\\\\d{2}):(\\\\d{2}):(\\\\d{2})/, '$3-$1-$2 $4:$5:$6') + '.' + date.getMilliseconds().toString().padStart(3, '0');\\nreturn pstDateTime;\"}"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE4de9e8b26b8f4330a5992303dc1d427f/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE4de9e8b26b8f4330a5992303dc1d427f/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE4de9e8b26b8f4330a5992303dc1d427f/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE4de9e8b26b8f4330a5992303dc1d427f/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE4de9e8b26b8f4330a5992303dc1d427f/origin"
+            },
+            "data": {
+                "id": "DE4de9e8b26b8f4330a5992303dc1d427f",
+                "type": "data_elements"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE4de9e8b26b8f4330a5992303dc1d427f/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE4de9e8b26b8f4330a5992303dc1d427f/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE4de9e8b26b8f4330a5992303dc1d427f/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/data_elements/DE4de9e8b26b8f4330a5992303dc1d427f",
+        "self": "https://reactor.adobe.io/data_elements/DE4de9e8b26b8f4330a5992303dc1d427f",
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74"
+    },
+    "meta": {
+        "latest_revision_number": 4
+    }
+}

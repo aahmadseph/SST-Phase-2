@@ -1,0 +1,3 @@
+import DeliveryGroupItemsList from 'components/SharedComponents/SplitEDD/DeliveryGroupItemsList/DeliveryGroupItemsList';
+
+export default DeliveryGroupItemsList;

@@ -1,0 +1,4 @@
+import EditBeautyPreferencesModal from 'components/GlobalModals/EditBeautyPreferencesModal/EditBeautyPreferencesModal';
+import { withEditBeautyPreferencesModalProps } from 'viewModel/globalModals/editBeautyPreferencesModal/withEditBeautyPreferencesModalProps';
+
+export default withEditBeautyPreferencesModalProps(EditBeautyPreferencesModal);

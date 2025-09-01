@@ -1,0 +1,91 @@
+{
+    "id": "RCe5fe529049e2494db1bc102caa2105b1",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2022-12-19T15:48:00.510Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: googleAnalytics_eventBopisReservation",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-03-08T14:17:54.560Z",
+        "created_by_email": "rachel.joss@sephora.com",
+        "created_by_display_name": "rachel joss",
+        "updated_by_email": "rachel.joss@sephora.com",
+        "updated_by_display_name": "rachel joss",
+        "settings": "{\"source\":\"    var gaId = _satellite.getVar('[TMS] UA Property Id');     \\n    var orderSubtotal = Number(digitalData.transaction.total.transactionSubtotal).toFixed(2); \\n    var transactionValue = 0;\\n    if (orderSubtotal \\u0026\\u0026 orderSubtotal !== 'NaN') { \\n        transactionValue = orderSubtotal; \\n    }\\n    var biAccountNumber; \\n    var profileId = digitalData.user[0].profile[0].profileInfo.profileID;\\n    if (digitalData.user[0].segment.biAccountId) {\\n        biAccountNumber = digitalData.user[0].segment.biAccountId;\\n    }\\n    var languageLocale = digitalData.page.attributes.languageLocale.toLowerCase();\\n    var biStatus = digitalData.user[0].segment.biStatus;\\n    var biPoints = digitalData.user[0].segment.biPoints;\\n    var loginStatus = _satellite.getVar('[TMS] Pixel :: User :: Login Status');\\n    var fivePIDs = digitalData.page.attributes.externalRecommendations.firstFivePIDs;\\n    var transactionCurrency = digitalData.transaction.attributes.isoCurrency;\\n    var transactionId = _satellite.getVar(\\\"[TMS] Page :: Order Number\\\");\\n    var transactionItems = digitalData.transaction.attributes.skuIds;\\n    gtag('event', 'Reservation', {\\n        'send_to': gaId,\\n        'event_category': 'User Engagement',\\n        'event_label': 'ROPIS Reservation',\\n        'value': transactionValue,\\n        'profileId': profileId,\\n        'biAccountId': biAccountNumber,\\n        'biStatus': biStatus,\\n        'biPoints': biPoints,\\n        'firstFivePIDs': fivePIDs,\\n        'loginStatus': loginStatus,\\n        'userLocale': languageLocale.split('-')[0],\\n        'userLanguage': languageLocale.split('-')[1],\\n        'ropisValue': transactionValue,\\n        'ropisCurrency': transactionCurrency,\\n        'ropisOrderId': transactionId,\\n        'ropisProductSkus': transactionItems\\n    });\\n\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCe5fe529049e2494db1bc102caa2105b1/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCe5fe529049e2494db1bc102caa2105b1/updated_with_extension"
+            },
+            "data": {
+                "id": "EX06a7afc619ae4214a074cb5399abf9fa",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCe5fe529049e2494db1bc102caa2105b1/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCe5fe529049e2494db1bc102caa2105b1/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCe5fe529049e2494db1bc102caa2105b1/origin"
+            },
+            "data": {
+                "id": "RCe5fe529049e2494db1bc102caa2105b1",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCe5fe529049e2494db1bc102caa2105b1/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RCe5fe529049e2494db1bc102caa2105b1",
+        "rules": "https://reactor.adobe.io/rule_components/RCe5fe529049e2494db1bc102caa2105b1/rules",
+        "self": "https://reactor.adobe.io/rule_components/RCe5fe529049e2494db1bc102caa2105b1"
+    },
+    "meta": {
+        "latest_revision_number": 6
+    }
+}

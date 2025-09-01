@@ -1,0 +1,19 @@
+#logging:
+#  config: classpath:log4j2-dev.xml
+
+server:
+  port: 8075
+  servlet:
+    context-path: /inventory-availability
+
+spring:
+  cache:
+    type: jcache
+  cloud:
+      kubernetes:
+        enabled:  false
+  redis:
+    host: localhost
+    port: 6379
+    ssl: false
+    password:

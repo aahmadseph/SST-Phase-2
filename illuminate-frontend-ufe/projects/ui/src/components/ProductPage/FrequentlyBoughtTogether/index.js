@@ -1,0 +1,5 @@
+import { withFrequentlyBoughtTogetherProps } from 'viewModel/product/FrequentlyBoughtTogether/withFrequentlyBoughtTogetherProps';
+import FrequentlyBoughtTogether from 'components/ProductPage/FrequentlyBoughtTogether/FrequentlyBoughtTogether';
+const ConnectedFrequentlyBoughtTogether = withFrequentlyBoughtTogetherProps(FrequentlyBoughtTogether);
+
+export default ConnectedFrequentlyBoughtTogether;

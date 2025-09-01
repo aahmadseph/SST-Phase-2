@@ -1,0 +1,10 @@
+server:
+  servlet:
+    context-path: /inventoryavailability
+
+spring:
+  cloud:
+    config:
+      enabled: false
+    kubernetes:
+      enabled:  false

@@ -1,0 +1,91 @@
+{
+    "id": "RC887885dcd0e54b0cab2ba1356f458ae7",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2022-11-08T17:05:51.988Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: facebook_orderConfirmationView",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": false,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-07-11T15:11:49.110Z",
+        "created_by_email": "luis.booth@sephora.com",
+        "created_by_display_name": "Luis booth",
+        "updated_by_email": "niltoncesar.santos@sephora.com",
+        "updated_by_display_name": "niltoncesar santos",
+        "settings": "{\"source\":\"function GetTimestamp() {\\n    try {\\n        var purchaseeventtimestamp =\\n           localStorage.getItem('purchaseeventtimestamp');\\n        if (!purchaseeventtimestamp) {\\n            return null;\\n        }\\n        else {\\n            var eventTimestamp = JSON.parse(purchaseeventtimestamp);\\n            return eventTimestamp.data || null;\\n        }\\n    }\\n    catch(e) {\\n        return null;\\n    }\\n} \\nvar timestamp = GetTimestamp();\\n\\ntimestamp = timestamp === null ? digitalData.page.attributes.date.timestamp : timestamp; \\n\\nvar facebookPixelId = _satellite.getVar('[TMS] Facebook Pixel ID');\\nvar biAccountId = Sephora.Util.getUserInfoCache()?.profile?.beautyInsiderAccount?.biAccountId || '';\\nvar brand = digitalData.transaction.attributes.brandNames;\\nvar product_type = digitalData.transaction.attributes.categories;\\nvar eventID = \\\"purchase-\\\" + _satellite.getVar('[UEID] :: Universal Event ID Fx')(event);\\n\\nvar itemShorts = digitalData.transaction.itemShort;\\nvar isRestrictedForPixel = digitalData.cart.isRestrictedForPixel;\\n\\n// Total without Taxes.\\nvar value = Number(digitalData.transaction.total.transactionSubtotal);\\n\\nvar content = [];\\n\\nfor (var i = 0; i \\u003c itemShorts.length; i++) {\\n    var itemShort = itemShorts[i];\\n    var product = {\\n        'id': itemShort.id,\\n        'quantity':itemShort.quantity,\\n        'brand': brand[i],\\n        'product_type': product_type[i],\\n        'item_price': Number(itemShort.price),\\n    };\\n    content.push(product);\\n}\\n\\n// AQME-4645: Discrepancy between AL and SOT. Tags should send CAD when using Canadian site\\nvar currency = digitalData.page.pageInfo.country === 'US' ? 'USD' : 'CAD';\\n\\nvar details = {\\n    order_id: _satellite.getVar(\\\"[TMS] Page :: Order Number\\\"),\\n    payment_method: _satellite.getVar(\\\"[TMS] Facebook :: Order :: Payment Method\\\"),\\n    delivery_option: _satellite.getVar(\\\"[TMS] Page :: Order :: Delivery Option\\\"),\\n    content_local: _satellite.getVar(\\\"[TMS] Page :: Language/Locale\\\"),\\n    customer_type: _satellite.getVar(\\\"[TMS] Pixel :: Facebook :: BI Status\\\")\\n};\\nvar data = {\\n    contents: content,\\n    value: value,\\n    details: details,\\n    content_type: 'product',\\n    currency: currency\\n}\\n\\nif(!isRestrictedForPixel){\\n  if (biAccountId) {\\n    Sephora.analytics.utils.hashString(biAccountId).then(hashedBiId =\\u003e {\\n      fbq(\\n        'trackSingle',\\n        facebookPixelId,\\n        'Purchase',\\n        {\\n          ...data,\\n          external_id: hashedBiId\\n        },\\n        eventID\\n      );\\n    });\\n  } else {\\n      fbq('trackSingle', facebookPixelId, 'Purchase', data, {\\n          eventID: eventID\\n      });\\n  }\\n}\\n\\nvar fulfillment_type = _satellite.getVar('[TMS] eVar133 - Shipping Method') || '';\\n\\n// Processes the BOPIS order. This is so both events have the same Event ID\\nif (fulfillment_type.indexOf('pickup') \\u003e= 0) {\\n  var contents = [];\\n  var skuIds = digitalData.transaction.attributes.skuIds;\\n  var skuQty = digitalData.transaction.attributes.itemQty;\\n\\n  if (skuIds.length) {\\n      for (var i = 0; i \\u003c skuIds.length; i++) {\\n          var item = {};\\n          item.id = skuIds[i];\\n          item.quantity = skuQty[i];\\n          contents.push(item);\\n      }\\n  }\\n  \\n  // AQME-4645: Discrepancy between AL and SOT. Tags should send CAD when using Canadian site\\n  var currency = digitalData.page.pageInfo.country === 'US' ? 'USD' : 'CAD';\\n  \\n  // Transaction Total without taxes.\\n  var transactionSubTotal = digitalData.transaction.total.transactionSubtotal || '0';\\n  \\n  var cleanedTransactionSubTotal = transactionSubTotal.replace(\\\"$\\\", \\\"\\\").replace(',', '.');\\n  var value = Number(cleanedTransactionSubTotal).toFixed(2); \\n  \\n  var eventId = \\\"bopis-\\\" + _satellite.getVar('[UEID] :: Universal Event ID Fx')(event);\\n  \\n  var data = {\\n      contents: contents,\\n      content_type: 'product',\\n      value: value,\\n      currency: currency,\\n      customer_type: _satellite.getVar(\\\"[TMS] Pixel :: Facebook :: BI Status\\\"),\\n      content_local: _satellite.getVar(\\\"[TMS] Page :: Language/Locale\\\"),\\n      order_id: _satellite.getVar(\\\"[TMS] Page :: Order Number\\\")\\n  };\\n\\n  if (biAccountId) {\\n    Sephora.analytics.utils.hashString(biAccountId).then(hashedBiId =\\u003e {\\n      fbq('trackCustom', 'bopisReservation', { ...data, external_id: hashedBiId }, { eventID: eventId });\\n    });\\n  } else {\\n    fbq('trackCustom', 'bopisReservation', data, { eventID: eventId });\\n  }\\n}\\n\\n\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC887885dcd0e54b0cab2ba1356f458ae7/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC887885dcd0e54b0cab2ba1356f458ae7/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC887885dcd0e54b0cab2ba1356f458ae7/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC887885dcd0e54b0cab2ba1356f458ae7/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC887885dcd0e54b0cab2ba1356f458ae7/origin"
+            },
+            "data": {
+                "id": "RC887885dcd0e54b0cab2ba1356f458ae7",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC887885dcd0e54b0cab2ba1356f458ae7/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC887885dcd0e54b0cab2ba1356f458ae7",
+        "rules": "https://reactor.adobe.io/rule_components/RC887885dcd0e54b0cab2ba1356f458ae7/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC887885dcd0e54b0cab2ba1356f458ae7"
+    },
+    "meta": {
+        "latest_revision_number": 25
+    }
+}

@@ -1,0 +1,33 @@
+import { space, site } from 'style/config';
+
+const CARDS_PER_SLIDE = 6;
+const CARDS_PER_SLIDE_MD = 3;
+const CARDS_PER_SLIDE_LARGE = 4;
+const CARD_GAP = [2, 3];
+const CARD_GAP_GRID = [4, 5];
+const CARD_WIDTH = [146, (site.containerMax - space[CARD_GAP[1]] * (CARDS_PER_SLIDE - 1)) / CARDS_PER_SLIDE];
+const CARD_WIDTH_MD = [287, (site.containerMax - space[CARD_GAP[1]] * (CARDS_PER_SLIDE_MD - 1)) / CARDS_PER_SLIDE_MD];
+const CARD_WIDTH_LARGE = [240, (site.containerMax - space[CARD_GAP[1]] * (CARDS_PER_SLIDE_LARGE - 1)) / CARDS_PER_SLIDE_LARGE];
+const CARD_IMG_SIZE = [122, 166];
+const CARD_IMG_SIZE_MD = [60, 80];
+const CARD_IMG_SIZE_LARGE = [216, 263];
+const CARD_IMG_SIZE_GRID = [164, 230];
+const CARD_IMG_SIZE_GRID_LARGE = [164, 294];
+const CARD_IMG_SIZE_GRID_X_LARGE = [218, 294];
+
+export {
+    CARD_GAP,
+    CARD_WIDTH,
+    CARD_WIDTH_MD,
+    CARD_WIDTH_LARGE,
+    CARD_IMG_SIZE,
+    CARDS_PER_SLIDE,
+    CARDS_PER_SLIDE_MD,
+    CARDS_PER_SLIDE_LARGE,
+    CARD_IMG_SIZE_LARGE,
+    CARD_IMG_SIZE_MD,
+    CARD_IMG_SIZE_GRID,
+    CARD_IMG_SIZE_GRID_LARGE,
+    CARD_IMG_SIZE_GRID_X_LARGE,
+    CARD_GAP_GRID
+};

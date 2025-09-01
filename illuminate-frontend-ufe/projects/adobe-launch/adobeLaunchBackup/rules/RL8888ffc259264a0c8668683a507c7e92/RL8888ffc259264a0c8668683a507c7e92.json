@@ -1,0 +1,69 @@
+{
+    "id": "RL8888ffc259264a0c8668683a507c7e92",
+    "type": "rules",
+    "attributes": {
+        "created_at": "2023-01-09T16:59:20.219Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": false,
+        "name": "[TMS] snapChat_allPageView",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-04-23T16:27:38.382Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "german.alfonso@sephora.com",
+        "updated_by_display_name": "german alfonso",
+        "review_status": "unsubmitted"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RL8888ffc259264a0c8668683a507c7e92/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RL8888ffc259264a0c8668683a507c7e92/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RL8888ffc259264a0c8668683a507c7e92/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RL8888ffc259264a0c8668683a507c7e92/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RL8888ffc259264a0c8668683a507c7e92/origin"
+            },
+            "data": {
+                "id": "RL8888ffc259264a0c8668683a507c7e92",
+                "type": "rules"
+            }
+        },
+        "rule_components": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RL8888ffc259264a0c8668683a507c7e92/rule_components"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/rules/RL8888ffc259264a0c8668683a507c7e92",
+        "self": "https://reactor.adobe.io/rules/RL8888ffc259264a0c8668683a507c7e92",
+        "rule_components": "https://reactor.adobe.io/rules/RL8888ffc259264a0c8668683a507c7e92/rule_components"
+    },
+    "meta": {
+        "latest_revision_number": 9
+    }
+}

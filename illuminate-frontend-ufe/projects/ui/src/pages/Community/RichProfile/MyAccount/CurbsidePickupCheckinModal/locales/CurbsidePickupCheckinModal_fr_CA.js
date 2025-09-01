@@ -1,0 +1,41 @@
+module.exports = function getResource(label, vars = []) {
+    const resources = {
+        title: 'Ramassage à l’extérieur',
+        subtitle: 'Aidez-nous à vous trouver en remplissant les renseignements ci-dessous.',
+        characters: 'caractères',
+        vehicleColor: 'Couleur du véhicule :',
+        vehicleMakeModelPlaceholder: 'Marque et modèle du véhicule (p. ex., Honda Civic)',
+        commentPlaceholder: 'Donnez-nous plus de renseignements à propos de votre emplacement (facultatif)',
+        contactPhonePlaceholder: 'Numéro de téléphone cellulaire',
+        contactPhoneConsent: 'Le fait de communiquer votre numéro de téléphone permettra à un conseiller beauté Sephora de vous appeler s’il ne peut pas vous trouver. Votre numéro de téléphone ne sera pas utilisé à d’autres fins.',
+        isMultipleOrdersLabel: 'J’ai plusieurs commandes prêtes pour le ramassage',
+        submit: 'Aviser le magasin',
+        vehicleColorError: 'Veuillez sélectionner la couleur du véhicule.',
+        vehicleMakeModelEmptyError: 'Veuillez saisir une marque et un modèle de véhicule.',
+        contactPhoneEmptyError: 'Veuillez saisir un numéro de téléphone cellulaire.',
+        contactPhoneInvalidError: 'Veuillez saisir un numéro de téléphone cellulaire valable.',
+        landingTitle: 'Êtes-vous au magasin?',
+        landingSubtitle: 'Faites-nous savoir quand vous êtes arrivé au magasin pour le ramassage.',
+        landingCta: 'Je suis arrivé',
+        storeInfoPrefix: 'Si vous avez des questions, n’hésitez pas à communiquer au',
+        duringStoreHours: 'avec nous pendant les heures d’ouverture du magasin au',
+        confirmationTitle: 'Vos essentiels beauté sont en route!',
+        confirmationSubtitle: 'Nous avons reçu vos renseignements. Un conseiller beauté vous apportera votre commande sous peu.',
+        confirmationSubtitleSecondary: 'Veuillez montrer votre code à barres de ramassage au conseiller beauté.',
+        pickUpOrderNumber: 'Numéro de la commande à ramasser',
+        genericIntegrationErrorMessage: 'Nous éprouvons des difficultés techniques. Veuillez réessayer plus tard ou communiquer avec notre service à la clientèle.',
+        unavailableLandingTitle: 'Le ramassage à l’extérieur n’est pas disponible pour le moment; vous pouvez toutefois récupérer votre commande en magasin pendant les heures d’ouverture.',
+        curbsideHours: 'Heures de ramassage à l’extérieur :',
+        storeHours: 'Heures d’exploitation des magasins :',
+        gotIt: 'Compris',
+        curbsideNotAvailableLandingTitle: 'Désolé, votre commande n’est plus disponible pour le ramassage.',
+        curbsideNotAvailableSubtitle: 'Vous pouvez commander les articles de nouveau pour le ramassage ou la livraison.',
+        curbsideNotAvailableSubtitleSecondary: 'Vous ne serez pas facturé pour cette commande. Si vous avez utilisé une carte-cadeau, la même carte-cadeau sera créditée dans un jour ou deux. Si vous avez utilisé des points Beauty Insider pour profiter d’une réduction, les points seront remis à votre compte dans un jour ou deux.',
+        parkingLotNumberPlaceholder: 'Numéro d’espace de stationnement',
+        parkingLotNumberEmptyError: 'Veuillez entrer un numéro à un ou deux chiffres.',
+        notifiedMessage: 'Le magasin a déjà été avisé. On vous apportera bientôt votre commande.',
+        errorMessage: 'Oups! Un problème est survenu et le magasin n’a pas pu être avisé. Veuillez réessayer plus tard.'
+    };
+
+    return resources[label];
+};

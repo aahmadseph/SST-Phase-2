@@ -1,0 +1,135 @@
+options:
+  azure:
+    cosmosdb:
+      uri: https://sep-eus1-dev-ref-db01.documents.azure.com:443
+      key: xdgcsJbQ7ufHfyLNNncDmMNYUoEI9rp2ujgCOpICGheuk5hzJemoy8jSCifXtZSohZ6bwdMhIdjdZfmr8Ee61Q==
+      secondaryKey: ZhFtQHzvotfWrNH2F7kUYa0NTGnZ3mB9AoOLmj9UroN0ZQrSsnl50IktH2Uy2Y47EnhHrC7YFtbxIUr1THbZnA==
+      dbName: reference
+      populateQueryMetrics: false
+      maxPoolSize: 10
+      requestTimeoutInMillis: 3000
+      idleConnectionTimeoutInMillis: 43200000
+      maxRetryWaitTimeInSeconds: 1
+      maxRetryAttemptsOnThrottledRequests: 4
+      autoscale: false
+      requestUnits: 1400
+      connectionMode:
+        mode: DIRECT
+server:
+  port: 8080
+  connection-timeout: 5s
+  servlet:
+    context-path: /example
+# https://springdoc.org/faq.html#_how_can_i_disable_the_try_it_out_button
+springdoc:
+  swagger-ui:
+    supportedSubmitMethods: "get,put,post,delete"
+sephora:
+  endpoint:
+    configprop:
+      sensitive: true
+      additional-keys-to-sanitize: .*saslJaasConfig.*
+    env:
+      sensitive: true
+      additional-keys-to-sanitize: .*saslJaasConfig.*
+  cache:
+    cache2k:
+      type: jcache
+    default:
+      type : redis
+    cache-names:
+      - referenceItemsCacheByStatus
+      - referenceItemsCacheByName
+      - referenceItemsCacheById
+      - inventoryHoldCache
+    redis:
+      tracingEnabled: true
+      time-to-live: 1m
+      key-prefix: example
+      use-key-prefix: true
+      cacheConfigurations:
+        referenceItemsCacheByStatus:
+          time-to-live: 1m
+          cache-null-values: false
+        referenceItemsCacheByName:
+          time-to-live: 1m
+          cache-null-values: false
+        referenceItemsCacheById:
+          time-to-live: 1m
+          cache-null-values: false
+  warmup:
+    enabled: false
+
+kafka:
+  bootstrap: pkc-lzj8z.westus2.azure.confluent.cloud:9092
+  saslJaasConfig: org.apache.kafka.common.security.plain.PlainLoginModule required username="FIEUSDPFCZLPFG4Y" password="lVxCj9N1kvgMXXrhA2QOr9fwhVb90KoLRgiN1zxlMJ7ifrbS6RbI1z+s6ZCjXH4U";
+  topicName: ReferenceImplementationQA
+  groupId: update-event-logging-group
+  schemaRegistry: false
+
+spring:
+  cloud:
+    kubernetes:
+      enables: false
+      discovery:
+        enabled: false
+    httpclientfactories:
+      apache:
+        enabled: true
+  main.allow-bean-definition-overriding: true
+  redis:
+    cluster:
+      nodes: sepeus1devaksredis01.redis.cache.windows.net:6380
+    password: QmFfoiR5KJ7hyp6zk6DF65QqIH+JcGKhjrgR7Tqyghw=
+    lettuce:
+      pool:
+        # TODO: Required verification
+        max-active: 10
+        max-idle: 10
+        min-idle: 0
+        max-wait: -1ms
+
+discovery:
+  client:
+    currentServiceId: reference-svc
+request:
+  log:
+    jsonBodies: true
+    maxPayloadLength: 1000
+    excludeUrlPatterns: '/actuator/health,/actuator/liveness,/actuator/prometheus'
+
+#server.tomcat.mbeanregistry.enabled: true
+
+management:
+  server:
+    port: 8080
+  endpoint:
+    restart:
+      enabled: true
+  health:
+    azure-key-vault:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  #          - loggers
+  #          - health
+  #          - caches
+  #          - liveness
+  #          - prometheus
+  metrics:
+    tags:
+      app: ${spring.application.name}
+    distribution:
+      percentiles-histogram:
+        http.server:
+          requests: true
+      percentiles:
+        http.server:
+          requests: 0.5, 0.75, 0.90, 0.95, 0.99
+
+mock:
+  server:
+    base:
+      url: "http://commerce-mock-service-perf1.eus1-omni-perf.internalsephora.com"

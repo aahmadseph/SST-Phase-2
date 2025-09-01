@@ -1,0 +1,69 @@
+{
+    "id": "RL649b681cb1134fa7b38030e0dec4a8ac",
+    "type": "rules",
+    "attributes": {
+        "created_at": "2025-06-25T08:31:14.281Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "[TMS] Event: SessionAI_analytic: sessionai_close_modal",
+        "published": false,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-06-25T10:04:26.930Z",
+        "created_by_email": "roman.zhelieznov@sephora.com",
+        "created_by_display_name": "roman zhelieznov",
+        "updated_by_email": "roman.zhelieznov@sephora.com",
+        "updated_by_display_name": "roman zhelieznov",
+        "review_status": "unsubmitted"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RL649b681cb1134fa7b38030e0dec4a8ac/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RL649b681cb1134fa7b38030e0dec4a8ac/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RL649b681cb1134fa7b38030e0dec4a8ac/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RL649b681cb1134fa7b38030e0dec4a8ac/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RL649b681cb1134fa7b38030e0dec4a8ac/origin"
+            },
+            "data": {
+                "id": "RL649b681cb1134fa7b38030e0dec4a8ac",
+                "type": "rules"
+            }
+        },
+        "rule_components": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RL649b681cb1134fa7b38030e0dec4a8ac/rule_components"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/rules/RL649b681cb1134fa7b38030e0dec4a8ac",
+        "self": "https://reactor.adobe.io/rules/RL649b681cb1134fa7b38030e0dec4a8ac",
+        "rule_components": "https://reactor.adobe.io/rules/RL649b681cb1134fa7b38030e0dec4a8ac/rule_components"
+    },
+    "meta": {
+        "latest_revision_number": 3
+    }
+}

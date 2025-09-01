@@ -1,0 +1,103 @@
+/* eslint-disable camelcase */
+export default function getResource(label, vars = []) {
+    const resources = {
+        notSure: 'Je ne sais pas',
+        noPreference: 'Aucune préférence',
+        // fragnance
+        floral: 'Floral',
+        warmspicy: 'Chaud et épicé',
+        fresh: 'Frais',
+        woodyEarthy: 'Boisé et terreux',
+        // haircolor
+        blonde: 'Blonds',
+        brown: 'Bruns',
+        auburn: 'Auburn',
+        black: 'Noirs',
+        red: 'Roux',
+        gray: 'Gris',
+        // skinConcerns
+        acneBlemishes: 'Acné/imperfections',
+        antiAging: 'Anti-âge',
+        darkCircles: 'Cernes',
+        darkSpots: 'Taches pigmentaires',
+        dryness: 'Peau sèche',
+        unevenTexture: 'Texture irrégulière',
+        fineLinesWrinkles: 'Rides et ridules',
+        lossOfFirmnessElasticity: 'Perte de fermeté et d’élasticité',
+        pores: 'Pores',
+        puffiness: 'Poches',
+        redness: 'Rougeurs',
+        unevenSkinTone: 'Teint inégal',
+        // skinTone
+        fairLight: 'Clair pâle',
+        fair: 'Pâle',
+        light: 'Légère',
+        lightMedium: 'Moyen clair',
+        medium: 'Moyenne',
+        mediumTan: 'Bronzage moyen',
+        tan: 'Bronzée',
+        deep: 'Très foncée',
+        rich: 'Riche',
+        // skinType
+        comboSk: 'Mixte',
+        drySk: 'Secs',
+        normalSk: 'Normaux',
+        oilySk: 'Gras',
+        // eyeColor
+        blue: 'Bleus',
+        green: 'Verts',
+        hazel: 'Noisette',
+        // hairConcerns
+        brassiness: 'Cuivré',
+        colorFading: 'Décoloration',
+        colorSafe: 'Sans danger pour la coloration',
+        curlEnhancing: 'Rehausseur de boucles',
+        damageSplitEnds: 'Abîmés/pointes fourchues',
+        dandruff: 'Pellicules',
+        flakyDryScalp: 'Cuir chevelu sec et irrité',
+        frizzHr: 'Frisottis',
+        heatProtection: 'Protection contre la chaleur',
+        'hold_&style_extending': 'Maintien et tenue',
+        oily_scalp: 'Cuir chevelu gras',
+        scalp_build_up: 'Accumulation sur le cuir chevelu',
+        shine: 'Brillance',
+        straighteningSmoothing: 'Raidir/Lisser',
+        thinning: 'Cheveux clairsemés',
+        uvprorection: 'Protection UV',
+        volumizing: 'Volumisant',
+        // hairTexture
+        coily: 'Crépus',
+        curly: 'Frisés',
+        straight: 'Raides',
+        wavy: 'Bouclés',
+        //hairDescrible
+        fine: 'Fins',
+        thick: 'Épais',
+        // ageRange
+        '20s': 'Vingtaine',
+        '30s': 'Trentaine',
+        '40s': 'Quarantaine',
+        '50s': '50+',
+        // shoppingPreferences
+        bestOfAllure: 'Best of Allure',
+        bestOfAllureDesc: 'Jetez un coup d’œil à ces',
+        bipocOwnedBrands: 'marques fondées par des PANDC gagnantes de prix',
+        bipocOwnedBrandsDesc: 'Soutenez les marques beauté fondées par des PANDC (personnes autochtones, noires, de couleur)',
+        blackOwnedBrands: 'Marques fondées par des Noirs',
+        blackOwnedBrandsDesc: 'Des produits que nous aimons de marques novatrices',
+        luxuryFragrance: 'Parfum de prestige',
+        luxuryFragranceDesc: 'Parez-vous de prestige',
+        luxuryHair: 'Cheveux de prestige',
+        luxuryHairDesc: 'Pour des résultats qui en mettront plein la vue',
+        luxuryMakeup: 'Maquillage de prestige',
+        luxuryMakeupDesc: 'Essentiels prestigieux de marques emblématiques',
+        luxurySkincare: 'Soins pour la peau de prestige',
+        luxurySkincareDesc: 'Ces formules efficaces en valent la peine',
+        onlyAtSephora: 'Exclusivité Sephora',
+        onlyAtSephoraDesc: 'Essentiels beauté que vous ne trouverez nulle part ailleurs',
+        planetAware: 'Écoresponsable',
+        planetAwareDesc: 'Notre sélection de marques soutenues par des engagements environnementaux significatifs, notamment en matière d’ingrédients et d’approvisionnement durables, d’emballage, d’engagements d’entreprise et de transparence envers les consommateurs.'
+    };
+
+    return resources[label];
+}

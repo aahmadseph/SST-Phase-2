@@ -1,0 +1,4 @@
+import PreferredStoreAndZipCode from 'components/ShopYourStore/PreferredStoreAndZipCode/PreferredStoreAndZipCode';
+import { withPreferredStoreAndZipCodeProps } from 'components/ShopYourStore/PreferredStoreAndZipCode/withPreferredStoreAndZipCodeProps';
+
+export default withPreferredStoreAndZipCodeProps(PreferredStoreAndZipCode);

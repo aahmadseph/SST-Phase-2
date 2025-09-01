@@ -1,0 +1,6 @@
+import SelectedBeautyPreferences from 'components/Header/BeautyPreferences/SearchableProfileContent/SelectedBeautyPreferences/SelectedBeautyPreferences';
+import { withPreferencesModalProps } from 'viewModel/header/beautyPreferences/preferencesModal/withPreferencesModalProps';
+
+const ConnectedSelectedBeautyPreferences = withPreferencesModalProps(SelectedBeautyPreferences);
+
+export default ConnectedSelectedBeautyPreferences;

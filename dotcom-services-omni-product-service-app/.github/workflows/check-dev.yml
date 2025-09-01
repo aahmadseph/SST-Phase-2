@@ -1,0 +1,42 @@
+name: Rover Check on PR to Dev
+
+on:
+  pull_request:
+    branches:
+      - dev
+
+concurrency:
+  group: "${{ github.ref }}"
+  cancel-in-progress: true
+
+jobs:
+  rover-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      
+      - name: Install Rover
+        run: |
+          curl -sSL https://rover.apollo.dev/nix/latest | sh
+          echo 'export PATH="$HOME/.rover/bin:$PATH"' >> $GITHUB_ENV
+          /home/runner/.rover/bin/rover --version
+      - name: Verify Apollo Authentication
+        env:
+          APOLLO_KEY: ${{ secrets.APOLLO_KEY }}
+        run: /home/runner/.rover/bin/rover config whoami
+
+      - name: Run Rover subgraph check on Dev, QA, Perf Environments.
+        env:
+          APOLLO_KEY: ${{ secrets.APOLLO_KEY }}
+        run: |
+          graph_name=Sephora-Enterprise-Graph
+          schema_path=omni-product-service/src/main/resources/schema/schema.graphqls
+          Application=omni-product-service
+          echo "Running rover subgraph check on QA2 Env"
+          /home/runner/.rover/bin/rover subgraph check $graph_name@qa --schema $schema_path --name $Application
+          echo "Running rover subgraph check on Perf1 Env"
+          /home/runner/.rover/bin/rover subgraph check $graph_name@perf --schema $schema_path --name $Application

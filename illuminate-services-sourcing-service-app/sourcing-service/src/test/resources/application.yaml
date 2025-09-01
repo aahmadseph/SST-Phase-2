@@ -1,0 +1,63 @@
+example:
+  options:
+    azure:
+      cosmosdb:
+        dbName: reference
+    warmup:
+      enabled: false
+
+spring:
+  main.allow-bean-definition-overriding: true
+
+sourcing:
+  options:
+    azure:
+      cosmosdb:
+        uri: https://sep-eus2-devqa-db01.documents.azure.com:443/
+        key: A4OFMDKmX3jhTAmSg9OqniI2cwnohbnODxvtfzb2x8shGSkZ1rSUQtFsxQOsOnMZCISpN4mcZCsQt1GJESUltA==
+        secondaryKey: UMt4BfrQqhf6lKY0SG8t717ryweJ6GwloNHyhdPXVLp7U1PRpaqJNRNxSSniA5NmF1xrEHzl0K43AGuPsEVHNA==
+        dbName: inventory
+        populateQueryMetrics: false
+        maxPoolSize: 20
+        requestTimeoutInMillis: 3000
+        idleConnectionTimeoutInMillis: 60000
+        maxRetryWaitTimeInSeconds: 1
+        maxRetryAttemptsOnThrottledRequests: 3
+    feign:
+      inventory:
+        serviceUrl: http://localhost:8055
+    cache:
+      type: jcache
+    mail:
+      enabled: true   
+      host: smtpvip.qts.sephoraus.com
+      port: 25
+      username: OMS
+      password: 
+      protocol: smtp
+      auth: true
+      starttlsEnabled: true 
+      debugEnabled: true
+    zone-map:
+      mail:
+        enabled: true
+        fromAddress: no-reply@sephora.com
+        toAddress: 
+           - safeer.ahameed@sephora.com
+        ccAddress: 
+           - safeer.ahameed@sephora.com
+        subject: OMS Zone Mapping File Processed
+
+location-priorities:
+  isLocationsByPriorities: true
+  azureTableName: devsephorasourcingServicelocationsByPriorityTable
+  priorityConfig:
+    - requestOrigin: DEFAULT, PAS
+      priorityOrder: CACHE, AZURE_TABLE
+    - requestOrigin: PERF_TEST
+      priorityOrder: AZURE_TABLE
+
+azure:
+  table:
+    host: https://sepeus1devqaoms02.table.core.windows.net
+    sasToken: sv=2024-11-04&ss=bfqt&srt=sco&sp=rwdlacupiytfx&se=2027-05-04T00:02:34Z&st=2025-05-07T16:02:34Z&spr=https&sig=8mZGbeleOEIJol9T2PWRwp9903HNlmcVeN7b%2FVF5MyM%3D

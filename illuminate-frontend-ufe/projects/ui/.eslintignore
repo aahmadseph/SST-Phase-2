@@ -1,0 +1,9 @@
+src/thirdparty/
+thirdparty/
+tests/spec/locales
+**/README.md
+services/TestTarget/testTargetFooter.js
+services/TestTarget/testTargetHeader.js
+services/TestTarget/visitorAPIFooter.js
+*.md
+*.mdx

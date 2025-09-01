@@ -1,0 +1,91 @@
+{
+    "id": "RC8a77286151374e25aad19aa45b131081",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2023-03-01T22:32:44.484Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "IQ-SEO-Tag",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": false,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-03-27T17:45:51.885Z",
+        "created_by_email": "rachel.joss@sephora.com",
+        "created_by_display_name": "rachel joss",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"(function (window){\\n    /**\\n     * Copyright (c) 2013, Visual IQ Inc. All Rights Reserved.  \\n\\t * Version 2.1.6\\n\\t */\\n\\n\\t /*\\n\\t \\tQP is Query Parameter.\\n\\t */\\n\\tvar CONFIG = {\\n\\t SEARCH_ENGINES : {\\n\\t\\tGOOGLE : {\\n\\t\\t\\tNAME : \\\"Google\\\",\\n\\t\\t\\tQP : \\\"q\\\",\\n\\t\\t\\tHOST : \\\"google\\\"\\n\\t\\t},\\n\\n\\t\\tYAHOO : {\\n\\t\\t\\tNAME : \\\"Yahoo\\\",\\n\\t\\t\\tQP : \\\"p\\\",\\n\\t\\t\\tHOST : \\\"yahoo\\\"\\n\\t\\t},\\n\\n\\t\\tBING : {\\n\\t\\t\\tNAME : \\\"Bing\\\",\\n\\t\\t\\tQP : \\\"q\\\",\\n\\t\\t\\tHOST : \\\"bing\\\"\\n\\t\\t},\\n\\n\\t\\tASK : {\\n\\t\\t\\tNAME : \\\"Ask\\\",\\n\\t\\t\\tQP : \\\"q\\\",\\n\\t\\t\\tHOST : \\\"ask\\\"\\n\\t\\t}\\n\\t }\\n\\t};\\n\\tvar _result;\\n\\tvar tapadBaseUrl='https://tapestry.tapad.com/tapestry/1?ta_partner_id=';\\n\\tvar tapadPartnerId;\\n\\tfunction trackRequest(referrerURL, currentURL, cmpId, additionalParams) {\\n\\t\\t_result = checkReferrer(referrerURL, currentURL, cmpId);\\n\\t\\tif( (_result.modeOfAccess != \\\"DIRECT\\\") \\u0026\\u0026 (additionalParams != null) ) {\\n\\t\\t\\tvar referrerURLParams = parseUri(referrerURL);\\n\\t      \\tvar referrerHost=referrerURLParams.host;\\n\\t      \\t_result=checkCustomAccessModes(referrerHost,additionalParams,_result);\\n\\t\\t}\\n\\t\\t_result.randomId = Math.floor(Math.random() * 100001);\\n\\t\\t_result.timestamp = new Date().getTime(); \\n\\t\\t_result.Utils=Utils;\\n\\t\\treturn _result;\\n\\t}\\n\\n\\n\\tfunction checkCustomAccessModes(referrerHost,additionalParams, result){\\n\\t\\tresult= checkCustomModeByRefferer(referrerHost,additionalParams, result);\\n\\t\\tresult= checkCustomModeByCurrentPageParams(referrerHost,additionalParams, result);\\n\\t\\treturn result;\\n\\t}\\n\\n\\t\\n\\tfunction checkCustomModeByCurrentPageParams(referrerHost,additionalParams, result){\\n\\t\\tvar custommodes=additionalParams[\\\"CUSTOM_ACCESS_MODES_BY_CURRENT_PAGE_PARAMS\\\"];\\n\\t\\tvar found=false;\\n\\t\\tvar cHost;\\n\\t\\tfor (var mode in custommodes){\\n\\t\\t\\tvar custommode=custommodes[mode];\\n\\t\\t\\tfor (i=0 ; i\\u003c custommode.length ; i++){\\n\\t\\t\\t\\tif(result.current_page_params.queryKey.hasOwnProperty(custommode[i])){\\n\\t\\t\\t\\t\\tresult.source = referrerHost;\\n\\t\\t\\t\\t\\tresult.modeOfAccess = mode;\\n\\t\\t\\t\\t    found=true;\\n\\t\\t\\t\\t    break;\\n\\t\\t\\t\\t}\\n\\t\\t\\t}\\n\\t\\t\\tif(found){\\n\\t\\t\\t\\tbreak;\\n\\t\\t\\t}\\n\\t\\t}\\n\\t\\treturn result;\\n\\t}\\n\\t\\n\\n\\tfunction checkCustomModeByRefferer(referrerHost,additionalParams, result){\\n\\t\\tvar custommodes=additionalParams[\\\"CUSTOM_ACCESS_MODES_BY_REFERRER\\\"];\\n\\t\\tvar found=false;\\n\\t\\tvar cHost;\\n\\t\\tfor (var mode in custommodes){\\n\\t\\t\\t\\n\\t\\t\\tvar custommode=custommodes[mode];\\n\\t\\t\\tfor (i=0 ; i\\u003c custommode.length ; i++){\\n\\t\\t\\t\\tcHost = custommode[i];\\n\\t\\t\\t\\tif (referrerHost.indexOf(cHost.toLowerCase()) != -1) {\\n\\t\\t\\t\\t    result.source = cHost;\\n\\t\\t\\t\\t    result.modeOfAccess = mode;\\n\\t\\t\\t\\t    found=true;\\n\\t\\t\\t\\t    break;\\n\\t\\t\\t\\t}\\n\\t\\t\\t}\\n\\t\\t\\tif(found){\\n\\t\\t\\t\\tbreak;\\n\\t\\t\\t}\\n\\t\\t}\\n\\t    return result;\\n\\t}\\n\\n\\n\\tfunction checkReferrer(referrerURL, currentURL, cmpId) {\\n\\t\\tvar result = new Object();\\n\\t\\tvar currentURLParams = parseUri(currentURL);\\n\\n\\t\\t// Initialize\\n\\t\\tresult.current_page_params=currentURLParams;\\n\\t\\tresult.modeOfAccess = \\\"UNKNOWN\\\";\\n\\t\\tresult.source = \\\"NONE\\\";\\n\\t\\tresult.isSearchEngine = false;\\n\\n\\t\\tif (!referrerURL || (referrerURL== null) || (referrerURL==\\\"\\\") )  {\\n\\t\\t\\tresult.isRequestTracked = false;\\n\\t\\t\\tresult.isSearchEngine = false;\\n\\t\\t\\tresult.modeOfAccess = \\\"DIRECT\\\";\\n\\t\\t} else {\\n\\t\\t\\t//result.isRequestTracked = \\\"UNKNOWN\\\";\\n\\t\\t\\t\\n\\t\\t\\tvar searchEngines = CONFIG.SEARCH_ENGINES ;\\n\\t\\t\\tvar referrerURLParams = parseUri(referrerURL);\\n\\t\\t\\tresult.referrer_page_params=referrerURLParams;\\n\\t\\t\\tvar referrerHost=referrerURLParams.host;\\n\\t\\t\\tfor (var i in searchEngines){\\t\\t\\t\\n\\t\\t\\t\\tvar searchEngine = searchEngines[i];\\n\\t\\t\\t\\tif (referrerHost.indexOf(searchEngine.HOST) != -1) {\\n\\t\\t\\t\\t\\tresult.source = searchEngine.NAME;\\n\\t\\t\\t\\t\\tresult.isSearchEngine = true;\\n\\t\\t\\t\\t\\tresult.modeOfAccess = \\\"ORGANIC\\\";\\n\\t\\t\\t\\t\\tresult.query = referrerURLParams['queryKey'][searchEngine.QP];\\n\\t\\t\\t\\t\\tresult.isRequestTracked = validateCampaignIds(currentURLParams.queryKey,cmpId,referrerHost);\\n\\t\\t\\t\\t\\tif(result.isRequestTracked){\\n\\t\\t\\t\\t\\t\\tresult.modeOfAccess = \\\"PAID\\\";\\n\\t\\t\\t\\t\\t}\\n\\t\\t\\t\\t\\tbreak;\\n\\t\\t\\t\\t}\\t\\n\\t\\t\\t}\\t\\n\\t\\t\\t\\n\\t\\t\\tif (!result.isSearchEngine) {\\n\\t\\t\\t\\tresult.source = encodeURI(referrerURL);\\n\\t\\t\\t\\tresult.isSearchEngine = false;\\n\\t\\t\\t\\tresult.isRequestTracked = validateCampaignIds(currentURLParams.queryKey,cmpId,referrerHost);\\n\\t\\t\\t\\t\\n\\t\\t\\t\\tif(result.isRequestTracked){\\n\\t\\t\\t\\t\\tresult.modeOfAccess = \\\"DISPLAY\\\";\\n\\t\\t\\t\\t} else {\\n\\t\\t\\t\\t\\tresult.modeOfAccess = \\\"UNKNOWN\\\";\\t\\t\\t\\t\\n\\t\\t\\t\\t}\\n\\t\\t\\t}\\t\\t\\n\\t\\t}\\n\\t\\t\\t\\n\\t\\treturn result;\\n\\t}\\n\\n\\tfunction validateCampaignIds(targetObject,domainIds,referrerHost){\\n\\t\\t/*\\n\\t\\t\\tdomainIds-\\u003e {'*':[\\\"gclid\\\",\\\"cmp_id\\\"],'t.co':[\\\"tw1\\\",\\\"tw2\\\"]}\\n\\t\\t\\t* applies to all domains\\n\\t\\t*/\\n        var campainIdExistance=false;\\n        for(var domainval in domainIds){\\n          var cmpIds=domainIds[domainval];\\n          for(var cmpId in cmpIds){\\n            if( hasCampaignID(targetObject,cmpIds[cmpId]) \\u0026\\u0026 ( domainval==\\\"*\\\" || referrerHost.indexOf(domainval.toLowerCase()) != -1 ) ){\\n                return true;\\n            };\\n          }\\n        }\\n\\t\\treturn campainIdExistance;\\n    }\\n\\n\\tfunction hasCampaignID(targetObject,cmpId){\\n\\t\\tif(cmpId.indexOf('*')!=-1){\\n\\t\\t\\treturn hasWildCardMatch(targetObject,cmpId)\\n\\t\\t}\\n\\t\\treturn (cmpId != null) \\u0026\\u0026 (targetObject.hasOwnProperty(cmpId));\\n\\t}\\n\\n\\tfunction hasWildCardMatch(targetObject,cmpId){\\n\\t\\tvar matches=false;\\n\\t\\tcmpId=cmpId.replace(/\\\\*/g,\\\"\\\"); \\n\\t\\tvar patternstr=\\\"^\\\"+cmpId;\\n\\t\\tvar pattern=new RegExp(patternstr,\\\"g\\\");\\n\\t\\tfor(var key in targetObject){\\n\\t\\t\\tif(pattern.test(key)){\\n\\t\\t\\t\\tmatches=true;\\n\\t\\t\\t\\tbreak;\\n\\t\\t\\t}\\n\\t\\t}\\n\\t\\treturn matches;\\n\\t}\\n\\n\\t// parseUri 1.2.2\\n\\t// (c) Steven Levithan \\u003cstevenlevithan.com\\u003e\\n\\t// MIT License\\n\\n\\tfunction parseUri (str) {\\n\\t\\tvar\\to   = parseUri.options,\\n\\t\\t\\tm   = o.parser[o.strictMode ? \\\"strict\\\" : \\\"loose\\\"].exec(str),\\n\\t\\t\\turi = {},\\n\\t\\t\\ti   = 14;\\n\\n\\t\\twhile (i--) uri[o.key[i]] = m[i] || \\\"\\\";\\n\\n\\t\\turi[o.q.name] = {};\\n\\t\\turi[o.key[12]].replace(o.q.parser, function ($0, $1, $2) {\\n\\t\\t\\tif ($1) uri[o.q.name][$1] = $2;\\n\\t\\t});\\n\\n\\t\\treturn uri;\\n\\t};\\n\\n\\tparseUri.options = {\\n\\t\\tstrictMode: true,\\n\\t\\tkey: [\\\"source\\\",\\\"protocol\\\",\\\"authority\\\",\\\"userInfo\\\",\\\"user\\\",\\\"password\\\",\\\"host\\\",\\\"port\\\",\\\"relative\\\",\\\"path\\\",\\\"directory\\\",\\\"file\\\",\\\"query\\\",\\\"anchor\\\"],\\n\\t\\tq:   {\\n\\t\\t\\tname:   \\\"queryKey\\\",\\n\\t\\t\\tparser: /(?:^|\\u0026)([^\\u0026=]*)=?([^\\u0026]*)/g\\n\\t\\t},\\n\\t\\tparser: {\\n\\t\\t\\tstrict: /^(?:([^:\\\\/?#]+):)?(?:\\\\/\\\\/((?:(([^:@?]*)(?::([^:@?]*))?)?@)?([^:\\\\/?#]*)(?::(\\\\d*))?))?((((?:[^?#\\\\/]*\\\\/)*)([^?#]*))(?:\\\\?([^#]*))?(?:#(.*))?)/,\\n\\t\\t\\tloose:  /^(?:(?![^:@]+:[^:@\\\\/]*@)([^:\\\\/?#.]+):)?(?:\\\\/\\\\/)?((?:(([^:@?]*)(?::([^:@?]*))?)?@)?([^:\\\\/?#]*)(?::(\\\\d*))?)(((\\\\/(?:[^?#](?![^?#\\\\/]*\\\\.[^?#\\\\/.]+(?:[?#]|$)))*\\\\/?)?([^?#\\\\/]*))(?:\\\\?([^#]*))?(?:#(.*))?)/\\n\\t\\t}\\n\\t};\\n\\n\\tfunction IQSeoTag(referrerURL, currentURL, cmpId, additionalParams){\\n\\t\\tif(typeof additionalParams['TAPAD_PARTNERID'] === 'undefined'){\\t\\t\\n\\t\\ttapadPartnerId=950;\\n\\t\\t}else{\\n\\t\\ttapadPartnerId=additionalParams['TAPAD_PARTNERID'];\\n\\t\\t}\\n\\t\\treturn trackRequest(referrerURL, currentURL, cmpId, additionalParams)\\n\\t}\\n\\n\\tfunction valueMatches(list,val){\\n\\t    for (var li = 0, listlen = list.length; li \\u003c listlen; li++) {\\n\\t\\t\\tif(list[li].substring){\\n\\t            if(list[li].toLowerCase()==val){\\n\\t                return true;\\n\\n\\n\\t\\t\\t\\t\\t}\\n\\t        }\\n\\t\\t}\\n\\t    return false;\\n\\t}\\n\\n\\tvar Utils={\\n\\t\\tvalueMatches:valueMatches,\\t\\t\\n\\t\\t//function to include tap ad pixel in VIQ container pixel and redirect the same to tapad\\n\\t\\tgetTapadPixel:function (adpixel,postfix){\\n\\t\\t\\t//an ad pixel should look like https://ad.doubleclick.net/ad/N2992.Google/B8208461.110259833;sz=1x1;u=data-sdfa=asfdf-\\n\\t\\t\\t//postfix will look like ord[timestamp]\\n\\t\\t\\tvar tapadUrl='';\\n\\t\\t\\tif(typeof postfix === 'undefined'){\\n\\t\\t\\tpostfix='';\\n\\t\\t\\t}\\n\\t\\t\\tadpixel=adpixel+'TAPAD_${IDS:key}'+postfix;\\n\\t\\t\\ttapadUrl=tapadBaseUrl+tapadPartnerId+'\\u0026ta_redirect='+encodeURIComponent(adpixel);\\n\\t\\t\\treturn tapadUrl;\\n\\t\\t},\\n\\t\\tgetCurrentPageParamsKey:function (queryKeyName){\\n\\t\\t\\tqueryKeyName=queryKeyName.toLowerCase();\\n\\t\\t\\tif(_result.current_page_params.queryKey[queryKeyName])\\n\\t\\t\\t{\\n\\t\\t\\t\\treturn _result.current_page_params.queryKey[queryKeyName];\\n\\t\\t\\t}\\n\\t\\t\\telse\\n\\t\\t\\t{\\t\\t\\t\\t\\n\\t\\t\\tif(_result.current_page_params.source.toLowerCase().indexOf(queryKeyName+\\\"=\\\") \\u003e -1){\\n\\t\\t\\tvar queryKeyValue=_result.current_page_params.source.toLowerCase().split(queryKeyName+\\\"=\\\");\\n\\t\\t\\tqueryKeyValue=queryKeyValue[1].split(\\\"\\u0026\\\");\\n\\t\\t\\t_result.current_page_params.queryKey[queryKeyName]=queryKeyValue[0];\\n\\t\\t\\treturn _result.current_page_params.queryKey[queryKeyName];\\n\\t\\t\\t}\\n\\t\\t\\telse\\n\\t\\t\\t{\\n\\t\\t\\treturn;\\n\\t\\t\\t}\\n\\t\\t\\t}\\t\\n\\t\\t},\\n\\t\\tgetReferrerPageParamsKey:function (queryKeyName){\\n\\t\\t\\t\\tqueryKeyName=queryKeyName.toLowerCase();\\n\\t\\t\\tif(_result.referrer_page_params.queryKey[queryKeyName])\\n\\t\\t\\t{\\n\\t\\t\\t\\treturn _result.referrer_page_params.queryKey[queryKeyName];\\n\\t\\t\\t}\\n\\t\\t\\telse\\n\\t\\t\\t{\\t\\t\\t\\t\\n\\t\\t\\tif(_result.referrer_page_params.source.toLowerCase().indexOf(queryKeyName+\\\"=\\\") \\u003e -1){\\n\\t\\t\\tvar queryKeyValue=_result.referrer_page_params.source.toLowerCase().split(queryKeyName+\\\"=\\\");\\n\\t\\t\\tqueryKeyValue=queryKeyValue[1].split(\\\"\\u0026\\\");\\n\\t\\t\\t_result.referrer_page_params.queryKey[queryKeyName]=queryKeyValue[0];\\n\\t\\t\\treturn _result.referrer_page_params.queryKey[queryKeyName];\\n\\t\\t\\t}\\n\\t\\t\\telse\\n\\t\\t\\t{\\n\\t\\t\\treturn;\\n\\t\\t\\t}\\n\\t\\t\\t}\\t\\n\\t\\t},\\n\\t\\tgetReferrerPageParams:function(){\\n\\t\\t\\tif(!_result.referrer_page_params.query == \\\"\\\")\\n\\t\\t\\t{\\n\\t\\t\\treturn _result.referrer_page_params.query;\\n\\t\\t\\t}\\n\\t\\t\\telse\\n\\t\\t\\t{\\n\\t\\t\\tif(_result.referrer_page_params.path.indexOf(\\\"\\u0026\\\") \\u003e -1 || _result.referrer_page_params.path.indexOf(\\\"=\\\") \\u003e -1){\\n\\t\\t\\tvar dir_temp=_result.referrer_page_params.path.split(\\\"/\\\");\\n\\t\\t\\t\\t_result.referrer_page_params.query=\\\"\\\";\\n\\t\\t\\t\\tvar slash_temp=\\\"\\\";\\n\\t\\t\\t\\tfor(var il=0;il\\u003cdir_temp.length;il++){\\n\\t\\t\\t\\tif(dir_temp[il].indexOf(\\\"=\\\")\\u003e-1 || slash_temp ==\\\"/\\\"){\\n\\t\\t\\t\\t_result.referrer_page_params.query=_result.referrer_page_params.query+slash_temp+dir_temp[il];\\n\\t\\t\\t\\tslash_temp=\\\"/\\\";\\n\\t\\t\\t\\t}\\n\\t\\t\\t\\t}\\n\\t\\t\\t\\treturn _result.referrer_page_params.query;\\t\\n\\t\\t\\t}\\n\\t\\t\\t}\\n\\t\\t},\\n\\t\\tgetCurrentPageParams:function (){\\n\\t\\t\\tif(!_result.current_page_params.query == \\\"\\\")\\n\\t\\t\\t{\\n\\t\\t\\treturn _result.current_page_params.query;\\n\\t\\t\\t}\\n\\t\\t\\telse\\n\\t\\t\\t{\\n\\t\\t\\tif(_result.current_page_params.path.indexOf(\\\"\\u0026\\\") \\u003e -1 || _result.current_page_params.path.indexOf(\\\"=\\\") \\u003e -1){\\n\\t\\t\\tvar dir_temp=_result.current_page_params.path.split(\\\"/\\\");\\n\\t\\t\\t\\t_result.current_page_params.query=\\\"\\\";\\n\\t\\t\\t\\tvar slash_temp=\\\"\\\";\\n\\t\\t\\t\\tfor(var il=0;il\\u003cdir_temp.length;il++){\\n\\t\\t\\t\\tif(dir_temp[il].indexOf(\\\"=\\\")\\u003e-1 || slash_temp ==\\\"/\\\"){\\n\\t\\t\\t\\t_result.current_page_params.query=_result.current_page_params.query+slash_temp+dir_temp[il];\\n\\t\\t\\t\\tslash_temp=\\\"/\\\";\\n\\t\\t\\t\\t}\\n\\t\\t\\t\\t}\\n\\t\\t\\t\\treturn _result.current_page_params.query;\\t\\n\\t\\t\\t}\\n\\t\\t\\t}\\n\\t\\t},\\n\\t\\ttolowercaseCurrentPageParamsKeys:function(){\\n\\t\\t\\n\\t\\tif(_result.current_page_params \\u0026\\u0026 _result.current_page_params.queryKey){\\n\\t\\t\\n\\t\\n\\t\\t\\tfor(key in _result.current_page_params.queryKey){\\t\\t\\t\\t\\n\\t\\t\\t\\tif(key.toLowerCase() != key){\\n\\t\\t\\t\\t\\t_result.current_page_params.queryKey[key.toLowerCase()] = _result.current_page_params.queryKey[key];\\n\\t\\t\\t\\t\\tdelete _result.current_page_params.queryKey[key];\\n\\t\\t\\t\\t}\\n\\t\\t\\t}\\n\\t\\t}\\n\\t\\t},\\n\\t\\tgetCookieVIQ:function(c_name){\\n\\t\\t\\tvar c_value = document.cookie;\\n\\t\\t\\tvar c_start = c_value.indexOf(c_name + \\\"=\\\");\\n\\t\\t\\tif (c_start == -1){\\n\\t\\t\\t\\tc_start = c_value.indexOf(c_name + \\\"=\\\");\\n\\t\\t\\t}\\n\\t\\t\\tif (c_start == -1){\\n\\t\\t\\t\\tc_value = null;\\n\\t\\t\\t}\\n\\t\\t\\telse{\\n\\t\\t\\t\\tc_start = c_value.indexOf(\\\"=\\\", c_start) + 1;\\n\\t\\t\\t\\tvar c_end = c_value.indexOf(\\\";\\\", c_start);\\n\\t\\t\\t\\tif (c_end == -1){\\n\\t\\t\\t\\t\\tc_end = c_value.length;\\n\\t\\t\\t\\t}\\n\\t\\t\\t\\tc_value = decodeURIComponent(c_value.substring(c_start,c_end));\\n\\t\\t\\t}\\n\\t\\t\\treturn c_value;\\n\\t\\t},\\n\\t\\tsetCookieVIQ:function(c_name,value){\\n\\t\\t\\tvar exdate=new Date();\\n\\t\\t\\tvar c_value=encodeURIComponent(value);\\n\\t\\t\\tdocument.cookie=c_name + \\\"=\\\" + c_value;\\n\\t\\t\\treturn;\\n\\t\\t},\\n\\t\\tcheckCookieVIQ:function(c_name){\\n\\t\\t\\tvar domainname=_result.Utils.getCookieVIQ(c_name);\\n\\t\\t\\tif (domainname!=null \\u0026\\u0026 domainname!=\\\"\\\"){\\n\\t\\t\\t\\treturn domainname;\\n\\t\\t\\t}\\n\\t\\t\\telse {\\n\\t\\t\\t\\treturn \\\"false\\\";\\n\\t\\t\\t}\\n\\t\\t}\\n\\t}\\t\\n\\twindow.IQSeoTag=IQSeoTag;\\n}(window));\\n\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8a77286151374e25aad19aa45b131081/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8a77286151374e25aad19aa45b131081/updated_with_extension"
+            },
+            "data": {
+                "id": "EX06a7afc619ae4214a074cb5399abf9fa",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8a77286151374e25aad19aa45b131081/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8a77286151374e25aad19aa45b131081/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8a77286151374e25aad19aa45b131081/origin"
+            },
+            "data": {
+                "id": "RC8a77286151374e25aad19aa45b131081",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8a77286151374e25aad19aa45b131081/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC8a77286151374e25aad19aa45b131081",
+        "rules": "https://reactor.adobe.io/rule_components/RC8a77286151374e25aad19aa45b131081/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC8a77286151374e25aad19aa45b131081"
+    },
+    "meta": {
+        "latest_revision_number": 137
+    }
+}

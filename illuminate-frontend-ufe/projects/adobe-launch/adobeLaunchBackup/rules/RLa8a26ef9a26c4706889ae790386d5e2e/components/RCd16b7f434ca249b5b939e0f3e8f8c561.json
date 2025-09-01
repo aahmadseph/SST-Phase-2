@@ -1,0 +1,91 @@
+{
+    "id": "RCd16b7f434ca249b5b939e0f3e8f8c561",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2022-09-22T16:32:58.387Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: doubleClick_biSignUpView",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-02-13T16:00:34.046Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"\\u003cscript type=\\\"text/javascript\\\"\\u003e\\n  Sephora.analytics.promises.initialPageLoadFired.then(function() {\\n      var url = window.location.href;\\n      var u2 = '';\\n      if ((url.indexOf('@') \\u003e -1) || (url.indexOf('%40') \\u003e -1)) {\\n          u2 = '';\\n      } else {\\n          u2 = url;\\n      }\\n      gtag('event', 'conversion', {\\n          'allow_custom_scripts': true,\\n          'u1': _satellite.getVar('[TMS] Page :: Name'),\\n          'u2': u2,\\n          'u9': digitalData.user[0].profile[0].profileInfo.profileID,\\n          'dc_custom_params': { 'origin': 'Adobe Launch', 'match_id': digitalData.user[0].segment.biAccountId },\\n          'send_to': 'DC-5878462/produ0/bisig0+standard'\\n      });\\n  });\\n\\u003c/script\\u003e\\n\\n\\u003cnoscript\\u003e\\n  \\u003cimg src=\\\"https://ad.doubleclick.net/ddm/activity/src=5878462;type=produ0;cat=bisig0;u1=%[TMS] Page :: Name%;u2=%[TMS] Pixel :: Page Url For DoubleClick%;u9=%[TMS] Async :: User :: ATG ID - page load or async page load%;match_id=%[TMS] BI Account Number - asyncPageLoad%;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;npa=;ord=1?\\\" width=\\\"1\\\" height=\\\"1\\\" alt=\\\"\\\"/\\u003e\\n\\u003c/noscript\\u003e\",\"language\":\"html\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd16b7f434ca249b5b939e0f3e8f8c561/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd16b7f434ca249b5b939e0f3e8f8c561/updated_with_extension"
+            },
+            "data": {
+                "id": "EX06a7afc619ae4214a074cb5399abf9fa",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd16b7f434ca249b5b939e0f3e8f8c561/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd16b7f434ca249b5b939e0f3e8f8c561/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd16b7f434ca249b5b939e0f3e8f8c561/origin"
+            },
+            "data": {
+                "id": "RCd16b7f434ca249b5b939e0f3e8f8c561",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd16b7f434ca249b5b939e0f3e8f8c561/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RCd16b7f434ca249b5b939e0f3e8f8c561",
+        "rules": "https://reactor.adobe.io/rule_components/RCd16b7f434ca249b5b939e0f3e8f8c561/rules",
+        "self": "https://reactor.adobe.io/rule_components/RCd16b7f434ca249b5b939e0f3e8f8c561"
+    },
+    "meta": {
+        "latest_revision_number": 19
+    }
+}

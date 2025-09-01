@@ -1,0 +1,88 @@
+{
+    "id": "EXf709f7f40b4a435d8a4d58e86422a914",
+    "type": "extensions",
+    "attributes": {
+        "created_at": "2022-05-06T14:56:33.592Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "acronym-gtag.js",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2024-03-20T22:02:35.238Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "delegate_descriptor_id": "acronym-gtag.js::extensionConfiguration::config",
+        "display_name": "Google Global Site Tag (gtag)",
+        "review_status": "unsubmitted",
+        "version": "1.1.5",
+        "settings": "{\"accounts\":{\"1651848825944\":{\"id\":\"1651848825944\",\"name\":\"Sephora Gtag\",\"type\":\"ga\",\"options\":[],\"accounts\":{\"staging\":\"G-C6M2X8GHNB\",\"production\":\"G-HX1JZMWBCJ\",\"development\":\"G-C6M2X8GHNB\"},\"settings\":{\"linker\":{\"domains\":\"\",\"decorate_forms\":false,\"accept_incoming\":true},\"user_id\":\"\",\"cookie_name\":\"\",\"optimize_id\":\"\",\"anonymize_ip\":false,\"cookie_domain\":\"\",\"cookie_expires\":\"\"},\"custom_map\":[]}},\"configCode\":\"\",\"functionName\":\"\",\"dataLayerName\":\"\",\"displayFeatures\":true}"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/extensions/EXf709f7f40b4a435d8a4d58e86422a914/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/extensions/EXf709f7f40b4a435d8a4d58e86422a914/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/extensions/EXf709f7f40b4a435d8a4d58e86422a914/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/extensions/EXf709f7f40b4a435d8a4d58e86422a914/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/extensions/EXf709f7f40b4a435d8a4d58e86422a914/origin"
+            },
+            "data": {
+                "id": "EXf709f7f40b4a435d8a4d58e86422a914",
+                "type": "extensions"
+            }
+        },
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/extensions/EXf709f7f40b4a435d8a4d58e86422a914/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP81069fa771f5458f8c98b5782f82e181",
+                "type": "extension_packages"
+            }
+        },
+        "extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/extensions/EXf709f7f40b4a435d8a4d58e86422a914/extension_package"
+            },
+            "data": {
+                "id": "EP81069fa771f5458f8c98b5782f82e181",
+                "type": "extension_packages"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/extensions/EXf709f7f40b4a435d8a4d58e86422a914",
+        "self": "https://reactor.adobe.io/extensions/EXf709f7f40b4a435d8a4d58e86422a914",
+        "extension_package": "https://reactor.adobe.io/extension_packages/EP81069fa771f5458f8c98b5782f82e181",
+        "latest_extension_package": "https://reactor.adobe.io/extension_packages/EP4088787701664ce4bfc67739775f5c33"
+    },
+    "meta": {
+        "latest_revision_number": 16,
+        "upgrade_extension_package_id": "EP4088787701664ce4bfc67739775f5c33"
+    }
+}

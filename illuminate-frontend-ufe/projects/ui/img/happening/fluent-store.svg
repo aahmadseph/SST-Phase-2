@@ -1,0 +1,11 @@
+<svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Store">
+<path id="Stroke 4" d="M1.5 21C1.22386 21 1 20.7761 1 20.5V0.5C1 0.223858 1.22386 0 1.5 0H22.5C22.7761 0 23 0.223858 23 0.5V20.5C23 20.7761 22.7761 21 22.5 21H1.5ZM22 20V1H2V20H22Z" fill="black"/>
+<path id="Rectangle" d="M24 20H0V21H24V20Z" fill="black"/>
+<path id="Stroke 6" d="M7.5 21C7.22386 21 7 20.7761 7 20.5V10.5C7 10.2239 7.22386 10 7.5 10H16.5C16.7761 10 17 10.2239 17 10.5V20.5C17 20.7761 16.7761 21 16.5 21H7.5ZM16 20V11H8V20H16Z" fill="black"/>
+<path id="Stroke 7" d="M11.5 10H12.5V21H11.5V10Z" fill="black"/>
+<path id="Stroke 8" d="M1 3V2H23V3H1Z" fill="black"/>
+<path id="Stroke 9" d="M1 5V4H23V5H1Z" fill="black"/>
+<path id="Stroke 10" d="M1 7V6H23V7H1Z" fill="black"/>
+</g>
+</svg>

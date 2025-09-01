@@ -1,0 +1,3 @@
+import BillingAddressForm from 'components/GlobalModals/PaidReservationModal/PaymentSection/PaymentSectionContent/PaymentInfo/BillingAddressForm/BillingAddressForm';
+
+export default BillingAddressForm;

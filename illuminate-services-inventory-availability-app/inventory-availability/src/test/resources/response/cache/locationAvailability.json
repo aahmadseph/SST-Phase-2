@@ -1,0 +1,12 @@
+{
+  "productId": "2220135",
+  "locationId": "0701",
+  "atpByFulfillmentTypes": [
+    {
+      "fulfillmentType": "SHIP",
+      "atp": 111,
+      "atpStatus": "GREEN",
+      "updateTime": "2021-11-03T10:57:17.004"
+    }
+  ]
+}

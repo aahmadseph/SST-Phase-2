@@ -1,0 +1,12 @@
+# Query for Systematic Employee Discount work
+query CustomerLimitQuery($request: GetCustomerLimitInput!) {
+    customerLimit(request: $request) {
+        currency
+        balance {
+            initial
+            initialExpiryDate
+            totalSpend
+            available
+        }
+    }
+}

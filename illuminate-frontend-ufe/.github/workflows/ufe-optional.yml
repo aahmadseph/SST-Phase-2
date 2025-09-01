@@ -1,0 +1,113 @@
+name: UFE optional manual jobs
+
+on:
+  workflow_dispatch:
+    inputs:
+      project:
+        description: 'Select the job to run'
+        required: true
+        default: 'Update Adobe Launch backup'
+        type: choice
+        options:
+          - 'Re-build GitHub CI-CD image'
+          - 'Update Adobe Launch backup'
+
+env:
+  NODE_VERSION: 22.12.0
+  UFE_CICD_IMAGE: artifactory.lipstack.sephoraus.com/ufe:github_node22_12_0
+
+jobs:
+  #################################################################################################
+  # Image for GitHub CI-CD needs that has:
+  #   Timezone set to America/Los_Angeles
+  #   Node 16.16.0
+  #   Latest Chrome stable
+  #################################################################################################
+  build-github-cicd-image:
+    if: ${{ github.event.inputs.project == 'Re-build GitHub CI-CD image' }}
+    runs-on:
+      group: Sephora-US-Digital
+    name: Re-build GitHub CI-CD image
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@main
+
+      - name: Build UFE CI-CD GitHub Docker image
+        run: |
+          docker build -t ${{ env.UFE_CICD_IMAGE }} --build-arg NODE_VERSION=${{ env.NODE_VERSION }} -f ./automation/gitHub/Dockerfile .
+          docker images
+
+      - name: Test new image
+        run: docker run --rm -v $(pwd):/monorepo -w /monorepo ${{ env.UFE_CICD_IMAGE }} bash -c "PUPPETEER_SKIP_DOWNLOAD=true npm ci && npm run build -w ui && npm run test -w ui"
+
+      - name: Upload the image to the artifactory
+        run: docker push ${{ env.UFE_CICD_IMAGE }}
+
+      - name: Delete Docker image
+        run: docker images && docker rmi -f ${{ env.UFE_CICD_IMAGE }} && docker images
+
+  #################################################################################################
+  # Update Adobe Launch backup
+  #################################################################################################
+  update-adobe-launch-backup:
+    if: ${{ github.event.inputs.project == 'Update Adobe Launch backup' }}
+    runs-on:
+      group: Sephora-US-Digital
+    permissions:
+      contents: write
+      pull-requests: write
+
+    name: Update Adobe Launch backup
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@main
+        with:
+          ref: dev
+
+      - name: Update Adobe Launch backup
+        env:
+          ADOBE_LAUNCH_SECRET: ${{ secrets.ADOBE_LAUNCH_BACKUP }}
+        run: docker run --rm -v $(pwd):/monorepo -w /monorepo ${{ env.UFE_CICD_IMAGE }} bash -c "ADOBE_LAUNCH_SECRET=${{ env.ADOBE_LAUNCH_SECRET }} npm run update-backup -w adobe-launch"
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "devops_admin@sephora.com"
+
+      - name: Create a new Adobe Launch branch
+        run: |
+          TIMESTAMP=$(TZ=UTC date +%Y%m%d-%H%M%S)
+          echo "TIMESTAMP=$TIMESTAMP" >> $GITHUB_ENV
+
+          BRANCH_NAME="update-adobe-launch-backup-$TIMESTAMP"
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+
+          git checkout -b $BRANCH_NAME
+          git add ./projects/adobe-launch/adobeLaunchBackup/
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            echo "CHANGES_DETECTED=false" >> $GITHUB_ENV
+            exit 0
+          else
+            git commit -m "Updated Adobe Launch backup: $TIMESTAMP"
+            git push origin $BRANCH_NAME
+            echo "CHANGES_DETECTED=true" >> $GITHUB_ENV
+          fi
+
+      - name: Create Pull Request
+        if: env.CHANGES_DETECTED == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.UFE_BOT_CREDENTIALS }}
+        run: |
+            (
+              mkdir -p /tmp/gh-cli
+              cd /tmp/gh-cli
+              curl -sSL https://github.com/cli/cli/releases/download/v2.75.0/gh_2.75.0_linux_amd64.tar.gz | tar -xz
+            )
+            /tmp/gh-cli/gh_2.75.0_linux_amd64/bin/gh \
+            pr create \
+              --base dev \
+              --head "$BRANCH_NAME" \
+              --title "Automated Adobe Launch Update: $TIMESTAMP" \
+              --body "This PR updates the Adobe Launch backup. The data was updated on $TIMESTAMP."

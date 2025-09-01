@@ -1,0 +1,4 @@
+import CurbsidePickupCheckinModalRouter from 'pages/Community/RichProfile/MyAccount/CurbsidePickupCheckinModal/CurbsidePickupCheckinModalRouter';
+import { withCurbsidePickupCheckinModalProps } from 'viewModel/pages/community/richProfile/myAccount/curbsidePickupCheckinModal/withCurbsidePickupCheckinModalProps';
+
+export default withCurbsidePickupCheckinModalProps(CurbsidePickupCheckinModalRouter);

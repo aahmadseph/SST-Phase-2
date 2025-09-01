@@ -1,0 +1,69 @@
+{
+    "id": "RL50f2c0ea6aba4cf19d9ede9b9e04f3ef",
+    "type": "rules",
+    "attributes": {
+        "created_at": "2022-12-08T16:16:21.026Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "[TMS] facebook_searchView",
+        "published": false,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-07-11T15:14:38.110Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "niltoncesar.santos@sephora.com",
+        "updated_by_display_name": "niltoncesar santos",
+        "review_status": "unsubmitted"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RL50f2c0ea6aba4cf19d9ede9b9e04f3ef/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RL50f2c0ea6aba4cf19d9ede9b9e04f3ef/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RL50f2c0ea6aba4cf19d9ede9b9e04f3ef/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RL50f2c0ea6aba4cf19d9ede9b9e04f3ef/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RL50f2c0ea6aba4cf19d9ede9b9e04f3ef/origin"
+            },
+            "data": {
+                "id": "RL50f2c0ea6aba4cf19d9ede9b9e04f3ef",
+                "type": "rules"
+            }
+        },
+        "rule_components": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RL50f2c0ea6aba4cf19d9ede9b9e04f3ef/rule_components"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/rules/RL50f2c0ea6aba4cf19d9ede9b9e04f3ef",
+        "self": "https://reactor.adobe.io/rules/RL50f2c0ea6aba4cf19d9ede9b9e04f3ef",
+        "rule_components": "https://reactor.adobe.io/rules/RL50f2c0ea6aba4cf19d9ede9b9e04f3ef/rule_components"
+    },
+    "meta": {
+        "latest_revision_number": 15
+    }
+}

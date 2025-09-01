@@ -1,0 +1,370 @@
+variables:
+  UFE_CICD_BASE_IMAGE: "sephora-docker.artifactory/ufe/gitlab/runner"
+  UFE_CICD_DEBUG_IMAGE: "${UFE_CICD_BASE_IMAGE}:debug"
+  UFE_CICD_IMAGE: "${UFE_CICD_BASE_IMAGE}:latest"
+  # UFE_CICD_IMAGE: $UFE_CICD_DEBUG_IMAGE
+  UFE_DRAFT_MERGE_REQUEST_PIPELINE: "false"
+  UFE_MERGE_REQUEST_PIPELINE: "false"
+  UFE_SCHEDULE_PIPELINE: "false"
+  UFE_BRANCH_PIPELINE: "false"
+  DOCKER_TLS_CERTDIR: "/certs"
+
+image: $UFE_CICD_IMAGE
+
+services:
+  - docker:dind
+
+# cache: &global_cache
+#   key: $CI_COMMIT_REF_SLUG
+#   paths:
+#     - node_modules/
+#     - public_ufe/js/config/buildInfo.json
+#   policy: pull
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_TITLE =~ /^Draft:/
+      variables:
+        UFE_DRAFT_MERGE_REQUEST_PIPELINE: "true"
+        UFE_MERGE_REQUEST_PIPELINE: "true"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      variables:
+        UFE_MERGE_REQUEST_PIPELINE: "true"
+    - if: $CI_PIPELINE_SOURCE == "schedule" && $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS == null
+      variables:
+        UFE_SCHEDULE_PIPELINE: "true"
+    - if: $CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS == null
+      variables:
+        UFE_BRANCH_PIPELINE: "true"
+    - when: never
+
+before_script:
+  - date
+  - cat /etc/os-release
+  - git --version
+  - node -v
+  - npm -v
+  - docker --version
+  - google-chrome-stable --version
+  - echo $UFE_CICD_VERSION
+  - NEW_CICD_VERSION=$(($UFE_CICD_VERSION + 1))
+  - echo $NEW_CICD_VERSION
+  - echo $UFE_CICD_BASE_IMAGE
+  - echo $UFE_CICD_DEBUG_IMAGE
+  - echo $UFE_CICD_IMAGE
+  - echo $UFE_BRANCH_PIPELINE
+  - echo $UFE_MERGE_REQUEST_PIPELINE
+  - echo $UFE_SCHEDULE_PIPELINE
+  - echo $UFE_ARTIFACTORY_TOKEN
+  - export GIT_BRANCH=$(git remote)/$CI_COMMIT_REF_NAME
+  - echo $GIT_BRANCH
+  - echo $CI_API_V4_URL
+  - echo $CI_COMMIT_BRANCH
+  - echo $CI_COMMIT_MESSAGE
+  - echo $CI_COMMIT_REF_NAME
+  - echo $CI_COMMIT_REF_SLUG
+  - echo $CI_COMMIT_SHA
+  - echo $CI_COMMIT_TIMESTAMP
+  - echo $CI_DEFAULT_BRANCH
+  - echo $CI_DISPOSABLE_ENVIRONMENT
+  - echo $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+  - echo $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+  - echo $CI_MERGE_REQUEST_TITLE
+  - echo $CI_OPEN_MERGE_REQUESTS
+  - echo $CI_PAGES_URL
+  - echo $CI_PIPELINE_CREATED_AT
+  - echo $CI_PIPELINE_SOURCE
+  - echo $CI_REGISTRY_IMAGE
+  - echo $CI_REPOSITORY_URL
+  - echo $CI_RUNNER_TAGS
+  - echo $GITLAB_USER_EMAIL
+  - echo $GITLAB_USER_NAME
+  - pwd
+  - whoami
+  # First usage of sudo 'command' prints out this text:
+  #   We trust you have received the usual lecture from the local System
+  #   Administrator. It usually boils down to these three things:
+  #       #1) Respect the privacy of others.
+  #       #2) Think before you type.
+  #       #3) With great power comes great responsibility.
+  # Not to see it in job specific scripts we do first call of 'sudo' command here
+  - echo "nodejs" | sudo -S echo "sudoecho"
+  - git config user.email "${GITLAB_USER_EMAIL}"
+  - git config user.name "${GITLAB_USER_NAME}"
+  - git config user.email
+  - git config user.name
+  - pwd
+  - ls -la
+  - pwd
+
+stages:
+  - install
+  - pre build
+  - build
+  - post build
+  - deploy
+
+##############################
+# install
+##############################
+install dependencies:
+  stage: install
+  rules:
+    - if: $UFE_MERGE_REQUEST_PIPELINE == "true"
+      when: always
+    - when: never
+  # cache:
+  #   <<: *global_cache
+  #   policy: pull-push
+  script:
+    # - if [ ! -d "$node_modules" ]; then  UFE_SKIP_JOB=true; fi;
+    # - echo $UFE_SKIP_JOB
+    # - $UFE_SKIP_JOB || npm ci
+    # - $UFE_SKIP_JOB || BUILD_NUMBER=$CI_PIPELINE_ID PROJECT_VERSION="master-SNAPSHOT" CODE_BRANCH=$CI_COMMIT_REF_NAME GIT_BRANCH=$GIT_BRANCH GIT_COMMIT=$CI_COMMIT_SHA node ./tools/install.js
+    # - $UFE_SKIP_JOB || cat ./public_ufe/js/config/buildInfo.json
+    - npm ci
+    - BUILD_NUMBER=$CI_PIPELINE_ID PROJECT_VERSION="master-SNAPSHOT" CODE_BRANCH=$CI_COMMIT_REF_NAME GIT_BRANCH=$GIT_BRANCH GIT_COMMIT=$CI_COMMIT_SHA node ./tools/install.js
+    - cat ./public_ufe/js/config/buildInfo.json
+
+##############################
+# pre build
+##############################
+lint ui code:
+  stage: pre build
+  rules:
+    - if: $UFE_MERGE_REQUEST_PIPELINE == "true"
+      when: always
+    - when: never
+  needs:
+    - install dependencies
+  script:
+    - npm ci
+    - npm run eslint-check-modified
+
+run ui tests:
+  stage: pre build
+  rules:
+    - if: $UFE_MERGE_REQUEST_PIPELINE == "true"
+      when: always
+    - when: never
+  # coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+  needs:
+    - install dependencies
+  script:
+    - sudo sysctl -w fs.inotify.max_user_watches=262144
+    - npm ci
+    - npm run test
+  artifacts:
+    expose_as: "Unit tests results"
+    paths: ["test/output/unit_tests_results.html"]
+    # reports:
+    #   cobertura: test/output/cobertura.xml
+    expire_in: 6 hours
+
+##############################
+# build
+##############################
+build bundles:
+  stage: build
+  rules:
+    - if: $UFE_MERGE_REQUEST_PIPELINE == "true"
+      when: always
+    - when: never
+  needs:
+    - install dependencies
+  script:
+    - npm ci
+    - npm run webpack-jenkins
+    - ls -la public_ufe/js/build
+    - ls -la public_ufe/js/build/backend
+    - ls -la public_ufe/js/build/isomorphic
+  artifacts:
+    paths:
+      - public_ufe/js/build
+    expire_in: 6 hours
+
+##############################
+# post build
+##############################
+run server tests:
+  stage: post build
+  rules:
+    - if: $UFE_MERGE_REQUEST_PIPELINE == "true"
+      when: always
+    - when: never
+  dependencies:
+    - build bundles
+  needs:
+    - lint ui code
+    - run ui tests
+    - build bundles
+  script:
+    - npm ci
+    - npm run test-server
+
+# https://docs.sonarqube.org/latest/analysis/gitlab-integration/
+run sonarqube:
+  stage: post build
+  rules:
+    - if: $UFE_MERGE_REQUEST_PIPELINE == "true"
+      when: always
+    - when: never
+  dependencies:
+    - build bundles
+  needs:
+    - lint ui code
+    - run ui tests
+    - build bundles
+  script:
+    - npm ci
+    - echo "${scannerHome}/bin/sonar-scanner -Dproject.settings='sonar-scanner.properties' -Dsonar.projectBaseDir=."
+    # - ${scannerHome}/bin/sonar-scanner -Dproject.settings='sonar-scanner.properties' -Dsonar.projectBaseDir=.
+
+run visual tests:
+  stage: post build
+  rules:
+    - if: $UFE_MERGE_REQUEST_PIPELINE == "true"
+      when: always
+    - when: never
+  dependencies:
+    - build bundles
+  needs:
+    - lint ui code
+    - run ui tests
+    - build bundles
+  script:
+    - npm ci
+    - echo "docker run docker_image_for_visual_tests"
+  artifacts:
+    paths:
+      - public_ufe/js/build
+    expire_in: 6 hours
+
+##############################
+# deploy
+##############################
+# create jerri images:
+#   stage: deploy
+#   rules:
+#     - if: $UFE_BRANCH_PIPELINE == "true" || $UFE_MERGE_REQUEST_PIPELINE == "true"
+#       when: manual
+#       allow_failure: true
+#     - when: never
+#   dependencies:
+#     - build bundles
+#   needs:
+#     - build bundles
+#   script:
+#     - echo create jerri images
+#     - docker build --force-rm -f tools/dockerfiles/Dockerfile.base \
+#       --build-arg BUILD_NUMBER=$BUILD_NUMBER \
+#       --build-arg PROJECT_VERSION=$PROJECT_VERSION \
+#       --build-arg CODE_BRANCH=$CODE_BRANCH \
+#       --build-arg GIT_BRANCH=$GIT_BRANCH \
+#       --build-arg GIT_COMMIT=$GIT_COMMIT \
+#       -t sephora-docker.artifactory/sephora_ufe_base/$UFE_BASE_VERSION:$UFE_BASE_TAG_VERSION .
+#     - docker push sephora-docker.artifactory/sephora_ufe_base/$UFE_BASE_VERSION:$UFE_BASE_TAG_VERSION
+#     - docker build --force-rm -f tools/dockerfiles/Dockerfile.ufe \
+#       -t sephora-docker.artifactory/sephora_ufe/$UFE_BASE_VERSION:$UFE_BASE_TAG_VERSION . \
+#       --build-arg UFE_BASE_VERSION=$UFE_BASE_VERSION
+#     - docker push sephora-docker.artifactory/sephora_ufe/$UFE_BASE_VERSION:$UFE_BASE_TAG_VERSION
+#     - docker build --force-rm -f tools/dockerfiles/Dockerfile.jerri \
+#       -t sephora-docker.artifactory/sephora_jerri/$UFE_BASE_VERSION:$UFE_BASE_TAG_VERSION . \
+#       --build-arg UFE_BASE_VERSION=$UFE_BASE_VERSION
+#     - docker push sephora-docker.artifactory/sephora_jerri/$UFE_BASE_VERSION:$UFE_BASE_TAG_VERSION
+#     - docker rmi sephora-docker.artifactory/sephora_ufe_base/$UFE_BASE_VERSION:$UFE_BASE_TAG_VERSION \
+#       sephora-docker.artifactory/sephora_ufe/$UFE_BASE_VERSION:$UFE_BASE_TAG_VERSION \
+#       sephora-docker.artifactory/sephora_jerri/$UFE_BASE_VERSION:$UFE_BASE_TAG_VERSION
+
+rebase only:
+  stage: deploy
+  rules:
+    - if: $UFE_DRAFT_MERGE_REQUEST_PIPELINE == "true"
+      when: manual
+    - when: never
+  script:
+    - git remote set-url origin https://gitlab-ci-token:$UFE_GIT_REPO_TOKEN@gitlab.lipstack.sephoraus.com/${CI_PROJECT_PATH}.git
+    - git fetch --all
+    - git checkout $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+    - git log -1
+    - sudo git reset --hard origin/$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+    - git log -1
+    - sudo git rebase origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+    # - git push -o ci.skip --force
+    - git push --force
+
+squash commits only:
+  stage: deploy
+  rules:
+    - if: $UFE_DRAFT_MERGE_REQUEST_PIPELINE == "true"
+      when: manual
+    - when: never
+  script:
+    - git remote set-url origin https://gitlab-ci-token:$UFE_GIT_REPO_TOKEN@gitlab.lipstack.sephoraus.com/${CI_PROJECT_PATH}.git
+    - git fetch --all
+    - git checkout $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+    - git log -1
+    - sudo git reset --hard origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+    - git log -1
+    - git checkout $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+    - git log -1
+    - sudo git reset --hard origin/$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+    - git log -1
+    - NUMBER_OF_COMMITS=$(git rev-list --count HEAD ^$CI_MERGE_REQUEST_TARGET_BRANCH_NAME)
+    - echo $NUMBER_OF_COMMITS
+    - LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+    - echo $LAST_COMMIT_MESSAGE
+    - sudo git reset --soft HEAD~$NUMBER_OF_COMMITS
+    - git status
+    - git commit -m "${LAST_COMMIT_MESSAGE}" --no-edit --no-verify
+    - git log -2
+    - git push --force
+
+rebase and squash commits:
+  stage: deploy
+  rules:
+    - if: $UFE_DRAFT_MERGE_REQUEST_PIPELINE == "true"
+      when: manual
+    - when: never
+  script:
+    - git remote set-url origin https://gitlab-ci-token:$UFE_GIT_REPO_TOKEN@gitlab.lipstack.sephoraus.com/${CI_PROJECT_PATH}.git
+    - git fetch --all
+    - git checkout $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+    - git log -1
+    - sudo git reset --hard origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+    - git log -1
+    - git checkout $CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+    - git log -1
+    - sudo git reset --hard origin/$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME
+    - git log -1
+    - NUMBER_OF_COMMITS=$(git rev-list --count HEAD ^$CI_MERGE_REQUEST_TARGET_BRANCH_NAME)
+    - echo $NUMBER_OF_COMMITS
+    - LAST_COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+    - echo $LAST_COMMIT_MESSAGE
+    - sudo git reset --soft HEAD~$NUMBER_OF_COMMITS
+    - git stash
+    - git rebase origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+    - git stash pop
+    - git add .
+    - git status
+    - git commit -m "${LAST_COMMIT_MESSAGE}" --no-edit --no-verify
+    - git log -2
+    - git push --force
+
+update gitlab runner image:
+  stage: deploy
+  rules:
+    - if: $UFE_DRAFT_MERGE_REQUEST_PIPELINE == "true"
+      changes:
+        - .gitlab-ci.yml
+        - automation/gitlab/Dockerfile
+      when: manual
+      allow_failure: true
+    - when: never
+  script:
+    - sudo docker build --build-arg UFE_ARTIFACTORY_TOKEN=$UFE_ARTIFACTORY_TOKEN --build-arg CICD_VERSION=$NEW_CICD_VERSION --tag $UFE_CICD_IMAGE automation/gitlab/
+    - sudo docker push $UFE_CICD_IMAGE
+    - sudo docker rmi $UFE_CICD_IMAGE
+    # - docker build --build-arg UFE_ARTIFACTORY_TOKEN=$UFE_ARTIFACTORY_TOKEN --build-arg CICD_VERSION=$NEW_CICD_VERSION --tag $UFE_CICD_DEBUG_IMAGE automation/gitlab/
+    # - docker push $UFE_CICD_DEBUG_IMAGE
+    # - docker rmi $UFE_CICD_DEBUG_IMAGE

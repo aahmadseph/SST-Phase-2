@@ -1,0 +1,3 @@
+import BeautyPreferencesHeader from 'components/BeautyPreferencesRedesigned/Header/BeautyPreferencesHeader';
+
+export default BeautyPreferencesHeader;

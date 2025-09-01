@@ -1,0 +1,21 @@
+{
+    "name": "headers",
+    "description": "UFE Headers",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "beautify": "find js -type f -exec ./node_modules/.bin/js-beautify -r {} \\;",
+        "build": "mkdir js; cp -r src/* js/",
+        "clean": "rm -rf node_modules && rm -rf js",
+        "eslint": "eslint 'src/**/*.{js,jsx}'",
+        "test": "echo Stub for test command in 'headers' project",
+        "eslint-modified": "npm run eslint --workspace=headers --quiet `git status -s src | awk '{ if ($1 == \"R\") { praint $4; } else if ($1 != \"D\") { print $2; } }' | grep -v '\\.sh$'`"
+    },
+    "engines": {
+        "node": "22.12.0",
+        "npm": "10.9.0"
+    },
+    "devDependencies": {
+        "js-beautify": "1.14.11"
+    }
+}

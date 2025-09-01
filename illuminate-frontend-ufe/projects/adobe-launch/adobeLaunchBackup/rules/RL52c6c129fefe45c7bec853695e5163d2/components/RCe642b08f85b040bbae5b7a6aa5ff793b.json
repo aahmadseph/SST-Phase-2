@@ -1,0 +1,91 @@
+{
+    "id": "RCe642b08f85b040bbae5b7a6aa5ff793b",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2025-04-10T18:57:02.353Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: Snapchat SDD Order",
+        "negate": false,
+        "order": 1,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-04-23T16:59:43.848Z",
+        "created_by_email": "niltoncesar.santos@sephora.com",
+        "created_by_display_name": "niltoncesar santos",
+        "updated_by_email": "german.alfonso@sephora.com",
+        "updated_by_display_name": "german alfonso",
+        "settings": "{\"source\":\"var tid = digitalData.transaction.transactionID; \\nvar universalEventId = _satellite.getVar('[UEID] :: Universal Event ID Fx')(event);\\nvar eventId = `${universalEventId}`;\\n\\nfunction FormatPrice(item) {\\n\\tlet price ='0.00';\\n\\tif (item.sku.listPrice !== 'FREE') {\\n\\t\\tprice = item.sku.listPrice;\\n\\t\\tprice = price.replace(/\\\\s+/g, \\\"\\\");\\n\\t\\tprice = price.match(/\\\\d+(?:\\\\.\\\\d+|\\\\,\\\\d+\\\\.\\\\d+|\\\\,\\\\d+)|\\\\d+/)[0];\\n\\t\\tif (digitalData.page.pageInfo.language.toLowerCase() === 'fr') { \\n\\t\\t\\tprice = price.replace(',', '.'); \\n\\t\\t} \\n\\t\\telse { \\n\\t\\t\\tprice = price.replace(',', ''); \\n\\t\\t}\\n\\t\\tprice = Sephora.analytics.utils.convertToUSD(price);\\n\\t}\\n\\treturn price;\\n}\\n\\nfunction GetFormattedItems(items) {\\n\\tconst item_skus = items.map(p =\\u003e p.sku.skuId) || [];\\n\\tconst item_qty = items.map(p =\\u003e p.qty).join(',') || '';\\n\\tconst item_categories = items.map(p =\\u003e p.sku.parentCategory.displayName) || [];\\n\\tconst item_prices = items.map(p =\\u003e FormatPrice(p)).join(',');\\n    const item_brands = items.map(p =\\u003e p.sku.brandName) || [];\\n\\treturn { item_skus, item_qty, item_categories, item_prices, item_brands }\\n}\\n\\nconst bopisBasket = digitalData.transaction.item;\\nvar bopisItems = [];\\nvar countOfItemsInBasket = 0;\\nif (Array.isArray(bopisBasket) \\u0026\\u0026 bopisBasket.length \\u003e 0) {\\n\\tcountOfItemsInBasket = bopisBasket.length;\\n\\tbopisItems = bopisBasket;\\n}\\n\\nconst { item_skus, item_qty, item_categories, item_prices, item_brands } = GetFormattedItems(bopisItems);\\n  \\nvar dataToSend = {\\n  'currency': 'USD',\\n  'price': item_prices,\\n  'transaction_id': tid,\\n  'number_items': item_qty,\\n  'client_dedup_id': 'sdd-' + eventId,\\n  'item_ids': item_skus,\\n  'item_category': item_categories,\\n  'brands': item_brands\\n}\\n\\nfunction fireSnapchatSDDPurchase(){\\n    snaptr('track', 'PURCHASE', dataToSend);\\n}\\n\\nSephora.analytics.promises.snapChatReady.then(() =\\u003e fireSnapchatSDDPurchase());\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCe642b08f85b040bbae5b7a6aa5ff793b/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCe642b08f85b040bbae5b7a6aa5ff793b/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCe642b08f85b040bbae5b7a6aa5ff793b/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCe642b08f85b040bbae5b7a6aa5ff793b/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCe642b08f85b040bbae5b7a6aa5ff793b/origin"
+            },
+            "data": {
+                "id": "RCe642b08f85b040bbae5b7a6aa5ff793b",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCe642b08f85b040bbae5b7a6aa5ff793b/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RCe642b08f85b040bbae5b7a6aa5ff793b",
+        "rules": "https://reactor.adobe.io/rule_components/RCe642b08f85b040bbae5b7a6aa5ff793b/rules",
+        "self": "https://reactor.adobe.io/rule_components/RCe642b08f85b040bbae5b7a6aa5ff793b"
+    },
+    "meta": {
+        "latest_revision_number": 16
+    }
+}

@@ -1,0 +1,3 @@
+import AppointmentOptionalFields from 'components/HappeningNonContent/ServiceBooking/AppointmentOptionalFields/AppointmentOptionalFields';
+
+export default AppointmentOptionalFields;

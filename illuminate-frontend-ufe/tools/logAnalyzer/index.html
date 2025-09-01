@@ -1,0 +1,217 @@
+</<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Log Filter</title>
+    <style type="text/css">
+        label {
+            display: inline-block;
+        }
+        div {
+            margin: 1em;
+        }
+        div.linedata {
+            margin: 0.25em;
+            padding: 0.25em;
+            border: 1px solid black;
+        }
+        .resultSummary {
+            border: 1px solid black;
+            width: 90%;
+        }
+        .resultSummary td, .resultSummary th {
+            border: 1px solid black;
+            padding: 0.5em;
+        }
+    </style>
+  </head>
+  <body>
+      <div>
+          <form method="GET" action="/query" onsubmit="return false;">
+              <div>
+                <label>Environment:</label>
+                <select id="envs">[[ENVIRONMENTS]]</select>
+              </div>
+              <div>
+                <label>Start Date:</label>
+                <input type="text" name="startDate" id="startDate">
+              </div>
+              <div>
+              <label>End Date:</label>
+                <input type="text" name="endDate" id="endDate">
+              </div>
+              <div>
+              <label>Start Time:</label>
+                <input type="text" name="startTime" id="startTime">
+              </div>
+              <div>
+              <label>End Time:</label>
+                <input type="text" name="endTime" id="endTime">
+              </div>
+              <div>
+              <label>Match String:</label>
+              <input type="text" name="matchStr" id="matchStr" size="80">
+              </div>
+              <div>
+                  <label>Table Headers (comma separated list to generate table headers):</label>
+                  <input type="text" name="tblheader" id="tblheader" size="100" value="">
+              </div>
+              <div>
+                  <label>Table Fields (comma separated list of fields to generate table fields):</label>
+                  <input type="text" name="tblcols" id="tblcols" size="100" value="">
+              </div>
+              <div>
+              <!--<label>Output Filename:</label>-->
+              <input type="hidden" name="outputFilename" id="outputFilename" value="results.json">
+            </div>
+              <div>
+                  <button type="submit" id="pullLogs">
+                      Pull Logs
+                  </button>
+                  <button type="submit" id="runQuery">
+                      Get Results
+                  </button>
+              </div>
+              <div id="summary">
+              </div>
+          </form>
+      </div>
+      <script type="text/javascript">
+          async function fetcher( url, options ) {
+              const response = await fetch( url, options );
+              const buff = await response.text();
+              return buff;
+          }
+          function setHTMLValue(fid, value) {
+              const element = document.getElementById(fid);
+              element.innerHTML = value;
+          }
+          function setValue(fid, value) {
+              const element = document.getElementById(fid);
+              element.value = value;
+          }
+          function getValue(fid) {
+              const element = document.getElementById(fid);
+              return element.value;
+          }
+          function getSelectValue(fid) {
+              const selectDD = document.getElementById('envs');
+              return selectDD.value;
+          }
+          function paddNumberStart(value) {
+              return String(value).padStart(2, '0');
+          }
+          function handler() {
+              const now = new Date(),
+                  yesterday = new Date();
+              yesterday.setDate(now.getDate() - 1);
+
+              yesterday.setHours(0);
+              yesterday.setMinutes(0);
+              yesterday.setSeconds(0);
+              now.setHours(23);
+              now.setMinutes(59);
+              now.setSeconds(59);
+
+              setValue('startDate', `${yesterday.getFullYear()}-${paddNumberStart(yesterday.getMonth() + 1)}-${paddNumberStart(yesterday.getDate())}`);
+              setValue('endDate', `${now.getFullYear()}-${paddNumberStart(now.getMonth() + 1)}-${paddNumberStart(now.getDate())}`);
+
+              setValue('startTime', `${paddNumberStart(yesterday.getHours())}:${paddNumberStart(yesterday.getMinutes())}:${paddNumberStart(yesterday.getSeconds())}`);
+              setValue('endTime', `${paddNumberStart(now.getHours())}:${paddNumberStart(now.getMinutes())}:${paddNumberStart(now.getSeconds())}`);
+          }
+          document.addEventListener('click', (e) => {
+              const target = e.target;
+              if (e.target.id === 'runQuery') {
+
+                  setHTMLValue('summary', '');
+
+                  let queryParams = `startDate=${getValue('startDate')}`;
+                  queryParams += `&endDate=${getValue('endDate')}`;
+                  queryParams += `&startTime=${getValue('startTime')}`;
+                  queryParams += `&endTime=${getValue('endTime')}`;
+                  queryParams += `&matchStr=${getValue('matchStr')}`;
+                  queryParams += `&outputFilename=${getValue('outputFilename')}`;
+                  queryParams += `&getenv=${getSelectValue('envs')}`;
+
+                  fetcher(`/query?${queryParams}`)
+                      .then(results => {
+                          if (results) {
+                              try {
+                                  let tabularData = '';
+                                  const tblcolsValue = getValue('tblcols');
+                                  let tablularFields;
+                                  if (tblcolsValue) {
+                                      tabularData += '<table class="resultSummary">';
+                                      tablularFields = tblcolsValue.split(/,/);
+                                  }
+                                  const tblHdr = getValue('tblheader');
+                                  if (tblHdr && tabularData.length > 0) {
+                                        tabularData += '<thead>';
+                                        const headerFields = tblHdr.split(/,/);
+                                        tabularData += headerFields.map(xitem => {
+                                            return `<th>${xitem}</th>`;
+                                        }).reduce((acc, next) => {
+                                            return acc + next;
+                                        });
+                                        tabularData += '</thead><tbody>';
+                                  } else {
+                                        tabularData += '<tbody>';
+                                  }
+                                  const jsonResults = JSON.parse(results);
+                                  if (Array.isArray(jsonResults)) {
+                                      const displayResults = jsonResults.map(item => {
+                                          const itemKey = Object.keys(item)[0],
+                                              hostIP = item[itemKey].hostIP,
+                                              linedata = item[itemKey].line;
+                                          let parsed = `<hr>Date/time: ${itemKey}`;
+                                          parsed += `<br>Host IP: ${hostIP}`;
+                                          parsed += `<br>Filename: ${item[itemKey].filename}`;
+                                          parsed += `<br>Log Level: ${item[itemKey].logLevel}`;
+                                          parsed += `<br>Message: ${item[itemKey].message}`;
+                                          if (item[itemKey].lineBits && Array.isArray(item[itemKey].lineBits)) {
+                                              parsed += '<table>';
+                                              item[itemKey].lineBits.forEach((rItem, index) => {
+                                                  parsed += `<tr><td>${index} => </td><td>${rItem}</td></tr>`;
+                                              });
+                                              parsed += '</table>';
+
+                                          }
+                                          if (tablularFields) {
+                                              tabularData += '<tr>';
+                                              const cells = tablularFields.map(xitem => {
+                                                  return `<td>${item[itemKey].lineBits[xitem]}</td>`;
+                                              }).reduce((acc, next) => {
+                                                  return acc + next;
+                                              });
+                                              tabularData += `<tr>${cells}</tr>`;
+                                          }
+                                          return `<div class="linedata">${linedata}${parsed}</div>`;
+                                      }).reduce((acc, next) => {
+                                          return `${acc}${next}`;
+                                      });
+                                      if (tblcolsValue) {
+                                          tabularData += '</tbody></table>';
+                                      }
+                                      const resultsSize = `<div>Result Count: ${jsonResults.length}</div>`;
+                                      setHTMLValue('summary', resultsSize + tabularData + displayResults);
+                                  }
+                              } catch(e) {
+                                  setHTMLValue('summary', results);
+                              }
+                          } else {
+                              setHTMLValue('summary', results);
+                          }
+                      });
+              } else if (e.target.id === 'pullLogs') {
+                  const optionValue = getSelectValue('envs');
+
+                  fetcher(`/getLogs?getenv=${optionValue}`)
+                      .then(results => {
+                          setHTMLValue('summary', results);
+                      });
+              }
+          });
+          document.addEventListener('DOMContentLoaded', handler);
+      </script>
+  </body>
+</html>

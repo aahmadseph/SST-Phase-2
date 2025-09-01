@@ -1,0 +1,3 @@
+import MultipleCCRewardsModal from 'components/RwdBasket/RwdBasketLayout/BIBenefits/CCRewards/MultipleCCRewardsModal/MultipleCCRewardsModal';
+
+export default MultipleCCRewardsModal;

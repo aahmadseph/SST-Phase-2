@@ -1,0 +1,5 @@
+query GuestBookingClientDetails($guestBookingClientDetailsInput: GuestBookingClientDetailsInput!) {
+  guestBookingClientDetails(guestBookingClientDetailsInput: $guestBookingClientDetailsInput) {
+    clientState
+  }
+}

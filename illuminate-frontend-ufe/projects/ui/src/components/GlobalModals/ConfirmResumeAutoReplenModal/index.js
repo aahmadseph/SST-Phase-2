@@ -1,0 +1,6 @@
+import ConfirmResumeAutoReplenModal from 'components/GlobalModals/ConfirmResumeAutoReplenModal/ConfirmResumeAutoReplenModal';
+import { withConfirmResumeAutoReplenModalProps } from 'viewModel/globalModals/confirmResumeAutoReplenModal/withConfirmResumeAutoReplenModalProps';
+
+const ConnectedResumeAutoReplenModal = withConfirmResumeAutoReplenModalProps(ConfirmResumeAutoReplenModal);
+
+export default ConnectedResumeAutoReplenModal;

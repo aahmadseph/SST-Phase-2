@@ -1,0 +1,91 @@
+{
+    "id": "RC8f762a83f0d1413b9092704ef137e0fb",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2022-09-14T16:40:54.370Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: epsilon_orderConfirmationPage",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-04-05T20:22:33.536Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"if (digitalData.page.attributes.campaigns.harmonyConversionEventId) {\\n    var order = {\\n        conversion_id: digitalData.page.attributes.campaigns.harmonyConversionEventId,\\n        subtotal_amount: _satellite.getVar('[TMS] Pixel :: Facebook :: Order Subtotal'),\\n        id: _satellite.getVar('[TMS] Page :: Order Number'),\\n        currency: digitalData.transaction.attributes.isoCurrency,\\n        dateTime: new Date().toISOString()\\n    };\\n    var order_qty = 0;\\n    if (digitalData.transaction.item) {\\n        order_qty = digitalData.transaction.item.length;\\n    }\\n    var imageURL= \\\"https://app.sephora.com/C\\\" +\\n        \\\"?hEventName=Purchase\\u0026hAmount=\\\" +order.subtotal_amount+\\n        \\\"\\u0026hQuantity=\\\" +order_qty+\\n        \\\"\\u0026hOrderId=\\\" +order.id+\\n        \\\"\\u0026hCategory=\\\" +order.currency+\\n        \\\"\\u0026hDateTime=\\\" +order.dateTime;\\n    var image = new Image();\\n    image.src = imageURL;\\n    image.height = 1;\\n    image.width = 1;\\n}    \",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8f762a83f0d1413b9092704ef137e0fb/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8f762a83f0d1413b9092704ef137e0fb/updated_with_extension"
+            },
+            "data": {
+                "id": "EX06a7afc619ae4214a074cb5399abf9fa",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8f762a83f0d1413b9092704ef137e0fb/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8f762a83f0d1413b9092704ef137e0fb/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8f762a83f0d1413b9092704ef137e0fb/origin"
+            },
+            "data": {
+                "id": "RC8f762a83f0d1413b9092704ef137e0fb",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC8f762a83f0d1413b9092704ef137e0fb/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC8f762a83f0d1413b9092704ef137e0fb",
+        "rules": "https://reactor.adobe.io/rule_components/RC8f762a83f0d1413b9092704ef137e0fb/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC8f762a83f0d1413b9092704ef137e0fb"
+    },
+    "meta": {
+        "latest_revision_number": 4
+    }
+}

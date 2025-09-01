@@ -1,0 +1,91 @@
+{
+    "id": "RC72cf1ba4b09746e1b27ff126862ede54",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2025-02-26T15:42:31.182Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: Optimove Add To Basket",
+        "negate": false,
+        "order": 1,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": false,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-04-16T23:35:32.040Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"if (optimoveSDK) {\\n  var eventData = event?.detail?.data || undefined;\\n  var biAccountId = Sephora.Util.getUserInfoCache()?.profile?.beautyInsiderAccount?.biAccountId || '';\\n  var profileId = digitalData?.user[0]?.profile[0]?.profileInfo?.profileID || '';\\n  \\n  // Formats the Price and Converts to USD when applicable.\\n  var om_price = eventData?.sku?.listPrice || '';  \\n  om_price = om_price.replace(',', '.');\\n  om_price = om_price.replace('$', '');\\n  om_price = om_price.trim();\\n  om_price = Sephora.analytics.utils.convertToUSD(om_price);\\n  \\n  var om_qty = eventData?.analyticsData.qty || 1;\\n  var om_totalprice = om_price * om_qty;\\n  \\n  var om_isBopis = eventData?.analyticsData?.isPickup || false;\\n  var om_isSdd = eventData?.analyticsData?.isSameDay || false;\\n  \\n  var fulfillment_type = 'standard_delivery';\\n  \\n  fulfillment_type = om_isBopis ? 'bopis' : fulfillment_type;\\n  fulfillment_type = om_isSdd ? 'sdd' : fulfillment_type;\\n  \\n  var om_category_id = eventData?.analyticsData?.sku?.parentCategory?.categoryId || '';\\n  var om_category_name = eventData?.analyticsData?.sku?.parentCategory?.displayName || '';\\n  \\n  var parameters = {\\n    \\\"userid\\\": \\\"\\\",\\n    \\\"biId\\\": \\\"\\\",\\n    \\\"eventdatetime\\\": _satellite.getVar('[TMS] Event Datetime With Millisecond Format'),\\n    \\\"product_id\\\": eventData?.analyticsData?.sku?.skuId || '',\\n    \\\"sku_id\\\": eventData?.analyticsData?.sku?.skuId || '',\\n    \\\"brand\\\": eventData?.analyticsData?.sku?.brandName || '',\\n    \\\"category_id\\\": om_category_id,\\n    \\\"category_name\\\": om_category_name,\\n    \\\"department_id\\\": om_category_id,\\n    \\\"department_name\\\": om_category_name,\\n    \\\"page_title\\\": eventData?.pageName || '',\\n    \\\"currency\\\": \\\"USD\\\",\\n    \\\"Item_name\\\": eventData?.analyticsData?.sku?.productName || '',\\n    \\\"quantity\\\": om_qty,\\n    \\\"total_price\\\": om_totalprice,\\n    \\\"Source\\\": \\\"Optimove SDK\\\",\\n    \\\"fulfillment_type\\\": fulfillment_type\\n    //\\\"session_id\\\": \\\"\\\",\\n    //\\\"variant_id\\\": \\\"\\\",\\n    //\\\"url\\\": \\\"\\\",\\n    //\\\"page_category\\\": \\\"\\\",\\n    //\\\"tax_amount\\\": \\\"\\\",\\n    //\\\"delivery_fee\\\": \\\"\\\"\\n  };\\n  \\n  Sephora.analytics.utils.hashString(profileId).then(hashedProfileId =\\u003e {\\n    parameters = {\\n      ...parameters,\\n      \\\"userid\\\": hashedProfileId\\n    };\\n    Sephora.analytics.utils.hashString(biAccountId).then(hashedBiId =\\u003e {\\n      parameters = {\\n        ...parameters,\\n        \\\"biId\\\": hashedBiId\\n      };\\n      \\n      optimoveSDK.API.reportEvent('ootb_add_to_cart', parameters);\\n    });\\n  });\\n}\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC72cf1ba4b09746e1b27ff126862ede54/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC72cf1ba4b09746e1b27ff126862ede54/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC72cf1ba4b09746e1b27ff126862ede54/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC72cf1ba4b09746e1b27ff126862ede54/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC72cf1ba4b09746e1b27ff126862ede54/origin"
+            },
+            "data": {
+                "id": "RC72cf1ba4b09746e1b27ff126862ede54",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC72cf1ba4b09746e1b27ff126862ede54/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC72cf1ba4b09746e1b27ff126862ede54",
+        "rules": "https://reactor.adobe.io/rule_components/RC72cf1ba4b09746e1b27ff126862ede54/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC72cf1ba4b09746e1b27ff126862ede54"
+    },
+    "meta": {
+        "latest_revision_number": 15
+    }
+}

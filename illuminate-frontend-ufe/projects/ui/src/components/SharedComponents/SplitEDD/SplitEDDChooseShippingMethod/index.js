@@ -1,0 +1,3 @@
+import SplitEDDChooseShippingMethod from 'components/SharedComponents/SplitEDD/SplitEDDChooseShippingMethod/SplitEDDChooseShippingMethod';
+
+export default SplitEDDChooseShippingMethod;

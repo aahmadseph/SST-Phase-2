@@ -1,0 +1,6 @@
+import ManageSubscriptionModal from 'components/GlobalModals/ManageSubscriptionModal/ManageSubscriptionModal';
+import { withManageSubscriptionModalProps } from 'viewModel/globalModals/manageSubscriptionModal/withManageSubscriptionModalProps';
+
+const ConnectedManageSubscriptionModal = withManageSubscriptionModalProps(ManageSubscriptionModal);
+
+export default ConnectedManageSubscriptionModal;

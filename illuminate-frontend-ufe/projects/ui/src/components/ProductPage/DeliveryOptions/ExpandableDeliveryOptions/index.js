@@ -1,0 +1,3 @@
+import ExpandableDeliveryOptions from 'components/ProductPage/DeliveryOptions/ExpandableDeliveryOptions/ExpandableDeliveryOptions';
+
+export default ExpandableDeliveryOptions;

@@ -1,0 +1,41 @@
+{
+    "name": "ufe-monorepo",
+    "workspaces": [
+        "projects/*"
+    ],
+    "version": "1.0.1",
+    "private": true,
+    "scripts": {
+        "clean": "npm run clean --workspaces && rm -rf node_modules && npm cache clear --force",
+        "build:ui": "npm run build --workspace=ui",
+        "build:ui:dev": "npm run build-frontend --workspace=ui",
+        "build:headers": "npm run build --workspace=ufe-headers",
+        "build:agent-aware": "npm run build --workspace=agent-aware",
+        "build:server": "npm run build --workspace=server",
+        "build:aas:dev": "npm run build-aas-old-test --workspace=ui",
+        "eslint:server": "npm run eslint --workspace=server",
+        "eslint:ui": "npm run eslint --workspace=ui",
+        "eslint:agent-aware": "npm run eslint --workspace=agent-aware",
+        "eslint:check-modified": "npm run eslint-modified --workspaces",
+        "eslint:check-modified-required": "node ./tools/detectNewRequireCalls.mjs",
+        "eslint-check-all": "npm run eslint --quiet .",
+        "eslint-fix-modified": "npm run eslint --quiet --fix `git status -s src | awk '{ if ($1 == \"R\") { print $4; } else if ($1 != \"D\") { print $2; } }'`",
+        "install": "node ./tools/install.js",
+        "run:server:dev": "npm run run-dev --workspace=server",
+        "run:server:dev-frontend": "npm run run-dev-frontend --workspace=server",
+        "refactor-ufe-to-es6": "node ./tools/refactorLegacyFilesToES6.js",
+        "refactor-ufe-to-es6:first": "node ./tools/refactorLegacyFilesToES6.js -- -f",
+        "refactor-ufe-to-es6:help": "node ./tools/refactorLegacyFilesToES6.js help",
+        "reformat-code": "./tools/reformatCode.sh",
+        "test:ui": "npm run test-jasmine --workspace=ui",
+        "test:server": "npm run test --workspace=server"
+    },
+    "engines": {
+        "node": "22.12.0",
+        "npm": "10.9.0"
+    },
+    "devDependencies": {
+        "eslint": "8.57.1",
+        "prettier": "3.5.3"
+    }
+}

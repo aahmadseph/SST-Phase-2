@@ -1,0 +1,91 @@
+{
+    "id": "RCd8567eee3b2d45458b8afd68d1d4a272",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2022-09-16T19:34:00.442Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: brazeWebPushSDK_allPageView",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-04-23T19:05:23.664Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "niltoncesar.santos@sephora.com",
+        "updated_by_display_name": "niltoncesar santos",
+        "settings": "{\"global\":true,\"source\":\"var getPriceAsInt = function(price) {\\n    if (isNaN(parseFloat(price))) {\\n        return price;\\n    }\\n    // Remove currency symbol and commas\\n    price = price.match(/\\\\d+(?:\\\\.\\\\d+|\\\\,\\\\d+\\\\.\\\\d+|\\\\,\\\\d+)|\\\\d+/)[0];\\n    price = price.replace(',', '');\\n    price = Sephora.analytics.utils.convertToUSD(price);\\n    return parseFloat(price);\\n};\\n\\nwindow.addEventListener('PromocodeRedeemed', function() {\\n    if (braze) {\\n        braze.logCustomEvent('promocodeRedeemed');\\n    }\\n});\\n\\nvar trackPurchases = function() {\\n    var items = digitalData.transaction.item;\\n    var birthdayGiftRedemmed = false;\\n    var birhdayGitfProductId = '';\\n    for (var i = 0; i \\u003c items.length; i++) {\\n        var currentItem = items[i];\\n        braze.logPurchase(currentItem.sku.productId, getPriceAsInt(currentItem.sku.listPrice), 'USD', currentItem.qty);\\n        if (currentItem.sku.biType === 'Birthday Gift') {\\n            birthdayGiftRedemmed = true;\\n            birhdayGitfProductId = currentItem.sku.productId;\\n        }\\n    }\\n\\n    if (birthdayGiftRedemmed) {\\n        braze.logCustomEvent('BirthdayGiftRedeemed',\\n            { 'productId': birhdayGitfProductId }\\n        )\\n    }\\n};\\n\\n// Acquisition Functions\\nvar getUrlParameter = function(name) {\\n    name = name.replace(/[\\\\[]/, '\\\\\\\\[').replace(/[\\\\]]/, '\\\\\\\\]');\\n    var regex = new RegExp('[\\\\\\\\?\\u0026]' + name + '=([^\\u0026#]*)');\\n    var results = regex.exec(location.search);\\n    return results === null ? '' : decodeURIComponent(results[1].replace(/\\\\+/g, ' '));\\n};\\n\\nvar isPaidReferrer = function(omMmcParam) {\\n    const paidReferrers = ['ppc', 'us_search', 'ca_search', 'google', 'ytsrch', 'gsp', 'esv'];\\n\\n    for (var i=0; i \\u003c paidReferrers.length; i++){\\n        if (omMmcParam.indexOf(paidReferrers[i]) !== -1) {\\n            return true;\\n        }\\n    }\\n};\\n\\nwindow.addEventListener('postPageLoad', function() {\\n  \\n  var localRE = /local.*sephora.com/;\\n  var QaRE = /qa.*sephora.com/;\\n  var environment = QaRE.test(location.hostname) || localRE.test(location.hostname) ? 'staging' : 'production';\\n  var apiKey = {\\n      staging: 'c8a4108b-1bbc-48d3-b502-f5acad999b78',\\n      production: '476615b3-3386-4e1c-a9fd-7e174eb9b8de'\\n  };\\n  var baseUrl = 'sdk.iad-01.braze.com';\\n\\n  // Start - Load Braze SDK\\n  +function(a,p,P,b,y){a.braze={};a.brazeQueue=[];for(var s=\\\"BrazeSdkMetadata DeviceProperties Card Card.prototype.dismissCard Card.prototype.removeAllSubscriptions Card.prototype.removeSubscription Card.prototype.subscribeToClickedEvent Card.prototype.subscribeToDismissedEvent Card.fromContentCardsJson Banner CaptionedImage ClassicCard ControlCard ContentCards ContentCards.prototype.getUnviewedCardCount Feed Feed.prototype.getUnreadCardCount ControlMessage InAppMessage InAppMessage.SlideFrom InAppMessage.ClickAction InAppMessage.DismissType InAppMessage.OpenTarget InAppMessage.ImageStyle InAppMessage.Orientation InAppMessage.TextAlignment InAppMessage.CropType InAppMessage.prototype.closeMessage InAppMessage.prototype.removeAllSubscriptions InAppMessage.prototype.removeSubscription InAppMessage.prototype.subscribeToClickedEvent InAppMessage.prototype.subscribeToDismissedEvent InAppMessage.fromJson FullScreenMessage ModalMessage HtmlMessage SlideUpMessage User User.Genders User.NotificationSubscriptionTypes User.prototype.addAlias User.prototype.addToCustomAttributeArray User.prototype.addToSubscriptionGroup User.prototype.getUserId User.prototype.incrementCustomUserAttribute User.prototype.removeFromCustomAttributeArray User.prototype.removeFromSubscriptionGroup User.prototype.setCountry User.prototype.setCustomLocationAttribute User.prototype.setCustomUserAttribute User.prototype.setDateOfBirth User.prototype.setEmail User.prototype.setEmailNotificationSubscriptionType User.prototype.setFirstName User.prototype.setGender User.prototype.setHomeCity User.prototype.setLanguage User.prototype.setLastKnownLocation User.prototype.setLastName User.prototype.setPhoneNumber User.prototype.setPushNotificationSubscriptionType InAppMessageButton InAppMessageButton.prototype.removeAllSubscriptions InAppMessageButton.prototype.removeSubscription InAppMessageButton.prototype.subscribeToClickedEvent FeatureFlag FeatureFlag.prototype.getStringProperty FeatureFlag.prototype.getNumberProperty FeatureFlag.prototype.getBooleanProperty automaticallyShowInAppMessages destroyFeed hideContentCards showContentCards showFeed showInAppMessage toggleContentCards toggleFeed changeUser destroy getDeviceId initialize isPushBlocked isPushPermissionGranted isPushSupported logCardClick logCardDismissal logCardImpressions logContentCardImpressions logContentCardClick logContentCardsDisplayed logCustomEvent logFeedDisplayed logInAppMessageButtonClick logInAppMessageClick logInAppMessageHtmlClick logInAppMessageImpression logPurchase openSession requestPushPermission removeAllSubscriptions removeSubscription requestContentCardsRefresh requestFeedRefresh refreshFeatureFlags requestImmediateDataFlush enableSDK isDisabled setLogger setSdkAuthenticationSignature addSdkMetadata disableSDK subscribeToContentCardsUpdates subscribeToFeedUpdates subscribeToInAppMessage subscribeToSdkAuthenticationFailures toggleLogging unregisterPush wipeData handleBrazeAction subscribeToFeatureFlagsUpdates getAllFeatureFlags\\\".split(\\\" \\\"),i=0;i\\u003cs.length;i++){for(var m=s[i],k=a.braze,l=m.split(\\\".\\\"),j=0;j\\u003cl.length-1;j++)k=k[l[j]];k[l[j]]=(new Function(\\\"return function \\\"+m.replace(/\\\\./g,\\\"_\\\")+\\\"(){window.brazeQueue.push(arguments); return true}\\\"))()}window.braze.getCachedContentCards=function(){return new window.braze.ContentCards};window.braze.getCachedFeed=function(){return new window.braze.Feed};window.braze.getUser=function(){return new window.braze.User};window.braze.getFeatureFlag=function(){return new window.braze.FeatureFlag};(y=p.createElement(P)).type='text/javascript';y.src='https://js.appboycdn.com/web-sdk/4.7/braze.min.js';y.async=1;(b=p.getElementsByTagName(P)[0]).parentNode.insertBefore(y,b)}(window,document,'script');\\n  // END - Load Braze SDK\\n  \\n  braze.initialize(apiKey[environment], {\\n      enableLogging: false,\\n      enableHtmlInAppMessages: true,\\n      safariWebsitePushId: 'web.com.sephora',\\n      baseUrl: baseUrl\\n  });\\n  \\n  braze.automaticallyShowInAppMessages();\\n  \\n  /*\\n  Poll braze.isPushPermissionGranted b/c braze.isPushPermissionGranted()\\n  is unreliable, returns true first then false afterward. If after 1\\n  second it's still true, then trust it's true. If it ever returns false,\\n  immediately trust it's false \\u0026 show opt-in message if not already shown\\n  this session.\\n  */\\n  tryToCallRegisterAppboyMessages = function (tries) {\\n      if (!braze.isPushPermissionGranted()) {\\n          // Prevent opt-in messages from showing on every page load\\n          if (!(window.sessionStorage \\u0026\\u0026 window.sessionStorage.getItem(\\\"brazePromptWasShownThisSession\\\"))) {\\n              if(window.sessionStorage) {\\n                window.sessionStorage.setItem(\\\"brazePromptWasShownThisSession\\\", \\\"true\\\");\\n              }\\n              braze.requestPushPermission()\\n          }\\n      } else {\\n          if (tries === 10) {\\n              // isPushPermissionGranted really is true, so allow popups to show\\n              braze.requestPushPermission()\\n          } else {\\n              // Wait a tenth of a second and then check again\\n              window.setTimeout(function(){\\n                  tryToCallRegisterAppboyMessages(++tries);\\n              }, 100);\\n          }\\n      }\\n  };\\n  \\n  // Determine whether\\n  tryToCallRegisterAppboyMessages(1);\\n  \\n  // If we haven't already cached the data, cache it\\n  if (window.sessionStorage \\u0026\\u0026 window.sessionStorage.getItem('lastDataForBraze') === null) {\\n      var stubData = {\\n          'user_id': '',\\n      };\\n      window.sessionStorage.setItem('lastDataForBraze', JSON.stringify(stubData));\\n  }\\n\\n  var cachedData = window.sessionStorage.getItem('lastDataForBraze');\\n  var jsonCachedData = JSON.parse(cachedData);\\n  var isJsonUpdated = false;\\n\\n  var isNewData = function(key, value) {\\n      var cachedData = window.sessionStorage.getItem('lastDataForBraze');\\n      var jsonCachedData = JSON.parse(cachedData);\\n      if (jsonCachedData[key] !== value) {\\n          return true;\\n      }\\n      return false;\\n  };\\n\\n  var setNewData = function(key, value) {\\n      if (isNewData(key, value)) {\\n          isJsonUpdated = true;\\n          jsonCachedData[key] = value;\\n          return true;\\n      }\\n      return false;\\n  };\\n\\n  var userData = null;\\n  var profileStatus = 0;\\n  var birthDay = null;\\n  var birthMonth = null;\\n  var birthYear = null;\\n  var vibSpendingForYear = null;\\n  var biPoints = 0;\\n  var subscriptionPrograms = null;\\n  var isEnrolledInFlash = null;\\n  var flashEndDate = null;\\n  var flashCancelDate = null;\\n  var SHORTENED_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];\\n\\n  function formatFlashDate(date) {\\n      var dateArray = date.split('/');\\n      var month = SHORTENED_MONTHS[parseInt(dateArray[0]) - 1];\\n      var day = dateArray[1];\\n      var year = '20' + dateArray[2];\\n      return month + ' ' + day + ' ' + year;\\n  }\\n\\n  // Get cached representation of user data\\n  if (window.localStorage \\u0026\\u0026 window.localStorage.getItem('UserData')) {\\n      userData = JSON.parse(window.localStorage.getItem('UserData'));\\n      userData = userData.data;\\n  }\\n  \\n  if (userData !== null) {\\n    if (userData.profile) {\\n        if (userData.profile.beautyInsiderAccount) {\\n            var bi = userData.profile.beautyInsiderAccount;\\n            if (bi !== null) {\\n                birthDay = bi.birthDay;\\n                birthMonth = bi.birthMonth;\\n                birthYear = bi.birthYear;\\n                vibSpendingForYear = bi.vibSpendingForYear ? bi.vibSpendingForYear : null;\\n                biPoints = bi.promotionPoints ? bi.promotionPoints : 0;\\n            }\\n        }\\n        subscriptionPrograms = userData.profile.subscriptionPrograms || null;\\n        if (subscriptionPrograms) {\\n            if (subscriptionPrograms.flash) {\\n                isEnrolledInFlash =  subscriptionPrograms.flash.isActive === true;\\n                flashEndDate = subscriptionPrograms.flash.endDate ? formatFlashDate(subscriptionPrograms.flash.endDate) : null;\\n                flashCancelDate = subscriptionPrograms.flash.cancelDate ? formatFlashDate(subscriptionPrograms.flash.cancelDate) : null;\\n            }\\n        }\\n    }\\n    profileStatus = userData.profile \\u0026\\u0026 userData.profile.profileStatus ? userData.profile.profileStatus : 0;\\n  }\\n\\n  var atgId = digitalData.user[0].profile[0].profileInfo.profileID;\\n  \\n  // Warning: Use pageInfoCountry, because country is already defined as a variable by appboy\\n  var pageCountryLang = digitalData.page.pageInfo \\u0026\\u0026 digitalData.page.pageInfo.country === 'CA' ?\\n      digitalData.page.pageInfo.language === 'FR' ? 'fr_CA' : 'en_CA' : 'en_US';\\n  \\n  /*\\n  If you have a unique identifier for this user (e.g. they are logged\\n  into your site) it's a good idea to call changeUser here. See\\n  https://js.appboycdn.com/web-sdk/latest/doc/module-braze.html#.changeUser\\n  for more information. Do not send atgId for anonymous users.\\n  */\\n  if (atgId !== '') {\\n      if(setNewData('user_id', atgId)) {\\n          braze.changeUser(atgId);\\n      }\\n  }\\n\\n  var abUser = braze.getUser();\\n\\n  if (setNewData('clientLocale', pageCountryLang)) {\\n      abUser.setCustomUserAttribute('clientLocale', pageCountryLang);\\n  }\\n  if (profileStatus \\u003e 0 \\u0026\\u0026 birthYear !== null \\u0026\\u0026 birthYear !== '1800') {\\n      if (setNewData('birth', birthYear+birthMonth+birthDay)) {\\n          abUser.setDateOfBirth(parseInt(birthYear), parseInt(birthMonth), parseInt(birthDay));\\n      }\\n  }\\n\\n  if (isJsonUpdated) {\\n      var stringCachedData = JSON.stringify(jsonCachedData);\\n      window.sessionStorage.setItem('lastDataForBraze', stringCachedData);\\n  }\\n\\n  // Track Purchases\\n  if (digitalData.page.pageInfo.pageName === 'order-confirmation') {\\n      trackPurchases();\\n  }\\n\\n  // Track view of Rewards Bazaar page: /rewards\\n  if (digitalData.page.pageInfo.pageName === 'rewards bazaar') {\\n      braze.logCustomEvent('bazaarPageView');\\n  }\\n\\n  braze.subscribeToInAppMessage(function(inAppMessage) {\\n      var shouldDisplay = true;\\n    \\n    console.log('Just entered subscribeToInAppMessage', inAppMessage);\\n\\n      // If Sephora modal is open, then do not show Braze modal\\n      var modalRoot = document.getElementById('modal-root');\\n      if (modalRoot !== null) {\\n          if (modalRoot.children.length \\u003e 0) {\\n              shouldDisplay = false;\\n          }\\n      }\\n\\n      if (inAppMessage[0] instanceof braze.ab.InAppMessage) {\\n            console.log('Is inAppMessage[0] instance of braze.ab.InAppMessage?', inAppMessage[0] instanceof braze.ab.InAppMessage);\\n\\n          // Read the key-value pair for msg-id\\n          var msgId = inAppMessage[0].extras[\\\"msg-id\\\"];\\n          // If this is our push primer message\\n          if (msgId == \\\"push-primer\\\") {\\n              // We don't want to display the soft push prompt to users on browsers that don't support push, or if the user\\n              // has already granted/blocked permission\\n              if (!braze.isPushSupported() || braze.isPushPermissionGranted() || braze.isPushBlocked()) {\\n                  shouldDisplay = false;\\n              }\\n              if (inAppMessage[0].buttons[0] !== null) {\\n                  // Prompt the user when the first button is clicked\\n                  inAppMessage[0].buttons[0].subscribeToClickedEvent(function() {\\n                      braze.requestPushPermission();\\n                  });\\n              }\\n          }\\n      }\\n\\n      // Display the message\\n      if (shouldDisplay) {\\n          console.log('Will it run braze.display.showInAppMessage(inAppMessage[0]) based on shouldDisplay?', shouldDisplay);\\n\\n          braze.display.showInAppMessage(inAppMessage[0]);\\n      }\\n  });\\n  \\n  braze.openSession();\\n  \\n  // Allow Sephora code to proceed with Braze actions\\n  if (Sephora.analytics.resolvePromises.brazeIsReady) {\\n      Sephora.analytics.resolvePromises.brazeIsReady();\\n  }\\n});\\n\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd8567eee3b2d45458b8afd68d1d4a272/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd8567eee3b2d45458b8afd68d1d4a272/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd8567eee3b2d45458b8afd68d1d4a272/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd8567eee3b2d45458b8afd68d1d4a272/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd8567eee3b2d45458b8afd68d1d4a272/origin"
+            },
+            "data": {
+                "id": "RCd8567eee3b2d45458b8afd68d1d4a272",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd8567eee3b2d45458b8afd68d1d4a272/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RCd8567eee3b2d45458b8afd68d1d4a272",
+        "rules": "https://reactor.adobe.io/rule_components/RCd8567eee3b2d45458b8afd68d1d4a272/rules",
+        "self": "https://reactor.adobe.io/rule_components/RCd8567eee3b2d45458b8afd68d1d4a272"
+    },
+    "meta": {
+        "latest_revision_number": 49
+    }
+}

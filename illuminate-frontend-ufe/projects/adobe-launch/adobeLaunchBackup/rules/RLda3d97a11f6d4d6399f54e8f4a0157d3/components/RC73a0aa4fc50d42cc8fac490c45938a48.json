@@ -1,0 +1,91 @@
+{
+    "id": "RC73a0aa4fc50d42cc8fac490c45938a48",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2023-02-23T21:39:53.688Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: GA4_viewItem",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-04-28T15:27:22.873Z",
+        "created_by_email": "rachel.joss@sephora.com",
+        "created_by_display_name": "rachel joss",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"var ga_skuPrice = _satellite.getVar('[TMS] Double Click :: Product Page :: Complete Sku Price');\\nga_skuPrice = ga_skuPrice.replace(',', '.');\\nga_skuPrice = ga_skuPrice.replace('$', '');\\nga_skuPrice = ga_skuPrice.trim();\\n   \\nvar price = Sephora.analytics.utils.convertToUSD(ga_skuPrice);\\n\\nvar om_mmc_value = Sephora.analytics.utils.getQueryParam('om_mmc') || '';\\n\\ngtag('event', 'view_item', {\\n    \\\"send_to\\\": _satellite.getVar('[TMS] GA4 Measurement Id'), \\n    \\\"currency\\\": 'USD', // _satellite.getVar(\\\"[TMS] Double Click :: Product Page :: Currency\\\"),\\n    \\\"items\\\": [\\n      {\\n        \\\"item_id\\\": _satellite.getVar(\\\"[TMS] Double Click :: Product Page :: Sku Id\\\"),\\n        \\\"item_name\\\": _satellite.getVar(\\\"[TMS] Double Click :: Product Page :: Product Name\\\"),\\n        \\\"item_brand\\\": _satellite.getVar(\\\"[TMS] Double Click :: Product Page ::Brand Name\\\"),\\n        \\\"item_category\\\": _satellite.getVar(\\\"[TMS] Double Click :: Product Page :: World\\\"),\\n        \\\"item_variant\\\": _satellite.getVar(\\\"[TMS] Double Click :: Product Page :: Product Variation Value\\\"),\\n        \\\"price\\\": price,\\n        \\\"quantity\\\": 1,\\n        \\\"om_mmc\\\": om_mmc_value\\n      }\\n    ]\\n});\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC73a0aa4fc50d42cc8fac490c45938a48/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC73a0aa4fc50d42cc8fac490c45938a48/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC73a0aa4fc50d42cc8fac490c45938a48/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC73a0aa4fc50d42cc8fac490c45938a48/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC73a0aa4fc50d42cc8fac490c45938a48/origin"
+            },
+            "data": {
+                "id": "RC73a0aa4fc50d42cc8fac490c45938a48",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC73a0aa4fc50d42cc8fac490c45938a48/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC73a0aa4fc50d42cc8fac490c45938a48",
+        "rules": "https://reactor.adobe.io/rule_components/RC73a0aa4fc50d42cc8fac490c45938a48/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC73a0aa4fc50d42cc8fac490c45938a48"
+    },
+    "meta": {
+        "latest_revision_number": 4
+    }
+}

@@ -1,0 +1,14 @@
+export default function getResource(label) {
+    const resources = {
+        nonPreapprovedIssuer: 'Comenity Capital Bank est l’émetteur de la carte de crédit Visa Sephora et de la carte de crédit Sephora. La carte de crédit Sephora ne peut être utilisée que dans les magasins Sephora (sauf à Porto Rico et au Canada). Si vous souhaitez remplir cette demande en ligne, vous fournirez vos renseignements personnels à Comenity Capital Bank.',
+        nonPreapprovedReview: 'Bien que nous ayons passé en revue votre demande de carte de crédit Visa Sephora, si vous n’êtes pas admissible à la carte de crédit Visa Sephora, vous pourriez être admissible à la carte de crédit Sephora et recevoir celle-ci, qui ne pourra être utilisée que chez Sephora (à l’exception des magasins de Porto Rico et du Canada). Avant de soumettre votre demande, veuillez passer en revue les taux, les frais et les coûts associés aux deux cartes de crédit.',
+        nonPreapprovedConditional: '*Pour soumettre une demande, vous devez :* avoir atteint l’âge de la majorité dans votre état ou territoire, avoir une pièce d’identité valide avec photo émise par le gouvernement, avoir un numéro d’identification fiscal valide émis par le gouvernement (comme un SSN ou un NAS) et avoir une adresse postale municipale, rurale ou APO/FPO. Nous n’acceptons pas les cases postales en tant qu’adresses postales.',
+        privateLabelIssuer: 'Comenity Capital Bank est l’émetteur de la carte de crédit Sephora. La carte de crédit Sephora ne peut être utilisée que dans les magasins Sephora (sauf à Porto Rico et au Canada). Si vous décidez de remplir le formulaire d’acceptation ci-dessous, vos renseignements personnels seront fournis à Comenity Capital Bank.',
+        privateLabelConditional: '*Pour accepter, vous devez :* avoir atteint l’âge de la majorité dans votre état ou territoire, avoir une pièce d’identité valide avec photo émise par le gouvernement, avoir un numéro d’identification fiscal valide émis par le gouvernement (comme un SSN ou un NAS) et avoir une adresse postale municipale, rurale ou APO/FPO. Nous n’acceptons pas les cases postales en tant qu’adresses postales.',
+        coBrandedIssuer: 'Comenity Capital Bank est l’émetteur de la carte de crédit Visa Sephora. Si vous décidez de remplir le formulaire d’acceptation ci-dessous, vos renseignements personnels seront fournis à Comenity Capital Bank.',
+        coBrandedConditional: '*Pour accepter, vous devez :* avoir atteint l’âge de la majorité dans votre état ou territoire, avoir une pièce d’identité valide avec photo émise par le gouvernement, avoir un numéro d’identification fiscal valide émis par le gouvernement (comme un SSN ou un NAS) et avoir une adresse postale municipale, rurale ou APO/FPO. Nous n’acceptons pas les cases postales en tant qu’adresses postales.',
+        contentInfoAndRulesTitle: '1. Information et règles sur le contenu'
+    };
+
+    return resources[label];
+}

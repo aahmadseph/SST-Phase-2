@@ -1,0 +1,41 @@
+export default function getResource(label, vars = []) {
+    const resources = {
+        estimatedTotal: 'Total estimé',
+        merchandiseSubtotal: 'Sous-total des marchandises',
+        giftCardShipping: 'Expédition de la carte-cadeau',
+        merchandiseShipping: 'Expédition des articles',
+        shippingAndHandling: 'Livraison',
+        discounts: 'Réductions',
+        gstHst: 'TPS/TVH estimées',
+        pst: 'TVP estimée',
+        tax: 'Taxes estimées',
+        andOtherFees: 'et autres frais',
+        storeCreditRedeemed: 'Crédit au compte',
+        giftCardRedeemed: 'Carte-cadeau échangée',
+        eGiftCardRedeemed: 'Carte-cadeau électronique utilisée',
+        creditCardPayment: 'Paiement par carte de crédit',
+        payPalPayment: 'Paiement PayPal',
+        bopisIncreasedAuthorizationWarning: `{*}Le total estimé est basé sur les articles de premier choix. *Votre méthode de paiement sera temporairement autorisée pour un montant de ${vars[0]}*, afin de couvrir les substitutions potentielles d’articles. Seuls les articles que vous recevrez seront facturés. La transaction sera finalisée lorsque vous ramasserez la commande. Les promotions peuvent être retirées si des articles sont remplacés. Votre total final sera affiché sur votre reçu envoyé par courriel et dans l’historique des commandes. L’autorisation temporaire sera retirée par votre institution financière 3 à 5 jours après la réception de vos articles. Veuillez communiquer avec votre institution financière pour toute question relative aux autorisations temporaires.`,
+        sddIncreasedAuthorizationWarning: `{*}Le total estimé est basé sur les articles de premier choix. *Votre méthode de paiement sera temporairement autorisée pour un montant de ${vars[0]}*, afin de couvrir les substitutions potentielles d’articles. Seuls les articles que vous recevrez seront facturés. La transaction sera finalisée lorsque votre commande sera livrée. Les promotions peuvent être retirées si des articles sont remplacés. Votre total final sera affiché sur votre reçu envoyé par courriel et dans l’historique des commandes. L’autorisation temporaire sera retirée par votre institution financière 3 à 5 jours après la réception de vos articles. Veuillez communiquer avec votre institution financière pour toute question relative aux autorisations temporaires.`,
+        submitEdits: 'Soumettre les modifications',
+        subscribe: 'S’abonner',
+        placeOrder: 'Passer commande',
+        shippingHandling: 'Livraison',
+        pickupText: 'Ramassage',
+        free: 'GRATUIT',
+        shippingHandlingInfo: 'Renseignements sur l’expédition et la manutention',
+        salesTax: 'Taxe de vente',
+        pointsUsed: 'Utilisés (dans cette commande)',
+        bagFee: 'Frais de sac',
+        specialFee: 'Frais spéciaux',
+        pointsAfterPickup: 'Vous accumulerez des points Beauty Insider pour cet achat après avoir ramassé votre commande.',
+        gotIt: 'Compris',
+        autoReplenishmentSavings: 'Économies sur le réapprovisionnement automatique',
+        youSave: 'Vous économisez',
+        sduSavingsUS: '6,95 $',
+        sduSavingsCA: '9,95 $',
+        withSDUUnlimited: 'avec la livraison le jour même illimitée'
+    };
+
+    return resources[label] || label;
+}

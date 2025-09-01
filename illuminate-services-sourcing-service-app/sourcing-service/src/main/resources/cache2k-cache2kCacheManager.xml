@@ -1,0 +1,75 @@
+<cache2k>
+    <version>1.0</version>
+    <defaultManagerName>sourcingOptionsCacheManager</defaultManagerName>
+    <skipCheckOnStartup>true</skipCheckOnStartup>
+    <ignoreMissingCacheConfiguration>true</ignoreMissingCacheConfiguration>
+
+    <defaults>
+        <cache>
+            <entryCapacity>2000</entryCapacity>
+            <expireAfterWrite>1d</expireAfterWrite>
+        </cache>
+    </defaults>
+
+    <templates>
+        <cache>
+            <name>defaultCacheTemplate</name>
+            <expireAfterWrite>1d</expireAfterWrite>
+        </cache>
+    </templates>
+
+  <caches>
+    <cache>
+      <name>findShipNode</name>
+      <entryCapacity>10</entryCapacity>
+      <include>defaultCacheTemplate</include>
+      <boostConcurrency>true</boostConcurrency>
+    </cache>
+      <cache>
+          <name>carrierService</name>
+          <entryCapacity>1000</entryCapacity>
+          <include>defaultCacheTemplate</include>
+          <boostConcurrency>true</boostConcurrency>
+      </cache>
+    <cache>
+      <name>shipNode</name>
+      <entryCapacity>10</entryCapacity>
+      <include>defaultCacheTemplate</include>
+      <boostConcurrency>true</boostConcurrency>
+    </cache>
+    <cache>
+      <name>sourcingRule</name>
+      <!-- EnterpriseCode (2) * SellerCode(4) * FulfillmentType (2) * DestinationType (3) -->
+      <entryCapacity>48</entryCapacity>
+      <include>defaultCacheTemplate</include>
+      <boostConcurrency>true</boostConcurrency>
+    </cache>
+    <cache>
+      <name>getNodesPriority</name>
+      <!-- Count of unique zip codes (not including AVS) [TBC] -->
+      <entryCapacity>1M</entryCapacity>
+      <include>defaultCacheTemplate</include>
+      <boostConcurrency>true</boostConcurrency>
+    </cache>
+    <cache>
+      <name>getByIdShipNode</name>
+      <!-- Count of unique zip codes (not including AVS) [TBC] -->
+      <entryCapacity>1M</entryCapacity>
+      <include>defaultCacheTemplate</include>
+      <boostConcurrency>true</boostConcurrency>
+    </cache>
+      <cache>
+          <name>dynamicConfig</name>
+          <entryCapacity>1M</entryCapacity>
+          <include>defaultCacheTemplate</include>
+          <boostConcurrency>true</boostConcurrency>
+      </cache>
+    <cache>
+        <name>locationPriority</name>
+        <entryCapacity>12000</entryCapacity>
+        <include>defaultCacheTemplate</include>
+        <boostConcurrency>true</boostConcurrency>
+    </cache>
+    
+</caches>
+</cache2k>

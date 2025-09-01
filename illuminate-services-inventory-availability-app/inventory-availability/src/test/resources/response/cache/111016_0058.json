@@ -1,0 +1,12 @@
+{
+    "productId": "111016",
+    "locationId": "0058",
+    "atpByFulfillmentTypes": [
+        {
+            "fulfillmentType": "PICK",
+            "atp": 60.0,
+            "atpStatus": "INSTOCK",
+            "updateTime": "2021-04-19T11:45:24.153"
+        }
+    ]
+}

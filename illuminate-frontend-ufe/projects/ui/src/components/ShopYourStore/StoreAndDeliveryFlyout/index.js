@@ -1,0 +1,4 @@
+import StoreAndDeliveryFlyout from 'components/ShopYourStore/StoreAndDeliveryFlyout/StoreAndDeliveryFlyout';
+import { withStoreAndDeliveryFlyoutProps } from 'components/ShopYourStore/StoreAndDeliveryFlyout/withStoreAndDeliveryFlyoutProps';
+
+export default withStoreAndDeliveryFlyoutProps(StoreAndDeliveryFlyout);

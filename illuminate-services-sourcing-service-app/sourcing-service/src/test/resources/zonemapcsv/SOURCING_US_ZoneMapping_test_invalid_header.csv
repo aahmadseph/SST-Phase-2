@@ -1,0 +1,10 @@
+Record,Zip Code,Preferred DC1,Preferred DC2,Invalid,Preferred DC4,State
+zone,2,701,1001,801,1021,NY
+zone,5,701,1001,801,1021,NY
+zone,6,701,,,,PR
+zone,7,701,,,,PR
+zone,10,701,1001,801,1021,MA
+zone,11,701,1001,801,1021,MA
+zone,12,701,1001,801,1021,MA
+zone,13,701,1001,801,1021,MA
+EndOfRecords

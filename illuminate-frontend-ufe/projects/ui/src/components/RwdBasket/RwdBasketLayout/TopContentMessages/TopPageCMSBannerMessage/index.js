@@ -1,0 +1,3 @@
+import TopPageCMSBannerMessage from 'components/RwdBasket/RwdBasketLayout/TopContentMessages/TopPageCMSBannerMessage/TopPageCMSBannerMessage';
+
+export default TopPageCMSBannerMessage;

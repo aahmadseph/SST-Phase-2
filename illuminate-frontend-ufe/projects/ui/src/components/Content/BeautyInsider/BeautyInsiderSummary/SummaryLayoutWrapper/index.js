@@ -1,0 +1,3 @@
+import SummaryLayoutWrapper from 'components/Content/BeautyInsider/BeautyInsiderSummary/SummaryLayoutWrapper/SummaryLayoutWrapper';
+
+export default SummaryLayoutWrapper;

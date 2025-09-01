@@ -1,0 +1,34 @@
+# Query for Beauty Preferences refinements (master list) BP custom branch
+query RefinementsBP(
+    $standardLocale: StandardLocale
+    $country: StandardCountry
+) {
+    refinements(standardLocale: $standardLocale, country: $country) {
+        key
+        value
+        categoryId
+        orderId
+        refinements {
+            key
+            value
+            items {
+                key
+                value
+                visableInBP
+                filterable
+                image
+                orderId
+                avatarImageUrl
+                description
+            }
+            isBISignUp
+            isBVQuestion
+            largeDisplayType
+            orderId
+            selectionType
+            showSkip
+            smallDisplayType
+            syncedWorlds
+        }
+    }
+}

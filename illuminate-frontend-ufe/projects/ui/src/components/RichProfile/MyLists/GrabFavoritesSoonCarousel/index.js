@@ -1,0 +1,5 @@
+import GrabFavoritesSoonCarousel from 'components/RichProfile/MyLists/GrabFavoritesSoonCarousel/GrabFavoritesSoonCarousel';
+import { withGrabFavoritesSoonCarouselProps } from 'viewModel/richProfile/myLists/grabFavoritesSoonCarousel/withGrabFavoritesSoonCarouselProps';
+const ConnectedGrabFavoritesSoonCarousel = withGrabFavoritesSoonCarouselProps(GrabFavoritesSoonCarousel);
+
+export default ConnectedGrabFavoritesSoonCarousel;

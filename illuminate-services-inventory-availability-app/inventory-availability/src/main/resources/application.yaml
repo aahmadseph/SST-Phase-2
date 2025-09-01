@@ -1,0 +1,449 @@
+spring:
+   cloud:
+    bus:
+      content-type: application/json
+      destination: Sephora.ConfigHub.Client.ConfigUpdate_QA1
+    stream:
+      bindings:
+        springCloudBusInput:
+          destination: Sephora.ConfigHub.Client.ConfigUpdate_QA1
+          group: Sephora.ConfigHub.Client.${spring.application.name}.${random.uuid}
+        springCloudBusOutput:
+          destination: Sephora.ConfigHub.Client.ConfigUpdate_QA1
+      kafka:
+        binder:
+          brokers:
+            - pkc-lqzgd.westus2.azure.confluent.cloud:9092
+          configuration:
+            “[sasl.jaas.config]“: org.apache.kafka.common.security.plain.PlainLoginModule required username="RWUHYGWNUJGIVW2V" password="ciyWAn4l5CUief46xi5nlqMhwhLx2HI+P4pSgx0qhNqspXb3KUNSCxpSPw7EwqAA";
+            “[ssl.endpoint.identification.algorithm]“: https
+            “[security.protocol]“: SASL_SSL
+            “[sasl.mechanism]“: PLAIN
+            “[default.api.timeout.ms]“: 15000
+            “[request.timeout.ms]“: 12000
+            “[auto.offset.reset]“: latest
+   messages:
+      basename: messages
+   redis:
+      host: sepeus1devaksredis02.eastus.redisenterprise.cache.azure.net
+      password: uCTJHfqmta6qtT2fJiHtjyHbLMuW04gYhqUN6mFc2sA=
+      port: 10000
+      #host: 127.0.0.1 #Local
+      #port: 6379 #Local
+      ssl: false
+      connect-timeout: 10s
+      timeout: 5000ms
+      lettuce:
+         pool:
+            enabled: true
+            max-active: 32
+            max-idle: 8
+            min-idle: 0
+            max-wait: 50ms   
+
+discovery:
+   client:
+      currentServiceId: inventory-availability-svc
+logging:
+   config: classpath:log4j2.xml
+   level:
+      root: INFO
+request:
+   log:
+      jsonBodies: true
+      maxPayloadLength: 1000
+      excludeUrlPatterns: /actuator/health,/actuator/liveness,/actuator/prometheus
+inventory:
+   supply:
+     defaultSegment:
+     defaultSupplyType: ONHAND
+   async:
+      corePoolSize: 500
+      maxPoolSize: 1000
+      queueCapacity: 0
+      keepAlive: 180
+      waitTimeoutInSeconds: 5
+      batchSize: 5
+   useShardedApproach: false
+   defaultOrgId: SEPHORA
+   defaultTransactionType: DEFAULT
+   defaultSegment: DEFAULT
+   defaultSellingChannel: SEPHORAUS
+   defaultEventType: SUPPLY_UPDATE
+   site-page-availability:
+    networkThreshold:
+      cache:
+        time-to-live: 300
+    locationAvailability:
+      cache:
+        time-to-live: 300
+    networkCacheName: networkThreshold
+    locationCacheName: locationAvailability
+    atpLocationCacheName: atpLocationCache
+    inTransitCacheName: IntransitLoad
+    productLimit: 200
+    assumedAtp: 0
+    retryEnabled: true
+    defaultPriorityOrder: AVAILABILITY_HUB
+    pickRampUpEnabled: false
+    samedayRampUpEnabled: false
+    readClusterEnabled: false
+    handleSameDayCacheMiss: true
+    appName: inventoryAvailability 
+    configType: GetAvailabilityForSitePagesRampup
+    kohls-stores: 801324, 801282, 800397, 800089, 800643, 800380, 800590, 800268, 800443, 800542
+    useDefaultFulfillmentType: true
+    defaultFulfillmentType: PICK
+    #OMM-761 Implement switch for lettuce redis cache changes
+    useRedisTemplate: true
+    priorityConfig:
+      -
+        fulfillmentType: PICK
+        requestOrigin: ATG_ADD_TO_BASKET, DEFAULT, ATG_BASKET, ATG_INIT_CHECKOUT, ATG_FIND_IN_STORE, ATG_PDP, ATG_MISC, ATG_PLACE_ORDER, ATG_CSC, ATG_CSC_CHECKOUT, ATG_CSC_FIND_IN_STORE, PAS
+        priorityOrder: CACHE, AVAILABILITY_HUB, PAS
+      - 
+        fulfillmentType: SAMEDAY
+        requestOrigin: PDP, BASKET, CHECKOUT, DEFAULT, PAS
+        priorityOrder: CACHE, AVAILABILITY_HUB
+      - 
+        fulfillmentType: SHIP
+        requestOrigin: DEFAULT, PAS
+        priorityOrder: CACHE, AVAILABILITY_HUB
+    # if inventory is not available in yantriks then update cache with configurable value
+    handle-availability-hub-miss:
+      enabled: true
+      defaultAtp: -1
+      defaultAtpStatus: OOS
+      #send atp as 0 to ATG if cache have -ve atp due to yantriks availability miss
+      handleCacheNegetiveAtp: true
+    availabilityhub:
+      async:
+         waitTimeoutInSeconds : 10
+         batchSize : 10
+    cacheAavailability:
+      async:
+         waitTimeoutInSeconds : 10
+         batchSize : 10
+    networkAavailability:
+      async:
+         waitTimeoutInSeconds : 10
+         batchSize : 10
+    async:
+      waitTimeoutInSeconds : 10
+      batchSize : 2    
+   warmup:
+    enabled: false
+    itemIds: 1001,1205897,1233147,2188126,2276780,1959121,1778265,2145555,2299329,1619592,1746940,2300606,2250520,1569326,2158210
+# Get availability for site page Asnyc Config.
+sitePageAvailability:
+   availabilityhub:
+      async:
+         corePoolSize : 100
+         maxPoolSize : 500
+         queueCapacity : 0
+         keepAlive : 180
+   v2Availabilityhub:
+     async:
+       corePoolSize: 100
+       maxPoolSize: 500
+       queueCapacity: 0
+       keepAlive: 180
+   cacheAavailability: 
+      async:
+         corePoolSize : 500
+         maxPoolSize : 1000
+         queueCapacity : 0
+         keepAlive : 180
+   v2cacheAvailability:
+     async:
+       corePoolSize: 500
+       maxPoolSize: 1000
+       queueCapacity: 0
+       keepAlive: 180
+   inTransitAvailability:
+      async:
+         corePoolSize: 500
+         maxPoolSize: 1000
+         queueCapacity: 0
+         keepAlive: 180
+         batchSize : 10
+         waitTimeoutInSeconds : 10
+   networkAavailability: 
+      async:
+         corePoolSize : 500
+         maxPoolSize : 1000
+         queueCapacity : 0
+         keepAlive : 180
+   v2:
+      async:
+        corePoolSize: 50
+        maxPoolSize: 100
+        queueCapacity: 0
+        keepAlive: 180
+   async:
+      corePoolSize : 50
+      maxPoolSize : 100
+      queueCapacity : 0
+      keepAlive : 180
+management:
+   health:
+      azure-key-vault:
+         enabled: false
+   endpoint:
+      restart:
+         enabled: true
+   endpoints:
+      web:
+         exposure:
+            include:
+            - loggers
+            - health
+            - caches
+            - liveness
+            - prometheus
+            - busrefresh
+            - refresh
+   metrics:
+      tags:
+         application: ${spring.application.name}
+availabilityhub:
+   enabled: true
+   client:
+      serviceUrl: https://sephora-qa-inventory.yantriks.com
+      customServiceUrl: https://sephora-qa-custom-inventory.yantriks.com/custom-inventory-services
+      #serviceUrl: http://inventory-platform-mock-server-qa1.eus1-devqa.internalsephora.com
+      readClusterServiceUrl: https://sephora-qa-pfparc.yantriks.com
+      transitServiceUrl: https://sephora-qa-pfpcc.yantriks.com
+      defaultMaxPerRouteConnections: 1000
+      maxTotalConnections: 2000
+      socketTimeout: 1000
+      connectionTimeout: 1000
+      connectionRequestTimeout: 1000
+      readTimeout: 500
+      batchSize: 5
+      retryPeriod: 10
+      retryMaxPeriod: 50
+      retryMaxAttempts: 1
+      inactivityTimeout: 180
+      jwttoken:
+         privateKeyId: bbaf8ea0df6cd27cc02f8c496fb379d9d37ab3f4
+         issuer: sephora-qa
+         audience: saas-yantriks-sephora-qa
+         timeToLive: 2100
+         privateKey: -----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCn5ksWi4UwZYNu\natRJ8QhS0wxyFqPT5XTA+S+mor1cpodSSE8eE3Y1ige0V4TxwMWgAHbTJ+jCysXG\nJlgT37ZF0cZbYNozUF8iM67caCgYVU4u4B64P6GKnq1ju0HzssZ5vpSR1mhvS/P9\nkaBsPRYxKPd5EbX5kWNEtk1p8TcRLL5OIUK6o0KYhc4aHPmniccUHxKiHxw7NOae\nKERqsBZar63PmxcXPeQllRN6KzXgBswUDg1NbQXf1FKQfmzEKSx0KbYg8soRatC2\n4UDiS0pD2lGzHd4GjtJdOA8kF1PMIO9ZdORJ/y6LNvL2vaXUQ4m+NfpTQOKI59+W\nMeUdnwQVAgMBAAECggEAS4mrrKf2szBoskuz2NRtRz4WclnHOTUZkxxJGPJMuZte\ndGF93u0omKvSDYv2jwGIqBStYRCqgsDRu/VSWRakHcNkN4ZahQ2az3trJ1Rg/Zmb\nhDFnAMP3/LKpFZ6Q7IA5FVrt4rMQ50nHqwRSpX/SNSnWNQ0HzxFfFPHj4E8a1EmP\neZNSoOvFkkcb2IvlGPNGtQQZ3Q3w3uzW4qPlypE6MrtiGr8GbTgxiQh3WFNMf4kU\nBVj7ozmaU3YFxDn5mvJ+rRd9oKzQFMH8OAj+SDyYycPCrGWO3J751fqopwxFp5qT\nA4VhN7gKuxPoTJVt2HliBLgjmxvq+yRK6d7Ef8jcnQKBgQDTuM9GOpsLIO+bPbYm\n1Tvpqhy8k0/WRhBTzHOoZkxc2gydDt4qGvmsUoXpHWTttAQxWczol9LYrLCdPA0+\n4uROT5oLT4c9MjCKOsPIU5Cf4b798NMXy3wc8M2x+WQjdQu2VmI5G6UwFDBFIAXe\nn9Yp2AqipC8STD7BDd3OWWP4JwKBgQDLA1GweZ77YD4Y9KmYGGBcgRar3U3ut9tA\noKkecJkQAWIJLArbdlXapt/lM0sQJ5X5bC61+PVEbuomnYqTnuraIpj38TPWaly6\nKy9PeqyFkRmGsD1J0cHYgC5UFmsnWKcFQ6G2kk0ExG7CmkyvmSZJpTBiV/sS0Bxy\nZOyrfayrYwKBgQCNv2yeQzxsXfetQsrCAv8iuK6WnjXUaoIh6H8CnsK/Y4kQWdTp\n8bd45KMc6H4bGuu3sryaeJNEV5HDI2Jm2PcrauXibrNHiGOxGBjd9Pyd3kDFuUdK\n5gRJR/sfDa46gvF9eSY3v8d/gfSzQvZLD04OI8MzEqMlKADXtZXrwjNI/wKBgQCt\nujpmzb06GsMpMf4LtRiJMMLI8koltdp/tLzk2rBxXO2bMcBczChuQ42oIzviKC4U\nUvqqKNEi7dOclgani0AoyaCj1RpqK30Mp7YFytHmPyRb+WeJS2IaNp7uwHyUIC5V\nt+mkRhB4uuyZxddIEcQNE7qS/f1SvRsK3ckWfCaORwKBgQCHGPG7AZ09qngiQXOw\n3kn/Sih4LOOc3B6PKC60ORI4uJ5Jqwx5dSO2PeA0tV+uqLPK21Ysi7SWLiQHwZpm\nkecajSBjmui5O3tVggFF3MGliFV0TKbYqmAE6gEVJQnz+VqRyGQei8Vf3reL+50N\n2+muozshreYG3ufuzQauKvnQrQ==\n-----END PRIVATE KEY-----\n
+         scheduler:
+           deltaTime: 5000
+shipment:
+   dc-locations: 0701,0801,0901,1001,1021,1050,0750,US_NONSHIP,CA_NONSHIP
+
+yantriks:
+  enabled: true
+  jwtToken: Bearer eyJraWQiOiIyMmM0MzI1MjNlNjNiYzVhYjQxMzQyM2E0ODcyM2E5NDAxOGNjNzQ0IiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJhcGlhdXRoQHNlcGhvcmEtMjcyNDA2LmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoic2Fhcy15YW50cmlrcy1zZXBob3JhLXBlcmYiLCJpc3MiOiJhcGlhdXRoQHNlcGhvcmEtMjcyNDA2LmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiZXhwIjoxNTg4MjM5MjQyLCJpYXQiOjE1ODcwMjk2NDJ9.bfbz8GaTKfjLQOfT2q7gS7QGOBIy9HhiQzHFwpinHNr99fCoKKhMbYjid2V0jUX58KFBK5pDM3brPC9P49X-cI5n_YODSIiqP3SW83GM2juTz_MTzLFeDRGhkWPrAtfLXUCAR-sfBgDzhISwxfKapbaXEyjfXhqA7mBADgGUwajb8RSAyxrQQg-dn9oi3_fVDNaHYm1ULpzcj-GaydiXN3GiFnsqIVhMqQdpEuTr4NsWCBZcW5ZyMsu6UvTCpUbFAOguqZsor13anFMCT3PzQtIo1uF0Yqw9LACSw0Nu4bYgQWIJFQ4kUqlNLxrLMl6DUCCHDL4_VKzW7S8S5cl2eA
+availability:
+  resourcing:
+    reverifyAvailability: true
+    enabled: true
+    shipNodes: US_NONSHIP,CA_NONSHIP
+  request:
+    disableNoProductErrorHandling: false 
+  enabled: true
+  client:
+    serviceUrl : https://sephora-qa-availability.yantriks.com
+    #serviceUrl: http://inventory-platform-mock-server-qa1.eus1-devqa.internalsephora.com
+    defaultMaxPerRouteConnections: 1000
+    maxTotalConnections: 2000
+    socketTimeout: 1000
+    connectionTimeout: 1000
+    connectionRequestTimeout: 1000
+    readTimeout: 1000
+    batchSize: 5
+    retryPeriod: 100
+    retryMaxPeriod: 500
+    retryMaxAttempts: 1
+    inactivityTimeout: 180
+    async:
+      corePoolSize: 500
+      maxPoolSize: 1000
+      queueCapacity: 0
+      keepAlive: 180
+      waitTimeoutInSeconds: 5
+      batchSize: 5
+  cache:
+    enabled: false
+    cacheName: locationAvailability
+    priorityConfig:
+       -
+        fulfillmentType: PICK
+        requestOrigin: PDP, DEFAULT
+        priorityOrder: CACHE, AVAILABILITY_HUB
+        assumedATP: 0
+        assumedATPStatus: OOS
+       - 
+        fulfillmentType: SAMEDAY
+        requestOrigin: BASKET, CHECKOUT, DEFAULT
+        priorityOrder: CACHE, AVAILABILITY_HUB
+        assumedATP: 0
+        assumedATPStatus: OOS
+       - 
+        fulfillmentType: SHIP
+        requestOrigin: DEFAULT
+        priorityOrder: CACHE, AVAILABILITY_HUB
+        assumedATP: 0
+        assumedATPStatus: OOS 
+    async:
+      batchSize: 10
+  mock:
+       distribution: '10-20:23%,20-30:60%,30-50:15%,50-200:2%'
+       #Below configuration is only for perf standalone test and the value should be true! Make sure below property("isMockedAvailability: false") is not present in any other environments. 
+       #If the value is true then the yantriks getAvailability call will be turned off and a mocked response will be sent to the caller system. 
+       #For an End To End test this value should be false
+       isMockedAvailability: false
+sephora:
+  endpoint:
+    configprop:
+      sensitive: true
+      additional-keys-to-sanitize: .*saslJaasConfig.*, .*serviceUrl.*, .*username.*
+    env:
+      sensitive: true
+      additional-keys-to-sanitize: .*saslJaasConfig.*,.*serviceUrl.*, .*username.*
+  email:
+    inventory-supply:
+      enabled: true
+      fromAddress: no-reply@sephora.com
+      toAddress:
+        - raghu.vn@sephora.com
+      ccAddress:
+        - safeer.ahameed@sephora.com
+    inventory-supply-bulk:
+      enabled: true
+      fromAddress: no-reply@sephora.com
+      toAddress:
+        - raghu.vn@sephora.com
+      ccAddress:
+        - safeer.ahameed@sephora.com
+    enabled: true
+    host: smtpvip.qts.sephoraus.com
+    port: 25
+    username: OMS
+    password:
+    protocol: smtp
+    auth: true
+    starttlsEnabled: true
+    debugEnabled: true
+  swagger:
+      auth:
+         enabled: true
+         roles:
+            - ADMIN|*
+            - SUPPORT|<C>/configuration
+            - QA|<E>/v1,<C>/v1/
+         credentials:
+            - admin|sephAdmin2021|ADMIN
+            - qa|sephQa2021|QA
+            - support|sephSupport2021|SUPPORT
+  cache:
+    default:
+        type: redis
+    cache2k:
+        type: jcache
+    redisson:
+        type: none
+    cache-names:
+      - inventoryAvailability
+      - ItemHold
+      - networkThreshold
+      - locationAvailability
+    redis:
+      key-prefix: inventoryAvailability
+      use-key-prefix: true
+opentracing:
+   spring:
+      web:
+         enabled: true
+
+itemhold:
+  request:
+    limit: 100
+  cache:
+    name: ItemHold
+    
+############### configuration from inventory application
+            
+azure:
+   enabled: true
+   defaultThreshold: '2000_1000_0'
+   defaultInfinite: false 
+   cosmosdb:
+#      uri: https://sep-eus1-qa-ins-db01.documents.azure.com:443
+      key: SNRkgfvRWVwsiC0twRSt20bopLyda8lKyJ92GRbl4mjIjjWtNw1m13zEXotFfWwYZejURskETLsyUQny9UVw9A==
+      secondaryKey: YYGDCgu9Y11VtNWrRqBo6r4AdRn4za1CA63hYqmv2p8dIwfjWwLHX74ydiW4VRDS4NHfmPHVXZdtioV1XAe8MA==
+      dbName: inventory
+      populateQueryMetrics: false
+      maxPoolSize: 1000
+      requestTimeoutInMillis: 3000
+      idleConnectionTimeoutInMillis: 43200000
+      maxRetryWaitTimeInSeconds: 1
+      maxRetryAttemptsOnThrottledRequests: 3
+      connectionMode:
+        mode: DIRECT
+      changefeedprocessor:
+        leaseContainer: lease
+        leasThroughput: 400
+        feedContainers: shipNode
+pds:
+   azure:
+      cosmosdb:
+#         uri: https://sep-eus1-qa-pds-db01.documents.azure.com:443
+         key: dgH2HWbRuJrDOUbkcXfMoiNuSnQGY7ELsgtubQGW4bQEo8Qx8DceN1NwmX17nKLo9HlcX0qvJUyYiKlfg0mrTw==
+         secondaryKey: g0FBMaDLBUSnrQvJ7eewpAIY6Ox9IlknKAeuhNd0xyeXhKLUaMfzH5gNJV8ZjuE262guzSQFASMVeSNXeZ5ZbQ==
+         dbName: sourcing
+         populateQueryMetrics: false
+         maxPoolSize: 1000
+         requestTimeoutInMillis: 3000
+         idleConnectionTimeoutInMillis: 43200000
+         maxRetryWaitTimeInSeconds: 3
+         maxRetryAttemptsOnThrottledRequests: 5
+         connectionMode:
+           mode: DIRECT
+         changeFeedProcessor:
+          leaseContainer: lease
+          leasThroughput: 400
+          feedContainers: dynamicConfig
+
+
+availabilitybysitepages:
+  mock:
+    distribution: '1-20:23%,20-30:60%,30-50:15%,50-200:2%'
+dynamicconfig:
+  appConfig:
+    genericcontroller:
+      enabled: true
+    appName: inventoryAvailability
+  azure:
+    cosmosdb:
+      enabled: false
+#      uri: https://sep-eus1-qa-pds-db01.documents.azure.com:443
+      key: dgH2HWbRuJrDOUbkcXfMoiNuSnQGY7ELsgtubQGW4bQEo8Qx8DceN1NwmX17nKLo9HlcX0qvJUyYiKlfg0mrTw==
+      secondaryKey: JrwEqWWgOB3XfH72cyJweMP2ZzKlXQVSShXVmoi200JyL2YAHOo0rO216GxWr50k6stORQlcn0WWnwYpOrdTMQ==
+      dbName: sourcing
+      populateQueryMetrics: false
+      maxPoolSize: 1000
+      requestTimeoutInMillis: 3000
+      idleConnectionTimeoutInMillis: 43200000
+      maxRetryWaitTimeInSeconds: 3
+      maxRetryAttemptsOnThrottledRequests: 5
+      connectionMode:
+        mode: DIRECT
+  cache:
+    type: jcache
+    cache-names:
+      - dynamicConfig     
+cacheWarmup:
+  baseLocation: D:\Sephora\projects\illuminate-services\illuminate-services-common-service-libs\services-configs
+  configs: dynamicConfig,shipNode
+  enabled: false
+
+confighub:
+  is-inv-availability-mock-enabled: false
+  inv-availability-assumed-atp-status: INSTOCK
+  inv-availability-assumed-atp: 2000

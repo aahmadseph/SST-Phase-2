@@ -1,0 +1,28 @@
+{
+    "extends": ["../../.eslintrc"],
+    "overrides": [
+        {
+            "files": ["./src/**/*{_en_US,_fr_CA}.js", "./tests/**/*{_en_US,_fr_CA}.js"],
+            "rules": {
+                "no-unused-vars": 0,
+                "padding-line-between-statements": 0
+            }
+        },
+        {
+            "files": [
+                "./tests/**/*.js",
+                "./src/analytics/**/*.js",
+                "./dist/cjs/**/*.js",
+                "./src/buildtools/**/*.js",
+                "./src/services/**/*.js",
+                "./src/store/**/*.js",
+                "./thirdparty/**/*.js",
+                "./src/*.js",
+                "./node_modules/**/*"
+            ],
+            "settings": {
+                "disable/plugins": ["ssr-friendly"]
+            }
+        }
+    ]
+}

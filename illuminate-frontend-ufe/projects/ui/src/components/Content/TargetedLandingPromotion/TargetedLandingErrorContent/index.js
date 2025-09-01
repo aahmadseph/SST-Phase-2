@@ -1,0 +1,3 @@
+import TargetedLandingErrorContent from 'components/Content/TargetedLandingPromotion/TargetedLandingErrorContent/TargetedLandingErrorContent';
+
+export default TargetedLandingErrorContent;

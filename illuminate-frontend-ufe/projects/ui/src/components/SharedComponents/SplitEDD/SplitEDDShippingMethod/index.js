@@ -1,0 +1,4 @@
+import SplitEDDShippingMethod from 'components/SharedComponents/SplitEDD/SplitEDDShippingMethod/SplitEDDShippingMethod';
+import { withSplitEDDShippingMethodProps } from 'viewModel/sharedComponents/splitEDD/splitEDDShippingMethod/withSplitEDDShippingMethodProps';
+
+export default withSplitEDDShippingMethodProps(SplitEDDShippingMethod);

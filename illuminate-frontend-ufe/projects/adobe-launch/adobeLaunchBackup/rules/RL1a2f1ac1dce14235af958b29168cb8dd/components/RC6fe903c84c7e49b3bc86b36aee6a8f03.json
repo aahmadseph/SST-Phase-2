@@ -1,0 +1,91 @@
+{
+    "id": "RC6fe903c84c7e49b3bc86b36aee6a8f03",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2023-01-16T20:00:29.701Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: pinterest_orderConfirmationView",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-06-03T19:07:50.885Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"const REGULAR_TYPE = 'Standard';\\nconst PLAY_SKU_ID = '1001';\\nconst GIFT_WRAP_SKUS = ['1169945', '1169937'];\\nconst IS_PLAY_ORDER = digitalData.transaction.attributes.isPlayOrder;\\nconst universalEventId = _satellite.getVar('[UEID] :: Universal Event ID Fx')(event);\\nconst eventId = `purchase-${universalEventId}`;\\nconst cost = _satellite.getVar('[TMS] Pixel :: Pinterest :: Order Subtotal');\\n\\nvar safelyConvertToUSD = function(price) {\\n    /* Remove any currency from the front or back of the string */\\n    price = price.match(/\\\\d+(?:\\\\.\\\\d+|\\\\,\\\\d+\\\\.\\\\d+|\\\\,\\\\d+)|\\\\d+/);\\n\\n    if (price \\u0026\\u0026 price.length) {\\n        price = price[0];\\n\\n        /* Remove any commas because they break the convertToUSD method */\\n        /* Adding decimals in place of commas for CA/FR */\\n        if (digitalData.page.pageInfo.language.toLowerCase() === 'fr') {\\n            price = price.replace(',', '.');\\n        } else {\\n            price = price.replace(',', '');\\n        }\\n    }\\n\\n    /* Convert to USD using UFE's Library */\\n    price = Sephora.analytics.utils.convertToUSD(price);\\n    return price;\\n};\\n\\nvar itemsToAdd = [];\\n\\nvar sumQty = 0;\\nvar hasRegularProduct = false;\\n\\nvar _items = digitalData?.transaction?.item || [];\\n\\n_items.forEach((item) =\\u003e {\\n\\tconst itemSku = item?.sku?.skuId || '';\\n\\tvar itemPrice = (item?.sku?.salePrice || item?.sku?.listPrice) || 0;\\n\\tconst isReward = (itemPrice.toLowerCase().indexOf('points') != -1);\\n\\tconst itemSkyType = item?.sku?.type || '';\\n\\tconst itemQty =item?.qty || 0;\\n\\t\\n\\tconst isGiftWrapSku = GIFT_WRAP_SKUS.indexOf(itemSku) \\u003e -1;\\n\\n\\tconst price = (itemSku === PLAY_SKU_ID) || (isReward || itemPrice === 'FREE') ? '0' : itemPrice;\\n\\titemPrice = safelyConvertToUSD(price);\\n\\n\\tif (!isGiftWrapSku \\u0026\\u0026 Number(itemPrice) !== 0 \\u0026\\u0026 itemSkyType === REGULAR_TYPE) {\\n\\t\\thasRegularProduct = true;\\n\\t\\tsumQty += itemQty;\\n\\n\\t\\titemsToAdd.push({\\n\\t\\t\\tproduct_id: item?.sku?.skuId || '',\\n\\t\\t\\tproduct_name: item?.sku?.productName || '',\\n\\t\\t\\tproduct_quantity: itemQty,\\n\\t\\t\\tproduct_price: itemPrice\\n\\t\\t});\\n\\t}\\n});\\n\\nvar lineItems = itemsToAdd.filter(item =\\u003e item.product_price !== '0');\\n\\nfunction FirePinterestPageVisitPixel() {\\n  pintrk('track', 'checkout', {\\n      value: cost,\\n      order_quantity: sumQty,\\n      currency: 'USD',\\n      order_id: _satellite.getVar('[TMS] Page :: Order Number'),\\n      line_items: lineItems,\\n      event_id: eventId\\n  });\\n}\\n\\nif (!IS_PLAY_ORDER \\u0026\\u0026 hasRegularProduct) {\\n  Sephora.analytics.promises.PinterestBasePixelInitialized.then(function(){ FirePinterestPageVisitPixel(); });\\n}\\n\\n\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC6fe903c84c7e49b3bc86b36aee6a8f03/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC6fe903c84c7e49b3bc86b36aee6a8f03/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC6fe903c84c7e49b3bc86b36aee6a8f03/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC6fe903c84c7e49b3bc86b36aee6a8f03/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC6fe903c84c7e49b3bc86b36aee6a8f03/origin"
+            },
+            "data": {
+                "id": "RC6fe903c84c7e49b3bc86b36aee6a8f03",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC6fe903c84c7e49b3bc86b36aee6a8f03/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC6fe903c84c7e49b3bc86b36aee6a8f03",
+        "rules": "https://reactor.adobe.io/rule_components/RC6fe903c84c7e49b3bc86b36aee6a8f03/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC6fe903c84c7e49b3bc86b36aee6a8f03"
+    },
+    "meta": {
+        "latest_revision_number": 17
+    }
+}

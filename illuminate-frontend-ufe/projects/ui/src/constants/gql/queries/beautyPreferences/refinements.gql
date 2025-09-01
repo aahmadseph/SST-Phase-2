@@ -1,0 +1,19 @@
+# Query for Beauty Preferences refinements (master list)
+query Refinements($locale: String) {
+    refinements(locale: $locale) {
+        key
+        value
+        categoryId
+        refinements {
+            key
+            value
+            items {
+                key
+                value
+                visableInBP
+                filterable
+                image
+            }
+        }
+    }
+}

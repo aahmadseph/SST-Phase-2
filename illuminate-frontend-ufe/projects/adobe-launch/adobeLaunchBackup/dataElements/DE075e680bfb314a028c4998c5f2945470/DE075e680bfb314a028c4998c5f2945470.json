@@ -1,0 +1,97 @@
+{
+    "id": "DE075e680bfb314a028c4998c5f2945470",
+    "type": "data_elements",
+    "attributes": {
+        "created_at": "2023-02-14T22:27:46.919Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "[TMS] GA4 :: Transaction :: Items",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-02-14T22:28:51.668Z",
+        "created_by_email": "rachel.joss@sephora.com",
+        "created_by_display_name": "rachel joss",
+        "updated_by_email": "rachel.joss@sephora.com",
+        "updated_by_display_name": "rachel joss",
+        "clean_text": false,
+        "default_value": null,
+        "delegate_descriptor_id": "core::dataElements::custom-code",
+        "force_lower_case": false,
+        "review_status": "unsubmitted",
+        "storage_duration": null,
+        "settings": "{\"source\":\"var items = digitalData.transaction.item; \\nvar itemsMapped = []; \\nvar finalPrice; itemsMapped = items.map( \\n  function(item) { \\n    var newItem = {}; \\n    finalPrice = item.sku.salePrice || item.sku.listPrice; \\n    finalPrice = finalPrice.replace('$', ''); \\n    newItem.type = item.sku.type; \\n    newItem.item_id = item.sku.skuId; \\n    newItem.item_name = item.sku.productName; \\n    newItem.item_brand = item.sku.brandName; \\n    newItem.item_category = item.sku.parentCategory ? item.sku.parentCategory.displayName : ''; \\n    newItem.item_variant = item.sku.variationValue; \\n    newItem.quantity = item.qty; \\n    newItem.price = finalPrice; \\n    return newItem; \\n  }); \\nreturn JSON.stringify(itemsMapped);\"}"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE075e680bfb314a028c4998c5f2945470/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE075e680bfb314a028c4998c5f2945470/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE075e680bfb314a028c4998c5f2945470/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE075e680bfb314a028c4998c5f2945470/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE075e680bfb314a028c4998c5f2945470/origin"
+            },
+            "data": {
+                "id": "DE075e680bfb314a028c4998c5f2945470",
+                "type": "data_elements"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE075e680bfb314a028c4998c5f2945470/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE075e680bfb314a028c4998c5f2945470/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE075e680bfb314a028c4998c5f2945470/updated_with_extension"
+            },
+            "data": {
+                "id": "EX06a7afc619ae4214a074cb5399abf9fa",
+                "type": "extensions"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/data_elements/DE075e680bfb314a028c4998c5f2945470",
+        "self": "https://reactor.adobe.io/data_elements/DE075e680bfb314a028c4998c5f2945470",
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74"
+    },
+    "meta": {
+        "latest_revision_number": 1
+    }
+}

@@ -1,0 +1,66 @@
+const CHANNEL = {
+    DESKTOP: 'Desktop',
+    MOBILE_WEB: 'Mobile Web'
+};
+
+const SLOT_COUNTRY = {
+    US: '25',
+    CA: '26'
+};
+
+const SLOT_CHANNEL = {
+    DESKTOP: '1',
+    MOBILE_WEB: '2'
+};
+
+const SLOT_PAGETYPE = {
+    SEARCH: '03',
+    PRODUCT_DETAIL_PAGE: '04',
+    BROWSE: '02'
+};
+
+const SLOT_PAGETYPE_SECOND_POSITION = {
+    PRODUCT_DETAIL_PAGE: '12',
+    SEARCH: '11',
+    BROWSE: '11'
+};
+
+const MAX_SPONSOR_PRODUCT_COUNT = 12;
+
+const PAGE_TYPES = {
+    SEARCH: 'Search',
+    PRODUCT_DETAIL_PAGE: 'PDP',
+    BROWSE: 'Browse'
+};
+
+const COUNTRIES = {
+    US: 'US',
+    CA: 'CA'
+};
+
+const CLICK_TRACKER_ID_API_FIELD = 'id';
+const CLICK_TRACKER_ID_FIELD = 'click_id';
+const CLICK_TRACKER_PAYLOAD_API_FIELD = 'x';
+const CLICK_TRACKER_PAYLOAD_FIELD = 'click_payload';
+
+const HOME_PAGE_AB_TEST = {
+    SHOW_BOTH: 'showBoth',
+    SHOW_CAROUSEL: 'showCarousel',
+    SHOW_BANNER: 'showBanner'
+};
+
+export {
+    CHANNEL,
+    SLOT_COUNTRY,
+    SLOT_CHANNEL,
+    SLOT_PAGETYPE,
+    SLOT_PAGETYPE_SECOND_POSITION,
+    MAX_SPONSOR_PRODUCT_COUNT,
+    PAGE_TYPES,
+    COUNTRIES,
+    CLICK_TRACKER_ID_API_FIELD,
+    CLICK_TRACKER_ID_FIELD,
+    CLICK_TRACKER_PAYLOAD_API_FIELD,
+    CLICK_TRACKER_PAYLOAD_FIELD,
+    HOME_PAGE_AB_TEST
+};

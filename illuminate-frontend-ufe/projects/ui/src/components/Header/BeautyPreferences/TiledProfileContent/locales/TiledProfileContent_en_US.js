@@ -1,0 +1,103 @@
+/* eslint-disable camelcase */
+export default function getResource(label, vars = []) {
+    const resources = {
+        notSure: 'Not sure',
+        noPreference: 'No Preference',
+        // fragnance
+        floral: 'Floral',
+        warmspicy: 'Warm & Spicy',
+        fresh: 'Fresh',
+        woodyEarthy: 'Woody & Earthy',
+        // haircolor
+        blonde: 'Blonde',
+        brown: 'Brown',
+        auburn: 'Auburn',
+        black: 'Black',
+        red: 'Red',
+        gray: 'Gray',
+        // skinConcerns
+        acneBlemishes: 'Acne / Blemishes',
+        antiAging: 'Anti-aging',
+        darkCircles: 'Dark Circles',
+        darkSpots: 'Dark Spots',
+        dryness: 'Dryness',
+        unevenTexture: 'Uneven Texture',
+        fineLinesWrinkles: 'Fine Lines / Wrinkles',
+        lossOfFirmnessElasticity: 'Loss of Firmness / Elasticity',
+        pores: 'Pores',
+        puffiness: 'Puffiness',
+        redness: 'Redness',
+        unevenSkinTone: 'Uneven Skin Tone',
+        // skinTone
+        fairLight: 'Fair Light',
+        fair: 'Fair',
+        light: 'Light',
+        lightMedium: 'Light Medium',
+        medium: 'Medium',
+        mediumTan: 'Medium Tan',
+        tan: 'Tan',
+        deep: 'Deep',
+        rich: 'Rich',
+        // skinType
+        comboSk: 'Combination',
+        drySk: 'Dry',
+        normalSk: 'Normal',
+        oilySk: 'Oily',
+        // eyeColor
+        blue: 'Blue',
+        green: 'Green',
+        hazel: 'Hazel',
+        // hairConcerns
+        brassiness: 'Brassiness',
+        colorFading: 'Color Fading',
+        colorSafe: 'Color Safe',
+        curlEnhancing: 'Curl Enhancing',
+        damageSplitEnds: 'Damage / Split Ends',
+        dandruff: 'Dandruff',
+        flakyDryScalp: 'Flaky / Dry Scalp',
+        frizzHr: 'Frizz',
+        heatProtection: 'Heat Protection',
+        'hold_&style_extending': 'Hold & Style Extending',
+        oily_scalp: 'Oily Scalp',
+        scalp_build_up: 'Scalp Build Up',
+        shine: 'Shine',
+        straighteningSmoothing: 'Straightening / Smoothing',
+        thinning: 'Thinning',
+        uvprorection: 'UV Protection',
+        volumizing: 'Volumizing',
+        // hairTexture
+        coily: 'Coily',
+        curly: 'Curly',
+        straight: 'Straight',
+        wavy: 'Wavy',
+        //hairDescrible
+        fine: 'Fine',
+        thick: 'Thick',
+        // ageRange
+        '20s': '20s',
+        '30s': '30s',
+        '40s': '40s',
+        '50s': '50+',
+        // shoppingPreferences
+        bestOfAllure: 'Best of Allure',
+        bestOfAllureDesc: 'Check out these award winners',
+        bipocOwnedBrands: 'BIPOC-Owned Brands',
+        bipocOwnedBrandsDesc: 'Support BIPOC (Black, Indigenous, and People of Color) owned beauty brands',
+        blackOwnedBrands: 'Black-Owned Brands',
+        blackOwnedBrandsDesc: 'Products we love from the brands changing the beauty game',
+        luxuryFragrance: 'Luxury Fragrance',
+        luxuryFragranceDesc: 'Spritz on something fancy',
+        luxuryHair: 'Luxury Hair',
+        luxuryHairDesc: 'For wow-worthy results',
+        luxuryMakeup: 'Luxury Makeup',
+        luxuryMakeupDesc: 'Elevated essentials from iconic brands',
+        luxurySkincare: 'Luxury Skincare',
+        luxurySkincareDesc: 'These hardworking formulas are worth it',
+        onlyAtSephora: 'Only at Sephora',
+        onlyAtSephoraDesc: 'Beauty you won’t find anywhere else',
+        planetAware: 'Planet Aware',
+        planetAwareDesc: 'Our selection of brands backed by meaningful environmental commitments, including sustainable ingredients and sourcing, packaging, corporate commitments, and consumer transparency'
+    };
+
+    return resources[label];
+}

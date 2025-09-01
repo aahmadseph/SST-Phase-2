@@ -1,0 +1,69 @@
+{
+    "id": "RLeb27001c24444466aef7df95c3449f01",
+    "type": "rules",
+    "attributes": {
+        "created_at": "2022-05-06T16:19:53.328Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "Sephora UFE - TMS System Ready Promise Fulfillment",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-05-15T17:03:35.209Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "review_status": "unsubmitted"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RLeb27001c24444466aef7df95c3449f01/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RLeb27001c24444466aef7df95c3449f01/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RLeb27001c24444466aef7df95c3449f01/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RLeb27001c24444466aef7df95c3449f01/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RLeb27001c24444466aef7df95c3449f01/origin"
+            },
+            "data": {
+                "id": "RLeb27001c24444466aef7df95c3449f01",
+                "type": "rules"
+            }
+        },
+        "rule_components": {
+            "links": {
+                "related": "https://reactor.adobe.io/rules/RLeb27001c24444466aef7df95c3449f01/rule_components"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/rules/RLeb27001c24444466aef7df95c3449f01",
+        "self": "https://reactor.adobe.io/rules/RLeb27001c24444466aef7df95c3449f01",
+        "rule_components": "https://reactor.adobe.io/rules/RLeb27001c24444466aef7df95c3449f01/rule_components"
+    },
+    "meta": {
+        "latest_revision_number": 16
+    }
+}

@@ -1,0 +1,91 @@
+{
+    "id": "RC7328dd17afe94f969c11bcbbe715d48a",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2025-05-20T13:40:40.759Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "Session AI: add_payment_info",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-06-05T16:40:49.889Z",
+        "created_by_email": "roman.zhelieznov@sephora.com",
+        "created_by_display_name": "roman zhelieznov",
+        "updated_by_email": "roman.zhelieznov@sephora.com",
+        "updated_by_display_name": "roman zhelieznov",
+        "settings": "{\"source\":\"    if(Sephora.template === 'Checkout/RwdCheckout' || Sephora.template === 'Checkout/Checkout') {\\n      const sti = Sephora.Util.cookieStore()?.sti || '';\\n  \\n      let biAccountID = '';\\n      const biAccountIDCache = localStorage.getItem('biAccountId');\\n\\n      if (biAccountIDCache) {\\n          biAccountID = JSON.parse(biAccountIDCache)?.data;\\n      }\\n\\n      const apiKeysMap = {\\n        ['us_en']: Sephora.configurationSettings.sessionAIApiKeyUS,\\n        ['ca_en']: Sephora.configurationSettings.sessionAIApiKeyCAEN,\\n        ['ca_fr']: Sephora.configurationSettings.sessionAIApiKeyCAFR\\n      }\\n\\n      const cookies = Sephora.Util.cookieStore() || {};\\n      const { site_locale = '', site_language = '' } = cookies;\\n\\n      const sessionAIApiKey = apiKeysMap[`${site_locale}_${site_language}`];\\n\\n      fetch(_satellite.getVar(\\\"Session AI: events url\\\"), {\\n          headers: {\\n              apikey: sessionAIApiKey\\n          },\\n          body: JSON.stringify({\\n              event: 'add_payment_info',\\n              logged_in: digitalData.user[0].segment.signInStatus === 'signed in' ? 'Y' : 'N',\\n              visitorId: sti,\\n              customerId: biAccountID,\\n              userAgent: navigator.userAgent,\\n              cart: JSON.stringify(\\n                  digitalData.cart.item.map(item =\\u003e ({\\n                      product_id: item.sku.productId,\\n                      sku: item.sku.skuId,\\n                      quantity: item.qty,\\n                      price: Number(item.sku.valuePrice.replace('$', '')),\\n                      listPrice: Number(item.sku.listPrice.replace('$', '')),\\n                      category: item.sku.parentCategory.displayName\\n                  }))\\n              )\\n          }),\\n          method: 'POST'\\n      })\\n    }\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC7328dd17afe94f969c11bcbbe715d48a/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC7328dd17afe94f969c11bcbbe715d48a/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC7328dd17afe94f969c11bcbbe715d48a/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC7328dd17afe94f969c11bcbbe715d48a/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC7328dd17afe94f969c11bcbbe715d48a/origin"
+            },
+            "data": {
+                "id": "RC7328dd17afe94f969c11bcbbe715d48a",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC7328dd17afe94f969c11bcbbe715d48a/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC7328dd17afe94f969c11bcbbe715d48a",
+        "rules": "https://reactor.adobe.io/rule_components/RC7328dd17afe94f969c11bcbbe715d48a/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC7328dd17afe94f969c11bcbbe715d48a"
+    },
+    "meta": {
+        "latest_revision_number": 5
+    }
+}

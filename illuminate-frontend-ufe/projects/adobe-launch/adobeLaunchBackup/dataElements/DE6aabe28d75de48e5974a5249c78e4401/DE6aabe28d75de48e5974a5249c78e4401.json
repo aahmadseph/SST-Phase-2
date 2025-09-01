@@ -1,0 +1,97 @@
+{
+    "id": "DE6aabe28d75de48e5974a5249c78e4401",
+    "type": "data_elements",
+    "attributes": {
+        "created_at": "2025-04-25T22:44:37.264Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "[UUID] UUIDv5 Fx",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-04-28T23:04:52.994Z",
+        "created_by_email": "niltoncesar.santos@sephora.com",
+        "created_by_display_name": "niltoncesar santos",
+        "updated_by_email": "niltoncesar.santos@sephora.com",
+        "updated_by_display_name": "niltoncesar santos",
+        "clean_text": false,
+        "default_value": null,
+        "delegate_descriptor_id": "core::dataElements::custom-code",
+        "force_lower_case": false,
+        "review_status": "unsubmitted",
+        "storage_duration": null,
+        "settings": "{\"source\":\"// @uuid-browser/lib/sha1-browser.js\\n\\n// Adapted from Chris Veness' SHA1 code at\\n// http://www.movable-type.co.uk/scripts/sha1.html\\n'use strict';\\n\\nfunction f(s, x, y, z) {\\n  switch (s) {\\n    case 0: return (x \\u0026 y) ^ (~x \\u0026 z);\\n    case 1: return x ^ y ^ z;\\n    case 2: return (x \\u0026 y) ^ (x \\u0026 z) ^ (y \\u0026 z);\\n    case 3: return x ^ y ^ z;\\n  }\\n}\\n\\nfunction ROTL(x, n) {\\n  return (x \\u003c\\u003c n) | (x\\u003e\\u003e\\u003e (32 - n));\\n}\\n\\nfunction sha1(bytes) {\\n  var K = [0x5a827999, 0x6ed9eba1, 0x8f1bbcdc, 0xca62c1d6];\\n  var H = [0x67452301, 0xefcdab89, 0x98badcfe, 0x10325476, 0xc3d2e1f0];\\n\\n  if (typeof(bytes) == 'string') {\\n    var msg = unescape(encodeURIComponent(bytes)); // UTF8 escape\\n    bytes = new Array(msg.length);\\n    for (var i = 0; i \\u003c msg.length; i++) bytes[i] = msg.charCodeAt(i);\\n  }\\n\\n  bytes.push(0x80);\\n\\n  var l = bytes.length/4 + 2;\\n  var N = Math.ceil(l/16);\\n  var M = new Array(N);\\n\\n  for (var i=0; i\\u003cN; i++) {\\n    M[i] = new Array(16);\\n    for (var j=0; j\\u003c16; j++) {\\n      M[i][j] =\\n        bytes[i * 64 + j * 4] \\u003c\\u003c 24 |\\n        bytes[i * 64 + j * 4 + 1] \\u003c\\u003c 16 |\\n        bytes[i * 64 + j * 4 + 2] \\u003c\\u003c 8 |\\n        bytes[i * 64 + j * 4 + 3];\\n    }\\n  }\\n\\n  M[N - 1][14] = ((bytes.length - 1) * 8) /\\n    Math.pow(2, 32); M[N - 1][14] = Math.floor(M[N - 1][14]);\\n  M[N - 1][15] = ((bytes.length - 1) * 8) \\u0026 0xffffffff;\\n\\n  for (var i=0; i\\u003cN; i++) {\\n    var W = new Array(80);\\n\\n    for (var t=0; t\\u003c16; t++) W[t] = M[i][t];\\n    for (var t=16; t\\u003c80; t++) {\\n      W[t] = ROTL(W[t - 3] ^ W[t - 8] ^ W[t - 14] ^ W[t - 16], 1);\\n    }\\n\\n    var a = H[0], b = H[1], c = H[2], d = H[3], e = H[4];\\n\\n    for (var t=0; t\\u003c80; t++) {\\n      var s = Math.floor(t/20);\\n      var T = ROTL(a, 5) + f(s, b, c, d) + e + K[s] + W[t] \\u003e\\u003e\\u003e 0;\\n      e = d;\\n      d = c;\\n      c = ROTL(b, 30) \\u003e\\u003e\\u003e 0;\\n      b = a;\\n      a = T;\\n    }\\n\\n    H[0] = (H[0] + a) \\u003e\\u003e\\u003e 0;\\n    H[1] = (H[1] + b) \\u003e\\u003e\\u003e 0;\\n    H[2] = (H[2] + c) \\u003e\\u003e\\u003e 0;\\n    H[3] = (H[3] + d) \\u003e\\u003e\\u003e 0;\\n    H[4] = (H[4] + e) \\u003e\\u003e\\u003e 0;\\n  }\\n\\n  return [\\n    H[0] \\u003e\\u003e 24 \\u0026 0xff, H[0] \\u003e\\u003e 16 \\u0026 0xff, H[0] \\u003e\\u003e 8 \\u0026 0xff, H[0] \\u0026 0xff,\\n    H[1] \\u003e\\u003e 24 \\u0026 0xff, H[1] \\u003e\\u003e 16 \\u0026 0xff, H[1] \\u003e\\u003e 8 \\u0026 0xff, H[1] \\u0026 0xff,\\n    H[2] \\u003e\\u003e 24 \\u0026 0xff, H[2] \\u003e\\u003e 16 \\u0026 0xff, H[2] \\u003e\\u003e 8 \\u0026 0xff, H[2] \\u0026 0xff,\\n    H[3] \\u003e\\u003e 24 \\u0026 0xff, H[3] \\u003e\\u003e 16 \\u0026 0xff, H[3] \\u003e\\u003e 8 \\u0026 0xff, H[3] \\u0026 0xff,\\n    H[4] \\u003e\\u003e 24 \\u0026 0xff, H[4] \\u003e\\u003e 16 \\u0026 0xff, H[4] \\u003e\\u003e 8 \\u0026 0xff, H[4] \\u0026 0xff\\n  ];\\n};\\n\\n\\n// @uuid-browser/lib/bytesToUuid.js\\n/**\\n * Convert array of 16 byte values to UUID string format of the form:\\n * XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\\n */\\nvar byteToHex = [];\\nfor (var i = 0; i \\u003c 256; ++i) {\\n  byteToHex[i] = (i + 0x100).toString(16).substr(1);\\n}\\n\\nfunction bytesToUuid(buf, offset) {\\n  var i = offset || 0;\\n  var bth = byteToHex;\\n  return bth[buf[i++]] + bth[buf[i++]] +\\n          bth[buf[i++]] + bth[buf[i++]] + '-' +\\n          bth[buf[i++]] + bth[buf[i++]] + '-' +\\n          bth[buf[i++]] + bth[buf[i++]] + '-' +\\n          bth[buf[i++]] + bth[buf[i++]] + '-' +\\n          bth[buf[i++]] + bth[buf[i++]] +\\n          bth[buf[i++]] + bth[buf[i++]] +\\n          bth[buf[i++]] + bth[buf[i++]];\\n}\\n\\n\\n// @uuid-browser/v5.js\\nfunction uuidToBytes(uuid) {\\n  // Note: We assume we're being passed a valid uuid string\\n  var bytes = [];\\n  uuid.replace(/[a-fA-F0-9]{2}/g, function(hex) {\\n    bytes.push(parseInt(hex, 16));\\n  });\\n\\n  return bytes;\\n}\\n\\nfunction stringToBytes(str) {\\n  str = unescape(encodeURIComponent(str)); // UTF8 escape\\n  var bytes = new Array(str.length);\\n  for (var i = 0; i \\u003c str.length; i++) {\\n    bytes[i] = str.charCodeAt(i);\\n  }\\n  return bytes;\\n}\\n\\nfunction v5(name, namespace, buf, offset) {\\n  if (typeof(name) == 'string') name = stringToBytes(name);\\n  if (typeof(namespace) == 'string') namespace = uuidToBytes(namespace);\\n\\n  if (!Array.isArray(name)) throw TypeError('name must be an array of bytes');\\n  if (!Array.isArray(namespace) || namespace.length != 16) throw TypeError('namespace must be uuid string or an Array of 16 byte values');\\n\\n  // Per 4.3\\n  var bytes = sha1(namespace.concat(name));\\n  bytes[6] = (bytes[6] \\u0026 0x0f) | 0x50;\\n  bytes[8] = (bytes[8] \\u0026 0x3f) | 0x80;\\n\\n  return buf || bytesToUuid(bytes);\\n}\\n\\nreturn v5;\\n\"}"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE6aabe28d75de48e5974a5249c78e4401/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE6aabe28d75de48e5974a5249c78e4401/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE6aabe28d75de48e5974a5249c78e4401/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE6aabe28d75de48e5974a5249c78e4401/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE6aabe28d75de48e5974a5249c78e4401/origin"
+            },
+            "data": {
+                "id": "DE6aabe28d75de48e5974a5249c78e4401",
+                "type": "data_elements"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE6aabe28d75de48e5974a5249c78e4401/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE6aabe28d75de48e5974a5249c78e4401/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE6aabe28d75de48e5974a5249c78e4401/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/data_elements/DE6aabe28d75de48e5974a5249c78e4401",
+        "self": "https://reactor.adobe.io/data_elements/DE6aabe28d75de48e5974a5249c78e4401",
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74"
+    },
+    "meta": {
+        "latest_revision_number": 2
+    }
+}

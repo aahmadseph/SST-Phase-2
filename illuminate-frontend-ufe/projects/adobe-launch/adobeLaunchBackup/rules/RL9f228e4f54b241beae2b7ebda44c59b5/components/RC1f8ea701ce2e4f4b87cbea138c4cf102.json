@@ -1,0 +1,91 @@
+{
+    "id": "RC1f8ea701ce2e4f4b87cbea138c4cf102",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2023-01-10T16:02:11.590Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: tiktok_addToCartEvent",
+        "negate": false,
+        "order": 1,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": false,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2024-07-26T16:01:18.591Z",
+        "created_by_email": "Nikolai.Shilin@sephora.com",
+        "created_by_display_name": "Nikolai Shilin",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"/* C4E2IGE9UAPKMTRVH0H0 this is for production ,CAEQM63C77U59N957LHG \\nis for testing need to change the value in instance and\\nin tiktokDevMode_insertScript */\\n\\nfunction AdvancedMatching(fireTagFx) {\\n  // Advance Matching\\n  var dd_user = digitalData.user ? digitalData.user[0] : null;\\n  var dd_profile = dd_user ? (dd_user.profile ? dd_user.profile[0] : null) : null;\\n  var dd_profileInfo = dd_profile ? dd_profile.profileInfo : null;\\n  var dd_hashedEmail = dd_profileInfo ? dd_profileInfo.email : null; // webAnalyticsHash\\n  var dd_profileId = dd_profileInfo ? dd_profileInfo.profileID || '' : null;\\n  \\n  var userInfoCache = Sephora.Util.getUserInfoCache();\\n  // var phoneNumber = userInfoCache ? userInfoCache.profile.phoneNumber : null;\\n  \\n  Sephora.analytics.utils.hashString(dd_profileId).then(hashedProfileID =\\u003e {\\n    ttq.identify({\\n      email: dd_hashedEmail, \\n      // phone_number: phoneNumber,\\n      external_id: hashedProfileID,\\n    });\\n    \\n    fireTagFx();\\n  });\\n}\\n\\nfunction FireTag() {\\n    var eventId = 'addtocart' + _satellite.getVar('[UEID] :: Universal Event ID Fx')(event);\\n\\n    var digitalDataPriceValue = event.detail.data.sku.listPrice;\\n    var price = Number(typeof digitalDataPriceValue === 'string' ? digitalDataPriceValue.replace(\\\"$\\\", \\\"\\\").replace(\\\",\\\", \\\".\\\")  : 0);\\n    price = String(Sephora.analytics.utils.convertToUSD(price));\\n  \\n    var isReward = (price.toLowerCase().indexOf('points') != -1);\\n    \\n    if ( (typeof price !== 'string') || (isReward || price === 'FREE') ) {\\n        price = 0;\\n    } \\n    else {\\n        price = price.replace('$', '');\\n        \\n        if (digitalData.page.attributes.languageLocale === 'CA-FR') {\\n          price = Number(price.replace(',', '.'));\\n        } else {\\n          price = Number(price);\\n        }      \\n    }\\n  \\n    var quantity = Number(event === undefined ? '' : event.detail.data.analyticsData.qty);\\n    var content_name =  event.detail.data.analyticsData.productName || '';\\n    var brand_name = event.detail.data.analyticsData.brandName || '';\\n    var category = event.detail.data.analyticsData.category || '';\\n    var value = Number(price * quantity);\\n\\n    ttq.instance(_satellite.getVar('[TMS] TikTok_AccountID')).track('AddToCart', {\\n    \\tquantity: quantity,\\n    \\tprice: price,\\n    \\tvalue: value,\\n    \\tcurrency: event === undefined ? '' : event.detail.data.analyticsData.currency,\\n    \\tcontent_id: event === undefined ? '' : event.detail.data.analyticsData.sku.skuId,\\n    \\tcontent_name: content_name,\\n    \\tcontent_type: 'product',\\n        brand: brand_name,\\n        content_category: category\\n    }, {\\n    \\tevent_id: eventId\\n    });\\n}\\n\\nif (!ttq) {\\n  // Expects the Tiktok Pixel to be loaded\\n  window.addEventListener('TikTokBasePixelInitialized', AdvancedMatching(FireTag));\\n}\\nelse {\\n  AdvancedMatching(FireTag);\\n}\\n\\t\\n    \",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC1f8ea701ce2e4f4b87cbea138c4cf102/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC1f8ea701ce2e4f4b87cbea138c4cf102/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC1f8ea701ce2e4f4b87cbea138c4cf102/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC1f8ea701ce2e4f4b87cbea138c4cf102/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC1f8ea701ce2e4f4b87cbea138c4cf102/origin"
+            },
+            "data": {
+                "id": "RC1f8ea701ce2e4f4b87cbea138c4cf102",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC1f8ea701ce2e4f4b87cbea138c4cf102/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC1f8ea701ce2e4f4b87cbea138c4cf102",
+        "rules": "https://reactor.adobe.io/rule_components/RC1f8ea701ce2e4f4b87cbea138c4cf102/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC1f8ea701ce2e4f4b87cbea138c4cf102"
+    },
+    "meta": {
+        "latest_revision_number": 32
+    }
+}

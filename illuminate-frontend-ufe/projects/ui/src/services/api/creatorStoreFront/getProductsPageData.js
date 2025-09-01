@@ -1,0 +1,28 @@
+import csfApiWrapper from 'services/api/creatorStoreFront/csfApiWrapper';
+import { CSF_PAGE_TYPES } from 'constants/actionTypes/creatorStoreFront';
+
+async function getProductsPageData(creatorHandle, pageNum) {
+    const url = [`/gway/v1/creator-storefront/creators/${creatorHandle}/products`, pageNum ? `page/${pageNum}` : null].filter(Boolean).join('/');
+
+    try {
+        const data = await csfApiWrapper.makeAuthenticatedRequest(url);
+
+        if (data?.fault || data?.responseStatus !== 200) {
+            return Promise.reject(data.fault);
+        }
+
+        const responseData = { ...data, pageType: CSF_PAGE_TYPES.PRODUCTS };
+        Sephora.logger.verbose('Product Page data being fetched:', responseData);
+
+        return {
+            data: responseData,
+            headers: {}
+        };
+    } catch (error) {
+        Sephora.logger.verbose('Failed to fetch Product Page data:', error);
+
+        return Promise.reject(error);
+    }
+}
+
+export default getProductsPageData;

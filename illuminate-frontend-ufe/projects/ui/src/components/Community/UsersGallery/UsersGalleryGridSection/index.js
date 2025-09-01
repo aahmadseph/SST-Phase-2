@@ -1,0 +1,3 @@
+import UsersGalleryGridSection from 'components/Community/UsersGallery/UsersGalleryGridSection/UsersGalleryGridSection';
+
+export default UsersGalleryGridSection;

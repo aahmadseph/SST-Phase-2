@@ -1,0 +1,356 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Cache Manager Page</title>
+    <style type="text/css">
+        body * {
+            font-size: 1.1em;
+        }
+
+        form,
+        table {
+            margin: 2em;
+        }
+
+        div {
+            margin: 0.25em;
+        }
+
+        div.like-fieldset {
+            margin: 2em;
+            border: 1px solid black;
+        }
+
+        fieldset,
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        #previous-page {
+            border: 1px solid black;
+            margin: 1em;
+            padding: 0.25em;
+        }
+
+        #next-page {
+            border: 1px solid black;
+            margin: 1em;
+            padding: 0.25em;
+        }
+
+        .details {
+            float: left;
+            margin-right: 5em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="like-fieldset">
+        <div>
+            Build Number: {{BUILD_NUMBER}}
+            <br>Git Branch: {{GIT_BRANCH}}
+            <br>Git Commit: {{GIT_COMMIT}}
+            {{REDIS_PREFIX_BR}}
+        </div>
+    </div>
+    <form method="POST" name="cacheQuery" action="/debugCache" onsubmit="return false">
+        <fieldset>
+            <legend>Auth Details</legend>
+            <div class="details">
+                <label for="u">Username:</label>
+                <input type="text" name="u" id="u">
+            </div>
+            <div class="details">
+                <label for="p">Password:</label>
+                <input type="password" name="p" id="p">
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>DB Size Info (Includes Duplicates)</legend>
+            <button type="submit" name="c" value="s">
+                Get DB Size
+            </button>
+            <div id="dbsize-response">
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Flush DB</legend>
+            <button type="submit" name="c" value="f">
+                Flush All Data
+            </button>
+            <div id="flushed-response">
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Flush JERRI Memory Cache</legend>
+            <label for="partialKeys">Optional Partial Key or Blank for All:</label>
+            <input type="text" name="partialKeys" id="partialKeys">
+            <button type="submit" name="c" value="mj">
+                Flush Memory Cache
+            </button>
+            <div id="memory-cache-flush-response">
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Bypass Cache</legend>
+            <input type="checkbox" name="bp" id="bp">
+            <button type="submit" name="c" value="b">
+                Bypass Cache
+            </button>
+            <div id="bypass-response">
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Data Details</legend>
+            <div>
+                <div>
+                    <label for="k">Key:</label>
+                    <input type="text" name="k" id="k" value="{{REDIS_PREFIX}}*templateResolver*" size="80">
+                </div>
+                <button type="submit" name="c" value="a">
+                    Get All Keys
+                </button>
+                <div id="key-count"></div>
+                <div id="details"></div>
+            </div>
+            <br>
+            <div>
+                <span id="previous-page" onclick="pageBackwarded();">
+                    Previous Page
+                </span>
+                <span id="current-page"></span>
+                <span id="next-page" onclick="pageForward();">
+                    Next Page
+                </span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Select</th>
+                        <th>Key</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="keylist">
+
+                </tbody>
+            </table>
+        </fieldset>
+        <script type="text/javascript">
+            let redisKeyCache = [];
+            const KEY_DISPLAY_LIMIT = 200;
+            let currentPage = 1,
+                totalPages = 0;
+            function pageForward() {
+                if (currentPage >= totalPages) {
+                    currentPage = totalPages;
+                    return;
+                } else if (currentPage <= 0) {
+                    currentPage = 1;
+                }
+                const startIdx = (currentPage * KEY_DISPLAY_LIMIT),
+                    endIdx = ((+currentPage + 1) * KEY_DISPLAY_LIMIT);
+                const bits = redisKeyCache.slice(startIdx, endIdx)
+                    .reduce((acc, next) => {
+                        return acc.concat(next);
+                    });
+                currentPage++;
+                document.getElementById('keylist').innerHTML = bits;
+                document.getElementById('current-page').innerHTML = currentPage;
+            }
+            function pageBackwarded() {
+                if (currentPage <= 1) {
+                    currentPage = 1;
+                    return;
+                } else if (currentPage >= totalPages) {
+                    currentPage = totalPages;
+                }
+                const startIdx = ((currentPage - 2) * KEY_DISPLAY_LIMIT),
+                    endIdx = ((currentPage - 1) * KEY_DISPLAY_LIMIT);
+                const bits = redisKeyCache.slice(startIdx, endIdx)
+                    .reduce((acc, next) => {
+                        return acc.concat(next);
+                    });
+                currentPage--;
+                document.getElementById('keylist').innerHTML = bits;
+                document.getElementById('current-page').innerHTML = currentPage;
+            }
+            function processResponseKeys(data) {
+                if (!data) {
+                    document.getElementById('keylist').innerHTML = '';
+                    return;
+                }
+                const responseData = JSON.parse(data);
+                let tableData = [];
+                redisKeyCache = [];
+                if (Array.isArray(responseData)) {
+                    const keys = responseData.filter(item => {
+                        return (item.length > 0);
+                    }).map((key, index) => {
+                        const realKey = key.substring(key.indexOf('/templateResolver'));
+                        const radioButton = '<input type="radio" name="x" value="' + realKey + '">';
+                        const deleteButton = '<button type="submit" name="c" value="d">Delete</button>';
+                        const viewButton = '<button type="submit" name="c" value="g">View Details</button>';
+                        const tableRow = '<tr><td>' + radioButton + '</td><td>' + key + '</td><td>' + deleteButton + viewButton + '</td></tr>';
+                        redisKeyCache.push(tableRow);
+                        if (index >= KEY_DISPLAY_LIMIT) {
+                            return '';
+                        }
+                        return tableRow;
+                    });
+                    if (keys && keys.length > 0) {
+                        totalPages = Math.ceil(keys.length / KEY_DISPLAY_LIMIT);
+                        const bits = keys.reduce((acc, next) => {
+                            return acc.concat(next);
+                        });
+                        document.getElementById('key-count').innerHTML = `De-duped Key Count: ${keys.length}<br>Total Pages: ${totalPages}`;
+                        document.getElementById('keylist').innerHTML = bits;
+                        document.getElementById('current-page').innerHTML = 1;
+                    } else {
+                        document.getElementById('key-count').innerHTML = 0;
+                        document.getElementById('keylist').innerHTML = '';
+                    }
+                } else {
+                    document.getElementById('key-count').innerHTML = 0;
+                    document.getElementById('keylist').innerHTML = '';
+                }
+            }
+            function getOptions(formData) {
+                const postDataHeaders = {
+                    'Content-Type': 'application/x-www-form-url-encoded',
+                    'Content-Length': formData.length,
+                    'method': 'POST',
+                    'body': formData
+                };
+                return postDataHeaders;
+            }
+            function specialCommand(cmd) {
+                const formObj = document.forms['cacheQuery'];
+                if (!formObj.u.value || !formObj.p.value) {
+                    console.log('Username and password missing');
+                    return;
+                }
+                let formData = encodeURI('u=' + formObj.u.value + '&p=' + formObj.p.value + '&c=' + cmd);
+                const postDataHeaders = getOptions(formData);
+                fetcher('/debugCache', postDataHeaders).then(responseData => {
+                    console.log(responseData);
+                }).catch(err => {
+                    console.error(err);
+                });
+            }
+            function info() {
+                specialCommand('i');
+            }
+            function clusterInfo() {
+                specialCommand('c');
+            }
+            function flushMemoryCache() {
+                const resultObj = document.getElementById('memory-cache-flush-response');
+                const formObj = document.forms['cacheQuery'];
+                if (!formObj.u.value || !formObj.p.value) {
+                    console.log('Username and password missing');
+                    resultObj.innerHTML = 'Username and password missing';
+                    return;
+                }
+
+                const formData = (formObj.partialKeys.value && formObj.partialKeys.value.length > 0) ?
+                    encodeURI(`usrnm=${formObj.u.value}&psswrd=${formObj.p.value}&partialKeys=${formObj.partialKeys.value}`) :
+                    encodeURI(`usrnm=${formObj.u.value}&psswrd=${formObj.p.value}`);
+
+                const postDataHeaders = getOptions(formData);
+
+                fetcher('/flushMemoryCache', postDataHeaders).then(responseData => {
+                    resultObj.innerHTML = responseData;
+                }).catch(e => {
+                    resultObj.innerHTML = e;
+                });
+            }
+            function processView(data) {
+                const details = document.getElementById('details');
+                if (!data) {
+                    details.innerHTML = 'No results, item might have expired!';
+                    return;
+                }
+                const responseData = JSON.parse(data);
+                const createDate = new Date(parseInt(responseData.createTime));
+                const formObj = document.forms['cacheQuery'];
+                let results = 'KEY: ' + formObj.x.value;
+                results = results + '<br>Create Date: ' + createDate;
+                results = results + '<br>Build Number: ' + responseData.buildNumber;
+                results = results + '<br>Hash Key: ' + responseData.hashKey;
+                results = results + '<br>TTL: ' + responseData.pttl;
+                window.htmlPageData = responseData.html;
+                details.innerHTML = results;
+            }
+            async function fetcher(url, options) {
+                const response = await fetch(url, options);
+                const buff = await response.text();
+                return buff;
+            }
+            document.addEventListener('click', (e) => {
+                const nodeName = e.target.nodeName,
+                    eleObj = e.target;
+                if (!nodeName) {
+                    return;
+                }
+                const eleType = nodeName.toLowerCase();
+                if (eleType !== 'button') {
+                    return;
+                }
+                if (eleObj.name === 'c' && eleObj.value === 'mj') {
+                    flushMemoryCache();
+                    return;
+                }
+                const formObj = document.forms['cacheQuery'];
+                if (!formObj.u.value || !formObj.p.value) {
+                    console.log('Username and password missing');
+                    return;
+                }
+                let formData = encodeURI('u=' + formObj.u.value + '&p=' + formObj.p.value +
+                    '&' + eleObj.name + '=' + eleObj.value);
+                if (eleObj.name === 'c' && eleObj.value === 'a') {
+                    if (formObj.k.value) {
+                        formData = formData + encodeURI('&k=' + encodeURIComponent(formObj.k.value));
+                    }
+                } else if (eleObj.name === 'c' && eleObj.value === 'b') {
+                    formData = formData + encodeURI('&x=' + encodeURIComponent(formObj.bp.checked));
+                } else if (eleObj.name === 'c' && (eleObj.value === 'd' || eleObj.value === 'g')) {
+                    if (!formObj.x.value) {
+                        console.log('Delete and View require a key');
+                        return;
+                    } else {
+                        formData = formData + encodeURI('&x=' + encodeURIComponent(formObj.x.value));
+                    }
+                }
+                const postDataHeaders = getOptions(formData);
+                fetcher('/debugCache', postDataHeaders).then(responseData => {
+                    switch (eleObj.value) {
+                        case 'a':
+                            processResponseKeys(responseData);
+                            break;
+                        case 's':
+                            document.getElementById('dbsize-response').innerHTML = 'DB Size: ' + responseData;
+                            break;
+                        case 'f':
+                            document.getElementById('flushed-response').innerHTML = 'Flushed reply: ' + responseData;
+                            break;
+                        case 'g':
+                            processView(responseData);
+                            break;
+                        case 'd':
+                            document.getElementById('keylist').innerHTML = 'Delete reply: ' + responseData;
+                            break;
+                    }
+                }).catch(ex => {
+                    console.error(ex);
+                });
+            });
+        </script>
+    </form>
+</body>
+
+</html>

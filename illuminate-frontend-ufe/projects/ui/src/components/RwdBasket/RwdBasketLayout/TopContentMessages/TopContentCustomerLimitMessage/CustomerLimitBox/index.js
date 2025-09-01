@@ -1,0 +1,3 @@
+import CustomerLimitBox from 'components/RwdBasket/RwdBasketLayout/TopContentMessages/TopContentCustomerLimitMessage/CustomerLimitBox/CustomerLimitBox';
+
+export default CustomerLimitBox;

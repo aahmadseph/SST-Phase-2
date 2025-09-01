@@ -1,0 +1,10 @@
+.eslintrc
+package.json
+src/views/*.html
+tests/output/
+tests/coverage
+src/config/certificates/*
+tests/generated
+tests/data/ssl-keys/*
+tests/*
+

@@ -1,0 +1,22 @@
+{
+    "name": "cwv",
+    "description": "Core Web Vitals testing",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "test": "jasmine src/ui.test.js",
+        "clean": "rm -rf node_modules && rm -rf js",
+        "eslint": "eslint --ext .js,.mjs src",
+        "eslint-modified": "eslint --quiet `git status -s src | awk '{ if ($1 == \"R\") { print $4; } else if ($1 != \"D\") { print $2; } }' | grep -v '\\.sh$'`"
+    },
+    "engines": {
+        "node": "22.12.0",
+        "npm": "10.9.0"
+    },
+    "dependencies": {
+        "puppeteer": "19.7.1"
+    },
+    "devDependencies": {
+        "jasmine": "5.1.0"
+    }
+}

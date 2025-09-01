@@ -1,0 +1,97 @@
+{
+    "id": "DE048f29b18cc144ceba2fc8ad06596102",
+    "type": "data_elements",
+    "attributes": {
+        "created_at": "2024-06-14T20:19:47.874Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "[TMS] IsRestrictedForPixel",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2024-06-14T20:19:47.874Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "clean_text": false,
+        "default_value": null,
+        "delegate_descriptor_id": "core::dataElements::custom-code",
+        "force_lower_case": false,
+        "review_status": "unsubmitted",
+        "storage_duration": null,
+        "settings": "{\"source\":\"return function(ev) {\\n  let isRestrictedForPixel = false;\\n  \\n  if (ev) {\\n    let skuType = ev?.detail?.data?.analyticsData?.skuType;\\n    let skuBiType = ev?.detail?.data?.analyticsData?.sku?.biType;\\n    let isGiftCard = skuType \\u0026\\u0026 skuType.toLowerCase() === 'gift card';\\n    let isSample = skuType \\u0026\\u0026 skuType.toLowerCase() === 'sample';\\n    let isBiReward = skuBiType \\u0026\\u0026 skuBiType.toLowerCase() !== 'none';\\n    let isGwp = skuType \\u0026\\u0026 skuType.toLowerCase() === 'gwp';\\n    let isBiRewardGwpSample = isBiReward || isGwp || isSample;\\n    isRestrictedForPixel = isGiftCard || isBiRewardGwpSample;\\n  }\\n  \\n  return isRestrictedForPixel;\\n}\"}"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE048f29b18cc144ceba2fc8ad06596102/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE048f29b18cc144ceba2fc8ad06596102/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE048f29b18cc144ceba2fc8ad06596102/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE048f29b18cc144ceba2fc8ad06596102/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE048f29b18cc144ceba2fc8ad06596102/origin"
+            },
+            "data": {
+                "id": "DE048f29b18cc144ceba2fc8ad06596102",
+                "type": "data_elements"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE048f29b18cc144ceba2fc8ad06596102/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE048f29b18cc144ceba2fc8ad06596102/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE048f29b18cc144ceba2fc8ad06596102/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/data_elements/DE048f29b18cc144ceba2fc8ad06596102",
+        "self": "https://reactor.adobe.io/data_elements/DE048f29b18cc144ceba2fc8ad06596102",
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74"
+    },
+    "meta": {
+        "latest_revision_number": 1
+    }
+}

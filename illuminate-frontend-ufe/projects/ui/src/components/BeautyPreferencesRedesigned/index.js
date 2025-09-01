@@ -1,0 +1,6 @@
+import BeautyPreferencesRedesigned from 'components/BeautyPreferencesRedesigned/BeautyPreferencesRedesigned';
+import { withBeautyPreferencesProps } from 'components/BeautyPreferencesRedesigned/withBeautyPreferencesProps';
+
+const ConnectedBeautyPreferences = withBeautyPreferencesProps(BeautyPreferencesRedesigned);
+
+export default ConnectedBeautyPreferences;

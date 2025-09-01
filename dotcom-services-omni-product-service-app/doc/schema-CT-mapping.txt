@@ -1,0 +1,578 @@
+type Product {
+    # CT ProductVariant.key Substring before "-" - Mapped
+    id: String
+    # CT 'seo_product_name' - Mapped
+    seoName: String
+    # CT 'seo_friendly_url_product' - Mapped
+    seoFriendlyUrl: String
+    # CT 'variation_type_product' - Mapped
+    variationType: ProductVariationType
+    # CT 'swatch_type_product' - Mapped
+    swatchType: String
+
+    # CT 'primary_category_product' - Reference to Category - Mapped
+    parentCategory: Category
+
+    # Exists on CT attribute 'sephora_product_type' but not used for fill - Mapped
+    sephoraProductType: String
+    # filled from PageTemplate.key - Mapped
+    productType: String
+    # CT 'product_page_template' - Reference to PageTemplate - Mapped
+    pageTemplate: PageTemplate
+    # CT 'use_it_with_loc_product' - localized - Mapped
+    useItWithTitle: String
+    # CT 'selector_type_product' - Mapped
+    skuSelectorType: String
+
+    # CT 'brand' - Reference to Brand - Mapped
+    brand: Brand
+
+    # CT From ProductProjection - localized - Mapped
+    name: String
+
+    # CT 'description_tab_short_product' localized - Mapped
+    shortDescription: String
+    # CT 'description_tab_long_product' localized - Mapped
+    longDescription: String
+    # CT 'suggested_usage_product' localized - Mapped
+    suggestedUsage: String
+    # CT 'description_tab_quick_look_product' localized - Mapped
+    quickLookDescription :  String
+    # CT 'isactive_product' - Mapped
+    active: Boolean
+
+    # Missing in CT
+    #specialProdCategories:Boolean
+
+    # Missing in PXM and CT
+    #hideSocial: Boolean
+
+    # CT 'paypal_restricted_product' - Mapped
+    payPalRestricted: Boolean
+    # ZonedDateTime
+    # CT  'start_date_product' - Mapped
+    activationDate: DateTime
+    # ZonedDateTime
+    # CT  'end_date_product' - Mapped
+    endDate: DateTime
+    # ZonedDateTime
+    # CT 'temporary_deactivation_product' - Mapped
+    tempDeactivationDate: DateTime
+    # CT 'product_videos' - Reference to Video - Mapped
+    videos: [Video]
+    # CT 'restricted_state_product' - Enum attribute - Mapped
+    restrictedStates: [String]
+    # CT 'restricted_province_product' - Enum attribute - Mapped
+    restrictedProvinces: [String]
+    # CT  'ancillary_skus_product' - set - Mapped
+    ancillarySkuKeys: [String]
+    # CT 'product_primary_images' - Reference to Image - Mapped
+    primaryImages: [Image]
+    # CT 'product_alternative_images' - Reference to Image - Mapped
+    alternativeImages: [Image]
+
+    # CT  'effectively_available_country_list_product' - Enum - Mapped
+    effectivelyAvailableCountries: [String]
+    # CT  'seo_meta_description_product' - Localized - Mapped
+    seoMetaDescription: String
+    # CT  'seo_url_prefix_product' - Mapped
+    seoUrlPrefix: String
+    # CT  'seo_canonical_tag_product' - Mapped
+    seoCanonicalTag: String
+    # CT  'seo_page_title_product' - Localized - Mapped
+    seoPageTitle: String
+    # CT  'seo_priority_product' - Mapped
+    seoPriority: String
+    # CT  'final_title_product' - Localized - Mapped
+    finalTitle: String
+    # CT  'final_meta_description_product' - Localized - Mapped
+    finalMetaDescription: String
+    # CT  'default_image_product' - Mapped
+    productImage: String
+    # CT  'keywords_product' - Localized - Mapped
+    keywords: String
+    # CT  'nonreturnable_product' - Boolean use negative logic - Mapped
+    returnable: Boolean
+    # CT  'zone1_product' - set - Mapped
+    zone1: [String]
+    # CT  'zone2_product' - set - Mapped
+    zone2: [String]
+    # CT  'zone3_product' - set - Mapped
+    zone3: [String]
+    # CT  'exclude_from_sitemap_product' - Mapped
+    excludeFromSitemap: Boolean
+    # CT  'temporary_deactivation_reason_product' - Mapped
+    temporaryDeactivationReason: String
+    # CT 'no_index_product' - Mapped
+    enableNoindexMetaTag: Boolean
+}
+
+# Merchant specific extensions
+extend type Product {
+    # CT 'has_sample_product' - Mapped
+    hasProductSamples: Boolean
+}
+
+type Sku {
+    # CT "sku_id" - Mapped
+    id: String
+    # CT 'state_sku' - enum - Mapped
+    state: SkuState
+
+    # CT 'size_sku' - Localized - Mapped
+    size: String
+    # CT 'color_name_sku' - Localized - Mapped
+    color: String
+    # CT 'loc_scent_sku' - Localized - Mapped
+    scent: String
+    # CT 'formulation_sku' - Localized - Mapped
+    formulation: String
+    # CT 'concentration_sku' - Localized - Mapped
+    concentration: String
+
+    # CT 'sku_type' - Mapped
+    type: String
+    # CT 'oos_treatment_sku' - Mapped
+    oosTreatment: String
+    # CT 'shade_description_sku'  - Localized - Mapped
+    variationDesc: String
+    # CT 'value_description_type_sku' - Localized - Mapped
+    sephoraType: String
+    # CT 'bi_type' - Mapped
+    biType: String
+    # CT 'bi-exclusivity_level_sku' - Mapped
+    biExclusiveLevel: String
+
+    # CT From ProductProjection - localized -  - Mapped
+    name: String
+    # CT 'ingredients_tab_sku' - Mapped
+    ingredientDesc: String
+    # No property on CT nad PXM
+    #shippingInformation: String
+
+    # CT 'fullfiller_sku' - Mapped
+    fulfiller: String
+
+    # CT 'primary_product_sku' - text - Mapped
+    primaryProduct: String
+    # CT 'upc_sku' - Mapped
+    upc: String
+    # CT 'seo_friendly_url_sku' - Mapped
+    seoFriendlyUrl: String
+
+    # NOT filled
+    # seoName: String
+
+    ## Restrictions
+    # CT 'limited_time_offer_restricted_country_sku' - enu - Mapped
+    limitedTimeOfferRestrictedCountries: [String]
+    # CT 'first_access_restricted_country_sku' - enum - Mapped
+    firstAccessRestrictedCountries: [String]
+    # CT 'app_exclusive_restricted_country_sku' - Mapped
+    appExclusiveRestrictedCountries: [String]
+
+    # CT 'restricted_country_sku' - Mapped
+    restrictedCountryList: [String]
+    # CT 'restricted_state_sku' - Mapped
+    restrictedStates: [String]
+    # CT 'restricted_province_sku' - Mapped
+    restrictedProvinces: [String]
+
+    ## Refinements
+    # CT 'formulation_refinement_loc_sku' - localized - Mapped
+    # if not available use 'formulation_refinement_sku' - text
+    formulationRefinement: String
+    # CT 'finish_refinement_loc_sku' - localized - Mapped
+    # if not available use 'finish_refinement_sku' - text
+    finishRefinement: String
+    # CT 'size_refinement_loc_sku' - localized - Mapped
+    # if not available use 'size_refinement_sku' - text
+    sizeRefinement: String
+    # CT 'color_family_loc_sku' - localized - Mapped
+    # if not available use 'color_family_sku' - text
+    colorFamily: String
+
+    # CT 'max_purchase_qty_per_order_sku' - Mapped
+    maxPurchaseQuantity: Int
+    # CT 'temp_max_purchase_qty_per_order_sku' - Mapped
+    tempMaxPurchaseQuantity: Int
+    # CT 'temp_max_purchase_qty_start_date_sku' - Mapped
+    tempMaxPurchaseQuantityStartDate: DateTime
+    # CT 'temp_max_purchase_qty_end_date_sku' - Date time - Mapped
+    tempMaxPurchaseQuantityEndDate: DateTime
+
+    # CT 'tax_code_sku' - Mapped
+    taxCode: Float
+
+    ## Flags
+    # CT 'is_active_sku' - Mapped
+    active: Boolean
+    # CT 'is_store_only' - Mapped
+    storeOnly: Boolean
+
+    ## Inventory related
+    # CT 'on_hold_us' - Mapped
+    # CT 'on_hold_ca' - Mapped
+    onHold: Boolean
+
+    # CT 'is_coming_soon_sku' - Mapped
+    comingSoon: Boolean
+    # CT 'coming_soon_end_date_sku' - Date time - Mapped
+    comingSoonSkuEndDate: DateTime
+
+
+    # CT 'mcs_hazmat_value_sku' - String - Mapped
+    hazmat: Boolean
+    # CT 'mcs_hawaii_hazmat_value_sku' - Mapped
+    hawaiiHazmatFlag: Boolean
+
+    ## Bi only related
+    # CT 'bi_exclusive_sku' - Mapped
+    biOnly: Boolean
+    # CT 'bi_exclusive_start_date_sku' - Date time - Mapped
+    biOnlyStartDate: DateTime
+    # CT 'bi_exclusive_end_date_sku' - Date time - Mapped
+    biOnlyEndDate: DateTime
+
+    # CT 'online_only_sku' - Mapped
+    onlineOnly: Boolean
+    # CT 'online_only_end_date_sku' - Date time - Mapped
+    onlineOnlyEndDate: DateTime
+
+    # CT 'is_externally_sellable_sku' - Mapped
+    externallySellable: Boolean
+    # Not mapped from CT
+    #naturalOrganic: Boolean
+
+    # Not mapped from CT
+    #naturalSephora: Boolean
+
+    # CT 'gift_wrappable_sku' - Mapped
+    giftWrappable: Boolean
+    # CT 'is_limited_edition_sku' - Mapped
+    limitedEdition: Boolean
+
+    # CT 'is_new_sku' - Mapped
+    # if 'new_until_date_sku' == null set to CT 'is_new_sku' attr value
+    # if 'new_until_date_sku' != null set  to 'new_until_date_sku' after now on PST
+    new: Boolean
+    # CT 'new_until_date_sku' - Mapped
+    newUntilDate: DateTime
+    # CT 'is_sephora_exclusive_sku' - Mapped
+    sephoraExclusive: Boolean
+    # CT 'first_access_sku' - Mapped
+    firstAccessFlag: Boolean
+    # CT 'app_exclusive_sku' - Mapped
+    appExclusiveFlag: Boolean
+
+    # CT 'is_trial_eligible_sku' - Mapped
+    trialEligible: Boolean
+    # CT 'trial_period_sku' - Mapped
+    trialPeriod: String
+
+    # CT 'is_configurable_sku' - Mapped
+    configurable: Boolean
+    # CT 'nonreturnable_sku' - Boolean use negative logic - Mapped
+    returnable: Boolean
+
+    # CT 'limited_time_offer_sku' - Mapped
+    limitedTimeOfferFlag: Boolean
+    # CT 'is_prop65_sku' - Mapped
+    prop65: Boolean
+
+    # CT 'not_send_to_warehouse_sku' - Mapped
+    notSentToWarehouse: Boolean
+
+    # CT 'labcode_sku' - Mapped
+    labCode: String
+
+    # Full sized related
+
+    # CT 'full_size_sku' - Mapped
+    fullSizeSkuId: String
+
+    # ZonedDateTime
+    # CT 'us_start_date_sku' - Date time - Mapped
+    # CT 'ca_start_date_sku' - Date time - Mapped
+    startDate: DateTime
+    # CT 'us_end_date_sku' - Date time - Mapped
+    # CT 'ca_end_date_sku' - Date time - Mapped
+    endDate: DateTime
+
+    # CT 'temp_deactivation_sku'  - Date time - Mapped
+    tempDeactivationDate: DateTime
+
+    # CT 'limited_time_offer_start_date_sku' - Date time - Mapped
+    limitedTimeOfferStartDate: DateTime
+    # CT 'limited_time_offer_end_date_sku' - Date time - Mapped
+    limitedTimeOfferEndDate: DateTime
+
+    # CT 'first_access_start_date_sku' - Date time - Mapped
+    firstAccessStartDate: DateTime
+    # CT 'first_access_end_date_sku' - Date time - Mapped
+    firstAccessEndDate: DateTime
+
+    # CT 'app_exclusive_start_date_sku' - Date time - Mapped
+    appExclusiveStartDate: DateTime
+    # CT 'app_exclusive_end_date_sku' - Date time - Mapped
+    appExclusiveEndDate: DateTime
+
+    # CT 'sku_primary_images' - Reference to Image - Mapped
+    primaryImages: [Image]
+    # CT 'sku_alternative_images' - Reference to Image - Mapped
+    alternativeImages: [Image]
+
+    # CT 'sephora_exclusive_until_date_sku' - Date time - Mapped
+    sephoraExclusiveUntilDate: DateTime
+
+    # CT 'highlights_sku' - Reference to Highlight - Mapped
+    highlights: [Highlight]
+
+    # CT 'badges_sku' - Reference to Badge - Mapped
+    badges: [Badge]
+
+    # Property can be mapped from browse graph by cateory key
+    #private Map<String, String> rootCategoryName;
+    #private String rootCategoryKey;
+    #private Set<String> ancestorCategoryKeys;
+
+    # CT 'is_paypal_pay_later_eligible_sku' - Mapped
+    payPalPayLaterEligible: Boolean
+    # CT 'temp_deactivation_reason_sku' - Mapped
+    temporaryDeactivationReason: String
+    # CT 'paypal_restricted_sku' - Mapped
+    paypalRestricted: Boolean
+    # CT 'calculate_tax_sku' - Mapped
+    calculateTax: Boolean
+    # CT 'hide_from_sale_sku' - Mapped
+    hideFromSale: Boolean
+    # CT 'exclude_from_search_sku' - Mapped
+    excludeFromSearch: Boolean
+    # CT 'reservations_enabled_sku' - Mapped
+    reservationsEnabled: Boolean
+    # CT 'fraud_risk_level_sku' - Mapped
+    fraudRiskLevel: String
+    # CT 'skin_type_sku' - Mapped
+    bestForSkinTypes: String
+    # CT 'primary_concern_sku' - Mapped
+    primaryConcern: String
+    # CT 'class_number_sku' - Mapped
+    classNumber: String
+    # CT 'department_number_sku' - Mapped
+    departmentNumber: String
+    # CT 'discountable_sku' - Mapped
+    discountable: Boolean
+    # CT 'country_of_manufacture_sku' - Mapped
+    countryOfManufacture: String
+    # CT 'subclassnumber_sku' - Mapped
+    subclassNumber: String
+    # CT 'efficacy_ingredient_sku' - Mapped
+    efficacyIngredient: String
+    # CT 'efficacy_sku' - Mapped
+    efficacy: String
+    # CT 'shop_number_sku' - Mapped
+    shopNumber: String
+    # CT 'bi_description_sku' - Mapped
+    biDescription: String
+    # CT 'product_name_sku' - Mapped
+    productName: String
+    # CT 'product_line_sku' - Mapped
+    productLine: String
+    # CT 'display_sku_as_product_search_sku' - Mapped
+    displaySkuAsProductInSearchResult: Boolean
+    # CT 'call_center_only_sku' - Mapped
+    callCenterOnly: Boolean
+}
+
+# Merchant specific extensions
+extend type Sku {
+    ## Replenishment related
+
+    # CT 'accelerated_replenishment_plan_sku'
+    acceleratedReplenishmentPlan: ReplenishmentPlan
+    # CT 'replenishment_enabled_countries_sku' Enum - Mapped
+    subscriptionCountryList: [String]
+    # CT 'replenishment_enabled_sku' - Mapped
+    replenishmentEnabled: Boolean
+    # CT 'replenishment_frequency_number_sku' - Mapped
+    subscriptionFreqNum: Int
+    # CT 'replenishment_frequency_type_sku'
+    subscriptionFreqType: SubscriptionFreqType
+    # CT 'replenishment_plan_sku'
+    replenishmentPlan: ReplenishmentPlan
+
+    # CT 'sequence_sku' - Mapped
+    sequence: Int
+    # CT 'value_price_ca_sku' - Mapped
+    # CT 'value_price_us_sku' - Mapped
+    valuePrice: Float
+
+    # CT 'configurable_properties_sku'  - Reference to ConfigurableProperty
+    configurableProperty: ConfigurableProperty
+    # CT 'sample_type_sku' - Enum
+    sampleType: SampleType
+}
+
+# Non sellable specific extensions
+extend type Sku {
+    # CT 'reward_currency_amount' - Mapped
+    rewardCurrencyAmount: Float
+    # CT 'reward_price' - Mapped
+    rewardPoints: Float
+    # CT 'full_size_product' - Reference to Sku - Mapped
+    fullSizeSku: Sku
+    # CT 'full_size_product_key' - Mapped
+    fullSizeProductId: String
+    # CT 'is_active' - Mapped
+    rewardActive: Boolean
+
+    # TODO
+    # CT 'original_sample_product' - Reference to Sku
+    # This object used for merge attributes from original sample product
+    originalSampleProduct: Sku
+    # CT 'original_sample_product_key' - Mapped
+    originalSampleProductId: String
+    # CT 'reward_subtype'- Mapped
+    rewardSubType: String
+    # CT 'reward_type'- Mapped
+    rewardType: String
+    # CT 'nonsellable_type' not empty - Mapped
+    nonsellable: Boolean
+}
+
+type Category {
+    # CT 'key'
+    id: String
+}
+
+type Brand {
+    # CT 'key'
+    id: String
+}
+
+type PageTemplate {
+    # CT 'key'
+    id : String
+}
+
+# Mapped
+enum ProductVariationType {
+    COLOR,
+    FORMULATION,
+    NONE,
+    SCENT,
+    SIZE,
+    SIZE_CONCENTRATION,
+    SIZE_CONCENTRATION_FORMULATION,
+    TYPE
+}
+
+# Mapped
+enum SkuState {
+    RETIRED,
+    NOT_RETIRED
+}
+
+enum SampleType {
+    PRODUCT,
+    SMART
+}
+
+enum SubscriptionFreqType {
+    MONTH, WEEK
+}
+# Mapped
+type ReplenishmentPlan {
+    id: String
+    enabled: Boolean
+    planTier: String
+    promotionId: String
+    promotionOrderCount: Int
+    promoDuration: Int
+    # Set<String>
+    promoExcludedCountries: [String]
+}
+
+# Mapped
+type Image {
+    altText: String
+    baseUrl: String
+    # used only for sort
+    #sequenceNumber: Int
+}
+
+# Mapped
+type Video {
+    # CT 'sequenceNumber' - used only for sort
+    # sequenceNumber : Int
+    # CT 'brightcoveId'
+    brightcoveId : String
+    # CT 'title' - Mapped
+    title: String
+    # CT 'fileName'
+    fileName: String
+    # CT 'webStartImage'
+    webStartImage: String
+    # CT 'mobileWebStartImage'
+    mobileWebStartImage: String
+    # CT 'startDate'
+    startDate: String
+    # CT 'endDate'
+    endDate: String
+    # CT 'availableLocales' - Not required filtered by locale
+    # availableLocales: [String]
+}
+
+# Mapped
+type ConfigurableProperty {
+    id: String
+    # CT 'displayName'
+    displayName: String
+    # CT 'title'
+    title: String
+    # CT 'description'
+    description: String
+    # CT 'imagePath'
+    imagePath: String
+    # CT 'imageCopy'
+    imageCopy: String
+    # CT ''
+    free: Boolean
+    # CT 'configurationOptions' - reference to ConfigurationOption
+    configurationOptions: [ConfigurationOption]
+}
+
+# Mapped
+type ConfigurationOption {
+    id: String
+    type: String
+    upc: String
+    skuId: String
+    productId: String
+    primaryProductId: String
+}
+
+# Mapped
+type Highlight {
+    id: String
+    # CT 'name'
+    name: String
+    # CT 'description'
+    description: String
+    # CT 'altText'
+    altText: String
+    # CT 'imageUrl'
+    imageUrl: String
+    # CT 'appsImageUrl'
+    appsImageUrl: String
+}
+
+# Mapped
+type Badge {
+    # CT 'name'
+    name: String
+    # CT 'altText'
+    altText: String
+    # CT 'imageUrl'
+    imageUrl: String
+}

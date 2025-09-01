@@ -1,0 +1,515 @@
+{
+    "type": "CustomRendering",
+    "sid": "Gamificatoin-GameDetails-Ready-Set-Sephora",
+    "renderingType": "gameDetails",
+    "features": [
+        {
+            "sid": "Gamification-GameDetails-Feature",
+            "handlerType": "gamificationGameDetails"
+        }
+    ],
+    "featuresData": [
+        {
+            "type": "GamificationGame",
+            "sid": "Gamification-Game-Ready-Set-Sephora-1",
+            "gameId": "189",
+            "promoId": "Ready_set_sephora",
+            "title": "Ready, Set, Sephora",
+            "description": "Earn 100 points for each eligible task, and unlock extra 100 points for completing all 4 tasks. That’s 500 points! Ends 5/31/2023",
+            "backgroundColor": "#F1FDFA",
+            "bonusEarnTitle": "Earn an additional 100 points",
+            "bonusEarnedTitle": "You earned an additional 100 points",
+            "bonusEarnDescription": "by completing all tasks",
+            "bonusEarnedDescription": "for completing all tasks!",
+            "image": {
+                "sid": "Gamification-Media-Best-Of-Sephora",
+                "src": "https://www.sephora.com/contentimages/gamfication/challenges/readysetsephora/2023-bi-gamification-phase1-readysetsephora-challenge-card.jpg",
+                "width": 1200,
+                "height": 800
+            },
+            "additionalEarningsMedia": {
+                "sid": "Gamification-Media-Game-Additional-Points",
+                "src": "https://images.ctfassets.net/37lvxp3wt7oq/Klv1SmjFdhMfMqEG2d7uT/f3d001595a67da06b5a1ef883c048f6d/Additional_Points.png",
+                "width": 56,
+                "height": 56
+            },
+            "action": {
+                "type": "ActionLinkInternal",
+                "sid": "Gamification-InternalLink-Game-ReadySetSephora",
+                "page": {
+                    "type": "PageContent",
+                    "slug": "challenges-ready-set-sephora",
+                    "layout": {
+                        "type": "LayoutOpen"
+                    }
+                }
+            },
+            "tasks": [
+                {
+                    "sid": "Gamification-Task-ColorIQ-1",
+                    "taskId": "185",
+                    "promoId": "actv_get_shaded_matched_in_store",
+                    "description": "Get Shade Matched in Store with ColorIQ ▸",
+                    "ctaLabel": "Learn More",
+                    "modalTitle": "Get Shade-Matched in Store with ColorIQ",
+                    "modalCtaLabel": "Find a Sephora",
+                    "image": {
+                        "sid": "Gamification-Media-Task-ColorIQ",
+                        "src": "https://images.ctfassets.net/37lvxp3wt7oq/2Wb10P87qnQGwRntMrRSfS/2f9303f268e50033559ce3dee75f1b2e/coloriq.png",
+                        "width": 180,
+                        "height": 180
+                    },
+                    "imageCompleted": {
+                        "sid": "Gamification-Media-Task-ColorIQ-Completed",
+                        "src": "https://images.ctfassets.net/37lvxp3wt7oq/6rk0Yy670Q4KTwG8EN94sH/07c30b47b00d5a1ad6b8b1bb5db9a920/coloriq_completed.png",
+                        "width": 60,
+                        "height": 60
+                    },
+                    "modalImage": {
+                        "sid": "Gamification-Media-Task-Modal-Image",
+                        "src": "https://images.ctfassets.net/37lvxp3wt7oq/1Izfpl9ydSgw7nyxYIatSq/e3c21d1d47d0a8ce8f9be8ffc9cae68f/Task_Modal_Image.png",
+                        "width": 375,
+                        "height": 250
+                    },
+                    "modalCtaAction": {
+                        "type": "ActionLinkExternal",
+                        "sid": "happening-sephora-near-me",
+                        "targetUrl": "/happening/stores/sephora-near-me"
+                    },
+                    "modalCopy": {
+                        "json": {
+                            "data": {},
+                            "content": [
+                                {
+                                    "data": {},
+                                    "content": [
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "Head into a store and ask a Beauty Advisor to do a ColorIQ reading using Skin Scan—no appointment required!—which will guide you to the right shade in every foundation and concealer available at Sephora. Our special tool will help identify details about your skin tone and attributes to recommend the ideal shade and formula. The system will also save your data and recommendations to your Beauty Insider profile for easy reference. You will receive 100 points to your account balance within 24 hours of your ColorIQ scan. ",
+                                            "nodeType": "text"
+                                        }
+                                    ],
+                                    "nodeType": "paragraph"
+                                },
+                                {
+                                    "data": {},
+                                    "content": [
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "Make sure the complete this task before the Ready, Set, Sephora Challenge ends on 12/22/23!",
+                                            "nodeType": "text"
+                                        }
+                                    ],
+                                    "nodeType": "paragraph"
+                                },
+                                {
+                                    "data": {},
+                                    "content": [
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "See Beauty Insider Challenges ",
+                                            "nodeType": "text"
+                                        },
+                                        {
+                                            "data": {
+                                                "target": {
+                                                    "sys": {
+                                                        "id": "65reLHtjR8SLBqgnNBcpzE",
+                                                        "type": "Link",
+                                                        "linkType": "Entry"
+                                                    }
+                                                }
+                                            },
+                                            "content": [
+                                                {
+                                                    "data": {},
+                                                    "marks": [],
+                                                    "value": "Terms of Participation",
+                                                    "nodeType": "text"
+                                                }
+                                            ],
+                                            "nodeType": "entry-hyperlink"
+                                        },
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "",
+                                            "nodeType": "text"
+                                        }
+                                    ],
+                                    "nodeType": "paragraph"
+                                }
+                            ],
+                            "nodeType": "document"
+                        },
+                        "links": {
+                            "entries": {
+                                "hyperlink": [
+                                    {
+                                        "sys": {
+                                            "id": "65reLHtjR8SLBqgnNBcpzE"
+                                        },
+                                        "type": "ActionLinkExternal",
+                                        "sid": "gamification_terms_and_conditions_link_external",
+                                        "targetUrl": "/beauty/challenge-terms-conditions"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "sid": "Gamification-Task-Text-2",
+                    "taskId": "186",
+                    "promoId": "actv_sign_up_for_text_updates",
+                    "description": "Sign Up for Sephora Text Alerts ▸",
+                    "ctaLabel": "Sign Up",
+                    "modalTitle": "Sign Up for Sephora Text Alerts",
+                    "modalCtaLabel": "Go to Sign Up",
+                    "image": {
+                        "sid": "Gamification-Media-Task-Text",
+                        "src": "https://images.ctfassets.net/37lvxp3wt7oq/1x4IACWjPkEsiJmGCJnTh2/77da4e00fd2bc82857af8fe7c69c217d/text.png",
+                        "width": 180,
+                        "height": 180
+                    },
+                    "imageCompleted": {
+                        "sid": "Gamification-Media-Task-Text-Completed",
+                        "src": "https://images.ctfassets.net/37lvxp3wt7oq/37Ew4G2mQWvk6AfkFchzZo/524ce86f6906c7e64c999bb2e95af02f/text_completed.png",
+                        "width": 60,
+                        "height": 60
+                    },
+                    "modalImage": {
+                        "sid": "Gamification-Media-Task-Modal-Image",
+                        "src": "https://images.ctfassets.net/37lvxp3wt7oq/1Izfpl9ydSgw7nyxYIatSq/e3c21d1d47d0a8ce8f9be8ffc9cae68f/Task_Modal_Image.png",
+                        "width": 375,
+                        "height": 250
+                    },
+                    "modalCtaAction": {
+                        "type": "ActionLinkExternal",
+                        "sid": "sign-up-for-sephora-text-updates",
+                        "targetUrl": "/beauty/text-alerts"
+                    },
+                    "modalCopy": {
+                        "json": {
+                            "data": {},
+                            "content": [
+                                {
+                                    "data": {},
+                                    "content": [
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "Navigate to the text alerts opt-in page by pressing the button below. Add your mobile phone number as prompted. Once you receive a text to your phone, confirm your number by replying Y to the message. You’ll then get a confirmation that you’ve signed up for recurring marketing texts, and will receive 100 points to your account balance within 24 hours. If you are already opted in to texts, don't worry—your 100 points will appear within 24 hours of joining the Challenge.",
+                                            "nodeType": "text"
+                                        }
+                                    ],
+                                    "nodeType": "paragraph"
+                                },
+                                {
+                                    "data": {},
+                                    "content": [
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "Make sure to complete this task before the Ready, Set, Sephora Challenge ends on 12/22/23!",
+                                            "nodeType": "text"
+                                        }
+                                    ],
+                                    "nodeType": "paragraph"
+                                },
+                                {
+                                    "data": {},
+                                    "content": [
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "See Beauty Insider Challenges ",
+                                            "nodeType": "text"
+                                        },
+                                        {
+                                            "data": {
+                                                "target": {
+                                                    "sys": {
+                                                        "id": "65reLHtjR8SLBqgnNBcpzE",
+                                                        "type": "Link",
+                                                        "linkType": "Entry"
+                                                    }
+                                                }
+                                            },
+                                            "content": [
+                                                {
+                                                    "data": {},
+                                                    "marks": [],
+                                                    "value": "Terms of Participation",
+                                                    "nodeType": "text"
+                                                }
+                                            ],
+                                            "nodeType": "entry-hyperlink"
+                                        },
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "",
+                                            "nodeType": "text"
+                                        }
+                                    ],
+                                    "nodeType": "paragraph"
+                                }
+                            ],
+                            "nodeType": "document"
+                        },
+                        "links": {
+                            "entries": {
+                                "hyperlink": [
+                                    {
+                                        "sys": {
+                                            "id": "65reLHtjR8SLBqgnNBcpzE"
+                                        },
+                                        "type": "ActionLinkExternal",
+                                        "sid": "gamification_terms_and_conditions_link_external",
+                                        "targetUrl": "/beauty/challenge-terms-conditions"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "sid": "Gamification-Task-Bopis-3",
+                    "taskId": "187",
+                    "promoId": "actv_order_with_bopis",
+                    "description": "Order with Buy Online, Pick Up In Store ▸",
+                    "ctaLabel": "Shop Now",
+                    "modalTitle": "Order with Buy Online, Pick Up In Store",
+                    "modalCtaLabel": "Shop Now",
+                    "image": {
+                        "sid": "Gamification-Media-Task-Bopis",
+                        "src": "https://images.ctfassets.net/37lvxp3wt7oq/71fj9u8JeRrlfqjMUbuqWq/d41b6ff66e3208a4cd8e9a3832aecc09/bopis.png",
+                        "width": 180,
+                        "height": 180
+                    },
+                    "imageCompleted": {
+                        "sid": "Gamification-Media-Task-Bopis-Completed",
+                        "src": "https://images.ctfassets.net/37lvxp3wt7oq/3IXKFJOESMrAEsovu2XR7F/3fe73182d041d4d48abf150d35ba2ef8/bopis_completed.png",
+                        "width": 60,
+                        "height": 60
+                    },
+                    "modalImage": {
+                        "sid": "Gamification-Media-Task-Modal-Image",
+                        "src": "https://images.ctfassets.net/37lvxp3wt7oq/1Izfpl9ydSgw7nyxYIatSq/e3c21d1d47d0a8ce8f9be8ffc9cae68f/Task_Modal_Image.png",
+                        "width": 375,
+                        "height": 250
+                    },
+                    "modalCtaAction": {
+                        "type": "ActionLinkExternal",
+                        "sid": "home-page-redirect",
+                        "targetUrl": "/"
+                    },
+                    "modalCopy": {
+                        "json": {
+                            "data": {},
+                            "content": [
+                                {
+                                    "data": {},
+                                    "content": [
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "Select the “Buy Online & Pick Up” option on the product page of any item you’d like to purchase, and complete the checkout process as prompted. When your order is ready for pickup, you’ll receive an email notification with a barcode. Once the barcode is scanned by a Beauty Advisor in store (which confirms that you’ve picked up your order), 100 points will be added to your account balance within 24 hours.",
+                                            "nodeType": "text"
+                                        }
+                                    ],
+                                    "nodeType": "paragraph"
+                                },
+                                {
+                                    "data": {},
+                                    "content": [
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "Make sure to complete this task before the Ready, Set, Sephora Challenge ends on 12/22/23!",
+                                            "nodeType": "text"
+                                        }
+                                    ],
+                                    "nodeType": "paragraph"
+                                },
+                                {
+                                    "data": {},
+                                    "content": [
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "See Beauty Insider Challenges ",
+                                            "nodeType": "text"
+                                        },
+                                        {
+                                            "data": {
+                                                "target": {
+                                                    "sys": {
+                                                        "id": "65reLHtjR8SLBqgnNBcpzE",
+                                                        "type": "Link",
+                                                        "linkType": "Entry"
+                                                    }
+                                                }
+                                            },
+                                            "content": [
+                                                {
+                                                    "data": {},
+                                                    "marks": [],
+                                                    "value": "Terms of Participation",
+                                                    "nodeType": "text"
+                                                }
+                                            ],
+                                            "nodeType": "entry-hyperlink"
+                                        },
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "",
+                                            "nodeType": "text"
+                                        }
+                                    ],
+                                    "nodeType": "paragraph"
+                                }
+                            ],
+                            "nodeType": "document"
+                        },
+                        "links": {
+                            "entries": {
+                                "hyperlink": [
+                                    {
+                                        "sys": {
+                                            "id": "65reLHtjR8SLBqgnNBcpzE"
+                                        },
+                                        "type": "ActionLinkExternal",
+                                        "sid": "gamification_terms_and_conditions_link_external",
+                                        "targetUrl": "/beauty/challenge-terms-conditions"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                },
+                {
+                    "sid": "Gamification-Task-Sample-4",
+                    "taskId": "188",
+                    "promoId": "actv_free_sample_with_order",
+                    "description": "Get a Free Sample with Online Purchase ▸",
+                    "ctaLabel": "Shop Now",
+                    "modalTitle": "Get a Free Sample with Online Purchase",
+                    "modalCtaLabel": "Shop Now",
+                    "image": {
+                        "sid": "Gamification-Media-Task-Sample",
+                        "src": "https://images.ctfassets.net/37lvxp3wt7oq/5Gd3GcpOWkLCpq49zdosBD/cb1131f5a8a880fc93bb5605b98e5295/sample.png",
+                        "width": 180,
+                        "height": 180
+                    },
+                    "imageCompleted": {
+                        "sid": "Gamification-Media-Task-Sample-Completed",
+                        "src": "https://images.ctfassets.net/37lvxp3wt7oq/1T5a2MZnI4XfKZhYZZ6UHn/410133d642ea87408ffdb93686b5013a/sample_completed.png",
+                        "width": 60,
+                        "height": 60
+                    },
+                    "modalImage": {
+                        "sid": "Gamification-Media-Task-Modal-Image",
+                        "src": "https://images.ctfassets.net/37lvxp3wt7oq/1Izfpl9ydSgw7nyxYIatSq/e3c21d1d47d0a8ce8f9be8ffc9cae68f/Task_Modal_Image.png",
+                        "width": 375,
+                        "height": 250
+                    },
+                    "modalCtaAction": {
+                        "type": "ActionLinkExternal",
+                        "sid": "home-page-redirect",
+                        "targetUrl": "/"
+                    },
+                    "modalCopy": {
+                        "json": {
+                            "data": {},
+                            "content": [
+                                {
+                                    "data": {},
+                                    "content": [
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "Navigate to your basket and choose up to 2 free samples as prompted. Then complete the checkout process as usual. You’ll receive 100 points to your account balance 24 hours after placing your online order. Please note, this offer is only eligible on shipped items including Auto-Replenish (currently unavailable for Same-Day Delivery and Pick Up In Store or Curbside orders).",
+                                            "nodeType": "text"
+                                        }
+                                    ],
+                                    "nodeType": "paragraph"
+                                },
+                                {
+                                    "data": {},
+                                    "content": [
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "Make sure to complete this task before the Ready, Set, Sephora Challenge ends on 12/22/23!",
+                                            "nodeType": "text"
+                                        }
+                                    ],
+                                    "nodeType": "paragraph"
+                                },
+                                {
+                                    "data": {},
+                                    "content": [
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "See Beauty Insider Challenges ",
+                                            "nodeType": "text"
+                                        },
+                                        {
+                                            "data": {
+                                                "target": {
+                                                    "sys": {
+                                                        "id": "65reLHtjR8SLBqgnNBcpzE",
+                                                        "type": "Link",
+                                                        "linkType": "Entry"
+                                                    }
+                                                }
+                                            },
+                                            "content": [
+                                                {
+                                                    "data": {},
+                                                    "marks": [],
+                                                    "value": "Terms of Participation",
+                                                    "nodeType": "text"
+                                                }
+                                            ],
+                                            "nodeType": "entry-hyperlink"
+                                        },
+                                        {
+                                            "data": {},
+                                            "marks": [],
+                                            "value": "",
+                                            "nodeType": "text"
+                                        }
+                                    ],
+                                    "nodeType": "paragraph"
+                                }
+                            ],
+                            "nodeType": "document"
+                        },
+                        "links": {
+                            "entries": {
+                                "hyperlink": [
+                                    {
+                                        "sys": {
+                                            "id": "65reLHtjR8SLBqgnNBcpzE"
+                                        },
+                                        "type": "ActionLinkExternal",
+                                        "sid": "gamification_terms_and_conditions_link_external",
+                                        "targetUrl": "/beauty/challenge-terms-conditions"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

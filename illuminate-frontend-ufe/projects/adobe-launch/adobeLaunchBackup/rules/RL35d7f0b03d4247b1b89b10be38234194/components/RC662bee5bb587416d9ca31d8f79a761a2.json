@@ -1,0 +1,91 @@
+{
+    "id": "RC662bee5bb587416d9ca31d8f79a761a2",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2023-02-23T21:44:33.825Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: GA4_accountLogin",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-04-28T15:27:16.670Z",
+        "created_by_email": "rachel.joss@sephora.com",
+        "created_by_display_name": "rachel joss",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"var languageLocale = _satellite.getVar('[TMS] Page :: Language/Locale');\\nvar biStatus = _satellite.getVar('[TMS] User :: BI Status');\\nvar loginStatus = _satellite.getVar('[TMS] Pixel :: User :: Login Status');\\nvar profileId = _satellite.getVar('[TMS] Async :: User :: ATG ID - page load or async page load');\\nvar fivePIDs = _satellite.getVar('[TMS] Pixel :: First Five Recommended PIDs');\\n\\nvar biAccountNumber = digitalData.user[0].segment.biAccountId; // _satellite.getVar('[TMS] BI Account Number - asyncPageLoad');\\nvar biPoints = digitalData.user[0].segment.biPoints; // _satellite.getVar('[TMS] User :: BI Points - signInSuccess');\\n\\nvar om_mmc_value = Sephora.analytics.utils.getQueryParam('om_mmc') || '';\\n\\ngtag('event', 'account_login', {\\n    'send_to': _satellite.getVar('[TMS] GA4 Measurement Id'),\\n    'bi_account_id': biAccountNumber,\\n    'profile_id': profileId,\\n    'beauty_insider_status': biStatus,\\n    'beauty_insider_points': biPoints,\\n    'first_five_pids': fivePIDs,\\n    'login_status': loginStatus,\\n    'user_location': languageLocale.split('-')[0],\\n    'user_language': languageLocale.split('-')[1],\\n    'om_mmc': om_mmc_value\\n});\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC662bee5bb587416d9ca31d8f79a761a2/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC662bee5bb587416d9ca31d8f79a761a2/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC662bee5bb587416d9ca31d8f79a761a2/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC662bee5bb587416d9ca31d8f79a761a2/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC662bee5bb587416d9ca31d8f79a761a2/origin"
+            },
+            "data": {
+                "id": "RC662bee5bb587416d9ca31d8f79a761a2",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC662bee5bb587416d9ca31d8f79a761a2/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC662bee5bb587416d9ca31d8f79a761a2",
+        "rules": "https://reactor.adobe.io/rule_components/RC662bee5bb587416d9ca31d8f79a761a2/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC662bee5bb587416d9ca31d8f79a761a2"
+    },
+    "meta": {
+        "latest_revision_number": 5
+    }
+}

@@ -1,0 +1,91 @@
+{
+    "id": "RCefd52189fee6433fb2c9c3fe302bdc06",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2022-09-16T21:06:59.858Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: brazeProfile_profileUpdatedView",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2024-05-22T14:48:40.685Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "niltoncesar.santos@sephora.com",
+        "updated_by_display_name": "niltoncesar santos",
+        "settings": "{\"source\":\"\\u003cscript\\u003e\\nvar cachedBiUpdated = window.localStorage.getItem('biUpdated') || false;\\n\\nif (braze \\u0026\\u0026 !cachedBiUpdated) {\\n    window.localStorage.setItem('biUpdated', true);\\n}\\n\\u003c/script\\u003e\",\"language\":\"html\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCefd52189fee6433fb2c9c3fe302bdc06/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCefd52189fee6433fb2c9c3fe302bdc06/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCefd52189fee6433fb2c9c3fe302bdc06/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCefd52189fee6433fb2c9c3fe302bdc06/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCefd52189fee6433fb2c9c3fe302bdc06/origin"
+            },
+            "data": {
+                "id": "RCefd52189fee6433fb2c9c3fe302bdc06",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCefd52189fee6433fb2c9c3fe302bdc06/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RCefd52189fee6433fb2c9c3fe302bdc06",
+        "rules": "https://reactor.adobe.io/rule_components/RCefd52189fee6433fb2c9c3fe302bdc06/rules",
+        "self": "https://reactor.adobe.io/rule_components/RCefd52189fee6433fb2c9c3fe302bdc06"
+    },
+    "meta": {
+        "latest_revision_number": 5
+    }
+}

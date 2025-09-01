@@ -1,0 +1,6 @@
+import SearchableProfileContent from 'components/Header/BeautyPreferences/SearchableProfileContent/SearchableProfileContent';
+import { withSearchableProfileContentProps } from 'viewModel/header/beautyPreferences/searchableProfileContent/withSearchableProfileContentProps';
+
+const ConnectedSearchableProfileContent = withSearchableProfileContentProps(SearchableProfileContent);
+
+export default ConnectedSearchableProfileContent;

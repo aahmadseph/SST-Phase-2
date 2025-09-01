@@ -1,0 +1,3 @@
+import BeautyPreferencesSavedModal from 'components/GlobalModals/BeautyPreferencesModal/BeautyPreferencesSavedModal/BeautyPreferencesSavedModal';
+
+export default BeautyPreferencesSavedModal;

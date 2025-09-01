@@ -1,0 +1,91 @@
+{
+    "id": "RCc199d8994622450d915be6507fcc59b8",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2022-10-10T16:59:33.326Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: bing_orderConfirmationView",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-03-17T15:33:12.991Z",
+        "created_by_email": "Naveen.Vinala@sephora.com",
+        "created_by_display_name": "Naveen Vinala",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"// Replacing [TMS] Pixel :: Double Click :: Order Subtotal as this data element was not working \\nlet subtotalInUSD = Number(digitalData.transaction.total.transactionSubtotalInUSD).toFixed(2);\\n\\nif (subtotalInUSD === 'NaN') {\\n  subtotalInUSD = null;\\n}\\n\\nconst orderTotal = subtotalInUSD;\\nwindow.uetq = window.uetq || [];\\nwindow.uetq.push('event', '', {\\n    'revenue_value': orderTotal,\\n    'currency': 'USD',\\n    'event_label':'Adobe Launch - bing_orderConfirmationView'\\n});\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCc199d8994622450d915be6507fcc59b8/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCc199d8994622450d915be6507fcc59b8/updated_with_extension"
+            },
+            "data": {
+                "id": "EX06a7afc619ae4214a074cb5399abf9fa",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCc199d8994622450d915be6507fcc59b8/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCc199d8994622450d915be6507fcc59b8/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCc199d8994622450d915be6507fcc59b8/origin"
+            },
+            "data": {
+                "id": "RCc199d8994622450d915be6507fcc59b8",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCc199d8994622450d915be6507fcc59b8/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RCc199d8994622450d915be6507fcc59b8",
+        "rules": "https://reactor.adobe.io/rule_components/RCc199d8994622450d915be6507fcc59b8/rules",
+        "self": "https://reactor.adobe.io/rule_components/RCc199d8994622450d915be6507fcc59b8"
+    },
+    "meta": {
+        "latest_revision_number": 23
+    }
+}

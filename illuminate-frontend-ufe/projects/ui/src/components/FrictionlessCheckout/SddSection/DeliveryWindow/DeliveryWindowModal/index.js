@@ -1,0 +1,3 @@
+import DeliveryWindowModal from 'components/FrictionlessCheckout/SddSection/DeliveryWindow/DeliveryWindowModal/DeliveryWindowModal';
+
+export default DeliveryWindowModal;

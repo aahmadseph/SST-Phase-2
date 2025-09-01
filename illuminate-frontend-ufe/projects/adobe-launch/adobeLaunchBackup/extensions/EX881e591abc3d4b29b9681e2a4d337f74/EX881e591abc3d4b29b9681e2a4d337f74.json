@@ -1,0 +1,88 @@
+{
+    "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+    "type": "extensions",
+    "attributes": {
+        "created_at": "2022-04-21T21:56:34.143Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "core",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-10-24T17:35:05.735Z",
+        "created_by_email": "praharsha.ankem@sephora.com",
+        "created_by_display_name": "Praharsha Ankem",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "delegate_descriptor_id": "core::extensionConfiguration::config",
+        "display_name": "Core",
+        "review_status": "unsubmitted",
+        "version": "3.4.1",
+        "settings": "{}"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74/origin"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74/extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "self": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "extension_package": "https://reactor.adobe.io/extension_packages/EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+        "latest_extension_package": "https://reactor.adobe.io/extension_packages/EP6a6d85ccbeaa4750848f31959dd9eec5"
+    },
+    "meta": {
+        "latest_revision_number": 4,
+        "upgrade_extension_package_id": "EP6a6d85ccbeaa4750848f31959dd9eec5"
+    }
+}

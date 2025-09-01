@@ -1,0 +1,4 @@
+import ResetPasswordConfirmationModal from 'components/GlobalModals/ResetPasswordConfirmationModal/ResetPasswordConfirmationModal';
+import { withResetPasswordConfirmationModalProps } from 'viewModel/globalModals/resetPasswordConfirmationModal/withResetPasswordConfirmationModalProps';
+
+export default withResetPasswordConfirmationModalProps(ResetPasswordConfirmationModal);

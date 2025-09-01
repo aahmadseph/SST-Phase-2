@@ -1,0 +1,69 @@
+# build this after building Dockerfile.base as it requires that
+# to build this
+# docker build --force-rm -f tools/dockerfiles/Dockerfile.ufe \
+#    --build-arg UFE_BASE_VERSION=$UFE_BASE_VERSION \
+#    -t sephora-docker.artifactory/sephora_ufe/$UFE_BASE_VERSION:latest .
+#
+# to run this container
+# sudo docker container run --rm --name sephora_ufe \
+#     --net host sephora-docker.artifactory/sephora_ufe/$UFE_BASE_VERSION:latest
+# on a mac
+# docker container run --rm --name sephora_ufe \
+#     -p 3000:3000  sephora-docker.artifactory/sephora_ufe/$UFE_BASE_VERSION:latest
+#
+# build number or default is latest
+ARG UFE_BASE_VERSION=dev
+ARG UFE_BASE_TAG_VERSION=latest
+FROM sephora-docker.artifactory/sephora_ufe_base/${UFE_BASE_VERSION}:${UFE_BASE_TAG_VERSION}
+
+USER node
+
+# setup environment
+# these should not change
+ENV NODE_HOME /home/node
+ENV UFE_HOME $NODE_HOME/app
+ENV NODE_PATH $UFE_HOME/node_modules:$UFE_HOME/projects/ui/src
+ENV SERVER_HOME $UFE_HOME/projects/server
+ENV UI_HOME $UFE_HOME/projects/ui
+
+# app specific
+ENV UV_THREADPOOL_SIZE 256
+ENV ENABLE_PROMETHEUS true
+
+# things that can be changed outside of container
+ENV UFE_ENV LOCAL
+ENV ENABLE_SEO false
+ENV HOSTNAME localhost
+# ENV IMAGE_HOST false
+ENV LOG_LEVEL info
+ENV MAX_MEMORY_ITEMS 20000
+ENV PORT 3000
+ENV WORKERS 4
+
+# defaults that should only change locally
+ENV AUTOMATION_TARGETS true
+ENV BUILD_MODE isomorphic
+ENV ENABLE_COMPONENT_CACHING true
+ENV ENABLE_GC_COLLECTION false
+ENV LOG_GC_PROFILE false
+ENV MAX_REQUEST_SIZE 2e6
+ENV MEMOIZE true
+ENV NODE_ENV production
+ENV SERVER_IP_ADDR 0.0.0.0
+ENV SHOW_ROOT_COMPS false
+ENV PURGE_ITEM_PERCENT 30
+
+# ENV ROUTER_SERVER_PORT false
+# ENV ROUTER_SERVER_NAME localhost
+
+# 4096 is safe as it is the default
+# also allows us to adjust in the future if needed
+ENV MAX_OLD_SPACE_SIZE 3584
+ENV MAX_NEW_SPACE_SIZE 64
+ENV GARBAGE_COLLECTION_INTERVAL 100
+ENV NODE_OPTIONS "--max_old_space_size=$MAX_OLD_SPACE_SIZE --max-semi-space-size=$MAX_NEW_SPACE_SIZE"
+
+# start UFE
+WORKDIR $UFE_HOME
+EXPOSE $PORT
+CMD node --predictable-gc-schedule --gc_interval=$GARBAGE_COLLECTION_INTERVAL $SERVER_HOME/src/ufe.mjs

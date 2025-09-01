@@ -1,0 +1,7 @@
+mutation guestBookingService($guestBookingServiceInput: GuestBookingServiceInput!) { 
+    guestBookingService(guestBookingServiceInput: $guestBookingServiceInput) { 
+        confirmationNumber 
+        errorMessage 
+        errorCode 
+    } 
+}

@@ -1,0 +1,41 @@
+{
+    "orgId": "SEPHORA",
+    "sellingChannel": "SEPHORAUS",
+    "transactionType": "DEFAULT",
+    "availabilityByProducts": [
+        {
+            "productId": "905364",
+            "uom": "EACH",
+            "gtin": null,
+            "launchDateTime": null,
+            "launchDate": null,
+            "availabilityByFulfillmentTypes": [
+                {
+                    "fulfillmentType": "SAMEDAY",
+                    "availabilityDetails": [
+                        {
+                            "segment": "DEFAULT",
+                            "atp": 1999.0,
+                            "supply": 2000.0,
+                            "demand": 0.0,
+                            "safetyStock": 1.0,
+                            "atpStatus": "HIGH",
+                            "availabilityByLocations": [
+                                {
+                                    "locationId": "0352",
+                                    "locationType": "STORE",
+                                    "atp": 1999.0,
+                                    "supply": 2000.0,
+                                    "demand": 0.0,
+                                    "safetyStock": 1.0,
+                                    "atpStatus": "INSTOCK",
+                                    "futureQtyByDates": []
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

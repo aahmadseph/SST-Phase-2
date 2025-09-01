@@ -1,0 +1,9 @@
+{
+    "id": "1001",
+    "name": "WDC",
+    "enterpriseCode": "SEPHORAUS",
+    "nodeType": "DC",
+    "timeZone": "America/Los_Angeles",
+    "status": "ACTIVE",
+    "updateTime":"2022-11-11T20:04:00.879"
+}

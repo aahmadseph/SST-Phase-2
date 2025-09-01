@@ -1,0 +1,4 @@
+import GiftCardBalanceCheckForm from 'components/Content/GiftCards/GiftCardBalanceCheckForm/GiftCardBalanceCheckForm';
+import { withGiftCardBalanceCheckFormProps } from 'viewModel/content/giftCards/giftCardBalanceCheckForm/withGiftCardBalanceCheckFormProps';
+
+export default withGiftCardBalanceCheckFormProps(GiftCardBalanceCheckForm);

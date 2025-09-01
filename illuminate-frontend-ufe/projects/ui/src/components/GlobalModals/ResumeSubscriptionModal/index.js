@@ -1,0 +1,6 @@
+import ResumeSubscriptionModal from 'components/GlobalModals/ResumeSubscriptionModal/ResumeSubscriptionModal';
+import { withResumeSubscriptionModalProps } from 'viewModel/globalModals/resumeSubscriptionModal/withResumeSubscriptionModalProps';
+
+const ConnectedResumeSubscriptionModal = withResumeSubscriptionModalProps(ResumeSubscriptionModal);
+
+export default ConnectedResumeSubscriptionModal;

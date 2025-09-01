@@ -1,0 +1,49 @@
+# The configuration contains only override properties
+# All current property values can be retrieved via endpoint .../omni-product-service/actuator/configprops
+# The given property value can bi extracted via endpoint  .../omni-product-service/actuator/configprops/{property-name}
+# where {property-name} is the name of the property you want to extract
+# For example .../omni-product-service/actuator/configprops/sephora.commercetools
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+spring:
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      timeout: 500ms
+      ssl:
+        enabled: false
+      pool:
+        enabled: true
+        max-active: 32
+        max-idle: 8
+        min-idle: 0
+        max-wait: 50ms
+
+logging:
+  level:
+    com:
+      sephora:
+        product: DEBUG
+
+sephora:
+  commercetools:
+    connection-timeout: 4s
+    client-id: nWkSIzT8VymQ_XGTu1tPICbd
+    client-secret: 6gaOAVku4caEyUTNgD0HLOpeCSqp7NsG
+    enable-gzip: true
+    wait-timeout: 10s
+  cache:
+    cache2k:
+      enable-logging: true
+      enabled: true
+    redis:
+      enabled: false
+      keyPrefix: "OPS-LCL:"
+      enable-compression: false
+
+#debug: true

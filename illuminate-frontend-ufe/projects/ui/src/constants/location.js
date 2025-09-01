@@ -1,0 +1,7 @@
+const FORCE_PRIVACY_MODAL_QUERY = 'ccpa=true';
+const NOT_INITIALIZED = null;
+const TIME_OUT = 5000;
+
+export {
+    FORCE_PRIVACY_MODAL_QUERY, NOT_INITIALIZED, TIME_OUT
+};

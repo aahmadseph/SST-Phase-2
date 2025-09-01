@@ -1,0 +1,6 @@
+import UpperFunnelProductTiles from 'components/Catalog/UpperFunnel/UpperFunnelProductTiles/UpperFunnelProductTiles';
+import { withUpperFunnelProductTilesProps } from 'viewModel/catalog/upperFunnel/upperFunnelProductTiles/withUpperFunnelProductTilesProps';
+
+const ConnectedUpperFunnelProductTiles = withUpperFunnelProductTilesProps(UpperFunnelProductTiles);
+
+export default ConnectedUpperFunnelProductTiles;

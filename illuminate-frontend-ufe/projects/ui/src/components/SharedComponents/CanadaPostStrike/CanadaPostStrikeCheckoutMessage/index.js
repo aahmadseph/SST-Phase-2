@@ -1,0 +1,4 @@
+import CanadaPostStrikeCheckoutMessage from 'components/SharedComponents/CanadaPostStrike/CanadaPostStrikeCheckoutMessage/CanadaPostStrikeCheckoutMessage';
+import { withCanadaPostStrikeCheckoutMessageProps } from 'components/SharedComponents/CanadaPostStrike/CanadaPostStrikeCheckoutMessage/withCanadaPostStrikeCheckoutMessageProps';
+
+export default withCanadaPostStrikeCheckoutMessageProps(CanadaPostStrikeCheckoutMessage);

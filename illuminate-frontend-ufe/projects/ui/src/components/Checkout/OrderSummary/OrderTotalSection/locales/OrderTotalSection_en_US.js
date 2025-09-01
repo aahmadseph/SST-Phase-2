@@ -1,0 +1,41 @@
+export default function getResource(label, vars = []) {
+    const resources = {
+        estimatedTotal: 'Estimated Total',
+        merchandiseSubtotal: 'Merchandise Subtotal',
+        giftCardShipping: 'Gift Card Shipping',
+        merchandiseShipping: 'Merchandise Shipping',
+        shippingAndHandling: 'Shipping',
+        discounts: 'Discounts',
+        gstHst: 'Estimated GST/HST',
+        pst: 'Estimated PST',
+        tax: 'Estimated Tax',
+        andOtherFees: '& Other Fees',
+        storeCreditRedeemed: 'Account Credit',
+        giftCardRedeemed: 'Gift Card Redeemed',
+        eGiftCardRedeemed: 'eGift Card Redeemed',
+        creditCardPayment: 'Credit Card Payment',
+        payPalPayment: 'PayPal Payment',
+        bopisIncreasedAuthorizationWarning: `{*}Estimated total is based on first-choice items. *Your payment method will be temporarily authorized for ${vars[0]}*, to cover potential item substitutions. You will only be charged for the items you receive. The transaction will be finalized when you pick up the order. Promotions may be removed if item substitutions occur. Your final total will be displayed in your email receipt and Order History. The temporary authorization will be removed by your financial institution 3-5 days after you receive your items. Please contact your financial institution for questions related to temporary authorizations.`,
+        sddIncreasedAuthorizationWarning: `{*}Estimated total is based on first-choice items. *Your payment method will be temporarily authorized for ${vars[0]}*, to cover potential item substitutions. You will only be charged for the items you receive. The transaction will be finalized when your order is delivered. Promotions may be removed if item substitutions occur. Your final total will be displayed in your email receipt and Order History. The temporary authorization will be removed by your financial institution 3-5 days after you receive your items. Please contact your financial institution for questions related to temporary authorizations.`,
+        submitEdits: 'Submit Edits',
+        subscribe: 'Subscribe',
+        placeOrder: 'Place Order',
+        shippingHandling: 'Shipping',
+        pickupText: 'Pickup',
+        free: 'FREE',
+        shippingHandlingInfo: 'Shipping & Handling Information',
+        salesTax: 'Sales Tax',
+        pointsUsed: 'Used (in this order)',
+        bagFee: 'Bag Fee',
+        specialFee: 'Special Fee',
+        pointsAfterPickup: 'You will earn Beauty Insider points from this purchase after you pick up the order.',
+        gotIt: 'Got It',
+        autoReplenishmentSavings: 'Auto-Replenish Savings',
+        youSave: 'You save',
+        sduSavingsUS: '$6.95',
+        sduSavingsCA: '$9.95',
+        withSDUUnlimited: 'with Same-Day Unlimited'
+    };
+
+    return resources[label] || label;
+}

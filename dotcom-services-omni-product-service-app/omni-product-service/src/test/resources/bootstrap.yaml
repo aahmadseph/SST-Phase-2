@@ -1,0 +1,29 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /omni-product-service
+  tomcat:
+    accesslog:
+      enabled: false
+      log4j: true
+      pattern: combined
+    threads:
+      max: 300
+      min-spare: 10
+    accept-count: 300
+
+spring:
+  application:
+    name: omni-product-service
+  main:
+    banner-mode: "off"
+    cloud-platform: NONE
+  cloud:
+    config:
+      enabled: false
+
+
+management:
+  endpoint:
+    restart:
+      enabled: true

@@ -1,0 +1,45 @@
+export default function getResource(label, vars = []) {
+    const resources = {
+        emailAddress: 'Email Address',
+        asMText: 'If you no longer wish to receive the notification, enter the email address you wish to remove and click “Remove”.',
+        asMBText: 'Stop Email Notifications',
+        nsMText: 'Sephora will send in stock notification email to:',
+        nsMBText: 'Complete',
+        empty: 'Please enter your email address.',
+        invalid: 'Please enter an e-mail address in the format username@domain.com.',
+        enterValidEmail: 'Please enter a valid email address.',
+        subscribe: 'Your in stock notification email will be sent to ',
+        remove: 'You are no longer scheduled to receive in stock email notification at',
+        emailSmsNotifications: 'Email & Text Notifications',
+        emailMe: 'Email Notification',
+        smsMe: 'Text Notification',
+        emailTied: 'We can only send notification to the email tied to your account.',
+        BIOnly: '(Sephora Beauty Insiders only)',
+        emailLabel: 'Sephora will send in stock notification email to:',
+        emailNoLonger: 'If you no longer wish to receive in stock notification click “Stop Email Notifications”',
+        needTo: 'You need to ',
+        signInLink: 'sign in',
+        createAccountLink: 'create an account',
+        or: ' or ',
+        toSet: ' to set up SMS notification from Sephora.',
+        mobileLabel: 'Mobile Phone Number',
+        completeButton: 'Complete',
+        gotIt: 'Got It',
+        signInCapitalize: 'Sign In',
+        createAccountCapitalize: 'Create an Account',
+        errorMessagesSms: 'You need to agree to the terms & conditions before you can continue.',
+        checkboxAgree: 'I choose to sign up to receive in stock text alerts on this product.',
+        subscribedByPhone: `Check your text message inbox at ${vars[0]} to confirm your in stock subscription and/or Sephora Texts subscription.`,
+        errorMsg: 'Something went wrong while trying to process your submission. Please try again later.',
+        noValidPhoneMsg: 'Please enter a valid mobile phone number.',
+        unsubscribeTitle: `To unsubscribe from in stock notifications at the number below, text “*STOP*” to *${vars[0]}*.`,
+        unsubscribeBody:
+            `If you are subscribed to receive in stock and or coming soon notifications for multiple products, you will stop receiving all notifications for all the products for which you have subscribed. \n\nOpting out of back in stock or coming soon notifications does not opt you out of marketing text messages. To opt out of marketing text messages, text “*STOP*” to *${vars[0]}*.`,
+        termsAndConditionsUS:
+            `By entering my phone number and checking the box(es) I selected above, clicking Complete, and confirming my sign-up, I agree to receive back in stock notification text messages and/or marketing text messages as indicated, which I acknowledge may be sent at any and all hours of the day, and I consent to and agree to be bound by Sephora’s [*TEXT TERMS*|${vars[0]}], have read Sephora’s [*PRIVACY POLICY*|${vars[1]}], and I expressly consent and agree to receive autodialed marketing texts, including abandoned cart reminders. Message frequency varies. Consent is not a condition of purchase. Message & data rates may apply. Text STOP to cancel at any time. Text HELP for help.`,
+        termsAndConditionsCA: `By entering your phone number, clicking Complete, and confirming sign-up, you consent to the [*TEXT TERMS*|${vars[0]}] and to receiving, as applicable (depending on your choices) recurring marketing texts with exclusive offers and product updates (including abandoned cart reminders) and/or in stock notifications. Message frequency varies. Message & data rates may apply. See our [*PRIVACY POLICY*|${vars[1]}]. Text STOP to cancel at any time. HELP for help. Sephora: 160 Bloor St E Suite 1100, Toronto, ON M4W 0A2, Canada. 1-877-737-4672.`,
+        textAlerts: 'I’d like to also sign up for texts from Sephora.',
+        phoneNumberRejected: 'Invalid phone type. Please check your entry or use a valid entry.'
+    };
+    return resources[label];
+}

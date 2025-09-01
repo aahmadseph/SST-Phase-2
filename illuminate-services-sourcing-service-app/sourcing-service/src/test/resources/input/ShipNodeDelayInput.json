@@ -1,0 +1,8 @@
+{
+  "delayTime": 2,
+  "endDateTime": "2021-05-05T19:09:41",
+  "levelOfService": "STANDARD",
+  "ruleId": 10,
+  "shipNode": "0801",
+  "startDateTime": "2021-05-07T19:09:41"
+}

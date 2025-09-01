@@ -1,0 +1,43 @@
+name: Trigger UFE permissions repo event
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, review_requested, edited]
+    branches:
+      - 'dev'
+      - 'master'
+  pull_request_review:
+    types: [submitted, dismissed]
+
+jobs:
+  trigger-permissions-webhook:
+    runs-on:
+      group: Sephora-US-Digital
+
+    # Flattened and valid single-line expression
+    if: >
+      (github.event_name == 'pull_request' && (github.event.pull_request.base.ref == 'dev' || github.event.pull_request.base.ref == 'master')) ||
+      (github.event_name == 'pull_request_review' && github.event.review.state != 'commented' && (github.event.pull_request.base.ref == 'dev' || github.event.pull_request.base.ref == 'master'))
+
+    steps:
+      - name: Debug Stuff
+        run: |
+          echo "Event: ${{ github.event_name }}"
+          echo "Action: ${{ github.event.action }}"
+          echo "PR Title: ${{ github.event.pull_request.title }}"
+          echo "PR Number: ${{ github.event.pull_request.number }}"
+          echo "PR URL: ${{ github.event.pull_request.html_url }}"
+        env:
+          TOKEN: ${{ secrets.UFE_TO_UFE_PERMS_SECRET }}
+
+      - name: Trigger CODEOWNERS enforcement from UFE Permissions Repo
+        run: |
+          curl -X POST https://api.github.com/repos/Sephora-US-Digital/ufe-github-permissions/dispatches \
+            -H "Authorization: token ${{ secrets.UFE_TO_UFE_PERMS_SECRET }}" \
+            -H "Accept: application/vnd.github.everest-preview+json" \
+            -d '{
+              "event_type": "enforce-codeowners",
+              "client_payload": {
+                "pr_number": "${{ github.event.number || github.event.pull_request.number }}"
+              }
+            }'

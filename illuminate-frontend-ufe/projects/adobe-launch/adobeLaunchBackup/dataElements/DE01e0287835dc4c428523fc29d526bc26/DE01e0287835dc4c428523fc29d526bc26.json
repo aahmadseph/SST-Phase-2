@@ -1,0 +1,97 @@
+{
+    "id": "DE01e0287835dc4c428523fc29d526bc26",
+    "type": "data_elements",
+    "attributes": {
+        "created_at": "2022-09-05T15:23:57.921Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "[TMS] Link :: Action Info",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2024-05-10T20:41:34.777Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "Danny.Fallas@sephora.com",
+        "updated_by_display_name": "Danny Fallas",
+        "clean_text": false,
+        "default_value": null,
+        "delegate_descriptor_id": "core::dataElements::custom-code",
+        "force_lower_case": false,
+        "review_status": "unsubmitted",
+        "storage_duration": null,
+        "settings": "{\"source\":\"return event?.detail?.data?.actionInfo || Sephora.analytics.utils.getMostRecentEventProperty({ \\n  eventObject: event, \\n  pathToProperty: 'eventInfo.attributes.actionInfo', \\n  fallBackEventName: Sephora.analytics.constants.LINK_TRACKING_EVENT \\n}); \"}"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE01e0287835dc4c428523fc29d526bc26/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE01e0287835dc4c428523fc29d526bc26/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE01e0287835dc4c428523fc29d526bc26/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE01e0287835dc4c428523fc29d526bc26/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE01e0287835dc4c428523fc29d526bc26/origin"
+            },
+            "data": {
+                "id": "DE01e0287835dc4c428523fc29d526bc26",
+                "type": "data_elements"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE01e0287835dc4c428523fc29d526bc26/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE01e0287835dc4c428523fc29d526bc26/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE01e0287835dc4c428523fc29d526bc26/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/data_elements/DE01e0287835dc4c428523fc29d526bc26",
+        "self": "https://reactor.adobe.io/data_elements/DE01e0287835dc4c428523fc29d526bc26",
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74"
+    },
+    "meta": {
+        "latest_revision_number": 5
+    }
+}

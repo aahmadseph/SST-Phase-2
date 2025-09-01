@@ -1,0 +1,4 @@
+import RemovePhoneConfirmationModal from 'components/GlobalModals/RemovePhoneConfirmationModal/RemovePhoneConfirmationModal';
+import { withRemovePhoneConfirmationModalProps } from 'viewModel/globalModals/removePhoneConfirmationModal/withRemovePhoneConfirmationModalProps';
+
+export default withRemovePhoneConfirmationModalProps(RemovePhoneConfirmationModal);

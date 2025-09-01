@@ -1,0 +1,91 @@
+{
+    "id": "RCd337872f30db4c1e8db1d39ed9ee6bbc",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2023-01-25T13:45:20.000Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: googleAnalytics_addToWishlist",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-03-02T16:14:17.035Z",
+        "created_by_email": "rachel.joss@sephora.com",
+        "created_by_display_name": "rachel joss",
+        "updated_by_email": "rachel.joss@sephora.com",
+        "updated_by_display_name": "rachel joss",
+        "settings": "{\"source\":\"var ga_sku_id = event === undefined ? '' : event.detail.data.sku; \\n/*var ga_productId = _satellite.getVar(\\\"[TMS] Pixel :: Google Analytics :: Product ID\\\");\\nvar ga_skuName = _satellite.getVar(\\\"[TMS] Pixel :: Google Analytics :: SKU Name\\\");\\nvar ga_skuBrand = _satellite.getVar(\\\"[TMS] Pixel :: Google Analytics :: SKU Brand\\\");\\nvar ga_skuVariant = _satellite.getVar(\\\"[TMS] Pixel :: Google Analytics :: SKU Variant\\\");\\nvar ga_skuQuantity = 1;\\nvar ga_skuPrice = _satellite.getVar(\\\"[TMS] Pixel :: Google Analytics :: SKU Price\\\");*/\\nvar gaId = _satellite.getVar('[TMS] UA Property Id');\\n\\nvar itemObj = {\\n  \\\"id\\\": ga_sku_id,\\n  //\\\"name\\\": ga_skuName,\\n  //\\\"brand\\\": ga_skuBrand,\\n  //\\\"variant\\\": ga_skuVariant,\\n  //\\\"quantity\\\": ga_skuQuantity,\\n  //\\\"price\\\": ga_skuPrice\\n};\\ngtag('event', 'add_to_wishlist', {\\n  'send_to': gaId,\\n  \\\"items\\\": [itemObj]\\n});\\n\\n\\n\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd337872f30db4c1e8db1d39ed9ee6bbc/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd337872f30db4c1e8db1d39ed9ee6bbc/updated_with_extension"
+            },
+            "data": {
+                "id": "EX06a7afc619ae4214a074cb5399abf9fa",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd337872f30db4c1e8db1d39ed9ee6bbc/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd337872f30db4c1e8db1d39ed9ee6bbc/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd337872f30db4c1e8db1d39ed9ee6bbc/origin"
+            },
+            "data": {
+                "id": "RCd337872f30db4c1e8db1d39ed9ee6bbc",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCd337872f30db4c1e8db1d39ed9ee6bbc/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RCd337872f30db4c1e8db1d39ed9ee6bbc",
+        "rules": "https://reactor.adobe.io/rule_components/RCd337872f30db4c1e8db1d39ed9ee6bbc/rules",
+        "self": "https://reactor.adobe.io/rule_components/RCd337872f30db4c1e8db1d39ed9ee6bbc"
+    },
+    "meta": {
+        "latest_revision_number": 8
+    }
+}

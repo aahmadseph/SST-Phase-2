@@ -1,0 +1,3 @@
+import NonIncentivizedTooltip from 'components/ProductPage/RatingsAndReviews/ReviewsFilters/NonIncentivizedTooltip/NonIncentivizedTooltip';
+
+export default NonIncentivizedTooltip;

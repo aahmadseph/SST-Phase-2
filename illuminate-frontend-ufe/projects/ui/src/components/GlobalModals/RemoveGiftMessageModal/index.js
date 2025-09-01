@@ -1,0 +1,6 @@
+import RemoveGiftMessageModal from 'components/GlobalModals/RemoveGiftMessageModal/RemoveGiftMessageModal';
+import { withRemoveGiftMessageModalProps } from 'viewModel/globalModals/removeGiftMessageModal/withRemoveGiftMessageModalProps';
+
+const ConnectedRemoveGiftMessageModal = withRemoveGiftMessageModalProps(RemoveGiftMessageModal);
+
+export default ConnectedRemoveGiftMessageModal;

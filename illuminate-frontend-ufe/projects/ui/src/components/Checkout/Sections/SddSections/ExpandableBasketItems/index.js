@@ -1,0 +1,6 @@
+import ExpandableBasketItems from 'components/Checkout/Sections/SddSections/ExpandableBasketItems/ExpandableBasketItems';
+import withExpandableBasketItemsProps from 'viewModel/checkout/sections/sddSections/withExpandableBasketItemsProps';
+
+const ConnectedExpandableBasketItems = withExpandableBasketItemsProps(ExpandableBasketItems);
+
+export default ConnectedExpandableBasketItems;

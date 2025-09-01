@@ -1,0 +1,129 @@
+pipeline {
+    agent any
+    tools {
+        jdk 'jdk8'
+        maven 'maven3'
+        nodejs 'NodeJS-22.12.0-UFE'
+    }
+    environment {
+        //default version for master branch
+        def PROJECT_VERSION = "master-SNAPSHOT"
+        BRANCH_NAME = "${GIT_BRANCH.split("/")[1]}"
+        CODE_BRANCH = "${BRANCH_NAME}"
+        UFE_BASE_VERSION = "${BRANCH_NAME.toLowerCase()}"
+        UFE_BASE_TAG_VERSION = "latest"
+        BUILD_NUMBER = "${env.BUILD_NUMBER}"
+        GIT_BRANCH = "${env.GIT_BRANCH}"
+        GIT_COMMIT = "${env.GIT_COMMIT}"
+    }
+    stages {
+        stage('Install') {
+            steps {
+                script {
+                    SEARCH_PATERN = /^\w{1,6}-\d{1,6}/
+                    JIRA_ID = CODE_BRANCH.find(SEARCH_PATERN)
+                    def LABEL = JIRA_ID ? "<a href='https://jira.sephora.com/browse/${JIRA_ID}' style='text-decoration: none;'>${CODE_BRANCH}</a>" : "<span>${CODE_BRANCH}<span>"
+                    addHtmlBadge html: LABEL
+                    sh 'npm ci'
+                }
+            }
+        }
+        stage('Test') {
+            steps{
+                catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+                    sh 'sudo sysctl -w fs.inotify.max_user_watches=262144'
+                    sh 'npm run test:ui'
+                }
+            }
+        }
+        stage('Build') {
+            steps{
+                sh 'npm run build:ui'
+                sh 'npm run build-jenkins-aas --workspace=ui'
+            }
+        }
+        stage('Dockerize') {
+            steps {
+                script {
+                    // Pass all necessary Jenkins environment variables to the shell
+                    sh """
+                        BUILD_NUMBER=${env.BUILD_NUMBER} \
+                        PROJECT_VERSION=${env.PROJECT_VERSION} \
+                        CODE_BRANCH=${env.CODE_BRANCH} \
+                        GIT_BRANCH=${env.GIT_BRANCH} \
+                        GIT_COMMIT=${env.GIT_COMMIT} \
+                        UFE_BASE_VERSION=${env.UFE_BASE_VERSION} \
+                        UFE_BASE_TAG_VERSION=${env.UFE_BASE_TAG_VERSION} \
+                        npm run build:server
+                    """
+                }
+            }
+        }
+        stage('Sonarqube') {
+            environment {
+                scannerHome = tool 'sonar-scanner'
+            }
+            steps {
+                withSonarQubeEnv('Sonarqube') {
+                    sh "${scannerHome}/bin/sonar-scanner -D project.settings='sonar-scanner.properties' -Dsonar.projectBaseDir=."
+                }
+                sleep(60)
+            }
+        }
+        stage ('Publish Report') {
+            steps{
+                // should be re-enabled back after updating karma config file for code coverage
+                // publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'tests/output/html', reportFiles: 'index.html', reportName: 'Test Reports', reportTitles: ''])
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: true, reportDir: 'projects/ui/tests/output', reportFiles: 'unit_tests_results.html', reportName: 'Unit Test Results', reportTitles: ''])
+            }
+        }
+        stage('Upload') {
+            steps {
+                sh 'rm -f *.tar.*'
+                script {
+                    def files = []
+                    files = Arrays.asList(sh (returnStdout:true, script: "ls -1 | grep -v node_service").split("\\r?\\n"))
+                    echo "files: $files"
+                    echo "size: " + files.size()
+                    for (i=0; i < files.size(); i++) {
+                        echo "file: ${files[i]}"
+                        sh ("tar -rf ufe_node_service.tar ${files[i]}")
+                    }
+                    sh "gzip ufe_node_service.tar"
+                    sh "tar -cvzf ufe_web_assets.tar.gz ./projects/ui/dist/cjs ./projects/ui/img"
+
+                    if ("${CODE_BRANCH}" != "master") {
+                        PROJECT_VERSION = "${CODE_BRANCH}".replaceAll( "/","-") + "-SNAPSHOT"
+                    }
+
+                    sh 'echo "PROJECT_VERSION: ${PROJECT_VERSION}"'
+                    sh "mvn deploy:deploy-file -P lib-snapshot -Dfile=ufe_node_service.tar.gz -DrepositoryId=sephora-snapshot-lib -Durl=http://artifactory.lipstack.sephoraus.com/artifactory/sephora-snapshot-lib-local -DgroupId=com.sephora.ufe -DartifactId=ufe_node_service -Dversion=${PROJECT_VERSION} -Dtype=tar.gz -Dpackaging=tar.gz"
+                    sh "mvn deploy:deploy-file -P lib-snapshot -Dfile=ufe_web_assets.tar.gz -DrepositoryId=sephora-snapshot-lib -Durl=http://artifactory.lipstack.sephoraus.com/artifactory/sephora-snapshot-lib-local -DgroupId=com.sephora.ufe -DartifactId=ufe_web_assets -Dversion=${PROJECT_VERSION} -Dtype=tar.gz -Dpackaging=tar.gz"
+                }
+            }
+        }
+    }
+    post {
+	    failure {	updateGitlabCommitStatus name: 'build', state: 'failed'
+	          script {
+	                def COMMIT_AUTHOR = sh (script: 'git log -1 --format=%an', returnStdout: true).trim()
+			        office365ConnectorSend (
+			        message:"UFE build failed for **${CODE_BRANCH}**. Last commit authored by **${COMMIT_AUTHOR}**",
+			        status:"Failed",
+			        webhookUrl:"https://outlook.office.com/webhook/86f31526-f9f0-4ae5-b7e1-4673b0cc5236@7d1f4f5f-8f63-48d8-86e1-8b8f63f16bae/IncomingWebhook/ae3b67bf17054eb29f19545b48594aed/70ede629-da29-4328-9c9f-f10fcb12c74f"
+		            )
+              }
+	    }
+		 success {
+	        updateGitlabCommitStatus name: 'build', state: 'success'
+	          script {
+	                def COMMIT_AUTHOR = sh (script: 'git log -1 --format=%an', returnStdout: true).trim()
+			        office365ConnectorSend (
+			        message:"UFE build success for **${CODE_BRANCH}**. Last commit authored by **${COMMIT_AUTHOR}**",
+			        status:"success",
+			        webhookUrl:"https://outlook.office.com/webhook/86f31526-f9f0-4ae5-b7e1-4673b0cc5236@7d1f4f5f-8f63-48d8-86e1-8b8f63f16bae/IncomingWebhook/ae3b67bf17054eb29f19545b48594aed/70ede629-da29-4328-9c9f-f10fcb12c74f"
+		            )
+              }
+	    }
+    }
+}

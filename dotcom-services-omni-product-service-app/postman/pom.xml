@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.sephora.services.omni-product-service</groupId>
+        <artifactId>omni-product-service-parent</artifactId>
+        <version>2025.18-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>postman</artifactId>
+    <packaging>jar</packaging>
+    <properties>
+        <io.fabric8.docker.maven.plugin.version>0.45.1</io.fabric8.docker.maven.plugin.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>${io.fabric8.docker.maven.plugin.version}</version>
+                <configuration>
+                    <images>
+                        <image>
+                            <name>omni-product-service/newman</name>
+                            <build>
+                                <contextDir>${project.basedir}</contextDir>
+                                <dockerFile>Dockerfile</dockerFile>
+                            </build>
+                        </image>
+                    </images>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

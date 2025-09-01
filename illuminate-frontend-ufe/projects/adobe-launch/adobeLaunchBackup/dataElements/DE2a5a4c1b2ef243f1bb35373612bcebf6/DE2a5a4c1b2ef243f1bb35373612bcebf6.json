@@ -1,0 +1,97 @@
+{
+    "id": "DE2a5a4c1b2ef243f1bb35373612bcebf6",
+    "type": "data_elements",
+    "attributes": {
+        "created_at": "2024-11-07T13:36:41.405Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "[SOT] :: URL Navigation History",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2024-11-07T14:08:36.620Z",
+        "created_by_email": "abhinav.alkuchi@sephora.com",
+        "created_by_display_name": "abhinav alkuchi",
+        "updated_by_email": "abhinav.alkuchi@sephora.com",
+        "updated_by_display_name": "abhinav alkuchi",
+        "clean_text": false,
+        "default_value": null,
+        "delegate_descriptor_id": "core::dataElements::custom-code",
+        "force_lower_case": false,
+        "review_status": "unsubmitted",
+        "storage_duration": null,
+        "settings": "{\"source\":\"const navigationHistory = JSON.parse(sessionStorage.getItem('_constructorio_url_stack')) || [];\\n  if(navigationHistory.length \\u003e 0) {\\n    // Convert the array to a semicolon-separated string of URLs\\n    return navigationHistory.map(item =\\u003e item.url).join(\\\";\\\");\\n  }\\n  return null;\"}"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE2a5a4c1b2ef243f1bb35373612bcebf6/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE2a5a4c1b2ef243f1bb35373612bcebf6/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE2a5a4c1b2ef243f1bb35373612bcebf6/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE2a5a4c1b2ef243f1bb35373612bcebf6/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE2a5a4c1b2ef243f1bb35373612bcebf6/origin"
+            },
+            "data": {
+                "id": "DE2a5a4c1b2ef243f1bb35373612bcebf6",
+                "type": "data_elements"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE2a5a4c1b2ef243f1bb35373612bcebf6/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE2a5a4c1b2ef243f1bb35373612bcebf6/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE2a5a4c1b2ef243f1bb35373612bcebf6/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/data_elements/DE2a5a4c1b2ef243f1bb35373612bcebf6",
+        "self": "https://reactor.adobe.io/data_elements/DE2a5a4c1b2ef243f1bb35373612bcebf6",
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74"
+    },
+    "meta": {
+        "latest_revision_number": 3
+    }
+}

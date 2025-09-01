@@ -1,0 +1,91 @@
+{
+    "id": "RC1cd9d479052b4828ad1557fa62e88937",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2022-12-08T16:16:21.437Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: Facebook_searchView",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": false,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-07-11T15:14:38.088Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "niltoncesar.santos@sephora.com",
+        "updated_by_display_name": "niltoncesar santos",
+        "settings": "{\"source\":\"/* This should only happen after the base pixel has fired.\\n** We are using a modified arguments list to avoid multiple calls to the same pixel.\\n** Read more aboue invoking with 'trackSingle' here:\\n** https://developers.facebook.com/ads/blog/post/2017/11/28/event-tracking-with-multiple-pixels-tracksingle/\\n*/\\n\\nvar prodStr = digitalData.page.attributes.search.productsDisplayed;\\nvar arrVal = [];\\nif (typeof prodStr === 'string') {\\n    arrVal = digitalData.page.attributes.search \\u0026\\u0026 prodStr ? prodStr.split(',') : [];\\n}\\nif (prodStr \\u0026\\u0026  prodStr instanceof Array) {  \\n    for(var i=0; i\\u003cprodStr.length; i++) {\\n     var productId = prodStr[i] \\u0026\\u0026 prodStr[i].currentSku \\u0026\\u0026 prodStr[i].currentSku.skuId;\\n     if (productId) { \\n         arrVal.push(productId);\\n     }\\n    }\\n}\\n \\nvar eventId = \\\"search-\\\" + _satellite.getVar('[UEID] :: Universal Event ID Fx')(event);\\n\\nvar biStatus = digitalData.user[0].segment.fbBiStatus;\\nvar biAccountId = Sephora.Util.getUserInfoCache()?.profile?.beautyInsiderAccount?.biAccountId || '';\\nvar facebookPixelId = _satellite.getVar('[TMS] Facebook Pixel ID');\\n\\n// Changes the search term from 'lip%balm' to 'lip balm'\\nvar searchTerm = _satellite.getVar('[TMS] Page :: Search Term');\\nsearchTerm = !searchTerm ? searchTerm : unescape(searchTerm);\\n\\nvar data = {\\n    Content_type: 'product',\\n    customer_type: biStatus,\\n    Search_string: searchTerm,\\n    Content_ids: arrVal,\\n    origin: 'Adobe Launch - Facebook_searchView'\\n};\\n\\nif(data.Search_string) {\\n  if (biAccountId) {\\n    Sephora.analytics.utils.hashString(biAccountId).then(hashedBiId =\\u003e {\\n        fbq('trackSingle', facebookPixelId, 'Search', { ...data, external_id: hashedBiId }, { eventID: eventId });\\n    });\\n  } else {\\n    fbq('trackSingle', facebookPixelId, 'Search', data, { eventID: eventId }); \\n  }\\n}\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC1cd9d479052b4828ad1557fa62e88937/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC1cd9d479052b4828ad1557fa62e88937/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC1cd9d479052b4828ad1557fa62e88937/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC1cd9d479052b4828ad1557fa62e88937/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC1cd9d479052b4828ad1557fa62e88937/origin"
+            },
+            "data": {
+                "id": "RC1cd9d479052b4828ad1557fa62e88937",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC1cd9d479052b4828ad1557fa62e88937/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC1cd9d479052b4828ad1557fa62e88937",
+        "rules": "https://reactor.adobe.io/rule_components/RC1cd9d479052b4828ad1557fa62e88937/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC1cd9d479052b4828ad1557fa62e88937"
+    },
+    "meta": {
+        "latest_revision_number": 15
+    }
+}

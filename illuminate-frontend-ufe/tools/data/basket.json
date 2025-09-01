@@ -1,0 +1,2615 @@
+{
+    "ancestorHierarchy": [{
+        "displayName": "Basket",
+        "nodeStatus": 2,
+        "targetScreen": {
+            "apiUrl": "/v1/catalog/media/17000028",
+            "targetScreen": "contentstore",
+            "targetUrl": "/beauty/basket",
+            "targetValue": "17000028"
+        }
+    }],
+    "navigationSeoJsonLd": "[{\"@type\":\"siteNavigationElement\",\"name\":\"Makeup\",\"position\":1,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/shop/makeup-cosmetics\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Bath & Body\",\"position\":2,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/shop/bath-body\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Skincare\",\"position\":3,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/shop/skincare\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Fragrance\",\"position\":4,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/shop/fragrance\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Hair\",\"position\":5,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/shop/hair-products\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Tools & Brushes\",\"position\":6,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/shop/makeup-tools\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Men\",\"position\":7,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/shop/men\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Mini Size\",\"position\":8,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/shop/travel-size-toiletries\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Gifts\",\"position\":9,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/shop/gifts\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Sephora Collection\",\"position\":10,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/sephora-collection?icid2=meganav_shopcategories_sephoracollection_link\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Beauty Offers\",\"position\":11,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/beauty-offers\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Sale\",\"position\":12,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/sale\"},{\"@type\":\"siteNavigationElement\",\"name\":\"New\",\"position\":13,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/new-beauty-products\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Brands\",\"position\":14,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/brand/list.jsp\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Community\",\"position\":15,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/community\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Happening At\",\"position\":16,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/happening/home\"}]",
+    "regions": {
+        "content": [{
+            "alignment": "Center",
+            "carouselImageSize": 135,
+            "carouselMaxSkus": 12,
+            "componentName": "Sephora Unified Carousel Component",
+            "componentType": 54,
+            "displayCount": 4,
+            "enableTesting": false,
+            "isEnableCircle": false,
+            "isUseAddToBasket": true,
+            "name": "basket_beautygrab_060117_d_productcarousel",
+            "showArrows": true,
+            "showBiLogo": false,
+            "showLoves": false,
+            "showMarketingFlags": false,
+            "showPrice": true,
+            "showReviews": false,
+            "showSKUNumbering": false,
+            "showSignUpForEmail": true,
+            "showTouts": false,
+            "skus": [{
+                "biExclusiveLevel": "none",
+                "brandName": "BECCA",
+                "image": "/productimages/sku/s1808377-main-grid.jpg",
+                "isAppExclusive": false,
+                "isBiOnly": false,
+                "isFirstAccess": false,
+                "isFree": false,
+                "isLimitedEdition": true,
+                "isLimitedQuantity": false,
+                "isLimitedTimeOffer": false,
+                "isNaturalOrganic": false,
+                "isNaturalSephora": false,
+                "isNew": false,
+                "isOnlineOnly": false,
+                "isOutOfStock": false,
+                "isSephoraExclusive": false,
+                "listPrice": "$20.00",
+                "productId": "P401784",
+                "productName": "Glow on the Go Highlighter Set",
+                "skuId": "1808377",
+                "skuImages": {
+                    "image135": "/productimages/sku/s1808377-main-grid.jpg",
+                    "image162": "/productimages/sku/s1808377-162.jpg",
+                    "image250": "/productimages/sku/s1808377-main-hero.jpg",
+                    "image42": "/productimages/sku/s1808377-main-thumb.jpg",
+                    "image450": "/productimages/sku/s1808377-main-Lhero.jpg",
+                    "image62": "/productimages/sku/s1808377-main-Lthumb.jpg",
+                    "image97": "/productimages/sku/s1808377-main-Sgrid.jpg"
+                },
+                "starRatings": 4,
+                "targetUrl": "/product/shimmering-skin-perfector-opal-glow-on-go-P401784?skuId=1808377",
+                "valuePrice": "($34.00 value)"
+            }, {
+                "biExclusiveLevel": "none",
+                "brandName": "Laura Mercier",
+                "image": "/productimages/sku/s1635176-main-grid.jpg",
+                "isAppExclusive": false,
+                "isBiOnly": false,
+                "isFirstAccess": false,
+                "isFree": false,
+                "isLimitedEdition": false,
+                "isLimitedQuantity": false,
+                "isLimitedTimeOffer": false,
+                "isNaturalOrganic": false,
+                "isNaturalSephora": false,
+                "isNew": false,
+                "isOnlineOnly": false,
+                "isOutOfStock": false,
+                "isSephoraExclusive": true,
+                "listPrice": "$23.00",
+                "productId": "P422083",
+                "productName": "Translucent Loose Setting Powder Mini",
+                "skuId": "1635176",
+                "skuImages": {
+                    "image135": "/productimages/sku/s1635176-main-grid.jpg",
+                    "image162": "/productimages/sku/s1635176-162.jpg",
+                    "image250": "/productimages/sku/s1635176-main-hero.jpg",
+                    "image42": "/productimages/sku/s1635176-main-thumb.jpg",
+                    "image450": "/productimages/sku/s1635176-main-Lhero.jpg",
+                    "image62": "/productimages/sku/s1635176-main-Lthumb.jpg",
+                    "image97": "/productimages/sku/s1635176-main-Sgrid.jpg"
+                },
+                "starRatings": 4.5882,
+                "targetUrl": "/product/translucent-loose-setting-powder-mini-P422083"
+            }, {
+                "biExclusiveLevel": "none",
+                "brandName": "NARS",
+                "image": "/productimages/sku/s1807791-main-grid.jpg",
+                "isAppExclusive": false,
+                "isBiOnly": false,
+                "isFirstAccess": false,
+                "isFree": false,
+                "isLimitedEdition": true,
+                "isLimitedQuantity": false,
+                "isLimitedTimeOffer": false,
+                "isNaturalOrganic": false,
+                "isNaturalSephora": false,
+                "isNew": false,
+                "isOnlineOnly": false,
+                "isOutOfStock": false,
+                "isSephoraExclusive": true,
+                "listPrice": "$20.00",
+                "productId": "P408115",
+                "productName": "Velvet Matte Lipstick Pencil Duo",
+                "skuId": "1807791",
+                "skuImages": {
+                    "image135": "/productimages/sku/s1807791-main-grid.jpg",
+                    "image162": "/productimages/sku/s1807791-162.jpg",
+                    "image250": "/productimages/sku/s1807791-main-hero.jpg",
+                    "image42": "/productimages/sku/s1807791-main-thumb.jpg",
+                    "image450": "/productimages/sku/s1807791-main-Lhero.jpg",
+                    "image62": "/productimages/sku/s1807791-main-Lthumb.jpg",
+                    "image97": "/productimages/sku/s1807791-main-Sgrid.jpg"
+                },
+                "starRatings": 0,
+                "targetUrl": "/product/velvet-matte-lip-pencil-duo-P408115",
+                "valuePrice": "($40.00 value)"
+            }, {
+                "biExclusiveLevel": "none",
+                "brandName": "Sol de Janeiro",
+                "image": "/productimages/sku/s1902394-main-grid.jpg",
+                "isAppExclusive": false,
+                "isBiOnly": false,
+                "isComingSoonTreatment": false,
+                "isFirstAccess": false,
+                "isFree": false,
+                "isLimitedEdition": false,
+                "isLimitedQuantity": false,
+                "isLimitedTimeOffer": false,
+                "isNaturalOrganic": false,
+                "isNaturalSephora": false,
+                "isNew": false,
+                "isOnlineOnly": false,
+                "isOutOfStock": true,
+                "isSephoraExclusive": false,
+                "isShowAsStoreOnlyTreatment": false,
+                "isWithBackInStockTreatment": true,
+                "listPrice": "$20.00",
+                "productId": "P425319",
+                "productName": "Açai Body Power Cream Mini",
+                "skuId": "1902394",
+                "skuImages": {
+                    "image135": "/productimages/sku/s1902394-main-grid.jpg",
+                    "image162": "/productimages/sku/s1902394-162.jpg",
+                    "image250": "/productimages/sku/s1902394-main-hero.jpg",
+                    "image42": "/productimages/sku/s1902394-main-thumb.jpg",
+                    "image450": "/productimages/sku/s1902394-main-Lhero.jpg",
+                    "image62": "/productimages/sku/s1902394-main-Lthumb.jpg",
+                    "image97": "/productimages/sku/s1902394-main-Sgrid.jpg"
+                },
+                "starRatings": 0,
+                "targetUrl": "/product/a-a-body-power-cream-mini-P425319"
+            }, {
+                "biExclusiveLevel": "none",
+                "brandName": "SEPHORA COLLECTION",
+                "image": "/productimages/sku/s1591858-main-grid.jpg",
+                "isAppExclusive": false,
+                "isBiOnly": false,
+                "isFirstAccess": false,
+                "isFree": false,
+                "isLimitedEdition": false,
+                "isLimitedQuantity": false,
+                "isLimitedTimeOffer": false,
+                "isNaturalOrganic": false,
+                "isNaturalSephora": false,
+                "isNew": true,
+                "isOnlineOnly": false,
+                "isOutOfStock": false,
+                "isSephoraExclusive": true,
+                "listPrice": "$22.00",
+                "productId": "P385717",
+                "productName": "Lighten Up LED Compact Mirror",
+                "salePrice": "$11.00",
+                "skuId": "1591858",
+                "skuImages": {
+                    "image135": "/productimages/sku/s1591858-main-grid.jpg",
+                    "image162": "/productimages/sku/s1591858-162.jpg",
+                    "image250": "/productimages/sku/s1591858-main-hero.jpg",
+                    "image42": "/productimages/sku/s1591858-main-thumb.jpg",
+                    "image450": "/productimages/sku/s1591858-main-Lhero.jpg",
+                    "image62": "/productimages/sku/s1591858-main-Lthumb.jpg",
+                    "image97": "/productimages/sku/s1591858-main-Sgrid.jpg"
+                },
+                "starRatings": 4,
+                "targetUrl": "/product/lighten-up-led-compact-mirror-P385717"
+            }, {
+                "biExclusiveLevel": "none",
+                "brandName": "L'Occitane",
+                "image": "/productimages/sku/s763706-main-grid.jpg",
+                "isAppExclusive": false,
+                "isBiOnly": false,
+                "isFirstAccess": false,
+                "isFree": false,
+                "isLimitedEdition": false,
+                "isLimitedQuantity": false,
+                "isLimitedTimeOffer": false,
+                "isNaturalOrganic": false,
+                "isNaturalSephora": false,
+                "isNew": false,
+                "isOnlineOnly": false,
+                "isOutOfStock": false,
+                "isSephoraExclusive": false,
+                "listPrice": "$25.00",
+                "productId": "P107319",
+                "productName": "Cleansing And Softening Shower Oil With Almond Oil",
+                "skuId": "763706",
+                "skuImages": {
+                    "image135": "/productimages/sku/s763706-main-grid.jpg",
+                    "image162": "/productimages/sku/s763706-162.jpg",
+                    "image250": "/productimages/sku/s763706-main-hero.jpg",
+                    "image42": "/productimages/sku/s763706-main-thumb.jpg",
+                    "image450": "/productimages/sku/s763706-main-Lhero.jpg",
+                    "image62": "/productimages/sku/s763706-main-Lthumb.jpg",
+                    "image97": "/productimages/sku/s763706-main-Sgrid.jpg"
+                },
+                "starRatings": 4.8,
+                "targetUrl": "/product/cleansing-softening-shower-oil-with-almond-oil-P107319"
+            }, {
+                "biExclusiveLevel": "none",
+                "brandName": "tarte",
+                "image": "/productimages/sku/s1659457-main-grid.jpg",
+                "isAppExclusive": false,
+                "isBiOnly": false,
+                "isFirstAccess": false,
+                "isFree": false,
+                "isLimitedEdition": false,
+                "isLimitedQuantity": false,
+                "isLimitedTimeOffer": false,
+                "isNaturalOrganic": false,
+                "isNaturalSephora": false,
+                "isNew": false,
+                "isOnlineOnly": false,
+                "isOutOfStock": false,
+                "isSephoraExclusive": false,
+                "listPrice": "$21.00",
+                "productId": "P262304",
+                "productName": "Clay Pot Waterproof Liner",
+                "skuId": "1659457",
+                "skuImages": {
+                    "image135": "/productimages/sku/s1659457-main-grid.jpg",
+                    "image162": "/productimages/sku/s1659457-162.jpg",
+                    "image250": "/productimages/sku/s1659457-main-hero.jpg",
+                    "image42": "/productimages/sku/s1659457-main-thumb.jpg",
+                    "image450": "/productimages/sku/s1659457-main-Lhero.jpg",
+                    "image62": "/productimages/sku/s1659457-main-Lthumb.jpg",
+                    "image97": "/productimages/sku/s1659457-main-Sgrid.jpg"
+                },
+                "starRatings": 5,
+                "targetUrl": "/product/emphaseyes-waterproof-clay-shadow-liner-P262304?skuId=1659457"
+            }, {
+                "biExclusiveLevel": "none",
+                "brandName": "bareMinerals",
+                "image": "/productimages/sku/s1641968-main-grid.jpg",
+                "isAppExclusive": false,
+                "isBiOnly": false,
+                "isFirstAccess": false,
+                "isFree": false,
+                "isLimitedEdition": false,
+                "isLimitedQuantity": false,
+                "isLimitedTimeOffer": false,
+                "isNaturalOrganic": false,
+                "isNaturalSephora": false,
+                "isNew": false,
+                "isOnlineOnly": true,
+                "isOutOfStock": false,
+                "isSephoraExclusive": false,
+                "listPrice": "$29.50",
+                "productId": "P387927",
+                "productName": "BARE TUTORIALS™ eyeliner",
+                "salePrice": "$22.00",
+                "skuId": "1641968",
+                "skuImages": {
+                    "image135": "/productimages/sku/s1641968-main-grid.jpg",
+                    "image162": "/productimages/sku/s1641968-162.jpg",
+                    "image250": "/productimages/sku/s1641968-main-hero.jpg",
+                    "image42": "/productimages/sku/s1641968-main-thumb.jpg",
+                    "image450": "/productimages/sku/s1641968-main-Lhero.jpg",
+                    "image62": "/productimages/sku/s1641968-main-Lthumb.jpg",
+                    "image97": "/productimages/sku/s1641968-main-Sgrid.jpg"
+                },
+                "starRatings": 0,
+                "targetUrl": "/product/bare-tutorials-eyeliner-P387927"
+            }, {
+                "biExclusiveLevel": "none",
+                "brandName": "SEPHORA COLLECTION",
+                "image": "/productimages/sku/s1794494-main-grid.jpg",
+                "isAppExclusive": false,
+                "isBiOnly": false,
+                "isComingSoonTreatment": false,
+                "isFirstAccess": false,
+                "isFree": false,
+                "isLimitedEdition": true,
+                "isLimitedQuantity": false,
+                "isLimitedTimeOffer": false,
+                "isNaturalOrganic": false,
+                "isNaturalSephora": false,
+                "isNew": false,
+                "isOnlineOnly": true,
+                "isOutOfStock": true,
+                "isSephoraExclusive": true,
+                "isShowAsStoreOnlyTreatment": false,
+                "isWithBackInStockTreatment": true,
+                "listPrice": "$10.00",
+                "productId": "P406203",
+                "productName": "Super Glossy: Set of 3 Glossy Gloss To Go",
+                "skuId": "1794494",
+                "skuImages": {
+                    "image135": "/productimages/sku/s1794494-main-grid.jpg",
+                    "image162": "/productimages/sku/s1794494-162.jpg",
+                    "image250": "/productimages/sku/s1794494-main-hero.jpg",
+                    "image42": "/productimages/sku/s1794494-main-thumb.jpg",
+                    "image450": "/productimages/sku/s1794494-main-Lhero.jpg",
+                    "image62": "/productimages/sku/s1794494-main-Lthumb.jpg",
+                    "image97": "/productimages/sku/s1794494-main-Sgrid.jpg"
+                },
+                "starRatings": 0,
+                "targetUrl": "/product/super-glossy-set-3-glossy-gloss-to-go-P406203"
+            }, {
+                "biExclusiveLevel": "none",
+                "brandName": "SEPHORA COLLECTION",
+                "image": "/productimages/sku/s1258334-main-grid.jpg",
+                "isAppExclusive": false,
+                "isBiOnly": false,
+                "isFirstAccess": false,
+                "isFree": false,
+                "isLimitedEdition": false,
+                "isLimitedQuantity": false,
+                "isLimitedTimeOffer": false,
+                "isNaturalOrganic": false,
+                "isNaturalSephora": false,
+                "isNew": false,
+                "isOnlineOnly": false,
+                "isOutOfStock": false,
+                "isSephoraExclusive": true,
+                "listPrice": "$9.50",
+                "productId": "P276322",
+                "productName": "Express Cleansing Wipes",
+                "salePrice": "$5.00",
+                "skuId": "1258334",
+                "skuImages": {
+                    "image135": "/productimages/sku/s1258334-main-grid.jpg",
+                    "image162": "/productimages/sku/s1258334-162.jpg",
+                    "image250": "/productimages/sku/s1258334-main-hero.jpg",
+                    "image42": "/productimages/sku/s1258334-main-thumb.jpg",
+                    "image450": "/productimages/sku/s1258334-main-Lhero.jpg",
+                    "image62": "/productimages/sku/s1258334-main-Lthumb.jpg",
+                    "image97": "/productimages/sku/s1258334-main-Sgrid.jpg"
+                },
+                "starRatings": 0,
+                "targetUrl": "/product/express-cleansing-wipes-P276322"
+            }],
+            "styleList": {
+                "BOTTOM_PADDING": "",
+                "TOP_PADDING": ""
+            },
+            "title": "Beauty Grabs",
+            "viewAllTarget": {
+                "targetScreen": "searchresults",
+                "targetUrl": "basket_beautygrab_060117_skulist",
+                "targetValue": "basket_beautygrab_060117_skulist;contentGroup=true"
+            }
+        }]
+    },
+    "seoCanonicalUrl": "/basket",
+    "seoName": "basket",
+    "seoTitle": "Basket | Sephora",
+    "targetUrl": "/beauty/basket",
+    "templateUrl": "/basket/basket.jsp",
+    "title": "Basket",
+    "type": "Unified Content Store",
+    "targeters": [{
+        "targeterName": "/atg/registry/RepositoryTargeters/Sephora/BasketFlashBannerTargeter"
+    }, {
+        "targeterName": "/atg/registry/RepositoryTargeters/Sephora/BasketGiftCardTargeter"
+    }],
+    "siteLocale": "us",
+    "enableScan": false,
+    "ajaxMaxRetries": "2",
+    "ajaxTimeout": "3000",
+    "ajaxExtendedTimeout": "9000",
+    "ajaxExtendedTimeoutFindInStore": "15000",
+    "thirdpartyImageHost": "//api-qa3.sephora.com",
+    "fullSiteHostName": "//www.sephora.com",
+    "headerFooterTemplate": {
+        "ancestorHierarchy": [{
+            "displayName": "Header And Footer Template",
+            "nodeStatus": 2
+        }],
+        "navigationSeoJsonLd": "[{\"@type\":\"siteNavigationElement\",\"name\":\"Makeup\",\"position\":1,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/shop/makeup-cosmetics\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Bath & Body\",\"position\":2,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/shop/bath-body\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Skincare\",\"position\":3,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/shop/skincare\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Fragrance\",\"position\":4,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/shop/fragrance\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Hair\",\"position\":5,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/shop/hair-products\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Tools & Brushes\",\"position\":6,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/shop/makeup-tools\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Men\",\"position\":7,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/shop/men\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Mini Size\",\"position\":8,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/shop/travel-size-toiletries\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Gifts\",\"position\":9,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/shop/gifts\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Sephora Collection\",\"position\":10,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/sephora-collection?icid2=meganav_shopcategories_sephoracollection_link\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Beauty Offers\",\"position\":11,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/beauty-offers\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Sale\",\"position\":12,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/sale\"},{\"@type\":\"siteNavigationElement\",\"name\":\"New\",\"position\":13,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/new-beauty-products\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Brands\",\"position\":14,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/brand/list.jsp\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Community\",\"position\":15,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/community\"},{\"@type\":\"siteNavigationElement\",\"name\":\"Happening At\",\"position\":16,\"@context\":\"http://schema.org\",\"url\":\"https://qa3.sephora.com/happening/home\"}]",
+        "regions": {
+            "headerPromo": [{
+                "componentName": "Sephora Unified Link Component",
+                "componentType": 58,
+                "displayTitle": "Shop Gift Cards",
+                "enableTesting": false,
+                "name": "header_postagestamp_shopgiftcards_us_080117_link",
+                "targetScreen": {
+                    "targetScreen": "contentstore",
+                    "targetUrl": "/giftcards?icid2=homepage_rotatinggif_giftcard_us_d_080117_link",
+                    "targetValue": "17200041;icid2=homepage_rotatinggif_giftcard_us_d_080117_link",
+                    "targetWindow": 0
+                }
+            }, {
+                "altText": "2 Free Samples with any Purchase",
+                "componentName": "Sephora Unified Link Component",
+                "componentType": 58,
+                "displayTitle": "2 Free Samples with any Purchase",
+                "enableTesting": false,
+                "name": "header_postagestamp_3freesamples_link",
+                "targetScreen": {
+                    "targetScreen": "contentstore",
+                    "targetUrl": "/free-beauty-samples",
+                    "targetValue": "10800026",
+                    "targetWindow": 0
+                }
+            }, {
+                "altText": "3-Day Shipping Free Over $50",
+                "componentName": "Sephora Unified Link Component",
+                "componentType": 58,
+                "displayTitle": "Free 3-Day Shipping over $50",
+                "enableTesting": false,
+                "name": "header_postagestamp_3dayship_us_link",
+                "targetScreen": {
+                    "targetScreen": "contentstore",
+                    "targetUrl": "/shipping-information",
+                    "targetValue": "12300026",
+                    "targetWindow": 0
+                }
+            }],
+            "persistentBanner2": [{
+                "componentName": "Sephora Unified Targeter Component",
+                "componentType": 63,
+                "enableTesting": false,
+                "targeterName": "/atg/registry/RepositoryTargeters/NonRougeGenericBeautyOffersBTNTargeter",
+                "targeterResult": []
+            }, {
+                "backGroundColor": "black",
+                "componentName": "Sephora Unified Markdown Component",
+                "componentType": 57,
+                "contentType": "PlainText",
+                "enableTesting": true,
+                "modalComponentTemplate": {
+                    "componentName": "Sephora Unified Modal Component",
+                    "componentType": 56,
+                    "components": [{
+                        "componentName": "Sephora Unified Video Component",
+                        "componentType": 61,
+                        "filePath": "tseWlnZjE6Y0Wnxiagsiz4kGbt18ct8B",
+                        "height": "400",
+                        "name": "play_brand_subscription_video_ufe",
+                        "overlayFlag": false,
+                        "startImagePath": "/contentimages/brands/play/2018-06-26-play-brand-boutique-heddek-video-us-d-slice-android.jpg",
+                        "thumbnailHeight": "355",
+                        "thumbnailWidth": "379",
+                        "videoUrl": "tseWlnZjE6Y0Wnxiagsiz4kGbt18ct8B",
+                        "width": "600"
+                    }],
+                    "design": "Default",
+                    "enableTesting": false,
+                    "name": "play_brand_subscription_modal_ufe",
+                    "scrollable": false
+                },
+                "name": "persistentbanner2_belowthenav_playsubscription_102918_markdown",
+                "targetWindow": "Same",
+                "testName": "Test-Persistent-Banner-3",
+                "text": "{color:white}{font-size:12px}[SPOTS OPEN! GET THE BEST BEAUTY SUBSCRIPTION BOX FOR JUST $10/MONTH. SUBSCRIBE NOW > | https://www.sephora.com/play?icid2=belowthenavbanner_playsubscription_102918_markdown]{color}{font-size}"
+            }],
+            "topNavigationMenu": [{
+                "alignment": "Center",
+                "componentName": "Sephora Unified Grid Component",
+                "componentType": 55,
+                "components": [{
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "componentName": "Sephora Unified Link Group Component",
+                        "componentType": 59,
+                        "enableTesting": false,
+                        "links": [{
+                            "altText": "Makeup",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Makeup",
+                            "enableTesting": false,
+                            "name": "meganav_new_justarrived_makeup_link",
+                            "targetScreen": {
+                                "targetScreen": "contentstore",
+                                "targetUrl": "/new-makeup?icid2=meganav_new_justarrived_makeup_link",
+                                "targetValue": "13500030;icid2=meganav_new_justarrived_makeup_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Skincare",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Skincare",
+                            "enableTesting": false,
+                            "name": "meganav_new_justarrived_skincare_link",
+                            "targetScreen": {
+                                "targetScreen": "contentstore",
+                                "targetUrl": "/new-skin-care-products?icid2=meganav_new_justarrived_skincare_link",
+                                "targetValue": "13500034;icid2=meganav_new_justarrived_skincare_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Fragrance",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Fragrance",
+                            "enableTesting": false,
+                            "name": "meganav_new_justarrived_fragrance_link",
+                            "targetScreen": {
+                                "targetScreen": "contentstore",
+                                "targetUrl": "/new-perfumes?icid2=meganav_new_justarrived_fragrance_link",
+                                "targetValue": "13500036;icid2=meganav_new_justarrived_fragrance_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Hair",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Hair",
+                            "enableTesting": false,
+                            "name": "meganav_new_justarrived_hair_link",
+                            "targetScreen": {
+                                "targetScreen": "contentstore",
+                                "targetUrl": "/new-hair-products?icid2=meganav_new_justarrived_hair_link",
+                                "targetValue": "13500040;icid2=meganav_new_justarrived_hair_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Bath & Body",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Bath & Body",
+                            "enableTesting": false,
+                            "name": "meganav_new_justarrived_bathandbody_link",
+                            "targetScreen": {
+                                "targetScreen": "contentstore",
+                                "targetUrl": "/new-body-products?icid2=meganav_new_justarrived_bathandbody_link",
+                                "targetValue": "13500038;icid2=meganav_new_justarrived_bathandbody_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Tools & Brushes",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Tools & Brushes",
+                            "enableTesting": false,
+                            "name": "meganav_new_justarrived_toolsandbrushes_link",
+                            "targetScreen": {
+                                "targetScreen": "contentstore",
+                                "targetUrl": "/new-beauty-tools?icid2=meganav_new_justarrived_toolsandbrushes_link",
+                                "targetValue": "13500042;icid2=meganav_new_justarrived_toolsandbrushes_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Men",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Men",
+                            "enableTesting": false,
+                            "name": "meganav_new_justarrived_men_link",
+                            "targetScreen": {
+                                "targetScreen": "contentstore",
+                                "targetUrl": "/new-cologne-for-men?icid2=meganav_new_justarrived_men_link",
+                                "targetValue": "13500044;icid2=meganav_new_justarrived_men_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "View All",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "View All",
+                            "enableTesting": false,
+                            "name": "meganav_new_justarrived_viewall_link",
+                            "targetScreen": {
+                                "targetScreen": "contentstore",
+                                "targetUrl": "/new-beauty-products?icid2=meganav_new_justarrived_viewall_link",
+                                "targetValue": "12800020;icid2=meganav_new_justarrived_viewall_link",
+                                "targetWindow": 0
+                            }
+                        }],
+                        "name": "meganav_new_justarrived_linkgroup",
+                        "title": "Just Arrived"
+                    }, {
+                        "altText": "Bestsellers",
+                        "componentName": "Sephora Unified Link Component",
+                        "componentType": 58,
+                        "displayTitle": "Bestsellers",
+                        "enableTesting": false,
+                        "name": "meganav_new_bestsellers_110217_link",
+                        "targetScreen": {
+                            "targetScreen": "contentstore",
+                            "targetUrl": "/beauty-best-sellers?icid2=meganav_new_bestsellers_link",
+                            "targetValue": "14300062;icid2=meganav_new_bestsellers_link",
+                            "targetWindow": 0
+                        }
+                    }, {
+                        "altText": "Monthly Subscription Box",
+                        "componentName": "Sephora Unified Link Component",
+                        "componentType": 58,
+                        "displayTitle": "Monthly Subscription Box",
+                        "enableTesting": false,
+                        "name": "meganav_new_play_110217_link",
+                        "targetScreen": {
+                            "targetScreen": "contentstore",
+                            "targetUrl": "/play?icid2=meganav_new_play_110217_link",
+                            "targetValue": "27500033;icid2=meganav_new_play_110217_link",
+                            "targetWindow": 0
+                        }
+                    }, {
+                        "altText": "Scouted By Sephora",
+                        "componentName": "Sephora Unified Link Component",
+                        "componentType": 58,
+                        "displayTitle": "Scouted By Sephora",
+                        "enableTesting": false,
+                        "name": "meganav_new_scouted_041718_link",
+                        "targetScreen": {
+                            "targetScreen": "contentstore",
+                            "targetUrl": "/scouted-by-sephora?icid2=meganav_new_scouted_020118_link",
+                            "targetValue": "ufe38900022;icid2=meganav_new_scouted_020118_link",
+                            "targetWindow": 0
+                        }
+                    }, {
+                        "altText": "Luxury Beauty",
+                        "componentName": "Sephora Unified Link Component",
+                        "componentType": 58,
+                        "displayTitle": "Luxury Beauty",
+                        "enableTesting": false,
+                        "name": "meganav_new_luxeatsephora_052518_link",
+                        "targetScreen": {
+                            "targetScreen": "contentstore",
+                            "targetUrl": "/luxe-at-sephora?icid2=meganav_new_luxeatsephora_link",
+                            "targetValue": "ufe41500023;icid2=meganav_new_luxeatsephora_link",
+                            "targetWindow": 0
+                        }
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_new_column1_grid"
+                }, {
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "NEW & ONLY HERE Get the latest launches from all-time-fave brands.",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "displayTitle": "First at Sephora",
+                        "enableTesting": false,
+                        "height": "404",
+                        "imageId": "7150159",
+                        "imagePath": "/contentimages/meganav/large/FAS0918_large-mega-handoff.jpg",
+                        "name": "meganav_new_fas_large_092018_image_us",
+                        "targetScreen": {
+                            "targetScreen": "contentstore",
+                            "targetUrl": "/first-at-sephora",
+                            "targetValue": "36700018",
+                            "targetWindow": 0
+                        },
+                        "width": "221"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_new_column2_grid"
+                }, {
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "FOUNDATION FINDER | What kind of coverage are you looking for? TAKE THE QUIZ > LIGHT COVERAGE | MEDIUM COVERAGE | FULL COVERAGE | multiple swatches of foundation in the background",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "displayTitle": "Foundation Finder",
+                        "enableTesting": false,
+                        "height": "404",
+                        "imageId": "9460040",
+                        "imagePath": "/contentimages/meganav/large/2018-08-09-meganav-lrg-foundation-finder-us-ca-d-slice.jpg",
+                        "name": "meganav_new_foundationanimation_finder_large_092018_us_image ",
+                        "targetScreen": {
+                            "targetUrl": "/beauty/foundation-finder",
+                            "targetWindow": 0
+                        },
+                        "width": "221"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_new_column3_grid"
+                }, {
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "BEAUTY'S RISING STARS >",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "displayTitle": "Beauty's Rising Stars",
+                        "enableTesting": false,
+                        "height": "194",
+                        "imageId": "6890403",
+                        "imagePath": "/contentimages/meganav/medium/2018-10-18-scouted-a-site-d-nav-med-button-us-ca-handoff.gif",
+                        "name": "meganav_new_scouted_med_101818_image",
+                        "styleList": {
+                            "BOTTOM_PADDING": ""
+                        },
+                        "targetScreen": {
+                            "targetScreen": "contentstore",
+                            "targetUrl": "/scouted-by-sephora",
+                            "targetValue": "ufe38900022",
+                            "targetWindow": 0
+                        },
+                        "width": "221"
+                    }, {
+                        "altText": "SHOP THE 2018 AWARD WINNERS>",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "displayTitle": "SHOP THE 2018 AWARD WINNERS",
+                        "enableTesting": false,
+                        "height": "198",
+                        "imageId": "6890402",
+                        "imagePath": "/contentimages/meganav/medium/2018-10-01-global-nav-md-allure-best-of-beauty-2018-us-ca-d-slice.jpg",
+                        "name": "meganav_new_allurebestof2018_med_101818_us_image",
+                        "targetScreen": {
+                            "targetScreen": "contentstore",
+                            "targetUrl": "/allure-best-of-beauty",
+                            "targetValue": "74100017",
+                            "targetWindow": 0
+                        },
+                        "width": "233"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_new_column4_grid"
+                }],
+                "desktopColumns": 4,
+                "displayTitle": "New",
+                "enableTesting": false,
+                "name": "meganav_topnavigation_new_grid",
+                "targetUrl": "/new-beauty-products"
+            }, {
+                "alignment": "Center",
+                "componentName": "Sephora Unified Grid Component",
+                "componentType": 55,
+                "components": [{
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "Brands A-Z",
+                        "componentName": "Sephora Unified Link Component",
+                        "componentType": 58,
+                        "displayTitle": "Brands A-Z",
+                        "enableTesting": false,
+                        "name": "meganav_brands_brandsatoz_desktop_link",
+                        "targetScreen": {
+                            "targetScreen": "contentstore",
+                            "targetUrl": "/brands-list",
+                            "targetValue": "ufebrand46200068",
+                            "targetWindow": 0
+                        }
+                    }, {
+                        "altText": "Sephora Collection",
+                        "componentName": "Sephora Unified Link Component",
+                        "componentType": 58,
+                        "displayTitle": "Sephora Collection",
+                        "enableTesting": false,
+                        "name": "meganav_brands_sephoracollection_link",
+                        "targetScreen": {
+                            "targetScreen": "brand",
+                            "targetUrl": "/sephora-collection?icid2=meganav_brands_sephoracollection_link",
+                            "targetValue": "3902;icid2=meganav_brands_sephoracollection_link",
+                            "targetWindow": 0
+                        }
+                    }, {
+                        "componentName": "Sephora Unified Link Group Component",
+                        "componentType": 59,
+                        "enableTesting": false,
+                        "links": [{
+                            "altText": "Charlotte Tilbury",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Charlotte Tilbury",
+                            "enableTesting": false,
+                            "name": "meganav_brands_newbrands_charlottetilbury_d_090618_us_link1",
+                            "targetScreen": {
+                                "targetScreen": "brand",
+                                "targetUrl": "/brand/charlotte-tilbury?icid2=meganav_brands_newbrands_charlottetilbury_d_090618_link1",
+                                "targetValue": "6236;icid2=meganav_brands_newbrands_charlottetilbury_d_090618_link1",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Vital Proteins",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Vital Proteins",
+                            "enableTesting": false,
+                            "name": "meganav_brands_newbrands_vitalproteins_d_us_102318_link2",
+                            "targetScreen": {
+                                "targetScreen": "brand",
+                                "targetUrl": "/brand/vital-proteins?icid2=meganav_brands_newbrands_vitalproteins_d_us_102318_link2",
+                                "targetValue": "6262;icid2=meganav_brands_newbrands_vitalproteins_d_us_102318_link2",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "PHLUR",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "PHLUR",
+                            "enableTesting": false,
+                            "name": "meganav_brands_newbrands_phlur_d_us-ca_102318_link3",
+                            "targetScreen": {
+                                "targetScreen": "brand",
+                                "targetUrl": "/brand/phlur?icid2=meganav_brands_newbrands_phlur_d_us-ca_102318_link3",
+                                "targetValue": "6252;icid2=meganav_brands_newbrands_phlur_d_us-ca_102318_link3",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "KÉRASTASE",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "KÉRASTASE",
+                            "enableTesting": false,
+                            "name": "meganav_brands_newbrands_kerastase_d_us_090618_link4",
+                            "targetScreen": {
+                                "targetScreen": "brand",
+                                "targetUrl": "/brand/kerastase/?icid2=meganav_brands_newbrands_kerastase_d_us_090618_link4",
+                                "targetValue": "6259;icid2=meganav_brands_newbrands_kerastase_d_us_090618_link4",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Kaja",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Kaja",
+                            "enableTesting": false,
+                            "name": "meganav_brands_newbrands_kaja_d_us_102318_link5",
+                            "targetScreen": {
+                                "targetScreen": "brand",
+                                "targetUrl": "/brand/kaja?icid2=meganav_brands_newbrands_kaja_d_us_102318_link5",
+                                "targetValue": "6255;icid2=meganav_brands_newbrands_kaja_d_us_102318_link5",
+                                "targetWindow": 0
+                            }
+                        }],
+                        "name": "meganav_brands_newbrands_desktop_linkgroup",
+                        "title": "New Brands"
+                    }, {
+                        "componentName": "Sephora Unified Link Group Component",
+                        "componentType": 59,
+                        "enableTesting": false,
+                        "links": [{
+                            "altText": "Tarte",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Tarte",
+                            "enableTesting": false,
+                            "name": "meganav_brands_featuredbrands_tarte_d_us-ca_102318_link1",
+                            "targetScreen": {
+                                "targetScreen": "brand",
+                                "targetUrl": "/brand/tarte?icid2=meganav_brands_featuredbrands_tarte_d_us-ca_102318_link1",
+                                "targetValue": "5648;icid2=meganav_brands_featuredbrands_tarte_d_us-ca_102318_link1",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Peace Out",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Peace Out",
+                            "enableTesting": false,
+                            "name": "meganav_brands_featuredbrands_peaceout_d_us_102318_link2",
+                            "targetScreen": {
+                                "targetScreen": "brand",
+                                "targetUrl": "/brand/peace-out?icid2=meganav_brands_featuredbrands_peaceout_d_us_102318_link2",
+                                "targetValue": "6209;icid2=meganav_brands_featuredbrands_peaceout_d_us_102318_link2",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "CHANEL",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "CHANEL",
+                            "enableTesting": false,
+                            "name": "meganav_brands_featuredbrands_chanel_d_us_102318_link3",
+                            "targetScreen": {
+                                "targetScreen": "brand",
+                                "targetUrl": "/brand/chanel?icid2=meganav_brands_featuredbrands_chanel_d_us_102318_link3",
+                                "targetValue": "1065;icid2=meganav_brands_featuredbrands_chanel_d_us_102318_link3",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Good Dye Young",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Good Dye Young",
+                            "enableTesting": false,
+                            "name": "meganav_brands_featuredbrands_gooddyeyoung_d_us-ca_100418_link4",
+                            "targetScreen": {
+                                "targetScreen": "brand",
+                                "targetUrl": "/brand/good-dye-young?icid2=meganav_brands_featuredbrands_gooddyeyoung_d_us-ca_100418_link4",
+                                "targetValue": "6264;icid2=meganav_brands_featuredbrands_gooddyeyoung_d_us-ca_100418_link4",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Hourglass",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Hourglass",
+                            "enableTesting": false,
+                            "name": "meganav_brands_featuredbrands_hourglass_d_102318_link5",
+                            "targetScreen": {
+                                "targetScreen": "brand",
+                                "targetUrl": "/brand/hourglass?icid2=meganav_brands_featuredbrands_hourglass_d_102318_link5",
+                                "targetValue": "5879;icid2=meganav_brands_featuredbrands_hourglass_d_102318_link5",
+                                "targetWindow": 0
+                            }
+                        }],
+                        "name": "meganav_brands_featuredbrands_desktop_linkgroup",
+                        "title": "Featured Brands"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_brands_column1_grid"
+                }, {
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "ANASTASIA BEVERLY HILLS Discover 14 must-have shades in the Sultry Eye Shadow palette. SHOP NOW >  NEW!",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "enableTesting": false,
+                        "height": "404",
+                        "imageId": "7010120",
+                        "imagePath": "/contentimages/meganav/large/2018-11-01-holiday-gifts-value-sets-large-botnav-hp-handoff.jpg",
+                        "name": "meganav_brands_anastasia_palette_large_101118_image",
+                        "targetScreen": {
+                            "targetUrl": "/brand/anastasia-beverly-hills/all",
+                            "targetWindow": 0
+                        },
+                        "width": "221"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_brands_column2_grid"
+                }, {
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "OLE HENRIKSEN >",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "enableTesting": false,
+                        "height": "194",
+                        "imageId": "9410309",
+                        "imagePath": "/contentimages/meganav/medium/2018-09-01-meganav-med-ole-henriksen-retin-alt-md-us-ca-d-slice.jpg",
+                        "name": "meganav_brands_olehenrisksen_med_092018_image",
+                        "styleList": {
+                            "BOTTOM_PADDING": ""
+                        },
+                        "targetScreen": {
+                            "targetUrl": "/brand/ole-henriksen/all",
+                            "targetWindow": 0
+                        },
+                        "width": "221"
+                    }, {
+                        "altText": "KERASTASE  >",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "enableTesting": false,
+                        "height": "195",
+                        "imageId": "9460070",
+                        "imagePath": "/contentimages/meganav/medium/09-04-2018-brand-launch-kerastase-d-medium-nav-button-slice.jpg",
+                        "name": "meganav_brands_kerastase_med_092018_image_us",
+                        "styleList": {
+                            "BOTTOM_PADDING": ""
+                        },
+                        "targetScreen": {
+                            "targetScreen": "brand",
+                            "targetUrl": "/brand/kerastase",
+                            "targetValue": "6259",
+                            "targetWindow": 0
+                        },
+                        "width": "221"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_brands_column3_grid"
+                }, {
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "SHOP JOY BY DIOR >",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "enableTesting": false,
+                        "height": "194",
+                        "imageId": "6980252",
+                        "imagePath": "/contentimages/meganav/medium/2018-09-04-hp-meganav-dior-joy-md-us-ca-d-slice.jpg",
+                        "name": "meganav_brands_dior_joy_med_090618_image",
+                        "styleList": {
+                            "BOTTOM_PADDING": ""
+                        },
+                        "targetScreen": {
+                            "targetScreen": "brand",
+                            "targetUrl": "/brand/dior",
+                            "targetValue": "1073",
+                            "targetWindow": 0
+                        },
+                        "width": "221"
+                    }, {
+                        "altText": "SEPHORA COLLECTION >",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "enableTesting": false,
+                        "height": "202",
+                        "imageId": "6770064",
+                        "imagePath": "/contentimages/meganav/122017/2017-12-13-meganav-lipstories-us-sm-d-slice.jpg",
+                        "name": "meganav_brands_sephoracollection_lipstories_med_122117_image",
+                        "targetScreen": {
+                            "targetScreen": "brand",
+                            "targetUrl": "/sephora-collection",
+                            "targetValue": "3902",
+                            "targetWindow": 0
+                        },
+                        "width": "233"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_brands_column4_grid"
+                }],
+                "desktopColumns": 4,
+                "displayTitle": "Brands",
+                "enableTesting": false,
+                "name": "meganav_topnavigation_brands_grid",
+                "targetUrl": "/brand/list.jsp"
+            }, {
+                "alignment": "Center",
+                "componentName": "Sephora Unified Grid Component",
+                "componentType": 55,
+                "components": [{
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "Gift Cards",
+                        "componentName": "Sephora Unified Link Component",
+                        "componentType": 58,
+                        "displayTitle": "Gift Cards",
+                        "enableTesting": false,
+                        "name": "meganav_gifts_122117_giftcards_link",
+                        "targetScreen": {
+                            "targetScreen": "contentstore",
+                            "targetUrl": "/giftcards?icid2=meganav_gifts_giftcards_link",
+                            "targetValue": "17200041;icid2=meganav_gifts_giftcards_link",
+                            "targetWindow": 0
+                        }
+                    }, {
+                        "altText": "Gift Finder",
+                        "componentName": "Sephora Unified Link Component",
+                        "componentType": 58,
+                        "displayTitle": "Gift Finder",
+                        "enableTesting": false,
+                        "name": "meganav_gifts_giftfinder_link",
+                        "targetScreen": {
+                            "targetScreen": "contentstore",
+                            "targetUrl": "/gift-finder?icid2=meganav_gifts_giftfinder_link",
+                            "targetValue": "45800018;icid2=meganav_gifts_giftfinder_link",
+                            "targetWindow": 0
+                        }
+                    }, {
+                        "altText": "View All Gifts",
+                        "componentName": "Sephora Unified Link Component",
+                        "componentType": 58,
+                        "displayTitle": "View All Gifts",
+                        "enableTesting": false,
+                        "name": "meganav_gifts_viewallgifts_link",
+                        "targetScreen": {
+                            "targetScreen": "category",
+                            "targetUrl": "/all-gifts?icid2=meganav_gifts_viewallgifts_link",
+                            "targetValue": "cat1240037;icid2=meganav_gifts_viewallgifts_link",
+                            "targetWindow": 0
+                        }
+                    }, {
+                        "altText": "Mini Size",
+                        "componentName": "Sephora Unified Link Component",
+                        "componentType": 58,
+                        "displayTitle": "Mini Size",
+                        "enableTesting": false,
+                        "name": "meganav_gifts_minisize_link",
+                        "targetScreen": {
+                            "auxiliaryData": {
+                                "parentCategory": {
+                                    "categoryId": "cat1830032",
+                                    "displayName": "Mini Size",
+                                    "targetUrl": "/shop/travel-size-toiletries",
+                                    "url": "/catalog/categories/cat1830032"
+                                }
+                            },
+                            "targetScreen": "category",
+                            "targetUrl": "/travel-size-toiletries?icid2=meganav_gifts_minisize_link",
+                            "targetValue": "cat1830032;icid2=meganav_gifts_minisize_link",
+                            "targetWindow": 0
+                        }
+                    }, {
+                        "altText": "Value Sets",
+                        "componentName": "Sephora Unified Link Component",
+                        "componentType": 58,
+                        "displayTitle": "Value Sets",
+                        "enableTesting": false,
+                        "name": "meganav_gifts_valuesets_link",
+                        "targetScreen": {
+                            "targetScreen": "category",
+                            "targetUrl": "/value-sets?icid2=meganav_gifts_valuesets_link",
+                            "targetValue": "cat200027;icid2=meganav_gifts_valuesets_link",
+                            "targetWindow": 0
+                        }
+                    }, {
+                        "componentName": "Sephora Unified Link Group Component",
+                        "componentType": 59,
+                        "enableTesting": false,
+                        "links": [{
+                            "altText": "$10 and Under",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "$10 and Under",
+                            "enableTesting": false,
+                            "name": "meganav_gifts_byprice_$10andunder_link",
+                            "targetScreen": {
+                                "targetScreen": "category",
+                                "targetUrl": "/gifts-under-10?icid2=meganav_gifts_byprice_$10andunder_link",
+                                "targetValue": "cat200029;icid2=meganav_gifts_byprice_$10andunder_link"
+                            }
+                        }, {
+                            "altText": "$25 and Under",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "$25 and Under",
+                            "enableTesting": false,
+                            "name": "meganav_gifts_byprice_$25andunder_link",
+                            "targetScreen": {
+                                "targetScreen": "category",
+                                "targetUrl": "/gifts-under-25?icid2=meganav_gifts_byprice_$25andunder_link",
+                                "targetValue": "cat780030;icid2=meganav_gifts_byprice_$25andunder_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "$50 and Under",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "$50 and Under",
+                            "enableTesting": false,
+                            "name": "meganav_gifts_byprice_$50andunder_link",
+                            "targetScreen": {
+                                "targetScreen": "category",
+                                "targetUrl": "/gifts-under-50?icid2=meganav_gifts_byprice_$50andunder_link",
+                                "targetValue": "cat780033;icid2=meganav_gifts_byprice_$50andunder_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "$75 and Under",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "$75 and Under",
+                            "enableTesting": false,
+                            "name": "meganav_gifts_byprice_75andunder_link",
+                            "targetScreen": {
+                                "targetScreen": "category",
+                                "targetUrl": "/gifts-under-75?icid2=meganav_gifts_byprice_75andunder_link",
+                                "targetValue": "cat1490031;icid2=meganav_gifts_byprice_75andunder_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "$100 and Under",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "$100 and Under",
+                            "enableTesting": false,
+                            "name": "meganav_gifts_byprice_$100andunder_link",
+                            "targetScreen": {
+                                "targetScreen": "category",
+                                "targetUrl": "/gifts-under-100?icid2=meganav_gifts_byprice_$100andunder_link",
+                                "targetValue": "cat1330031;icid2=meganav_gifts_byprice_$100andunder_link",
+                                "targetWindow": 0
+                            }
+                        }],
+                        "name": "meganav_gifts_byprice_us_linkgroup",
+                        "title": "By Price"
+                    }, {
+                        "componentName": "Sephora Unified Link Group Component",
+                        "componentType": 59,
+                        "enableTesting": false,
+                        "links": [{
+                            "altText": "For Her",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "For Her",
+                            "enableTesting": false,
+                            "name": "meganav_gifts_byrecipient_forher_link",
+                            "targetScreen": {
+                                "targetScreen": "category",
+                                "targetUrl": "/gifts-for-her?icid2=meganav_gifts_byrecipient_forher_link",
+                                "targetValue": "cat1210053;icid2=meganav_gifts_byrecipient_forher_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "For Him",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "For Him",
+                            "enableTesting": false,
+                            "name": "meganav_gifts_byrecipient_forhim_link",
+                            "targetScreen": {
+                                "targetScreen": "category",
+                                "targetUrl": "/gifts-for-men?icid2=meganav_gifts_byrecipient_forhim_link",
+                                "targetValue": "cat840056;icid2=meganav_gifts_byrecipient_forhim_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "For Teenagers",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "For Teenagers",
+                            "enableTesting": false,
+                            "name": "meganav_gifts_byrecipient_forteenagers_link",
+                            "targetScreen": {
+                                "targetScreen": "category",
+                                "targetUrl": "/gifts-for-teenage-girls?icid2=meganav_gifts_byrecipient_forteenagers_link",
+                                "targetValue": "cat840059;icid2=meganav_gifts_byrecipient_forteenagers_link",
+                                "targetWindow": 0
+                            }
+                        }],
+                        "name": "meganav_gifts_byrecipient_linkgroup",
+                        "title": "By Recipent"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_gifts_column1_grid"
+                }, {
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "componentName": "Sephora Unified Link Group Component",
+                        "componentType": 59,
+                        "enableTesting": false,
+                        "links": [{
+                            "altText": "Makeup",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Makeup",
+                            "enableTesting": false,
+                            "name": "meganav_gifts_bycategory_makeup_link",
+                            "targetScreen": {
+                                "targetScreen": "category",
+                                "targetUrl": "/makeup-gift-sets?icid2=meganav_gifts_bycategory_makeup_link",
+                                "targetValue": "cat780031;icid2=meganav_gifts_bycategory_makeup_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Skincare",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Skincare",
+                            "enableTesting": false,
+                            "name": "meganav_gifts_bycategory_skincare_link",
+                            "targetScreen": {
+                                "targetScreen": "category",
+                                "targetUrl": "/skin-care-gift-sets?icid2=meganav_gifts_bycategory_skincare_link",
+                                "targetValue": "cat780035;icid2=meganav_gifts_bycategory_skincare_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Fragrance",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Fragrance",
+                            "enableTesting": false,
+                            "name": "meganav_gifts_bycategory_fragrance_link",
+                            "targetScreen": {
+                                "targetScreen": "category",
+                                "targetUrl": "/fragrance-gift-sets?icid2=meganav_gifts_bycategory_fragrance_link",
+                                "targetValue": "cat780034;icid2=meganav_gifts_bycategory_fragrance_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Hair",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Hair",
+                            "enableTesting": false,
+                            "name": "meganav_gifts_bycategory_hair_link",
+                            "targetScreen": {
+                                "targetScreen": "category",
+                                "targetUrl": "/hair-gift-sets?icid2=meganav_gifts_bycategory_hair_link",
+                                "targetValue": "cat1330037;icid2=meganav_gifts_bycategory_hair_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Bath & Body",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Bath & Body",
+                            "enableTesting": false,
+                            "name": "meganav_gifts_bycategory_bathandbody_link",
+                            "targetScreen": {
+                                "targetScreen": "category",
+                                "targetUrl": "/bath-set-gifts?icid2=meganav_gifts_bycategory_bathandbody_link",
+                                "targetValue": "cat780036;icid2=meganav_gifts_bycategory_bathandbody_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Candles & Home Scents",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Candles & Home Scents",
+                            "enableTesting": false,
+                            "name": "meganav_gifts_bycategory_candlesandhomescents_link",
+                            "targetScreen": {
+                                "targetScreen": "category",
+                                "targetUrl": "/home-fragrance-candle-gift-sets?icid2=meganav_gifts_candlesandhomescents_link",
+                                "targetValue": "cat60184;icid2=meganav_gifts_candlesandhomescents_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Men",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Men",
+                            "enableTesting": false,
+                            "name": "meganav_gifts_bycategory_men_link",
+                            "targetScreen": {
+                                "targetScreen": "category",
+                                "targetUrl": "/mens-gifts?icid2=meganav_gifts_bycategory_men_link",
+                                "targetValue": "cat1700031;icid2=meganav_gifts_bycategory_men_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Tools & Devices",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Tools & Devices",
+                            "enableTesting": false,
+                            "name": "meganav_gifts_bycategory_toolsanddevices_link",
+                            "targetScreen": {
+                                "targetScreen": "category",
+                                "targetUrl": "/beauty-tool-gifts?icid2=meganav_gifts_bycategory_toolsanddevices_link",
+                                "targetValue": "cat1100051;icid2=meganav_gifts_bycategory_toolsanddevices_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Brush Sets & accessories",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Brush Sets & Accessories",
+                            "enableTesting": false,
+                            "name": "meganav_gifts_bycategory_brushsets_link",
+                            "targetScreen": {
+                                "targetScreen": "category",
+                                "targetUrl": "/makeup-bags-accessories-by-category-gifts?icid2=meganav_gifts_bycategory_brushsets_link",
+                                "targetValue": "cat780040;icid2=meganav_gifts_bycategory_brushsets_link",
+                                "targetWindow": 0
+                            }
+                        }],
+                        "name": "meganav_gifts_bycategory_linkgroup",
+                        "title": "By Category"
+                    }, {
+                        "altText": "Top-Rated",
+                        "componentName": "Sephora Unified Link Component",
+                        "componentType": 58,
+                        "displayTitle": "Top-Rated",
+                        "enableTesting": false,
+                        "name": "meganav_gifts_toprated_link",
+                        "targetScreen": {
+                            "targetScreen": "category",
+                            "targetUrl": "/top-beauty-gifts?icid2=meganav_gifts_toprated_link",
+                            "targetValue": "cat1330041;icid2=meganav_gifts_toprated_link",
+                            "targetWindow": 0
+                        }
+                    }, {
+                        "altText": "Editors' Picks",
+                        "componentName": "Sephora Unified Link Component",
+                        "componentType": 58,
+                        "displayTitle": "Editors' Picks",
+                        "enableTesting": false,
+                        "name": "meganav_gifts_editorspicks_link",
+                        "targetScreen": {
+                            "targetScreen": "category",
+                            "targetUrl": "/editors-picks-gifts?icid2=meganav_gifts_editorspicks_link",
+                            "targetValue": "cat840073;icid2=meganav_gifts_editorspicks_link",
+                            "targetWindow": 0
+                        }
+                    }, {
+                        "altText": "Luxury Gifts",
+                        "componentName": "Sephora Unified Link Component",
+                        "componentType": 58,
+                        "displayTitle": "Luxury Gifts",
+                        "enableTesting": false,
+                        "name": "meganav_gifts_luxurygifts_link",
+                        "targetScreen": {
+                            "targetScreen": "category",
+                            "targetUrl": "/luxury-gifts?icid2=meganav_gifts_luxurygifts_link",
+                            "targetValue": "cat1100057;icid2=meganav_gifts_luxurygifts_link",
+                            "targetWindow": 0
+                        }
+                    }, {
+                        "altText": "Sephora Exclusives",
+                        "componentName": "Sephora Unified Link Component",
+                        "componentType": 58,
+                        "displayTitle": "Sephora Exclusives",
+                        "enableTesting": false,
+                        "name": "meganav_gifts_sephoraexclusives_us_link",
+                        "targetScreen": {
+                            "targetScreen": "category",
+                            "targetUrl": "/exclusive-products?icid2=meganav_gifts_sephoraexclusives_us_link",
+                            "targetValue": "cat840071;icid2=meganav_gifts_sephoraexclusives_us_link",
+                            "targetWindow": 0
+                        }
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_gifts_column2_grid"
+                }, {
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "Gift Finder | Find unique presents for the people you love. GET STARTED >",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "displayTitle": "Gift Finder",
+                        "enableTesting": false,
+                        "height": "404",
+                        "imageId": "7060426",
+                        "imagePath": "/contentimages/homepage/042418/Meganav/2018-04-19-meganav-lg-button-gift-finder-evergreen-slice.jpg",
+                        "name": "meganav_gifts_giftfinder_large_us_042118_image",
+                        "targetScreen": {
+                            "targetScreen": "contentstore",
+                            "targetUrl": "/gift-finder",
+                            "targetValue": "45800018",
+                            "targetWindow": 0
+                        },
+                        "width": "221"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_gifts_column3_grid"
+                }, {
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "eGIFT CARDS >",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "enableTesting": false,
+                        "height": "202",
+                        "imageId": "7030015",
+                        "imagePath": "/contentimages/meganav/041218/2018-02-08-egc-template-meganav-gif-handoff.gif",
+                        "name": "meganav_gifts_giftcard_med_us_041218_image",
+                        "styleList": {
+                            "BOTTOM_PADDING": ""
+                        },
+                        "targetScreen": {
+                            "targetUrl": "https://sephora.cashstar.com/gift-card/buy/?ref=GIFTSMEGA011118&icid2=meganav_shopcategory_gifts_giftcard_med_us_image",
+                            "targetWindow": 1
+                        },
+                        "width": "233"
+                    }, {
+                        "altText": "MINIS UNDER $25 >",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "enableTesting": false,
+                        "height": "202",
+                        "imageId": "6570512",
+                        "imagePath": "/contentimages/meganav/100517/2017-10-05-hp-meganav-sm-minimadness-gifts-d-us-slice.jpg",
+                        "name": "meganav_gifts_minisunder25_med_us_051418_image ",
+                        "targetScreen": {
+                            "auxiliaryData": {
+                                "parentCategory": {
+                                    "categoryId": "cat1830032",
+                                    "displayName": "Mini Size",
+                                    "targetUrl": "/shop/travel-size-toiletries",
+                                    "url": "/catalog/categories/cat1830032"
+                                }
+                            },
+                            "targetScreen": "category",
+                            "targetUrl": "/shop/travel-size-toiletries",
+                            "targetValue": "cat1830032",
+                            "targetWindow": 0
+                        },
+                        "width": "233"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_gifts_column4_grid"
+                }],
+                "desktopColumns": 4,
+                "displayTitle": "Gifts",
+                "enableTesting": false,
+                "name": "meganav_topnavigation_gifts_grid",
+                "targetUrl": "/gifts?icid2=meganav_gifts_top_nav_link"
+            }, {
+                "alignment": "Center",
+                "componentName": "Sephora Unified Grid Component",
+                "componentType": 55,
+                "components": [{
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "Ask questions, post answers, and join relevant conversations. TALK ABOUT IT >",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "enableTesting": false,
+                        "height": "420",
+                        "imageId": "6550328",
+                        "imagePath": "/contentimages/meganav/100117/2017-10-01-meganav-community-evergreen-01-talk-about-it-slice.jpg",
+                        "name": "meganav_community_evergreen_talk01_d_122617_image",
+                        "styleList": {
+                            "FR_CA_HIDE": ""
+                        },
+                        "targetScreen": {
+                            "targetUrl": "https://community.sephora.com/",
+                            "targetWindow": 0
+                        },
+                        "width": "233"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_community_column1_grid"
+                }, {
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "enableTesting": false,
+                        "height": "130",
+                        "imageId": "6670253",
+                        "imagePath": "/contentimages/meganav/110217/2017-11-02-meganav-community-conversations-top-image_13.jpg",
+                        "name": "meganav_community_top_explorenow_110217_image",
+                        "targetScreen": {
+                            "targetUrl": "/community",
+                            "targetWindow": 0
+                        },
+                        "width": "233"
+                    }, {
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "enableTesting": false,
+                        "height": "290",
+                        "imageId": "6490206",
+                        "imagePath": "/contentimages/meganav/090117/2017-09-01-meganav-community-conversations-bottom-slice.jpg",
+                        "name": "meganav_community_evergreen_conversations_bottom_us_d_122617_image",
+                        "targetScreen": {
+                            "targetUrl": "https://community.sephora.com/t5/Trending-Now/Community-Events/m-p/2928781",
+                            "targetWindow": 0
+                        },
+                        "width": "233"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_community_column2_grid"
+                }, {
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "Find inspiration for your fall look. CHECK OUT THE GALLERY >",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "enableTesting": false,
+                        "height": "420",
+                        "imageId": "6490207",
+                        "imagePath": "/contentimages/meganav/090117/2017-09-01-meganav-community-gallery-lg-d-slice.jpg",
+                        "name": "meganav_community_evergreen_gallery_d_122617_image",
+                        "targetScreen": {
+                            "targetScreen": "contentstore",
+                            "targetUrl": "/gallery",
+                            "targetValue": "36000018",
+                            "targetWindow": 0
+                        },
+                        "width": "233"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_community_column3_grid"
+                }, {
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "Calling all Lip Lovers, Volume Seekers, Age Defiers, and more. FIND YOUR PROFILE >",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "enableTesting": false,
+                        "height": "420",
+                        "imageId": "6490208",
+                        "imagePath": "/contentimages/meganav/090117/2017-09-01-meganav-community-groups-lg-d-slice.jpg",
+                        "name": "meganav_community_evergreen_groups_d_122617_image",
+                        "styleList": {
+                            "FR_CA_HIDE": ""
+                        },
+                        "targetScreen": {
+                            "targetUrl": "https://community.sephora.com/t5/custom/page/page-id/GroupsLandingPage",
+                            "targetWindow": 0
+                        },
+                        "width": "233"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_community_column4_grid"
+                }],
+                "desktopColumns": 4,
+                "displayTitle": "Community",
+                "enableTesting": false,
+                "name": "meganav_topnavigation_community_grid",
+                "targetUrl": "/community"
+            }, {
+                "alignment": "Center",
+                "componentName": "Sephora Unified Grid Component",
+                "componentType": 55,
+                "components": [{
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "componentName": "Sephora Unified Link Group Component",
+                        "componentType": 59,
+                        "enableTesting": false,
+                        "links": [{
+                            "altText": "Foundation Finder",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Foundation Finder",
+                            "enableTesting": false,
+                            "name": "meganav_howto_quizzes_foundationfinder_link",
+                            "targetScreen": {
+                                "targetUrl": "/foundation-finder",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Skincare Finder",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Skincare Finder",
+                            "enableTesting": false,
+                            "name": "meganav_howto_quizzes_skincarefinder_link",
+                            "targetScreen": {
+                                "targetScreen": "contentstore",
+                                "targetUrl": "/skin-care-quiz",
+                                "targetValue": "50300057",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Mascara Finder",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Mascara Finder",
+                            "enableTesting": false,
+                            "name": "meganav_howto_quizzes_mascara_link",
+                            "targetScreen": {
+                                "targetScreen": "contentstore",
+                                "targetUrl": "/beauty/mascara-guide",
+                                "targetValue": "51700022",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Hair Care Finder",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Hair Care Finder",
+                            "enableTesting": false,
+                            "name": "meganav_howto_quizzes_haircarefinder_link",
+                            "targetScreen": {
+                                "targetScreen": "contentstore",
+                                "targetUrl": "/beauty/hair-care-quiz",
+                                "targetValue": "52500020",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Fragrance Finder",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Fragrance Finder",
+                            "enableTesting": false,
+                            "name": "meganav_howto_quizzes_fragrancefinder_link",
+                            "targetScreen": {
+                                "targetScreen": "contentstore",
+                                "targetUrl": "/beauty/fragrance-gift-guide",
+                                "targetValue": "48400028",
+                                "targetWindow": 0
+                            }
+                        }],
+                        "name": "meganav_howto_quizzes_linkgroup",
+                        "title": "Quizzes"
+                    }, {
+                        "componentName": "Sephora Unified Link Group Component",
+                        "componentType": 59,
+                        "enableTesting": false,
+                        "links": [{
+                            "altText": "K-Beauty",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "K-Beauty",
+                            "enableTesting": false,
+                            "name": "meganav_howto_buyingguides_kbeauty_link",
+                            "targetScreen": {
+                                "targetScreen": "contentstore",
+                                "targetUrl": "/korean-skin-care?icid2=meganav_howto_buyingguides_kbeauty_link",
+                                "targetValue": "ufe30900056;icid2=meganav_howto_buyingguides_kbeauty_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Clean Beauty",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Clean Beauty",
+                            "enableTesting": false,
+                            "name": "meganav_howto_buyingguides_cleanbeauty_link",
+                            "targetScreen": {
+                                "targetScreen": "contentstore",
+                                "targetUrl": "/clean-beauty-products?icid2=meganav_howto_buyingguides_cleanatsephora_link",
+                                "targetValue": "ufe51800020;icid2=meganav_howto_buyingguides_cleanatsephora_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "Skin Hydration",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "Skin Hydration",
+                            "enableTesting": false,
+                            "name": "meganav_howto_buyingguides_skinhydration_link",
+                            "targetScreen": {
+                                "targetScreen": "contentstore",
+                                "targetUrl": "/hydrate-your-skin?icid2=meganav_howto_buyingguides_skinhydration_link",
+                                "targetValue": "ufe47400023;icid2=meganav_howto_buyingguides_skinhydration_link",
+                                "targetWindow": 0
+                            }
+                        }, {
+                            "altText": "View All",
+                            "componentName": "Sephora Unified Link Component",
+                            "componentType": 58,
+                            "displayTitle": "View All",
+                            "enableTesting": false,
+                            "name": "meganav_howto_buyingguides_viewall_link",
+                            "targetScreen": {
+                                "targetScreen": "contentstore",
+                                "targetUrl": "/best-beauty-products?icid2=meganav_howto_buyingguides_viewall_link",
+                                "targetValue": "ufe30900057;icid2=meganav_howto_buyingguides_viewall_link",
+                                "targetWindow": 0
+                            }
+                        }],
+                        "name": "meganav_howto_buyingguides_linkgroup",
+                        "title": "Buying Guides"
+                    }, {
+                        "altText": "How-To Videos",
+                        "componentName": "Sephora Unified Link Component",
+                        "componentType": 58,
+                        "displayTitle": "How-To Videos",
+                        "enableTesting": false,
+                        "name": "meganav_howto_howtovideos_desktop_link",
+                        "targetScreen": {
+                            "targetUrl": "/sephoratv/htfs-sephora-makeup.jsp",
+                            "targetWindow": 0
+                        }
+                    }, {
+                        "altText": "In-Store Beauty Classes",
+                        "componentName": "Sephora Unified Link Component",
+                        "componentType": 58,
+                        "displayTitle": "In-Store Beauty Classes",
+                        "enableTesting": false,
+                        "name": "meganav_howto_instorebeautyclass_link",
+                        "targetScreen": {
+                            "targetScreen": "contentstore",
+                            "targetUrl": "/store-locations-events?tab=classes",
+                            "targetValue": "16400021;tab=classes",
+                            "targetWindow": 0
+                        }
+                    }, {
+                        "altText": "Pocket Hairstylist",
+                        "componentName": "Sephora Unified Link Component",
+                        "componentType": 58,
+                        "displayTitle": "Pocket Hairstylist",
+                        "enableTesting": false,
+                        "name": "meganav_howto_pockethair_021518_link",
+                        "targetScreen": {
+                            "targetUrl": "https://hairtutorial.sephora.com?icid2=meganav_howto_pockethair_021518_link",
+                            "targetWindow": 0
+                        }
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_howtos_column1_grid"
+                }, {
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "FOUNDATION FINDER What kind of coverage are you looking for? TAKE THE QUIZ > LIGHT COVERAGE | MEDIUM COVERAGE | FULL COVERAGE",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "displayTitle": "Foundation Finder",
+                        "enableTesting": false,
+                        "height": "404",
+                        "imageId": "6960013",
+                        "imagePath": "/contentimages/meganav/large/2018-08-09-meganav-lrg-foundation-finder-us-ca-d-slice.jpg",
+                        "name": "meganav_howtos_foundationfinder_large_081618_image",
+                        "targetScreen": {
+                            "targetUrl": "/foundation-finder",
+                            "targetWindow": 0
+                        },
+                        "width": "221"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_howtos_column2_grid"
+                }, {
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "SEPHORA VIRTUAL ARTIST Virtually try on lip, eye and cheek combinations. CHECK IT OUT >",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "enableTesting": false,
+                        "height": "420",
+                        "imageId": "6620029",
+                        "imagePath": "/contentimages/meganav/100917/sva_5.0_marketing_01_mega-nav_v0-2-0.jpg",
+                        "name": "meganav_howtos_sva_large_101217_image",
+                        "targetScreen": {
+                            "targetUrl": "https://sephoravirtualartist.com",
+                            "targetWindow": 0
+                        },
+                        "width": "233"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_howtos_column3_grid"
+                }, {
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "SKINCARE QUIZ >",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "displayTitle": "Skincare Quiz",
+                        "enableTesting": false,
+                        "height": "194",
+                        "imageId": "7090218",
+                        "imagePath": "/contentimages/homepage/050118/meganav/2018-05-01-meganav-skincare-finder-md-us-ca-d-slice.jpg",
+                        "name": "meganav_howtos_skincare_finder_med_050118_image",
+                        "styleList": {
+                            "BOTTOM_PADDING": ""
+                        },
+                        "targetScreen": {
+                            "targetScreen": "contentstore",
+                            "targetUrl": "/skin-care-quiz",
+                            "targetValue": "50300057",
+                            "targetWindow": 0
+                        },
+                        "width": "221"
+                    }, {
+                        "altText": "SEPHORA COLLECTION BRUSH QUIZ >",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "enableTesting": false,
+                        "height": "202",
+                        "imageId": "7060129",
+                        "imagePath": "/contentimages/brands/sephoracollection/brushfinder/2017-08-22-hp-meganav-med-certona-quiz-d-us-ca-slice.jpg",
+                        "name": "meganav_howtos_sephoracollection_brush_med_041818_image",
+                        "targetScreen": {
+                            "targetScreen": "contentstore",
+                            "targetUrl": "/makeup-brush-finder?icid2=meganav_brands_sephoracollection_brush_med_090117_image",
+                            "targetValue": "45300018;icid2=meganav_brands_sephoracollection_brush_med_090117_image",
+                            "targetWindow": 0
+                        },
+                        "width": "233"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_howtos_column4_grid"
+                }],
+                "displayTitle": "How-Tos",
+                "enableTesting": false,
+                "name": "meganav_topnavigation_howtos_grid"
+            }, {
+                "alignment": "Center",
+                "componentName": "Sephora Unified Grid Component",
+                "componentType": 55,
+                "components": [{
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "SERVICES From fast touch-ups to personalized consultations. EXPLORE & BOOK NOW >",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "enableTesting": false,
+                        "height": "404",
+                        "imageId": "6000342",
+                        "imagePath": "/contentimages/meganav/large/2018-09-25-global-nav-lrg-services-us-ca-d-slice.jpg",
+                        "name": "meganav_stores_services_large_image",
+                        "targetScreen": {
+                            "targetUrl": "/happening/home",
+                            "targetWindow": 0
+                        },
+                        "width": "221"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_storesandservices_column1_grid"
+                }, {
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "CLASSES Get inspired, play with new products & learn new skills. SIGN UP NOW > ",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "enableTesting": false,
+                        "height": "404",
+                        "imageId": "6000344",
+                        "imagePath": "/contentimages/meganav/large/2018-09-25-global-nav-lrg-classes-us-ca-d-slice.jpg",
+                        "name": "meganav_stores_classes_large_us_image",
+                        "targetScreen": {
+                            "targetUrl": "/happening/home",
+                            "targetWindow": 0
+                        },
+                        "width": "221"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_storesandservices_column2_grid"
+                }, {
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "EVENTS & WHAT'S NEW All the most exciting launches, parties & more. EXPLORE NOW>",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "enableTesting": false,
+                        "height": "404",
+                        "imageId": "6000343",
+                        "imagePath": "/contentimages/meganav/large/2018-09-25-global-nav-lrg-events-us-ca-d-slice.jpg",
+                        "name": "meganav_stores_events_large_image",
+                        "targetScreen": {
+                            "targetUrl": "/happening/home",
+                            "targetWindow": 0
+                        },
+                        "width": "221"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_storesandservices_column3_grid"
+                }, {
+                    "alignment": "Center",
+                    "componentName": "Sephora Unified Grid Component",
+                    "componentType": 55,
+                    "components": [{
+                        "altText": "HAPPENING AT SEPHORA See what's going on today. FIND A STORE NEAR YOU>",
+                        "componentName": "Sephora Unified Image Component",
+                        "componentType": 53,
+                        "enableTesting": false,
+                        "height": "404",
+                        "imageId": "6000340",
+                        "imagePath": "/contentimages/meganav/large/2018-09-25-global-nav-lrg-happening@sephora-us-ca-d-slice.jpg",
+                        "name": "meganav_stores_happening_med_us_image",
+                        "styleList": {
+                            "BOTTOM_PADDING": ""
+                        },
+                        "targetScreen": {
+                            "targetScreen": "contentstore",
+                            "targetUrl": "/happening/stores/sephora-near-me",
+                            "targetValue": "ufestorelocator32400028",
+                            "targetWindow": 0
+                        },
+                        "width": "221"
+                    }],
+                    "desktopColumns": 1,
+                    "enableTesting": false,
+                    "name": "meganav_topnavigation_storesandservices_column4_grid"
+                }],
+                "desktopColumns": 4,
+                "displayTitle": "Happening At",
+                "enableTesting": false,
+                "name": "meganav_topnavigation_storesandservices_grid",
+                "targetUrl": "/happening/home"
+            }],
+            "sephoraLogo": [{
+                "altText": "Sephora",
+                "componentName": "Sephora Unified Image Component",
+                "componentType": 53,
+                "enableTesting": false,
+                "imageId": "6000087",
+                "imagePath": "/contentimages/logo/logo.svg",
+                "name": "sephora_global_logo",
+                "targetScreen": {
+                    "targetUrl": "/",
+                    "targetWindow": 0
+                }
+            }],
+            "legal": [{
+                "componentName": "Sephora Unified Markdown Component",
+                "componentType": 57,
+                "contentType": "PlainText",
+                "enableTesting": false,
+                "name": "globalfooter_legalinformation_desktop_us_evergreen_markdown",
+                "text": "Copyright � 2018 Sephora USA, Inc. All rights reserved. [Terms of Use|https://www.sephora.com/terms-of-use?icid2=globalfooter_legalinformation_termsofuse_link] | [Privacy Policy|https://www.sephora.com/privacy-policy?icid2=globalfooter_legalinformation_privacypolicy_link]\r\n\r\n[1 877 SEPHORA (1 877 737 4672)|tel:1-877-737-4672] | [TTY (1 888 866 9845)|tel:1-888-866-9845]"
+            }],
+            "categoryMenu": [{
+                "altText": "SEPHORA COLLECTION",
+                "componentName": "Sephora Unified Link Component",
+                "componentType": 58,
+                "displayTitle": "Sephora Collection",
+                "enableTesting": false,
+                "name": "meganav_shopcategories_sephoracollection_link",
+                "targetScreen": {
+                    "targetScreen": "brand",
+                    "targetUrl": "/sephora-collection?icid2=meganav_shopcategories_sephoracollection_link",
+                    "targetValue": "3902;icid2=meganav_shopcategories_sephoracollection_link",
+                    "targetWindow": 0
+                }
+            }, {
+                "altText": "Beauty Offers",
+                "componentName": "Sephora Unified Link Component",
+                "componentType": 58,
+                "displayTitle": "Beauty Offers",
+                "enableTesting": false,
+                "name": "meganav_shopcategories_beautyoffers_desktop_link",
+                "targetScreen": {
+                    "targetScreen": "contentstore",
+                    "targetUrl": "/beauty-offers",
+                    "targetValue": "11000020",
+                    "targetWindow": 0
+                }
+            }, {
+                "altText": "SALE",
+                "componentName": "Sephora Unified Link Component",
+                "componentType": 58,
+                "displayTitle": "Sale",
+                "enableTesting": false,
+                "name": "meganav_shopcategories_sale_desktop_link",
+                "targetScreen": {
+                    "targetUrl": "/sale",
+                    "targetWindow": 0
+                }
+            }],
+            "footerLinkGroups": [{
+                "componentName": "Sephora Unified Link Group Component",
+                "componentType": 59,
+                "enableTesting": false,
+                "headerImageAltText": "About Sephora",
+                "links": [{
+                    "altText": "About Sephora",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "About Sephora",
+                    "enableTesting": false,
+                    "name": "globalfooter_aboutsephora_aboutsephora_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/about-us",
+                        "targetValue": "ufe10800104",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Careers",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Careers",
+                    "enableTesting": false,
+                    "name": "globalfooter_aboutsephora_careers_link",
+                    "targetScreen": {
+                        "targetUrl": "https://jobs.sephora.com",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Sephora Stands Social Impact",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Sephora Stands Social Impact",
+                    "enableTesting": false,
+                    "name": "globalfooter_aboutsephora_sephorasocialimpact_link",
+                    "targetScreen": {
+                        "targetUrl": "https://www.sephorastands.com/",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Affiliates",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Affiliates",
+                    "enableTesting": false,
+                    "name": "globalfooter_aboutsephora_affiliates_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/affiliates",
+                        "targetValue": "ufe10800114",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Supply Chain Transparency",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Supply Chain Transparency",
+                    "enableTesting": false,
+                    "name": "globalfooter_aboutsephora_supplychaintransparency_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/supply-chain-transparency",
+                        "targetValue": "ufe12700031",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Sitemap",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Sitemap",
+                    "enableTesting": false,
+                    "name": "globalfooter_aboutsephora_sitemap_desktop_link",
+                    "targetScreen": {
+                        "targetUrl": "/sitemap/departments/",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Sephora Global Sites",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Sephora Global Sites",
+                    "enableTesting": false,
+                    "name": "globalfooter_aboutsephora_sephoraglobalsites_desktop_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/international-websites",
+                        "targetValue": "ufe33400017",
+                        "targetWindow": 0
+                    }
+                }],
+                "name": "globalfooter_aboutsephora_linkgroup",
+                "title": "About Sephora"
+            }, {
+                "componentName": "Sephora Unified Link Group Component",
+                "componentType": 59,
+                "enableTesting": false,
+                "headerImageAltText": "My Sephora",
+                "links": [{
+                    "altText": "My Account",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "My Account",
+                    "enableTesting": false,
+                    "name": "globalfooter_mysephora_myaccount_desktop_link",
+                    "targetScreen": {
+                        "targetUrl": "/profile/MyAccount",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Order Status",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Order Status",
+                    "enableTesting": false,
+                    "name": "globalfooter_mysephora_orderstatus_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/order-status",
+                        "targetValue": "12300058",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Beauty Insider",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Beauty Insider",
+                    "enableTesting": false,
+                    "name": "globalfooter_mysephora_beautyinsider_desktop_link",
+                    "targetScreen": {
+                        "targetUrl": "/profile/beautyInsider/",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Rewards Bazaar",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Rewards Bazaar",
+                    "enableTesting": false,
+                    "name": "globalfooter_mysephora_rewardsbazaar_link",
+                    "targetScreen": {
+                        "targetScreen": "birewards",
+                        "targetUrl": "/rewards",
+                        "targetValue": "16800018",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Loves",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Loves",
+                    "enableTesting": false,
+                    "name": "globalfooter_mysephora_loveslist_desktop_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/shopping-list",
+                        "targetValue": "16900028",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Play! by Sephora \u2013 Subscribe Now",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Play! by Sephora \u2013 Subscribe Now",
+                    "enableTesting": false,
+                    "name": "globalfooter_mysephora_play!bysephorabox_us_link",
+                    "targetScreen": {
+                        "targetScreen": "product",
+                        "targetUrl": "/play-subscription-P396286",
+                        "targetValue": "P396286;skuId=1001",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Flash Unlimited Shipping",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Flash Unlimited Shipping",
+                    "enableTesting": false,
+                    "name": "globalfooter_mysephora_flashshipping_us_link",
+                    "targetScreen": {
+                        "targetScreen": "product",
+                        "targetUrl": "/sephora-flash-subscription-P379518",
+                        "targetValue": "P379518;skuId=1530070",
+                        "targetWindow": 0
+                    }
+                }],
+                "name": "globalfooter_mysephora_linkgroup",
+                "title": "My Sephora"
+            }, {
+                "componentName": "Sephora Unified Link Group Component",
+                "componentType": 59,
+                "enableTesting": false,
+                "headerImageAltText": "Help & FAQs",
+                "links": [{
+                    "altText": "Online Ordering",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Online Ordering",
+                    "enableTesting": false,
+                    "name": "globalfooter_help&faq_onlineordering_link",
+                    "targetScreen": {
+                        "targetUrl": "/order-online",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Shipping",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Shipping",
+                    "enableTesting": false,
+                    "name": "globalfooter_help&faq_shipping_us_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/shipping-information",
+                        "targetValue": "12300026",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Billing",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Billing",
+                    "enableTesting": false,
+                    "name": "globalfooter_help&faq_billing_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/billing",
+                        "targetValue": "ufe10800034",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Returns & Exchanges",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Returns & Exchanges",
+                    "enableTesting": false,
+                    "name": "globalfooter_help&faq_returns&exchanges_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/returns-exchanges",
+                        "targetValue": "ufe10800030",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "International Shipments",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "International Shipments",
+                    "enableTesting": false,
+                    "name": "globalfooter_help&faq_internationalshipments_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/international-shipments",
+                        "targetValue": "ufe10800036",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Customer Service",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Customer Service",
+                    "enableTesting": false,
+                    "name": "globalfooter_help&faq_customerservice_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/customer-service",
+                        "targetValue": "ufe9300044",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Contact Us",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Contact Us",
+                    "enableTesting": false,
+                    "name": "globalfooter_help&faq_contactus_desktop_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/contact-us",
+                        "targetValue": "ufe10700018",
+                        "targetWindow": 0
+                    }
+                }],
+                "name": "globalfooter_help&faq_linkgroup",
+                "title": "Help & FAQs"
+            }, {
+                "componentName": "Sephora Unified Link Group Component",
+                "componentType": 59,
+                "enableTesting": false,
+                "headerImageAltText": "Ways to Shop",
+                "links": [{
+                    "altText": "Just Arrived",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Just Arrived",
+                    "enableTesting": false,
+                    "name": "globalfooter_waystoshop_justarrived_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/new-beauty-products",
+                        "targetValue": "12800020",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Bestsellers",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Bestsellers",
+                    "enableTesting": false,
+                    "name": "globalfooter_waystoshop_bestsellers_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/beauty-best-sellers",
+                        "targetValue": "14300062",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Beauty Offers",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Beauty Offers",
+                    "enableTesting": false,
+                    "name": "globalfooter_waystoshop_beautyoffers_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/beauty-offers",
+                        "targetValue": "11000020",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Gift Cards",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Gift Cards",
+                    "enableTesting": false,
+                    "name": "globalfooter_waystoshop_giftcards_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/giftcards",
+                        "targetValue": "17200041",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Store Locations, Events & Classes",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Store Locations, Events & Classes",
+                    "enableTesting": false,
+                    "name": "globalfooter_waystoshop_storelocations_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/store-locations-events",
+                        "targetValue": "16400021",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Book a Reservation",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Book a Reservation",
+                    "enableTesting": false,
+                    "name": "globalfooter_waystoshop_bookareservation_desktop_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/store-locations-events",
+                        "targetValue": "16400021",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Sephora inside JCPenney",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Sephora inside JCPenney",
+                    "enableTesting": false,
+                    "name": "globalfooter_waystoshop_sephorainsidejcp_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/jcpenney",
+                        "targetValue": "ufe12200207",
+                        "targetWindow": 0
+                    }
+                }, {
+                    "altText": "Sephora X Google",
+                    "componentName": "Sephora Unified Link Component",
+                    "componentType": 58,
+                    "displayTitle": "Sephora + Google Home",
+                    "enableTesting": false,
+                    "name": "globalfotter_waystoshop_sephoraxgoogle_link",
+                    "targetScreen": {
+                        "targetScreen": "contentstore",
+                        "targetUrl": "/skincare-advisor-google-home",
+                        "targetValue": "74100022",
+                        "targetWindow": 0
+                    }
+                }],
+                "name": "globalfooter_waystoshop_linkgroup",
+                "title": "Ways to Shop"
+            }]
+        },
+        "templateUrl": "",
+        "title": "Header And Footer Template"
+    },
+    "enableNoindexMetaTag": true,
+    "useThirdPartyProduction": false,
+    "useSiteCatalystOutsideSignal": true,
+    "isMboxEnabled": true,
+    "apiConfigurationData": {
+        "VIBCelebrationFlag": false,
+        "appManagedURLs": ["www.sephora.com", "m.sephora.com", "skedge.me", "sephora.skedge.me", "qa-sephora.skedge.me", "m-qa.sephora.com", "*.google.com", "survey.medallia.com", "*.timetradesystems.com", "timetrade.com", "*.sephora.com"],
+        "applePayMerchantIdentifier": "merchant.qa.sephora.com",
+        "backInStockReminderForStoreMsgEnabled": false,
+        "basketReminderForStoreMsgEnabled": false,
+        "bookReservationUrl": "https://ui-stage.timetradesystems.com/app/sephora/workflows/SEPH001/schedule?ch=MOBILEWEB",
+        "bopisConfigurations": {
+            "showSameday": false,
+            "showSamedayBasket": false,
+            "showSamedayFor0202": false,
+            "showSamedayFor0336": false,
+            "showSamedayFor0356": false,
+            "showSamedayFor0398": false,
+            "showSamedayFor0460": false,
+            "showSamedayFor0922": false,
+            "showSamedayHomepage": false,
+            "showSamedayNlevelpage": false,
+            "showSamedayOrderhistorypage": false,
+            "showSamedayPpage": false
+        },
+        "branchNetworkTimeout": "5500",
+        "bvApi_ppage": {
+            "host": "stg.api.bazaarvoice.com",
+            "token": "7b6zrt9x5pftpybx2mkrru2n",
+            "version": "5.4"
+        },
+        "bvApi_review_page": {
+            "host": "stg.api.bazaarvoice.com",
+            "token": "cawENPaCSiJlXkDXwLY0qkgRjndmzbpdihX3kQbRxo71U",
+            "version": "5.4"
+        },
+        "bvApi_rich_profile": {
+            "host": "stg.api.bazaarvoice.com",
+            "token": "cawicGCMlAUMyj7XcOpmVKyFUD29ObGuEaIFPhGxUP3Mg",
+            "version": "5.4"
+        },
+        "cacheVisitDurationForStoreMsg": 1,
+        "captchaApplyPromotionEnabled": false,
+        "captchaApplyPromotionPatternsList": ["RRC.*"],
+        "captchaCheckoutRegistrationEnabled": true,
+        "captchaGiftCardBalanceEnabled": true,
+        "captchaRegistrationPopupEnabled": true,
+        "captchaSiteKey": "6LfMWG4UAAAAAMZPuV36lf-1U8-Bz-prz1kT960j",
+        "communitySiteHost": "community.qa.sephora.com",
+        "displayChatInTokyWokyWidget": true,
+        "enableAddressValidation": true,
+        "enableOSCLiveChat": true,
+        "enableStoreMessaging": false,
+        "enableStoreModeTodayClass": false,
+        "enableStoreMsgAdobeIntegration": false,
+        "forterSiteId": "76a6869615db",
+        "googleMapsApiKey": "AIzaSyCPbJjMHMNa79cMFW-KUz7bP5RC4hMU7mg",
+        "imagePathRoot": "https://qa3.sephora.com/",
+        "isAddStructureEnabled": true,
+        "isAppMessagingEnabled": false,
+        "isApplePayEnabled": true,
+        "isAurasmaEnabled": false,
+        "isBIAutoEnrollEnabled": true,
+        "isBazaarVoiceEnabled": true,
+        "isBluecoreEnabled": false,
+        "isBuyNowEnabled": true,
+        "isCardIoEnabled": true,
+        "isCashStarEnabled": true,
+        "isDownloadAppBannerEnabled": false,
+        "isEnabledRealtimeUserMonitoring": true,
+        "isFacebookEnabled": true,
+        "isFacebookUploadEnabledForBeautyBoard": false,
+        "isFacebookUploadEnabledForReviews": false,
+        "isFirebasePerformanceEnabled": true,
+        "isFlashEnabled": true,
+        "isGroupsChatEnabled": true,
+        "isGuestOrderLookupEnabled": true,
+        "isGuidedSellingEnabled": true,
+        "isInstagramUploadEnabledForBeautyBoard": false,
+        "isInstagramUploadEnabledForReviews": false,
+        "isInstorePurchaseEnabled": true,
+        "isListsEnabled": true,
+        "isLithiumEnabled": true,
+        "isLooksEnabled": false,
+        "isMadlibsEnabled": true,
+        "isMetaIOEnabled": true,
+        "isMobileAppTrackingEnabled": true,
+        "isNLPInstrumentationEnabled": false,
+        "isNLPSearchEnabled": false,
+        "isOmnitureTrackingEnabled": true,
+        "isOnlineReservationEnabled": true,
+        "isOptInSSIMWebEnabled": false,
+        "isPPagesChatEnabled": true,
+        "isPlay2Enabled": true,
+        "isPlaySubscriptionUpdateEnabled": true,
+        "isProductRecommendationsEnabled": true,
+        "isPublicProfileEnabled": true,
+        "isSEOForCanadaEnabled": true,
+        "isSephoraTVEnabled": true,
+        "isSeEnable": true,
+        "isStoreModeEnabled": false,
+        "isTinderEnabled": true,
+        "isUserVoiceEnabled": true,
+        "isXtifyEnabled": false,
+        "isYouTubeUploadEnabledForReviews": false,
+        "lithiumApi": {
+            "token": "c2VwaG9yYTpVaHMzOWtxRCo="
+        },
+        "loqateAddressValidationKeys": {
+            "loqateCleanseAddressValidationKey": "WP28-AA11-ME73-DJ53",
+            "loqateFindRetrieveAndroidKey": "XZ71-PM75-HB96-NP25",
+            "loqateFindRetrieveIOSKey": "EF68-ZU67-RF12-DP92",
+            "loqateFindRetrieveMplusKey": "PX34-RG94-TF62-TJ96",
+            "loqateFindRetrieveUFEKey": "BR46-CD14-HU11-ME58"
+        },
+        "maxCreditCards": 5,
+        "maxShippingAddress": 10,
+        "openGraph": {
+            "fbAdmins": "1314428622,676965799",
+            "fbAppId": "124755580884988",
+            "ogSiteName": "Sephora",
+            "ogType": "website"
+        },
+        "org": "ce3c3e5eb315febefd58f15c1cc4615a",
+        "productPageConfigurations": {
+            "isPpageArticlesEnabled": true,
+            "isPpageBeautyBoardEnabled": true,
+            "isPpageFlashEnabled": true,
+            "isPpagePhotosEnabled": true,
+            "isPpageRatingsEnabled": true,
+            "isPpageVideosEnabled": true
+        },
+        "tierChangePollingFrequency": "43200",
+        "tokyWoky": {
+            "customerId": "312",
+            "host": "https://chat.qa.sephora.com/webview/312"
+        },
+        "voiceInput": false,
+        "voiceSearchGlobal": false
+    },
+    "templateInformation": {
+        "template": "Basket/Basketpage",
+        "channel": "FS"
+    }
+}

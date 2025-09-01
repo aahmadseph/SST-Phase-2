@@ -1,0 +1,19 @@
+{
+    "requestOrigin": "default",
+    "sellingChannel": "SEPHORAUS",
+    "currentDateTime": "2020-03-29T15:12:47.926-07:00",
+    "evaluateCapacity": "false",
+    "evaluateNetworkAvail": "true",
+    "locationsByFulfillmentType": [
+        {
+            "fulfillmentType": "SHIP",
+            "locations": [
+                "0801"
+            ]
+        }
+    ],
+    "products": [
+        "111016",
+        "111017"
+    ]
+}

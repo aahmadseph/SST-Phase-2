@@ -1,0 +1,6 @@
+import GetItSoonerAutoReplenModal from 'components/GlobalModals/GetItSoonerAutoReplenModal/GetItSoonerAutoReplenModal';
+import { withGetItSoonerAutoReplenModalProps } from 'viewModel/globalModals/getItSoonerAutoReplenModal/withGetItSoonerAutoReplenModalProps';
+
+const ConnectedGetItSoonerAutoReplenModal = withGetItSoonerAutoReplenModalProps(GetItSoonerAutoReplenModal);
+
+export default ConnectedGetItSoonerAutoReplenModal;

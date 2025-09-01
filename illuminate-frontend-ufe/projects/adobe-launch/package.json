@@ -1,0 +1,11 @@
+{
+    "name": "adobe-launch",
+    "description": "Adobe Launch Backup",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "clean": "rm -rf node_modules",
+        "eslint-modified": "eslint --ext .mjs tools",
+        "update-backup": "node tools/update-backup.mjs"
+    }
+}

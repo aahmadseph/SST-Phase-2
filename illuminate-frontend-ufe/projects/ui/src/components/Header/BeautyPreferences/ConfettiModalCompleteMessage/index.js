@@ -1,0 +1,6 @@
+import ConfettiModalCompleteMessage from 'components/Header/BeautyPreferences/ConfettiModalCompleteMessage/ConfettiModalCompleteMessage';
+import { withConfettiModalCompleteMessageProps } from 'viewModel/header/beautyPreferences/confettiModalCompleteMessage/withConfettiModalCompleteMessageProps';
+
+const ConnectedProfileCompleteMessage = withConfettiModalCompleteMessageProps(ConfettiModalCompleteMessage);
+
+export default ConnectedProfileCompleteMessage;

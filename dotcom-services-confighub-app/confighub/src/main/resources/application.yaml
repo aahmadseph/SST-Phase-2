@@ -1,0 +1,132 @@
+springdoc:
+  swagger-ui:
+    supportedSubmitMethods: "get,put,post,delete"
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/chub_qa?allowPublicKeyRetrieval=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=US/Pacific&autoreconnect=true
+    username: ctr_qa
+    password: ctrqa
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-timeout: 5000
+      maximum-pool-size: 10
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+  profiles:
+    default: jdbc
+    include:
+    - jdbc
+    active:
+    - jdbc
+  cloud:
+    bus:
+      content-type: application/json
+      destination: Sephora.ConfigHub.Client.ConfigUpdate_Dev
+      trace:
+        enabled: false
+    stream:
+      bindings:
+        springCloudBusInput:
+          destination: Sephora.ConfigHub.Client.ConfigUpdate_Dev
+          group: Sephora.ConfigHub.Client.${spring.application.name}
+        #springCloudBusOutput:
+          #destination: Sephora.ConfigHub.Client.ConfigUpdate_Dev
+      kafka:
+        binder:
+          autoCreateTopics: false
+          brokers:
+          - localhost:9092
+          configuration:
+            “[enable.auto.commit]“: true
+            #“[auto.offset.reset]“: earliest
+            “[default.api.timeout.ms]“: 15000
+            “[request.timeout.ms]“: 12000
+    config:
+      server:
+        jdbc:
+          sql: SELECT PROP, VAL from config where APPLICATION=? and PROFILE=? and LABEL=?
+          order: 1
+    httpclientfactories:
+      apache:
+        enabled: true
+  cache:
+    cache-names: atgConfigs
+    expiryTimeout: 14
+    caffeine:
+      spec: maximumSize=100,expireAfterWrite=30s
+
+  main:
+    allow-bean-definition-overriding: true
+
+discovery:
+  client:
+    currentServiceId: confighub-svc
+
+request:
+  log:
+    jsonBodies: true
+    maxPayloadLength: 1000
+    excludeUrlPatterns: '/actuator/health,/actuator/liveness,/actuator/prometheus'
+
+management:
+  endpoint:
+    health:
+      show-details: always      
+  health:
+    binders:
+      enabled: false
+    azure-key-vault:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include:
+          - loggers
+          - health
+          - caches
+          - liveness
+          - prometheus
+          - env
+          - configprops
+          - refresh
+          - busrefresh
+  metrics:
+    tags:
+      application: ${spring.application.name}
+  distribution:
+    percentiles-histogram:
+      http.server:
+        requests: true
+    percentiles:
+      http.server:
+        requests: 0.5, 0.75, 0.90, 0.95, 0.99
+test:
+  value1: test1
+  value2: test2
+
+configserver:
+  integration:
+    self:
+      serviceUrl: http://confighub-dev1.lower.internal.sephora.com/confighub
+    atg:
+      atgEnabled: true
+      migratedConfigEnabled: false
+      utilUrl: https://azre1-qa4.sephora.com/v1/util/configuration
+      deviceId: cce99fbc15072aa89aaa297983eda15d806e49e51d6a064ef1c61fe934613d48
+      saat: 614e31c79b6b8e15198213f2573d1984c90ad5466402c7b69032c36b471cc646
+  migration:
+    defaultValues: 
+      uiConsume: 1
+      description: desc
+      userId: ATG_CONFIG_MIGRATION
+      groupId: 1
+    async:
+      corePoolSize: 10
+      maxPoolSize: 50
+      queueCapacity: 0
+      keepAlive: 180
+      threadNamePrefix: fetchAtgConfig

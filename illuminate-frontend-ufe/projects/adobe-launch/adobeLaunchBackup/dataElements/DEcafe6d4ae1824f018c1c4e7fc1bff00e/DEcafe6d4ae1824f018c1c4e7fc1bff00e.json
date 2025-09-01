@@ -1,0 +1,97 @@
+{
+    "id": "DEcafe6d4ae1824f018c1c4e7fc1bff00e",
+    "type": "data_elements",
+    "attributes": {
+        "created_at": "2022-09-06T16:23:29.117Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "[TMS] Pixel :: Twitter :: Order Subtotal",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2022-09-06T16:23:29.117Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "clean_text": false,
+        "default_value": null,
+        "delegate_descriptor_id": "core::dataElements::custom-code",
+        "force_lower_case": false,
+        "review_status": "unsubmitted",
+        "storage_duration": null,
+        "settings": "{\"source\":\"/* ** itemShort is the list of items excluding \\nGWP, Samples, Flash, Play, Gift Cards, and Rewards values */ \\nif (digitalData.transaction.itemShort \\u0026\\u0026 digitalData.transaction.itemShort.length) {\\n    var orderTotal = 0;\\n    var parsedTotal = 0;\\n    var products = digitalData.transaction.itemShort;\\n    for (var i = 0; i \\u003c products.length; i++) {\\n        orderTotal+=(products[i].price*products[i].quantity);\\n    }\\n    parsedTotal = +(Math.round(orderTotal + 'e+2') + 'e-2');\\n    return parsedTotal;\\n} else {\\n    return 0;\\n}\"}"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEcafe6d4ae1824f018c1c4e7fc1bff00e/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEcafe6d4ae1824f018c1c4e7fc1bff00e/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEcafe6d4ae1824f018c1c4e7fc1bff00e/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEcafe6d4ae1824f018c1c4e7fc1bff00e/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEcafe6d4ae1824f018c1c4e7fc1bff00e/origin"
+            },
+            "data": {
+                "id": "DEcafe6d4ae1824f018c1c4e7fc1bff00e",
+                "type": "data_elements"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEcafe6d4ae1824f018c1c4e7fc1bff00e/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEcafe6d4ae1824f018c1c4e7fc1bff00e/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DEcafe6d4ae1824f018c1c4e7fc1bff00e/updated_with_extension"
+            },
+            "data": {
+                "id": "EX3abc0ad4a5fc4a94a4952aeea2507888",
+                "type": "extensions"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/data_elements/DEcafe6d4ae1824f018c1c4e7fc1bff00e",
+        "self": "https://reactor.adobe.io/data_elements/DEcafe6d4ae1824f018c1c4e7fc1bff00e",
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74"
+    },
+    "meta": {
+        "latest_revision_number": 1
+    }
+}

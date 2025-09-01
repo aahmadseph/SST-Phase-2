@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">
+            %d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${hostName} --- [%15.15t] %-40.40c{1.} : %m%n%ex
+        </Property>
+        <Property name="SEPHORA_LOG_PATTERN">
+            %d{yyyy-MM-dd HH:mm:ss,SSS} %d{UNIX} %-5p [%c] (%t %X{requestMethod} %X{requestUri} %X{correlationId} %X{customerId} %X{channel} %X{language} %X{profileStatus}) %m%n
+        </Property>
+        <Property name="COLORED_LOG_PATTERN">
+            <!-- https://logging.apache.org/log4j/2.0/manual/layouts.html -->
+            %highlight{%d{yyyy-MM-dd HH:mm:ss,SSS} %d{UNIX} %-5level [%c] (%t %X{requestMethod} %X{requestUri} %X{correlationId} %X{customerId} %X{channel} %X{language} %X{profileStatus}) %m%n %throwable}{TRACE=white}
+        </Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+            <PatternLayout pattern="${COLORED_LOG_PATTERN}" disableAnsi="false" alwaysWriteExceptions="true"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="ConsoleAppender"/>
+        </Root>
+    </Loggers>
+</Configuration>

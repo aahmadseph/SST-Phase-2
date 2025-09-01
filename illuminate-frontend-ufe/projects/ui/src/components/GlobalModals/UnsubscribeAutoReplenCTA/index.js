@@ -1,0 +1,3 @@
+import UnsubscribeAutoReplenCTA from 'components/GlobalModals/UnsubscribeAutoReplenCTA/UnsubscribeAutoReplenCTA';
+
+export default UnsubscribeAutoReplenCTA;

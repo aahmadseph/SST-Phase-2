@@ -1,0 +1,61 @@
+query Recommendations($request: ProductRecommendationInput!) {
+    recommendations(request: $request) {
+        resultId
+        response {
+            pod {
+                id
+                displayName
+            }
+            results {
+                value
+                strategy {
+                  id
+                }
+                data {
+                    productId
+                    brandName
+                    url
+                    imageUrl
+                    rating
+                    totalReviews
+                    currentSku {
+                      colorName
+                      biExclusivityLevel
+                      isBI
+                      isNew
+                      skuId
+                      isBest
+                      isNatural
+                      isOrganic
+                      imageAltText
+                      isOnlineOnly
+                      isFirstAccess
+                      isAppExclusive
+                      isLimitedEdition
+                      isLimitedTimeOffer
+                      isSephoraExclusive
+                      variationValue
+                      skuImages {
+                        image135
+                        image250
+                        image450
+                      }
+                      sizeRefinement
+                    }
+                  variationId
+                  facets {
+                    name
+                    values
+                  }
+                }
+                variationsMap {
+                  minListPrice
+                  maxListPrice
+                  minSalePrice
+                  maxSalePrice
+                }
+            }
+          totalNumResults
+        }
+    }
+}

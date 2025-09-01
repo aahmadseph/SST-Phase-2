@@ -1,0 +1,373 @@
+logging:
+  config: classpath:log4j2.xml
+
+sephora:
+  cache:
+    redisson:
+      type: none
+    default:
+      type: redis
+    cache2k:
+      type: jcache
+    cache-names:
+      - referenceItemsCacheByStatus
+      - referenceItemsCacheByName
+      - referenceItemsCacheById
+      - inventoryHoldCache
+
+  warmup:
+    enabled: false
+
+spring:
+  cloud:
+    kubernetes:
+      enables: false
+    httpclientfactories:
+      apache:
+        enabled: true
+  redis:
+    host: sepeus1devaksredis02.eastus.redisenterprise.cache.azure.net
+    port: 10000
+    password: uCTJHfqmta6qtT2fJiHtjyHbLMuW04gYhqUN6mFc2sA=
+    ssl: false
+    connect-timeout: 15s
+    timeout: 500000ms
+    lettuce:
+      pool:
+        # TODO: Required verification
+        enabled: true
+        max-active: 32
+        max-idle: 8
+        min-idle: 0
+        max-wait: 50ms
+
+discovery:
+  client:
+    currentServiceId: sourcing-service-svc
+
+request:
+  log:
+    jsonBodies: true
+    maxPayloadLength: 1000
+    excludeUrlPatterns: '/actuator/health,/actuator/liveness,/actuator/prometheus'
+
+management:
+  health:
+    azure-key-vault:
+      enabled: false
+  endpoint:
+    restart:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include:
+          - loggers
+          - health
+          - caches
+          - liveness
+          - prometheus
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+  distribution:
+    percentiles-histogram:
+      http.server:
+        requests: true
+    percentiles:
+      http.server:
+        requests: 0.5, 0.75, 0.90, 0.95, 0.99
+deliverydates:
+  azure:
+    cosmosdb:
+      #uri: https://sep-eus1-qa-pds-db01.documents.azure.com:443
+      secondaryKey: g0FBMaDLBUSnrQvJ7eewpAIY6Ox9IlknKAeuhNd0xyeXhKLUaMfzH5gNJV8ZjuE262guzSQFASMVeSNXeZ5ZbQ==
+      key: dgH2HWbRuJrDOUbkcXfMoiNuSnQGY7ELsgtubQGW4bQEo8Qx8DceN1NwmX17nKLo9HlcX0qvJUyYiKlfg0mrTw==
+      dbName: delivery_dates
+      populateQueryMetrics: false
+      maxPoolSize: 1000
+      requestTimeoutInMillis: 3000
+      idleConnectionTimeoutInMillis: 43200000
+      maxRetryWaitTimeInSeconds: 3
+      maxRetryAttemptsOnThrottledRequests: 5
+      connectionMode:
+        mode: DIRECT
+      changeFeedProcessor:
+        leaseContainer: lease
+        leasThroughput: 400
+        feedContainers: shipNode,carrierService,event,transitTime,orderProcessingDelay,calendarExceptionDay
+sourcing:
+    options:
+        availabilityhub:
+            useAvailabilityHubForSourcing: true
+            enableDatesByServiceApi: true
+            enableCartSourceApi: true
+            rampUpEnabled: false
+            sddOptRampUpEnabled: true
+            mockEnabled: false
+            redisCache:
+              useCache: true
+            useScatterGatherDateByService: false
+            datesByServiceAuditEnabled: true
+            cartSourceServiceAuditEnabled: true
+            cartLineTypeAdjustmentsEnabled: true
+            cartLineTypeCarrierServiceCodes:
+              - 24
+              - 9
+            rampUpZipCodeRange:
+                SEPHORAUS:
+                    -
+                        fromZipCode: 94100
+                        toZipCode: 94199
+                    -
+                        fromZipCode: 91100
+                        toZipCode: 91200
+                SEPHORACA:
+                    -
+                        fromZipCode: Z1Z1Z1
+                        toZipCode: Z9Z9Z9
+            enableCarrierCodeAdjustment: true
+            carrierCodeAdjustments:
+                17: EXPRESS_17
+                20: FLASH_20
+                1: STANDARD_1
+                8: STANDARD_1
+                9: STANDARD_1
+                23: FLASH_1
+                24: FLASH_1
+                25: FLASH_1
+            electronicFulfillmentUSCarrierCode: 1
+            electronicFulfillmentCACarrierCode: 54
+            electronicFulfillmentAddressConfig:
+                US:
+                 state: CA
+                 zipCode: 94105
+                CA:
+                 state: MD
+                 zipCode: 21017
+            defaultAddressConfig:
+                US:
+                 state: CA
+                 zipCode: 99999
+                CA:
+                 state: ON
+                 zipCode: Z9Z9Z9
+                BORDERFREE:
+                 state: CA
+                 zipCode: 99999      
+            dcLocations: 0701,0801,1001,1021,1050,0750,US_NONSHIP,CA_NONSHIP,1070
+            us-locations: 1021,1001,0801,0701,US_NONSHIP,US_INFINITE
+            ca-locations: 1050,0750,CA_NONSHIP,CA_INFINITE,1070
+            mock:
+                distribution: '10-20:23%,20-30:60%,30-50:15%,50-200:2%'
+            samedayCarrierCodes:
+              - "38"
+              - "58"
+        feign:
+            inventoryavailability:
+                useInventoryService: false
+                serviceUrl: http://inventory-availability-qa1.eus1-omni-devqa.internalsephora.com
+                connectionTimeout: 3000
+                readTimeout: 3000
+                defaultMaxPerRouteConnections: 50
+                maxTotalConnections: 100
+                retryPeriod: 100
+                retryMaxPeriod: 500
+                inactivityTimeout: 180000
+        #Below inventory-svc has been decommissioned
+            inventory:
+                serviceUrl: http://inventory-svc:8055
+                connectionTimeout: 3000
+                readTimeout: 3000
+                defaultMaxPerRouteConnections: 50
+                maxTotalConnections: 100
+                retryPeriod: 100
+                retryMaxPeriod: 500
+                inactivityTimeout: 180000
+        async:
+            enabled: true
+            commitsThreadLimit: 2
+        azure:
+            cosmosdb:
+                enabled: false
+                #uri: https://sep-eus1-qa-pds-db01.documents.azure.com:443
+                key: dgH2HWbRuJrDOUbkcXfMoiNuSnQGY7ELsgtubQGW4bQEo8Qx8DceN1NwmX17nKLo9HlcX0qvJUyYiKlfg0mrTw==
+                secondaryKey: JrwEqWWgOB3XfH72cyJweMP2ZzKlXQVSShXVmoi200JyL2YAHOo0rO216GxWr50k6stORQlcn0WWnwYpOrdTMQ==
+                dbName: sourcing
+                populateQueryMetrics: false
+                maxPoolSize: 1000
+                requestTimeoutInMillis: 3000
+                idleConnectionTimeoutInMillis: 43200000
+                maxRetryWaitTimeInSeconds: 3
+                maxRetryAttemptsOnThrottledRequests: 5
+                changeFeedProcessor:
+                    leaseContainer: lease
+                    leasThroughput: 400
+                    feedContainers: shipNode,sourcingRule,zoneMap
+        cache:
+            type: none
+            default:
+              type: redis
+            cache2k:
+              type: jcache
+            redisson:
+              type: none
+            cache-names:
+                - findShipNode
+                - shipNode
+                - sourcingRule
+                - getNodesPriority
+                - carrierService
+                - getByIdShipNode
+                - dynamicConfig
+            redis:
+                time-to-live: 24h
+                key-prefix: Sourcing
+                use-key-prefix: true
+                cacheConfigurations:
+                shipNode:
+                    time-to-live: 24h
+                    cache-null-values: false
+                findShipNode:
+                    time-to-live: 24h
+                    cache-null-values: false
+        warmup:
+            enabled: false
+        zonemapping:
+          #When Zone mapping is uploaded, an upsert operation is performed. If we set this property to true
+          # the existing values will be deleted first(Since we are updating the same value all the time, there
+          # is actually no need of clearing, thats why we are keeping this as false 
+            clearBeforeUpsert: false
+        
+        bulk-executor:
+            zoneMapBulkImportThroughput: 20000
+            zoneMapBulkImportMaxPoolSize: 1000
+        file-upload:
+            maxUploadFileSize: 75MB
+        mail:
+          enabled: true   
+          host: smtpvip.qts.sephoraus.com
+          port: 25
+          username: OMS
+          password: 
+          protocol: smtp
+          auth: true
+          starttlsEnabled: true 
+          debugEnabled: true
+        zone-map:
+          mail:
+            enabled: true
+            fromAddress: no-reply@sephora.com
+            toAddress: 
+               - safeer.ahameed@sephora.com
+            ccAddress: 
+               - safeer.ahameed@sephora.com
+            subject: OMS Zone Mapping File Processed      
+opentracing:
+  spring:
+    web:
+      enabled: false
+
+oms:
+  externalInventoryCheck: true
+availabilityhub:
+  enabled: true
+  client:
+    #serviceUrl : https://sephora-qa-availability.yantriks.com
+    serviceUrl: https://sephora-qa-pfpc.yantriks.com
+    customInventoryUrl: https://sephora-qa-custom-inventory.yantriks.com
+    commonServiceUrl: https://sephora-qa-yso-common.yantriks.com
+    #customInventoryUrl: http://inventory-platform-mock-server-qa1.eus1-devqa.internalsephora.com
+    getReservationServiceUrl : https://sephora-qa-visibility.yantriks.com
+    defaultMaxPerRouteConnections: 1000
+    maxTotalConnections: 2000
+    socketTimeout: 5000
+    connectionTimeout: 5000
+    connectionRequestTimeout: 5000
+    readTimeout: 1000
+    batchSize: 5
+    retryPeriod: 100
+    retryMaxPeriod: 500
+    retryMaxAttempts: 3
+    inactivityTimeout: 180000
+    jwttoken:
+      privateKeyId: bbaf8ea0df6cd27cc02f8c496fb379d9d37ab3f4
+      issuer: sephora-qa
+      audience: saas-yantriks-sephora-qa
+      timeToLive: 2100
+      privateKey: -----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCn5ksWi4UwZYNu\natRJ8QhS0wxyFqPT5XTA+S+mor1cpodSSE8eE3Y1ige0V4TxwMWgAHbTJ+jCysXG\nJlgT37ZF0cZbYNozUF8iM67caCgYVU4u4B64P6GKnq1ju0HzssZ5vpSR1mhvS/P9\nkaBsPRYxKPd5EbX5kWNEtk1p8TcRLL5OIUK6o0KYhc4aHPmniccUHxKiHxw7NOae\nKERqsBZar63PmxcXPeQllRN6KzXgBswUDg1NbQXf1FKQfmzEKSx0KbYg8soRatC2\n4UDiS0pD2lGzHd4GjtJdOA8kF1PMIO9ZdORJ/y6LNvL2vaXUQ4m+NfpTQOKI59+W\nMeUdnwQVAgMBAAECggEAS4mrrKf2szBoskuz2NRtRz4WclnHOTUZkxxJGPJMuZte\ndGF93u0omKvSDYv2jwGIqBStYRCqgsDRu/VSWRakHcNkN4ZahQ2az3trJ1Rg/Zmb\nhDFnAMP3/LKpFZ6Q7IA5FVrt4rMQ50nHqwRSpX/SNSnWNQ0HzxFfFPHj4E8a1EmP\neZNSoOvFkkcb2IvlGPNGtQQZ3Q3w3uzW4qPlypE6MrtiGr8GbTgxiQh3WFNMf4kU\nBVj7ozmaU3YFxDn5mvJ+rRd9oKzQFMH8OAj+SDyYycPCrGWO3J751fqopwxFp5qT\nA4VhN7gKuxPoTJVt2HliBLgjmxvq+yRK6d7Ef8jcnQKBgQDTuM9GOpsLIO+bPbYm\n1Tvpqhy8k0/WRhBTzHOoZkxc2gydDt4qGvmsUoXpHWTttAQxWczol9LYrLCdPA0+\n4uROT5oLT4c9MjCKOsPIU5Cf4b798NMXy3wc8M2x+WQjdQu2VmI5G6UwFDBFIAXe\nn9Yp2AqipC8STD7BDd3OWWP4JwKBgQDLA1GweZ77YD4Y9KmYGGBcgRar3U3ut9tA\noKkecJkQAWIJLArbdlXapt/lM0sQJ5X5bC61+PVEbuomnYqTnuraIpj38TPWaly6\nKy9PeqyFkRmGsD1J0cHYgC5UFmsnWKcFQ6G2kk0ExG7CmkyvmSZJpTBiV/sS0Bxy\nZOyrfayrYwKBgQCNv2yeQzxsXfetQsrCAv8iuK6WnjXUaoIh6H8CnsK/Y4kQWdTp\n8bd45KMc6H4bGuu3sryaeJNEV5HDI2Jm2PcrauXibrNHiGOxGBjd9Pyd3kDFuUdK\n5gRJR/sfDa46gvF9eSY3v8d/gfSzQvZLD04OI8MzEqMlKADXtZXrwjNI/wKBgQCt\nujpmzb06GsMpMf4LtRiJMMLI8koltdp/tLzk2rBxXO2bMcBczChuQ42oIzviKC4U\nUvqqKNEi7dOclgani0AoyaCj1RpqK30Mp7YFytHmPyRb+WeJS2IaNp7uwHyUIC5V\nt+mkRhB4uuyZxddIEcQNE7qS/f1SvRsK3ckWfCaORwKBgQCHGPG7AZ09qngiQXOw\n3kn/Sih4LOOc3B6PKC60ORI4uJ5Jqwx5dSO2PeA0tV+uqLPK21Ysi7SWLiQHwZpm\nkecajSBjmui5O3tVggFF3MGliFV0TKbYqmAE6gEVJQnz+VqRyGQei8Vf3reL+50N\n2+muozshreYG3ufuzQauKvnQrQ==\n-----END PRIVATE KEY-----\n
+      scheduler:
+        deltaTime: 5000
+    async:
+      retryPeriod: 100
+      retryMaxPeriod: 500
+      retryMaxAttempts: 3
+      corePoolSize : 500
+      maxPoolSize : 1000
+      queueCapacity : 0
+      keepAlive : 180
+      batchSize : 5
+      waitTimeoutInSeconds : 5
+shipment:
+  dc-locations: 0701,0801,1001,1021,1050,0750,US_NONSHIP,CA_NONSHIP,1070
+  us-locations: 1021,1001,0801,0701,US_NONSHIP,US_INFINITE
+  ca-locations: 1050,0750,CA_NONSHIP,CA_INFINITE,1070
+  borderFreeLocations:
+    - "0701"
+  apoFpoLocations:
+    AA:
+      - "0701"
+    AE:
+      - "0701"
+    AP:
+      - "0701"
+    PR:
+      - "0701"
+
+commits:
+  async:
+    corePoolSize: 500
+    maxPoolSize: 1000
+    queueCapacity: 1500
+
+feign:
+  logger:
+    level: FULL
+dynamicconfig:
+  appConfig:
+    appName: sourcingService
+    genericcontroller:
+      enabled: true
+  azure:
+    cosmosdb:
+      enabled: false
+      #uri: https://sep-eus1-qa-pds-db01.documents.azure.com:443
+      key: dgH2HWbRuJrDOUbkcXfMoiNuSnQGY7ELsgtubQGW4bQEo8Qx8DceN1NwmX17nKLo9HlcX0qvJUyYiKlfg0mrTw==
+      secondaryKey: JrwEqWWgOB3XfH72cyJweMP2ZzKlXQVSShXVmoi200JyL2YAHOo0rO216GxWr50k6stORQlcn0WWnwYpOrdTMQ==
+      dbName: sourcing
+      maxPoolSize: 1000
+      requestTimeoutInMillis: 3000
+      idleConnectionTimeoutInMillis: 43200000
+      maxRetryWaitTimeInSeconds: 3
+      maxRetryAttemptsOnThrottledRequests: 5
+      connectionMode:
+        mode: DIRECT
+  cache:
+    type: none
+    cache-names:
+      - dynamicConfig
+
+
+shipnodedelay:
+  async:
+    corePoolSize: 500
+    maxPoolSize: 1000
+    queueCapacity: 0
+    keepAlive: 180
+    batchSize: 5
+    
+cacheWarmup:
+  enabled: false
+  baseLocation: D:\Project\Sephora\Repo\sourcing-service\app\cache-backup #mount location
+  configs: dynamicConfig,shipNode    

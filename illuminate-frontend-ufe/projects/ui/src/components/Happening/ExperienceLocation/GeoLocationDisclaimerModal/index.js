@@ -1,0 +1,3 @@
+import GeoLocationDisclaimerModal from 'components/Happening/ExperienceLocation/GeoLocationDisclaimerModal/GeoLocationDisclaimerModal';
+
+export default GeoLocationDisclaimerModal;

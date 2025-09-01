@@ -1,0 +1,6 @@
+import GuestBookingMessaging from 'components/GlobalModals/SignInWithMessagingModal/GuestBookingMessaging/GuestBookingMessaging';
+import { withGuestBookingMessagingProps } from 'viewModel/globalModals/guestBookingMessagingModal/withGuestBookingMessagingProps';
+
+const ConnectedGuestBookingMessaging = withGuestBookingMessagingProps(GuestBookingMessaging);
+
+export default ConnectedGuestBookingMessaging;

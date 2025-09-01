@@ -1,0 +1,3 @@
+import BeautyPreferencesTooltip from 'components/ProductPage/RatingsAndReviews/ReviewsFilters/BeautyPreferencesTooltip/BeautyPreferencesTooltip';
+
+export default BeautyPreferencesTooltip;

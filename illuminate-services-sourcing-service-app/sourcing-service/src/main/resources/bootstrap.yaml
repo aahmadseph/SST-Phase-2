@@ -1,0 +1,46 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /sourcing-service
+
+  tomcat:
+    accesslog:
+      enabled: false
+      log4j: true
+      pattern: combined
+    max-threads: 50
+    accept-count: 100
+    max-connections: 100
+    min-spare-threads: 10
+
+spring:
+  config:
+    import:
+      - optional:configserver:${CONFIGHUB_SERVER_URI}
+  application:
+    name: sourcing-service-service
+  cloud:
+    config:
+      enabled: true
+      name: GLOBAL
+      label: MASTER
+      profile: DEFAULT
+      fail-fast: false
+      retry:
+        max-attempts: 1
+    httpclientfactories:
+      apache:
+        enabled: true
+    kubernetes:
+      client:
+        namespace: default
+      #enabled:  false
+      discovery:
+        enabled: false
+      config:
+        enabled: true
+
+management:
+  endpoint:
+    restart:
+      enabled: true

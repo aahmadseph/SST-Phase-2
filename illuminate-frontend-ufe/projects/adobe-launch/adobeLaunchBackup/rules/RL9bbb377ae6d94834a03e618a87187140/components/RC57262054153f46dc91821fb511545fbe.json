@@ -1,0 +1,91 @@
+{
+    "id": "RC57262054153f46dc91821fb511545fbe",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2022-12-14T15:09:45.650Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: googleAnalytics_eventSignup",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-03-02T16:16:24.125Z",
+        "created_by_email": "rachel.joss@sephora.com",
+        "created_by_display_name": "rachel joss",
+        "updated_by_email": "rachel.joss@sephora.com",
+        "updated_by_display_name": "rachel joss",
+        "settings": "{\"source\":\"var languageLocale = _satellite.getVar('[TMS] Page :: Language/Locale');\\nvar biStatus = _satellite.getVar('[TMS] User :: BI Status');\\nvar loginStatus = _satellite.getVar('[TMS] Pixel :: User :: Login Status');\\nvar profileId = _satellite.getVar('[TMS] Async :: User :: ATG ID - page load or async page load');\\nvar fivePIDs = _satellite.getVar('[TMS] Pixel :: First Five Recommended PIDs');\\n\\nvar biAccountNumber = digitalData.user[0].segment.biAccountId; // _satellite.getVar('[TMS] BI Account Number - asyncPageLoad');\\nvar biPoints = digitalData.user[0].segment.biPoints; // _satellite.getVar('[TMS] User :: BI Points - signInSuccess');\\nvar gaId = _satellite.getVar('[TMS] UA Property Id');\\n    gtag('event', 'signup', {\\n        'send_to': gaId,\\n        'event_category': 'User Engagement',\\n        'event_label': 'BI Registration',\\n        'profileId': profileId,\\n        'biAccountId': biAccountNumber,\\n        'biStatus': biStatus,\\n        'biPoints': biPoints,\\n        'firstFivePIDs': fivePIDs,\\n        'loginStatus': loginStatus,\\n        'userLocale': languageLocale.split('-')[0],\\n        'userLanguage': languageLocale.split('-')[1]\\n    });\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC57262054153f46dc91821fb511545fbe/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC57262054153f46dc91821fb511545fbe/updated_with_extension"
+            },
+            "data": {
+                "id": "EX06a7afc619ae4214a074cb5399abf9fa",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC57262054153f46dc91821fb511545fbe/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC57262054153f46dc91821fb511545fbe/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC57262054153f46dc91821fb511545fbe/origin"
+            },
+            "data": {
+                "id": "RC57262054153f46dc91821fb511545fbe",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC57262054153f46dc91821fb511545fbe/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RC57262054153f46dc91821fb511545fbe",
+        "rules": "https://reactor.adobe.io/rule_components/RC57262054153f46dc91821fb511545fbe/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC57262054153f46dc91821fb511545fbe"
+    },
+    "meta": {
+        "latest_revision_number": 4
+    }
+}

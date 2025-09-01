@@ -1,0 +1,28 @@
+{
+    "currentDateTime": "2021-06-09T04:56:31.708-07:00",
+    "products": [
+        {
+            "fulfillmentType": "SHIP",
+            "locations": [
+                {
+                    "locationId": "0701"
+                }
+            ],
+            "productId": "2220135",
+            "uom": "EACH"
+        },
+        {
+            "fulfillmentType": "SHIP",
+            "locations": [
+                {
+                    "locationId": "0750"
+                }
+            ],
+            "productId": "2152668",
+            "uom": "EACH"
+        }
+    ],
+    "requestOrigin": "DEFAULT",
+    "sellingChannel": "SEPHORAUS",
+    "transactionType": "DEFAULT"
+}

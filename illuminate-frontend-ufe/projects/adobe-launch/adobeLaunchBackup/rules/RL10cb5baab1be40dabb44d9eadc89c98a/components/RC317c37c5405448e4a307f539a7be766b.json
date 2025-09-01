@@ -1,0 +1,91 @@
+{
+    "id": "RC317c37c5405448e4a307f539a7be766b",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2022-11-17T20:17:10.860Z",
+        "delegate_descriptor_id": "adobe-analytics::actions::set-variables",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "Adobe Analytics - Set Variables",
+        "negate": false,
+        "order": 0,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-02-27T15:38:41.927Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "roman.zhelieznov@sephora.com",
+        "updated_by_display_name": "roman zhelieznov",
+        "settings": "{\"customSetup\":{\"source\":\"s.events = _satellite.getVar('[TMS] Async Event Strings - asyncPageLoad');\\ns.products = _satellite.getVar('[TMS] Async Product Strings');\\n\\nvar pageType = _satellite.getVar('[TMS] Async :: Page :: Type');\\ns.pageType = pageType ? pageType.toLowerCase() : pageType;\\n\\ns.list1 = _satellite.getVar('[TMS] Async :: Category Filters');\\n\\n(function(){\\n    var event = new CustomEvent(\\\"signalTagFired\\\", {detail: _satellite.getVar('[TMS] Async :: Event Detail Object')});\\n    window.dispatchEvent(event);\\n}())\\n\\n// *** Activity Map Exclusions *** \\n  \\ns.ActivityMap.regionExclusions = _satellite.getVar('[TMS] Activity Map Region Exclusions') || '';\\ns.ActivityMap.linkExclusions = _satellite.getVar('[TMS] Activity Map Link Exclusions') || '';\\n  \\n// ** End of Activity Map Exclusions **\"},\"trackerProperties\":{\"eVars\":[{\"name\":\"eVar1\",\"type\":\"value\",\"value\":\"D=c4\"},{\"name\":\"eVar6\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Page Name for eVar6 - pageLoadEvent%\"},{\"name\":\"eVar17\",\"type\":\"value\",\"value\":\"D=c27\"},{\"name\":\"eVar18\",\"type\":\"value\",\"value\":\"D=c9\"},{\"name\":\"eVar19\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Platform%\"},{\"name\":\"eVar21\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Experience%\"},{\"name\":\"eVar27\",\"type\":\"value\",\"value\":\"%[TMS] eVar27%\"},{\"name\":\"eVar32\",\"type\":\"value\",\"value\":\"%[TMS] Async :: Certona Audience Id%\"},{\"name\":\"eVar36\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Audience Segmentation%\"},{\"name\":\"eVar38\",\"type\":\"value\",\"value\":\"%[TMS] Async :: Page :: eVar38%\"},{\"name\":\"eVar39\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Day of Week%\"},{\"name\":\"eVar42\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Search Type - asyncPageLoad%\"},{\"name\":\"eVar50\",\"type\":\"value\",\"value\":\"D=c6\"},{\"name\":\"eVar54\",\"type\":\"value\",\"value\":\"%[TMS] Link :: eVar54 :: Async Page Load%\"},{\"name\":\"eVar55\",\"type\":\"value\",\"value\":\"D=c8\"},{\"name\":\"eVar56\",\"type\":\"value\",\"value\":\"%[TMS] Async :: Category Filters%\"},{\"name\":\"eVar58\",\"type\":\"value\",\"value\":\"D=User-Agent\"},{\"name\":\"eVar62\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Language/Locale%\"},{\"name\":\"eVar63\",\"type\":\"value\",\"value\":\"D=g\"},{\"name\":\"eVar64\",\"type\":\"value\",\"value\":\"%[TMS] Async Previous Navigation Information%\"},{\"name\":\"eVar70\",\"type\":\"value\",\"value\":\"%[TMS] Async Page Name - asyncPageLoad%\"},{\"name\":\"eVar74\",\"type\":\"value\",\"value\":\"%[TMS] Async :: User :: BIFlash%\"},{\"name\":\"eVar75\",\"type\":\"value\",\"value\":\"%[TMS] Async Internal Campaign String%\"},{\"name\":\"eVar93\",\"type\":\"value\",\"value\":\"%[TMS] Async :: Page :: Type%\"},{\"name\":\"eVar94\",\"type\":\"value\",\"value\":\"%[TMS] Async :: Page :: Page Detail - asyncPageLoad%\"},{\"name\":\"eVar95\",\"type\":\"value\",\"value\":\"%[TMS] Async :: World%\"},{\"name\":\"eVar97\",\"type\":\"value\",\"value\":\"D=pageName\"},{\"name\":\"eVar103\",\"type\":\"value\",\"value\":\"%[TMS] Page :: ATG Version%\"},{\"name\":\"eVar104\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Experience Store ID - asyncPageLoad%\"},{\"name\":\"eVar106\",\"type\":\"value\",\"value\":\"%[TMS] Async :: Page :: Credit Card Status%\"},{\"name\":\"eVar110\",\"type\":\"value\",\"value\":\"%[TMS] Async :: Certona Experience Ids%\"},{\"name\":\"eVar117\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Experience Type%\"},{\"name\":\"eVar119\",\"type\":\"value\",\"value\":\"PoC - Adobe Analytics Async Page Load Tracking\"},{\"name\":\"eVar129\",\"type\":\"value\",\"value\":\"%[TMS] Async :: Page :: eVar129%\"},{\"name\":\"eVar130\",\"type\":\"value\",\"value\":\"%[TMS] Async :: Page :: eVar130%\"}],\"props\":[{\"name\":\"prop4\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Search Term%\"},{\"name\":\"prop5\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Number of Results - asyncPageLoad%\"},{\"name\":\"prop6\",\"type\":\"value\",\"value\":\"%[TMS] Async Previous Page Name - asyncPageLoad%\"},{\"name\":\"prop7\",\"type\":\"value\",\"value\":\"%[TMS] Async Previous Page Type - asyncPageLoad%\"},{\"name\":\"prop8\",\"type\":\"value\",\"value\":\"%[TMS] Async :: User :: BI Status%\"},{\"name\":\"prop9\",\"type\":\"value\",\"value\":\"%[TMS] Async :: User :: ATG ID - page load or async page load%\"},{\"name\":\"prop11\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Certona Placement :: Quicklooks%\"},{\"name\":\"prop13\",\"type\":\"value\",\"value\":\"%[TMS] Async :: Page :: Content Country%\"},{\"name\":\"prop19\",\"type\":\"value\",\"value\":\"%[TMS] Adobe Analytics - Prop19%\"},{\"name\":\"prop20\",\"type\":\"value\",\"value\":\"%[TMS] Prop20 Ecom Flag%\"},{\"name\":\"prop25\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Date%\"},{\"name\":\"prop27\",\"type\":\"value\",\"value\":\"%[TMS] Async :: User :: Sign In Status%\"},{\"name\":\"prop28\",\"type\":\"value\",\"value\":\"%[TMS] async: prop28%\"},{\"name\":\"prop32\",\"type\":\"value\",\"value\":\"%[TMS] async: prop32%\"},{\"name\":\"prop34\",\"type\":\"value\",\"value\":\"%[TMS] User :: Accepted Advertising Cookies%\"},{\"name\":\"prop46\",\"type\":\"value\",\"value\":\"D=v62\"},{\"name\":\"prop47\",\"type\":\"value\",\"value\":\"%[TMS] Event :: Last Refresh%\"},{\"name\":\"prop48\",\"type\":\"value\",\"value\":\"%[TMS] async: prop48%\"},{\"name\":\"prop52\",\"type\":\"value\",\"value\":\"n/a\"},{\"name\":\"prop53\",\"type\":\"value\",\"value\":\"%[TMS] User :: Play Status%\"},{\"name\":\"prop55\",\"type\":\"value\",\"value\":\"%[TMS] Async Previous Link Data%\"},{\"name\":\"prop61\",\"type\":\"value\",\"value\":\"%[TMS] Page :: BI Overlay Tiers%\"},{\"name\":\"prop63\",\"type\":\"value\",\"value\":\"%[TMS] Async Feature Strings%\"},{\"name\":\"prop67\",\"type\":\"value\",\"value\":\"%[TMS] Async :: Dynamic Category Filter%\"},{\"name\":\"prop70\",\"type\":\"value\",\"value\":\"%[TMS] Page :: Country%\"}],\"channel\":\"%[TMS] Channel%\",\"pageURL\":\"%[TMS] Page :: URL%\",\"pageName\":\"%[TMS] Async Page Name - asyncPageLoad%\"}}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC317c37c5405448e4a307f539a7be766b/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPef068a8d6dd34a43866d9a80cc98baab",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC317c37c5405448e4a307f539a7be766b/updated_with_extension"
+            },
+            "data": {
+                "id": "EXf690fb1811134551a54bf3ba76dc737b",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC317c37c5405448e4a307f539a7be766b/extension"
+            },
+            "data": {
+                "id": "EX736ba666267c4e5fa9e44940816ea84b",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC317c37c5405448e4a307f539a7be766b/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC317c37c5405448e4a307f539a7be766b/origin"
+            },
+            "data": {
+                "id": "RC317c37c5405448e4a307f539a7be766b",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RC317c37c5405448e4a307f539a7be766b/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX736ba666267c4e5fa9e44940816ea84b",
+        "origin": "https://reactor.adobe.io/rule_components/RC317c37c5405448e4a307f539a7be766b",
+        "rules": "https://reactor.adobe.io/rule_components/RC317c37c5405448e4a307f539a7be766b/rules",
+        "self": "https://reactor.adobe.io/rule_components/RC317c37c5405448e4a307f539a7be766b"
+    },
+    "meta": {
+        "latest_revision_number": 42
+    }
+}

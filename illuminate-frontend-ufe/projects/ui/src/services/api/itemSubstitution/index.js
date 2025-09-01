@@ -1,0 +1,4 @@
+import getItemSubstitutionProductRecs from 'services/api/itemSubstitution/getItemSubstitutionProductRecs';
+import getProductDetailsWithStockAvailability from 'services/api/itemSubstitution/getProductDetailsWithStockAvailability';
+
+export default { getItemSubstitutionProductRecs, getProductDetailsWithStockAvailability };

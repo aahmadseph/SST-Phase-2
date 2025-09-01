@@ -1,0 +1,97 @@
+{
+    "id": "DE808c231fb60b483f977d692ff0b7afd7",
+    "type": "data_elements",
+    "attributes": {
+        "created_at": "2023-09-05T16:16:45.166Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "[TMS] Lucid Campaign ID",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-09-13T20:45:26.824Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "clean_text": false,
+        "default_value": null,
+        "delegate_descriptor_id": "core::dataElements::custom-code",
+        "force_lower_case": false,
+        "review_status": "unsubmitted",
+        "storage_duration": null,
+        "settings": "{\"source\":\"var isCanada = digitalData.page.pageInfo.country === 'CA' ? true : false; \\n\\nvar campaignId_Dev = '70bcd60f-689c-42e5-a2cd-d9d6ce400627';\\nvar campaignId_DevCA = '70bcd60f-689c-42e5-a2cd-d9d6ce400627';\\nvar campaignId_Prod = '39b84213-2d48-4036-b229-f27b02f2164f';\\nvar campaignId_ProdCA = '39b84213-2d48-4036-b229-f27b02f2164f';\\n\\n\\nif (Sephora.UFE_ENV === 'PROD') {\\n  return isCanada ? campaignId_ProdCA : campaignId_Prod;\\n}\\nelse {\\n  return isCanada ? campaignId_DevCA : campaignId_Dev;\\n}\"}"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE808c231fb60b483f977d692ff0b7afd7/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE808c231fb60b483f977d692ff0b7afd7/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE808c231fb60b483f977d692ff0b7afd7/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE808c231fb60b483f977d692ff0b7afd7/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE808c231fb60b483f977d692ff0b7afd7/origin"
+            },
+            "data": {
+                "id": "DE808c231fb60b483f977d692ff0b7afd7",
+                "type": "data_elements"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE808c231fb60b483f977d692ff0b7afd7/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE808c231fb60b483f977d692ff0b7afd7/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE808c231fb60b483f977d692ff0b7afd7/updated_with_extension"
+            },
+            "data": {
+                "id": "EX06a7afc619ae4214a074cb5399abf9fa",
+                "type": "extensions"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/data_elements/DE808c231fb60b483f977d692ff0b7afd7",
+        "self": "https://reactor.adobe.io/data_elements/DE808c231fb60b483f977d692ff0b7afd7",
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74"
+    },
+    "meta": {
+        "latest_revision_number": 2
+    }
+}

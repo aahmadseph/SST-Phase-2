@@ -1,0 +1,91 @@
+{
+    "id": "RCda207608cef946eeb832bf20b6bde2bc",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2023-03-01T22:32:44.649Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "Bluecore",
+        "negate": false,
+        "order": 1,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": false,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2023-06-20T15:51:35.567Z",
+        "created_by_email": "rachel.joss@sephora.com",
+        "created_by_display_name": "rachel joss",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"global\":true,\"source\":\" var triggermail=triggermail||[];triggermail.load=function(a){var b=document.createElement(\\\"script\\\");b.type=\\\"text/javascript\\\";b.async=!0;b.src=\\\"https://api.bluecore.com/triggermail.js/\\\"+a+\\\".js\\\";a=document.getElementsByTagName(\\\"script\\\")[0];a.parentNode.insertBefore(b,a)};triggermail.load(\\\"sephora\\\");window.triggermail=triggermail;\\n\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCda207608cef946eeb832bf20b6bde2bc/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EPd22815afd48447aa955be6a3a012e3b5",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCda207608cef946eeb832bf20b6bde2bc/updated_with_extension"
+            },
+            "data": {
+                "id": "EX06a7afc619ae4214a074cb5399abf9fa",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCda207608cef946eeb832bf20b6bde2bc/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCda207608cef946eeb832bf20b6bde2bc/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCda207608cef946eeb832bf20b6bde2bc/origin"
+            },
+            "data": {
+                "id": "RCda207608cef946eeb832bf20b6bde2bc",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCda207608cef946eeb832bf20b6bde2bc/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RCda207608cef946eeb832bf20b6bde2bc",
+        "rules": "https://reactor.adobe.io/rule_components/RCda207608cef946eeb832bf20b6bde2bc/rules",
+        "self": "https://reactor.adobe.io/rule_components/RCda207608cef946eeb832bf20b6bde2bc"
+    },
+    "meta": {
+        "latest_revision_number": 137
+    }
+}

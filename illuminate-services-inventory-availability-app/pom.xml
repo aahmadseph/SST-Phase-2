@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- ~ This software is the confidential 
+	and proprietary information of ~ sephora.com and may not be used, reproduced, 
+	modified, distributed, ~ publicly displayed or otherwise disclosed without 
+	the express written ~ consent of sephora.com. ~ ~ This software is a work 
+	of authorship by sephora.com and protected by ~ the copyright laws of the 
+	United States and foreign jurisdictions. ~ ~ Copyright 2020 sephora.com, 
+	Inc. All rights reserved. -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.sephora.platform</groupId>
+		<artifactId>platform-parent</artifactId>
+		<version>2.0.1</version>
+		<relativePath/>
+	</parent>
+	
+	<groupId>com.sephora.services</groupId>
+	<artifactId>inventory-availability-parent</artifactId>
+	<version>springboot.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>inventory-availability-parent</name>
+	<description>inventory-availability parent pom.xml</description>
+
+	<modules>
+		<module>inventory-availability</module>
+		<module>inventory-common</module>
+		<module>inventory-availability-common</module>
+	</modules>
+
+	<properties>
+		<apache.commons.version>3.9</apache.commons.version>
+		<artifactoryReleaseUrl>http://artifactory-release.lipstack.sephoraus.com/artifactory/sephora-lib</artifactoryReleaseUrl>
+		<artifactorySnapshotUrl>http://artifactory-snapshot.lipstack.sephoraus.com/artifactory/sephora-snapshot-lib</artifactorySnapshotUrl>
+<!-- 		<cache-api.version>1.1.0</cache-api.version> -->
+		<docker.image.prefix>sephops_services</docker.image.prefix>
+		<docker.registry>sephora-docker-local.artifactory</docker.registry>
+		<git.commit.id.version>2.2.6</git.commit.id.version>
+		<guava.version>27.0.1-jre</guava.version>
+		<hb.manager.version>5.3.9.Final</hb.manager.version>
+		<hb.validator.version>6.0.13.Final</hb.validator.version>
+		<io.dropwizard.metrics.version>3.1.2</io.dropwizard.metrics.version>
+		<io.fabric8.docker.maven.plugin.version>0.31.0</io.fabric8.docker.maven.plugin.version>
+		<io.projectreactor.netty.version>0.9.1.RELEASE</io.projectreactor.netty.version>
+		<io.projectreactor.version>3.3.0.RELEASE</io.projectreactor.version>
+		<jacoco.version>0.8.5</jacoco.version>
+		<java.version>11</java.version>
+		<lombok.version>1.18.24</lombok.version>
+		<openfeign.version>10.2.0</openfeign.version>
+		<org.mapstruct.version>1.5.2.Final</org.mapstruct.version>
+		<!-- <sephora.platform.version>2.0-SNAPSHOT</sephora.platform.version> -->
+		<sephora.platform.version>2.0.1</sephora.platform.version>
+		<sortpom-maven-plugin.version>2.10.0</sortpom-maven-plugin.version>
+		<spring-cloud.version>2021.0.6</spring-cloud.version>
+		<springfox.swagger.version>2.9.2</springfox.swagger.version>
+		<confighubclient.version>1.0.0</confighubclient.version>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.sephora.platform</groupId>
+			<artifactId>seph-kubeernetes</artifactId>
+			<version>${sephora.platform.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.codahale.metrics</groupId>
+			<artifactId>metrics-jersey</artifactId>
+			<version>3.0.2</version>
+		</dependency>
+		<!-- For cosmos DB support -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>${guava.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.microsoft.azure/documentdb-bulkexecutor -->
+		<dependency>
+			<groupId>com.microsoft.azure</groupId>
+			<artifactId>documentdb-bulkexecutor</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sephora.platform</groupId>
+			<artifactId>platform-commons-appconfig</artifactId>
+			<version>${sephora.platform.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sephora.platform</groupId>
+			<artifactId>platform-commons-common</artifactId>
+			<version>${sephora.platform.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sephora.platform</groupId>
+			<artifactId>platform-commons-discoveryclient-kubernetes</artifactId>
+			<version>${sephora.platform.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sephora.platform</groupId>
+			<artifactId>platform-commons-logging</artifactId>
+			<version>${sephora.platform.version}</version>
+		</dependency>
+		 
+		<dependency>
+			<groupId>com.sephora.platform</groupId>
+			<artifactId>seph-cache</artifactId>
+			<version>${sephora.platform.version}</version>
+			<exclusions>
+				<!--<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-data-redis</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.redisson</groupId>
+					<artifactId>redisson</artifactId>
+				</exclusion>-->
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.sephora.platform</groupId>
+					<artifactId>platform-commons-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		 
+		<dependency>
+			<groupId>io.github.openfeign</groupId>
+			<artifactId>feign-httpclient</artifactId>
+			<version>${openfeign.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.openfeign</groupId>
+			<artifactId>feign-jackson</artifactId>
+			<version>${openfeign.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.github.openfeign</groupId>
+			<artifactId>feign-slf4j</artifactId>
+			<version>${openfeign.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
+			<version>${micrometer.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-bean-validators</artifactId>
+			<version>${springfox.swagger.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${springfox.swagger.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${springfox.swagger.version}</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.mapstruct</groupId>
+					<artifactId>mapstruct</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>javax.cache</groupId> -->
+<!-- 			<artifactId>cache-api</artifactId> -->
+<!-- 			<version>${cache-api.version}</version> -->
+<!-- 		</dependency> -->
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-collections4</artifactId>
+			<version>4.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${apache.commons.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-pool2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.13.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.13.2</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>log4j</groupId>
+					<artifactId>log4j</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- SLF4J Bridge -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>2.11.2</version>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.hibernate</groupId> -->
+<!-- 			<artifactId>hibernate-jcache</artifactId> -->
+<!-- 			<version>${hb.manager.version}</version> -->
+<!-- 		</dependency> -->
+
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hb.validator.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator-annotation-processor</artifactId>
+			<version>${hb.validator.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${org.mapstruct.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<exclusions>
+				<!-- Exclude Spring Boot's Default Logging -->
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+			<exclusions>
+				<!-- Exclude Spring Boot's Default Logging -->
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+			<exclusions>
+				<!-- Exclude Spring Boot's Default Logging -->
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+			<exclusions>
+				<!-- Exclude Spring Boot's Default Logging -->
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<!-- Exclude Spring Boot's Default Logging -->
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter</artifactId>
+		</dependency>
+		<!--
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-kubernetes</artifactId>
+		</dependency>
+
+                <dependency>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-starter-kubernetes-all</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-starter-sleuth</artifactId>
+                </dependency> -->
+		<dependency>
+      		<groupId>com.auth0</groupId>
+      		<artifactId>java-jwt</artifactId>
+      		<version>3.4.1</version>
+    	</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.3</version>
+				<configuration>
+					<localCheckout>true</localCheckout>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.mapstruct</groupId>
+							<artifactId>mapstruct-processor</artifactId>
+							<version>${org.mapstruct.version}</version>
+						</path>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
+						</path>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok-mapstruct-binding</artifactId>
+							<version>0.2.0</version>
+						</path>
+					</annotationProcessorPaths>
+					<compilerArgs>
+						<arg>-Amapstruct.suppressGeneratorTimestamp=true</arg>
+						<arg>-Amapstruct.defaultComponentModel=spring</arg>
+					</compilerArgs>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.12.4</version>
+				<configuration>
+					<trimStackTrace>false</trimStackTrace>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report</id>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<repositories>
+				<repository>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+					<id>sephora</id>
+					<name>Sephora DTC Snapshot Repository</name>
+					<url>${artifactorySnapshotUrl}</url>
+					<layout>default</layout>
+				</repository>
+				<repository>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<id>sephora-release</id>
+					<name>Sephora DTC Release Repository</name>
+					<url>${artifactoryReleaseUrl}</url>
+					<layout>default</layout>
+				</repository>
+			</repositories>
+		</profile>
+	</profiles>
+</project>

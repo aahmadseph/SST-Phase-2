@@ -1,0 +1,43 @@
+{
+    "name": "agent-aware",
+    "description": "CSC Agent Aware Site browser extension",
+    "version": "1.0.0",
+    "private": true,
+    "main": "index.js",
+    "imports": {
+        "#agent_aware/*": "./src/*"
+    },
+    "scripts": {
+        "clean": "rm -rf node_modules && rm -rf ./dist",
+        "build": "rm -rf ./dist && webpack --config ./webpack.config.js",
+        "eslint": "eslint --ext .js,.mjs src",
+        "upgrade-version": "node ./src/versioning.js",
+        "eslint-modified": "npm run eslint --workspace=agent-aware --quiet `git status -s src | awk '{ if ($1 == \"R\") { print $4; } else if ($1 != \"D\") { print $2; } }' | grep -v '\\.sh$'`"
+    },
+    "engines": {
+        "node": "22.12.0",
+        "npm": "10.9.0"
+    },
+    "dependencies": {
+        "core-js": "3.30.1",
+        "react": "16.14.0",
+        "react-dom": "16.14.0"
+    },
+    "devDependencies": {
+        "@babel/cli": "7.25.9",
+        "@babel/core": "7.25.9",
+        "@babel/preset-env": "7.25.9",
+        "@babel/preset-react": "7.18.6",
+        "babel-loader": "8.3.0",
+        "copy-webpack-plugin": "11.0.0",
+        "eslint": "8.57.1",
+        "eslint-config-airbnb-base": "15.0.0",
+        "eslint-plugin-disable": "2.0.3",
+        "eslint-plugin-import": "2.32.0",
+        "eslint-plugin-react": "7.37.5",
+        "eslint-plugin-ssr-friendly": "1.3.0",
+        "prettier": "3.5.3",
+        "webpack": "5.88.2",
+        "webpack-cli": "5.1.4"
+    }
+}

@@ -1,0 +1,11 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /omni-product-service
+
+spring:
+  main:
+    cloud-platform: NONE
+
+logging:
+  config: classpath:log4j2-local.xml

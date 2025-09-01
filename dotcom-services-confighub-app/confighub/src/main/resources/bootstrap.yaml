@@ -1,0 +1,50 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /confighub
+  tomcat:
+    accesslog:
+      enabled: false
+      log4j: true
+      pattern: combined
+    max-threads: 50
+    accept-count: 100
+    max-connections: 100
+    min-spare-threads: 10
+  max-http-header-size: 20KB
+  
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: confighub-service
+
+  cloud:
+    bus:
+      enabled: true
+      env:
+        enabled: false
+      refresh:
+        enabled: false
+    kubernetes:
+      enabled: true
+      config:
+        enabled: true
+      discovery:
+        enabled: false
+      reload:
+        enabled: true
+        mode: event
+        monitoring-config-maps: false
+        strategy: refresh
+#      config:
+#        enabled: true
+#        namespace: dev2
+#        name: example-cm
+
+management:
+  server:
+    port: 8080
+  endpoint:
+    restart:
+      enabled: true

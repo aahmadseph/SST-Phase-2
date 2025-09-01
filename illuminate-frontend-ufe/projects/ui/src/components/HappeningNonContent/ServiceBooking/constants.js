@@ -1,0 +1,3 @@
+const BOOKING_PAGE_WIDTH = 824;
+
+export { BOOKING_PAGE_WIDTH };

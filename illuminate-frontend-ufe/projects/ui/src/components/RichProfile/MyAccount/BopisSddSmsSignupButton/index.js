@@ -1,0 +1,4 @@
+import BopisSddSmsSignupButton from 'components/RichProfile/MyAccount/BopisSddSmsSignupButton/BopisSddSmsSignupButton';
+import { withBopisSddSmsSignupButtonProps } from 'viewModel/richProfile/myAccount/bopisSddSmsSignupButton/withBopisSddSmsSignupButtonProps';
+
+export default withBopisSddSmsSignupButtonProps(BopisSddSmsSignupButton);

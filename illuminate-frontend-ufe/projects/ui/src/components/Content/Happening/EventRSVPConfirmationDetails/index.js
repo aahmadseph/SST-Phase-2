@@ -1,0 +1,4 @@
+import EventRSVPConfirmationDetails from 'components/Content/Happening/EventRSVPConfirmationDetails/EventRSVPConfirmationDetails';
+import { withEventRSVPConfirmationProps } from 'viewModel/happening/withEventRSVPConfirmationProps';
+
+export default withEventRSVPConfirmationProps(EventRSVPConfirmationDetails);

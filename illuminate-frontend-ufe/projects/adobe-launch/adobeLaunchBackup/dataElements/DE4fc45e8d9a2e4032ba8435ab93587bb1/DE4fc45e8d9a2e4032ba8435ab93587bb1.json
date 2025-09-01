@@ -1,0 +1,97 @@
+{
+    "id": "DE4fc45e8d9a2e4032ba8435ab93587bb1",
+    "type": "data_elements",
+    "attributes": {
+        "created_at": "2024-05-02T22:12:21.243Z",
+        "deleted_at": null,
+        "dirty": false,
+        "enabled": true,
+        "name": "[TMS] Prop20 Ecom Flag",
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2025-06-17T18:33:19.673Z",
+        "created_by_email": "brayam.nunez@sephora.com",
+        "created_by_display_name": "brayam nunez",
+        "updated_by_email": "sai.nikhilreddygudibandi@sephora.com",
+        "updated_by_display_name": "Sai nikhilreddygudibandi",
+        "clean_text": false,
+        "default_value": null,
+        "delegate_descriptor_id": "core::dataElements::custom-code",
+        "force_lower_case": false,
+        "review_status": "unsubmitted",
+        "storage_duration": null,
+        "settings": "{\"source\":\"const cookieList = [\\n  'rcps_cc',\\n  'rcps_po',\\n  'rcps_product',\\n  'rcps_full_profile_group',\\n  'rcps_checkout'\\n];\\n\\nconst getCookie = (cookieName) =\\u003e {\\n  const cookieValue = _satellite.getVar(`[TMS] ${cookieName}`);\\n  \\n  //special condition for rcps_checkout. we dont want it to default to false if cookie is not present.\\n  if(cookieName === 'rcps_checkout' \\u0026\\u0026 typeof cookieValue === 'undefined') {\\n    return null;\\n  }\\n  \\n  return `${cookieName}=${cookieValue ?? false}`;\\n};\\n\\nconst cookieString = cookieList.map(getCookie).filter(Boolean).join(',');\\n\\nreturn cookieString;\"}"
+    },
+    "relationships": {
+        "libraries": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE4fc45e8d9a2e4032ba8435ab93587bb1/libraries"
+            }
+        },
+        "revisions": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE4fc45e8d9a2e4032ba8435ab93587bb1/revisions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE4fc45e8d9a2e4032ba8435ab93587bb1/notes"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE4fc45e8d9a2e4032ba8435ab93587bb1/property"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE4fc45e8d9a2e4032ba8435ab93587bb1/origin"
+            },
+            "data": {
+                "id": "DE4fc45e8d9a2e4032ba8435ab93587bb1",
+                "type": "data_elements"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE4fc45e8d9a2e4032ba8435ab93587bb1/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE4fc45e8d9a2e4032ba8435ab93587bb1/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/data_elements/DE4fc45e8d9a2e4032ba8435ab93587bb1/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        }
+    },
+    "links": {
+        "property": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8",
+        "origin": "https://reactor.adobe.io/data_elements/DE4fc45e8d9a2e4032ba8435ab93587bb1",
+        "self": "https://reactor.adobe.io/data_elements/DE4fc45e8d9a2e4032ba8435ab93587bb1",
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74"
+    },
+    "meta": {
+        "latest_revision_number": 5
+    }
+}

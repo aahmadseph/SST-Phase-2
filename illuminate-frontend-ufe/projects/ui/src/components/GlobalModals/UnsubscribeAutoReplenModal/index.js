@@ -1,0 +1,6 @@
+import UnsubscribeAutoReplenModal from 'components/GlobalModals/UnsubscribeAutoReplenModal/UnsubscribeAutoReplenModal';
+import { withUnsubscribeAutoReplenModalProps } from 'viewModel/globalModals/unsubscribeAutoReplenModal/withUnsubscribeAutoReplenModalProps';
+
+const ConnectedUnsubscribeAutoReplenModal = withUnsubscribeAutoReplenModalProps(UnsubscribeAutoReplenModal);
+
+export default ConnectedUnsubscribeAutoReplenModal;

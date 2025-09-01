@@ -1,0 +1,91 @@
+{
+    "id": "RCcc02cae3d54444eead385f04c599bdd5",
+    "type": "rule_components",
+    "attributes": {
+        "created_at": "2024-08-13T16:21:10.089Z",
+        "delegate_descriptor_id": "core::actions::custom-code",
+        "deleted_at": null,
+        "dirty": false,
+        "name": "TAG: GA4 Select Content",
+        "negate": false,
+        "order": 1,
+        "rule_order": 50,
+        "timeout": 2000,
+        "delay_next": true,
+        "published": true,
+        "published_at": null,
+        "revision_number": 0,
+        "updated_at": "2024-10-04T22:28:15.557Z",
+        "created_by_email": "gustavo.rodriguez@sephora.com",
+        "created_by_display_name": "Gustavo Rodriguez",
+        "updated_by_email": "gustavo.rodriguez@sephora.com",
+        "updated_by_display_name": "Gustavo Rodriguez",
+        "settings": "{\"source\":\"function getEventType() {\\n  let eventType = event?.nativeEvent?.type || '';\\n  let pageDetail = event?.detail?.data?.pageDetail || '';\\n  let linkName = event?.detail?.data?.linkName || '';\\n  let eventStrings = event?.detail?.data?.eventStrings || '';\\n  let productStrings = event?.detail?.data?.productStrings || '';\\n  let answerQuestionId = event?.detail?.data?.sponsoredProductInformation?.answerQuestionId || '';\\n  \\n  let contentType = '';\\n  let contentId = '';\\n  \\n  switch (eventType) {\\n    case 'asyncPageLoad':\\n      // Add Review\\n      if (eventStrings.indexOf('event149') \\u003e= 0) {\\n        contentType = 'product_review';\\n        contentId = _satellite.getVar('[TMS] Parse productString Fx')(productStrings)[0]?.product || '';\\n      }\\n      \\n      break;\\n    case 'linkTrackingEvent':\\n      // Answer Question\\n      if (linkName === 'answer_question_body_details') {\\n        contentType = 'product_question';\\n        contentId = answerQuestionId;\\n      }\\n      // Quiz Selected\\n      if (pageDetail === 'start-quiz') {\\n        contentType = 'quiz';\\n        contentId = event?.detail?.data?.bccComponentName || '';\\n      }\\n      break;\\n      \\n    case 'selectContentEvent':\\n      // Gallery Photo Upload\\n      if (linkName === 'photo_upload') {\\n        contentType = 'ugc_photo';\\n        contentId = event?.detail?.data?.photoId || '';\\n      }\\n      break;\\n      \\n    default:\\n      contentType = '';\\n      contentId = '';\\n  }\\n  \\n  return {\\n    contentType,\\n    contentId\\n  }\\n}\\n\\nif (gtag) {\\n  const { contentType, contentId } =  getEventType();\\n  \\n  gtag (\\\"event\\\", \\n    \\\"select_content\\\", \\n    {\\n      content_type: contentType, \\n      content_id: contentId\\n    }\\n  ); \\n}\",\"language\":\"javascript\"}"
+    },
+    "relationships": {
+        "updated_with_extension_package": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCcc02cae3d54444eead385f04c599bdd5/updated_with_extension_package"
+            },
+            "data": {
+                "id": "EP1fdd2a6ec2ae468fb1d2cac08df65f83",
+                "type": "extension_packages"
+            }
+        },
+        "updated_with_extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCcc02cae3d54444eead385f04c599bdd5/updated_with_extension"
+            },
+            "data": {
+                "id": "EX35ce3802460d499b9f4c856d69a764b4",
+                "type": "extensions"
+            }
+        },
+        "extension": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCcc02cae3d54444eead385f04c599bdd5/extension"
+            },
+            "data": {
+                "id": "EX881e591abc3d4b29b9681e2a4d337f74",
+                "type": "extensions"
+            }
+        },
+        "notes": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCcc02cae3d54444eead385f04c599bdd5/notes"
+            }
+        },
+        "origin": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCcc02cae3d54444eead385f04c599bdd5/origin"
+            },
+            "data": {
+                "id": "RCcc02cae3d54444eead385f04c599bdd5",
+                "type": "rule_components"
+            }
+        },
+        "property": {
+            "links": {
+                "related": "https://reactor.adobe.io/properties/PR28bc45fcba184e70b64b2f0cf7fe70f8"
+            },
+            "data": {
+                "id": "PR28bc45fcba184e70b64b2f0cf7fe70f8",
+                "type": "properties"
+            }
+        },
+        "rules": {
+            "links": {
+                "related": "https://reactor.adobe.io/rule_components/RCcc02cae3d54444eead385f04c599bdd5/rules"
+            }
+        }
+    },
+    "links": {
+        "extension": "https://reactor.adobe.io/extensions/EX881e591abc3d4b29b9681e2a4d337f74",
+        "origin": "https://reactor.adobe.io/rule_components/RCcc02cae3d54444eead385f04c599bdd5",
+        "rules": "https://reactor.adobe.io/rule_components/RCcc02cae3d54444eead385f04c599bdd5/rules",
+        "self": "https://reactor.adobe.io/rule_components/RCcc02cae3d54444eead385f04c599bdd5"
+    },
+    "meta": {
+        "latest_revision_number": 14
+    }
+}

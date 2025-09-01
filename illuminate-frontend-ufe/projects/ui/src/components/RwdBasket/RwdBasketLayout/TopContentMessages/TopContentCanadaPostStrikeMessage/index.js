@@ -1,0 +1,5 @@
+import TopContentCanadaPostStrikeMessage from 'components/RwdBasket/RwdBasketLayout/TopContentMessages/TopContentCanadaPostStrikeMessage/TopContentCanadaPostStrikeMessage';
+
+import { withTopContentCanadaPostStrikeMessageProps } from 'components/RwdBasket/RwdBasketLayout/TopContentMessages/TopContentCanadaPostStrikeMessage/withTopContentCanadaPostStrikeMessageProps';
+
+export default withTopContentCanadaPostStrikeMessageProps(TopContentCanadaPostStrikeMessage);

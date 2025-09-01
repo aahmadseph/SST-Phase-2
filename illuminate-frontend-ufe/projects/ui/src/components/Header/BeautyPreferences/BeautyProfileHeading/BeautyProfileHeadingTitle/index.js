@@ -1,0 +1,3 @@
+import BeautyProfileHeadingTitle from 'components/Header/BeautyPreferences/BeautyProfileHeading/BeautyProfileHeadingTitle/BeautyProfileHeadingTitle';
+
+export default BeautyProfileHeadingTitle;

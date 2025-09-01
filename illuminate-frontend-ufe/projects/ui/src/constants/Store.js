@@ -1,0 +1,9 @@
+const MAX_STORES = 10;
+const STORE_TYPES = {
+    PREPEND_SEPHORA: ['SIKLS']
+};
+const EXPIRY_MINUTES = 30;
+
+export {
+    MAX_STORES, STORE_TYPES, EXPIRY_MINUTES
+};

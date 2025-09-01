@@ -1,0 +1,4 @@
+import GalleryLightBoxKebabModal from 'components/GlobalModals/GalleryLightBoxKebabModal/GalleryLightBoxKebabModal';
+import { withGalleryLightBoxKebabModalProps } from 'viewModel/globalModals/GalleryLightBoxKebabModal/withGalleryLightBoxKebabModalProps';
+
+export default withGalleryLightBoxKebabModalProps(GalleryLightBoxKebabModal);

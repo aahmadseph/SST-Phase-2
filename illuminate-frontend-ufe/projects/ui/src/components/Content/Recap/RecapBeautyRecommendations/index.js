@@ -1,0 +1,3 @@
+import RecapBeautyRecommendations from 'components/Content/Recap/RecapBeautyRecommendations/RecapBeautyRecommendations';
+
+export default RecapBeautyRecommendations;

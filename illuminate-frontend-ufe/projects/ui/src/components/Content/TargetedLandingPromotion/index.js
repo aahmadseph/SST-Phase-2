@@ -1,0 +1,4 @@
+import TargetedLandingPromotion from 'components/Content/TargetedLandingPromotion/TargetedLandingPromotion';
+import { withTargetedLandingPromotionProps } from 'viewModel/content/targetedLandingPromotion/withTargetedLandingPromotionProps';
+
+export default withTargetedLandingPromotionProps(TargetedLandingPromotion);

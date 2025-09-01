@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Sephora">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="country-code" content="">
+    <meta name="show-iwp" content="">
+    <meta name="apple-itunes-app" content="app-id=393328150">
+
+    <title></title>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="https://www.sephora.com/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://www.sephora.com/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://www.sephora.com/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://www.sephora.com/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://www.sephora.com/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://www.sephora.com/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://www.sephora.com/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://www.sephora.com/apple-touch-icon-152x152.png">
+    <link rel="icon" type="image/png" href="https://www.sephora.com/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="https://www.sephora.com/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://www.sephora.com/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="https://www.sephora.com/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="https://www.sephora.com/favicon-196x196.png" sizes="196x196">
+
+    <style>
+        body {
+            display: block;
+            margin: 8px;
+        }
+
+        .has-fixed-navbarTop {
+            padding-top: 0
+        }
+
+        .Wrap {
+            height: 100%
+        }
+
+        .container {
+            margin: 0;
+            font-family: "helvetica neue", helvetica, arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.5;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-align: center;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-direction: column;
+            flex-direction: column
+        }
+
+        .header-logo,
+        .Main,
+        .Footer {
+            padding: 24px 16px
+        }
+
+        .header-logo,
+        .Footer {
+            -webkit-flex: none;
+            flex: none
+        }
+
+        .header-logo {
+            box-shadow: 0 1px 10px -1px rgba(0, 0, 0, .125)
+        }
+
+        .Main {
+            -ms-flex: 1 0 auto;
+            flex: 1 0 auto;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -ms-flex-align: center;
+            align-items: center
+        }
+
+        .Footer {
+            background: #000;
+            color: #fff;
+            font-size: 11px
+        }
+
+        .Footer-divider {
+            padding-left: 4px;
+            padding-right: 4px
+        }
+
+        .Footer-link {
+            display: inline-block;
+            font-weight: 700;
+            text-decoration: underline
+        }
+
+        .Footer-link:hover {
+            color: #ccc
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        h1 {
+            margin: 0 0 16px;
+            line-height: 1.25;
+            font-family: georgia, times, serif;
+            font-size: 24px;
+            font-weight: 400
+        }
+
+        hr {
+            max-width: 70%;
+            margin-top: 24px;
+            margin-bottom: 24px;
+            border: 0;
+            border-bottom: 1px solid #eee
+        }
+
+        p {
+            margin: 0 0 1em
+        }
+
+        .fr-ca {
+            color: #999;
+            font-style: italic
+        }
+
+        .Logo {
+            display: block;
+            width: 108px;
+            height: 14px;
+            margin: 0 auto
+        }
+
+        .u-sm-show {
+            display: none
+        }
+
+        @media (min-width:40em) {
+
+            .Header,
+            .Main,
+            .Footer {
+                padding-top: 32px;
+                padding-bottom: 32px
+            }
+
+            h1 {
+                font-size: 32px
+            }
+
+            .Logo {
+                width: 216px;
+                height: 28px
+            }
+
+            .u-sm-hide {
+                display: none
+            }
+
+            .u-sm-show {
+                display: block
+            }
+        }
+
+        #back-to-top {
+            display: none;
+            cursor: pointer;
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            height: 50px;
+            width: 50px;
+            background: rgba(0, 0, 0, .6);
+            color: #fff;
+            text-align: center
+        }
+
+        #back-to-top .arrow {
+            margin-top: 11px
+        }
+
+        .arrow {
+            position: relative;
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-color: transparent;
+            border-width: 6px
+        }
+
+        .arrow-up {
+            top: -2px;
+            border-bottom: 6px solid
+        }
+
+        .arrow-lg {
+            border-width: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="Wrap">
+            <div class="header-logo">
+                <svg class="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 435.2 1000 129.6">
+                    <path fill="none"
+                        d="M812.6 472.1c-2.2-20.1-27.4-18.6-32.2-18.6h-10.1V495c4.3.2 7.6.2 11.9.2 5.1 0 33 .7 30.4-23.1zM631.4 452.9c-28.7 0-44.9 21.2-44.9 47.1 0 26.1 16.2 47.1 44.9 47.1s44.9-21.2 44.9-47.1c0-26.1-16.4-47.1-44.9-47.1zM305.1 454.2h-10.8v44.3H307c11.4 0 34.8-1.1 33.5-23.5-.8-22.9-30.4-20.8-35.4-20.8zM944.3 458.3L924.9 519l39.9-.2-20.3-60.5" />
+                    <path fill='#000'
+                        d="M493.4 487.3h-62.8v-48.2h-19v122.4h19v-58h62.8v58h18.8V439.1h-18.8M308.1 438.7c-6.9-.2-20.9-.2-33.3-.2v122.9H294v-46.6c4.8 0 14.7-.4 22.7-.6 11.2-.2 40.4-5.8 40.2-39.5.3-38-41.8-36-48.8-36zm-1 59.8h-12.7v-44.3h10.8c5 0 34.5-2.2 35.4 20.7 1.2 22.5-22.1 23.6-33.5 23.6zM130.9 438.5l.2 122.9h77.1v-16h-57.9v-41.7h41c0-3.5-.2-8.6 0-15.3h-41v-33.5h57.9c-.2-9.7 0-16.4 0-16.4h-77.3zM18.8 468.5c0-20.1 26.6-20.9 42.3-8 5.4-15.5 5.8-16.6 5.8-16.6C21.1 421.9.2 451 .2 469.6c0 44.5 63.1 35 54 66.3-3.2 11.4-23.5 17.9-46.9 3.7-1.7 4.8-4.5 10.6-7.3 16.4 30.9 16.2 71 8.4 72.3-25 1.8-42-53.5-39-53.5-62.5zM829.2 473c-2.8-36.5-38.2-33.7-46-34.1-6.5-.2-20.3-.4-32.2-.4v122.7h19.2v-51.6c6.5 0 8.6 0 18.4-.4l35 52h23.3L808.2 506c10.4-3.8 22.5-12.7 21-33zm-47.1 22.2c-4.3 0-7.6 0-11.9-.2v-41.5h10.1c4.8 0 30-1.5 32.2 18.6 2.7 23.8-25.2 23.1-30.4 23.1zM955.9 438.7h-22.2l-40.2 122.9h19c6-22.2 8-28.5 8-28.5l49.7-.2c5.8 16.4 10.1 28.9 10.1 28.9h19.7l-44.1-123.1zm-31 80.3l19.4-60.7h.2l20.3 60.5-39.9.2zM631.4 435.2c-39.1 0-64.6 28.9-64.6 64.8s25.5 64.8 64.6 64.8c39.1 0 64.6-28.9 64.6-64.8s-25.5-64.8-64.6-64.8zm0 111.9c-28.7 0-44.9-20.9-44.9-47.1 0-25.9 16.2-47.1 44.9-47.1 28.5 0 44.9 20.9 44.9 47.1 0 25.9-16.2 47.1-44.9 47.1z" />
+                </svg>
+            </div>
+            <div class="Main">
+                <div>
+                    <h1>
+                        Touch-ups in progress<br>
+                        <span class="fr-ca">Retouches en cours</span>
+                    </h1>
+                    <p>
+                        Please be patient while we update our site.<br>
+                        <span class="fr-ca">Merci de faire preuve de patience tandis que nous mettons à jour notre
+                            site.</span>
+                    </p>
+                    <hr>
+                    <p style="margin-bottom: 24px">
+                        If you have any questions, or would like to place an order with one of our Beauty Advisors,<br
+                            class="u-sm-show">
+                        please call us at 1.877.SEPHORA (1.877.737.4672).<br>
+                        <span class="fr-ca">Pour toutes questions, ou pour placer une commande auprès d’un de vos
+                            conseillers beauté,<br class="u-sm-show">
+                            veuillez nous joindre au 1-877-SEPHORA (1-877-737-4672).</span>
+                    </p>
+                    <p>
+                        Monday – Friday 6am–9pm PT<br>
+                        Saturday &amp; Sunday 8am–5pm PT<br>
+                        <span class="fr-ca">Du lundi au vendredi de 6 h à 21 h HNP</span><br>
+                        <span class="fr-ca">Samedi et dimanche de 8 h à 17 h HNP</span>
+                    </p>
+                </div>
+            </div>
+            <div class="Footer">
+                Copyright &copy; 2020 Sephora USA, Inc. All rights reserved.
+                <br class="u-sm-hide">
+                <a href="https://www.sephora.com/terms-of-use" class="Footer-link" style="margin-left: 4px">
+                    Terms of Use
+                </a>
+                <span class="Footer-divider">|</span>
+                <a href="https://www.sephora.com/privacy-policy" class="Footer-link">
+                    Privacy Policy
+                </a>
+                <br>
+                1-877-SEPHORA (1-877-737-4672)
+                <span class="Footer-divider">|</span>
+                TTY (1-888-866-9845)
+            </div>
+        </div>
+    </div>
+    <div id="back-to-top">
+        <div class="arrow arrow-up arrow-lg"></div>
+    </div>
+    <script type="text/javascript">
+        function backToTop() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+        var btt = document.getElementById('back-to-top');
+        if (btt) {
+            btt.addEventListener('click', backToTop);
+            window.onscroll = function () {
+                btt.style.display = (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) ? 'block' : 'none';
+            };
+        }
+
+    </script>
+    <!-- if you are seeing this page, it means I didn't know what else to send you not that the server is broken :) -->
+</body>
+
+</html>

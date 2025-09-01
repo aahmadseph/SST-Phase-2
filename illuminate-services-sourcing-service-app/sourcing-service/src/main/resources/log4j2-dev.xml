@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+  <Properties>
+    <Property name="LOG_PATTERN">
+      %d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${hostName} --- [%15.15t] %-40.40c{1.} : %m%n%ex
+    </Property>
+    <Property name="SEPHORA_LOG_PATTERN">
+      %d{yyyy-MM-dd HH:mm:ss,SSS} %d{UNIX} %-5p [%c{1.}] (%t %X{requestMethod} %X{requestUri} %X{correlationId}) %m%n
+    </Property>
+    <Property name="LOGGING_PATH">
+      ./log
+    </Property>
+    <Property name="LOGGING_FILE">
+      app.log
+    </Property>
+  </Properties>
+
+  <Appenders>
+    <Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+      <PatternLayout pattern="${SEPHORA_LOG_PATTERN}"/>
+    </Console>
+
+    <RollingRandomAccessFile name="File" append="true" fileName="${LOGGING_PATH}/${LOGGING_FILE}"
+                             filePattern="${LOGGING_PATH}/${LOGGING_FILE}.%d{yyyy-MM-dd}.gz">
+      <PatternLayout pattern="${SEPHORA_LOG_PATTERN}"/>
+      <Policies>
+        <TimeBasedTriggeringPolicy/>
+      </Policies>
+      <DefaultRolloverStrategy>
+        <Delete basePath="${LOGGING_PATH}" maxDepth="1">
+          <IfFileName glob="${LOGGING_FILE}.*.gz" />
+          <IfLastModified age="7d" />
+        </Delete>
+      </DefaultRolloverStrategy>
+    </RollingRandomAccessFile>
+
+  </Appenders>
+  <Loggers>
+
+    <Logger name="com.sephora.services.inventory" level="debug" additivity="false">
+      <AppenderRef ref="ConsoleAppender"/>
+      <!--<AppenderRef ref="File"/>-->
+    </Logger>
+
+    <!-- Enable logging for http client requests response. Set level to 'debug' -->
+    <Logger name="org.apache.http"  level="error" additivity="false">
+      <AppenderRef ref="ConsoleAppender"/>
+      <!--<AppenderRef ref="File"/>-->
+    </Logger>
+
+    <!-- Enable logging for http client requests response body. Set level to 'debug' -->
+    <Logger name="org.apache.http.wire"  level="error" additivity="false">
+      <AppenderRef ref="ConsoleAppender"/>
+      <!--<AppenderRef ref="File"/>-->
+    </Logger>
+
+    <!-- Enable logging for ok http client requests response. For kubernetes calls
+    Set level to 'trace' -->
+    <Logger name="okhttp3.logging.HttpLoggingInterceptor" level="trace" additivity="trace">
+      <AppenderRef ref="ConsoleAppender"/>
+      <!--<AppenderRef ref="File"/>-->
+    </Logger>
+
+    <Root level="debug">
+      <!--<AppenderRef ref="File" />-->
+      <AppenderRef ref="ConsoleAppender"/>
+    </Root>
+  </Loggers>
+</Configuration>

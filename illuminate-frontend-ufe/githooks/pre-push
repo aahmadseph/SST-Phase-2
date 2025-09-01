@@ -1,0 +1,36 @@
+#!/bin/bash
+# symlink this in ufe /.git/hooks/
+
+######################################################################
+# ESLINT
+######################################################################
+npm run-script eslint:check-modified
+EXIT_CODE=$?
+if [[ ${EXIT_CODE} -ne 0 ]]; then
+    echo "ESLINT has found some style issues in the modified javascript files. Please resolve them first."
+    echo "[ERRROR] code = " ${EXIT_CODE}
+    echo
+    echo "Push aborted."
+
+    exit 1
+else
+    echo "ESLINT completed successfully."
+fi
+
+######################################################################
+# Unit Tests: Run unit tests/specs before committing
+######################################################################
+npm run test-no-map --workspace=ui
+EXIT_CODE=$?
+if [[ ${EXIT_CODE} -ne 0 ]]; then
+    echo "Karma Unit Tests failed."
+    echo "[ERRROR] code = " ${EXIT_CODE}
+    echo
+    echo "Push aborted."
+
+    exit 1
+else
+    echo "Karma Unit Tests completed successfully\n"
+
+    exit 0
+fi

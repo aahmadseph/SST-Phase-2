@@ -1,0 +1,32 @@
+const TYPES = {
+    URL_STORE_ID: 'URL_STORE_ID',
+    URL_ZIP: 'URL_ZIP',
+    PREDICTION: 'PREDICTION',
+    GEOLOCATION: 'GEOLOCATION',
+    IP: 'IP',
+    DEFAULT: 'DEFAULT'
+};
+
+const STORABLE_TYPES = [TYPES.URL_STORE_ID, TYPES.URL_ZIP, TYPES.PREDICTION];
+
+const URL_BASED_TYPES = [TYPES.URL_STORE_ID, TYPES.URL_ZIP];
+
+const DEFAULT_LOCATION = {
+    display: 'San Francisco',
+    lat: 37.773972,
+    lon: -122.431297,
+    country: 'US'
+};
+
+const STORAGE_MAX_SIZE = 10;
+
+const CURRENT_LOCATION_TEXT = 'Current Location';
+
+export default {
+    TYPES,
+    STORABLE_TYPES,
+    URL_BASED_TYPES,
+    DEFAULT_LOCATION,
+    STORAGE_MAX_SIZE,
+    CURRENT_LOCATION_TEXT
+};

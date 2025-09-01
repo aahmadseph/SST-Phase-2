@@ -1,0 +1,211 @@
+server:
+  connection-timeout: 5s
+  tomcat:
+    mbeanregistry:
+      enabled: true
+  #compression:
+  # TODO temporary disabled till to adding special filter
+  #enabled: true
+  #mime-types: application/json,application/xml,text/html,text/plain
+  #min-response-size: 8096
+  max-http-request-header-size: 40KB
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  data:
+    data:
+      redis:
+        #     host: <override on profile specific yaml or on config repo or vie environment variable 'spring.redis.host'>
+        #     password:  Set via ENV variable "SPRING_DATA_REDIS_PASSWORD"
+        port: 10000
+        connect-timeout: 1s
+        timeout: 500ms
+        ssl:
+          enabled: true
+        lettuce:
+          pool:
+            enabled: true
+            max-active: 32
+            max-idle: 8
+            min-idle: 0
+            max-wait: 50ms
+
+discovery:
+  client:
+    currentServiceId: omni-product-service-svc
+
+request:
+  log:
+    jsonBodies: true
+    maxPayloadLength: 1000
+    exclude-url-patterns: '/actuator/health,/actuator/liveness,/actuator/prometheus,/v3/api-docs'
+
+management:
+  endpoint:
+    restart:
+      enabled: true
+    configprops:
+      # Added custom  SanitizingFunction
+      # com.sephora.services.product.endpoint.ActuatorSanitizer
+      showValues: ALWAYS
+    env:
+      # Added custom  SanitizingFunction
+      # com.sephora.services.product.endpoint.ActuatorSanitizer
+      showValues: ALWAYS
+    additional-keys-to-sanitize:
+      - .*SPRING_DATA_REDIS_PASSWORD.*
+      - .*CT_CLIENT_ID.*
+      - .*CT_CLIENT_SECRET.*
+      - .*KEYVAULT_IDENTIFIER.*
+      - .*commercetools.clientId
+  health:
+    circuitbreakers:
+      enabled: false
+    redis:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - caches
+          - liveness
+          - prometheus
+          - env
+          - configprops
+  metrics:
+    tags:
+      app: ${spring.application.name}
+      name-space: ${spring.cloud.kubernetes.client.namespace:default}
+      pod-name: ${HOSTNAME:localhost}
+  dynatrace:
+    metrics:
+      export:
+        enabled: false
+  observations:
+    annotations:
+      # Enabled handling @Timed annotation and @Counter annotation
+      enabled: true
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        waitDurationInOpenState: 20s
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 3
+        permittedNumberOfCallsInHalfOpenState: 1
+        slidingWindowSize: 5
+        slidingWindowType: COUNT_BASED
+    instances:
+      commerceToolsCircuitBreaker:
+        waitDurationInOpenState: 20s
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 3
+        permittedNumberOfCallsInHalfOpenState: 1
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASED
+  retry:
+    configs:
+      default:
+        max-attempts: 3
+        wait-duration: 50ms
+        ignore-exceptions:
+          - io.github.resilience4j.circuitbreaker.CallNotPermittedException
+        retry-exceptions:
+          - com.sephora.services.product.service.commercetools.repository.exception.RepositoryException
+          - com.sephora.services.product.service.commercetools.repository.exception.RetriableRepositoryException
+          - io.vrap.rmf.base.client.error.RmfTimeoutException
+      instances:
+        commerce-tools-query-executor:
+          baseConfig: default
+
+
+sephora:
+  commercetools:
+    connection-timeout: 1s
+    read-timeout: 4s
+    write-timeout: 2s
+    max-requests: 64
+    wait-timeout: 2s
+    client-id: ${CT_CLIENT_ID}
+    client-secret: ${CT_CLIENT_SECRET}
+    project-key: sephora-qa1
+    scopes: manage_project:sephora-qa1
+    region: ${CT_REGION:GCP_US_CENTRAL1}
+    enable-gzip: true
+    executor:
+      thread-name-prefix: commerce-tools-task-
+      pool:
+        core-size: 10
+        max-size: 32
+        queue-capacity: 0
+        keep-alive: 60s
+        allow-core-thread-timeout: false
+  cache:
+    cache2k:
+      enabled: true
+      expire-after-write: 1h
+      boost-concurrency: true
+      entry-capacity: 100
+      keep-data-after-expired: true
+      # https://cache2k.org/docs/latest/user-guide.html#using-universalresiliencepolicy
+      enable-universal-resilience-policy: true
+      enable-logging: false
+      caches:
+        productType:
+          enabled: true
+          key-type: java.lang.String
+          value-type: com.commercetools.api.models.product_type.ProductType
+          expire-after-write: 2h
+          entry-capacity: 100
+        productProjection:
+          enabled: true
+          key-type: java.lang.String
+          value-type: com.commercetools.api.models.product.ProductProjection
+          expire-after-write: 2h
+          entry-capacity: 10000
+          permit-null-values: true
+        skuProductProjectionKeys:
+          enabled: true
+          key-type: java.lang.String
+          value-type: java.util.Set
+          expire-after-write: 2h
+          entry-capacity: 20000
+        primaryProductProductProjectionKeys:
+          enabled: true
+          key-type: java.lang.String
+          value-type: java.util.Set
+          expire-after-write: 2h
+          entry-capacity: 20000
+    redis:
+      # See org.springframework.boot.autoconfigure.cache.CacheProperties.Redis
+      enabled: false
+      time-to-live: 1h
+      cache-null-values: false
+      keyPrefix: "OPS:"
+      useKeyPrefix: true
+      enableStatistics: false
+      enable-kryo: true
+      enable-compression: true
+      caches:
+        productType:
+          time-to-live: 2h
+        productProjection:
+          time-to-live: 1h
+          cache-null-values: true
+        skuProductProjectionKeys:
+          time-to-live: 2h
+        primaryProductProductProjectionKeys:
+          time-to-live: 2h
+
+springdoc:
+  swagger-ui:
+    disable-swagger-default-url: true

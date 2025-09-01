@@ -1,0 +1,4 @@
+import BiGamificationLink from 'components/RichProfile/BeautyInsider/BiGamificationLink/BiGamificationLink';
+import withBiGamificationLinkProps from 'viewModel/richProfile/beautyInsider/biGamificationLink/withBiGamificationLinkProps';
+
+export default withBiGamificationLinkProps(BiGamificationLink);

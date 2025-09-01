@@ -1,0 +1,6 @@
+import ProfileCompletionStatus from 'components/Header/BeautyPreferences/ProfileCompletionStatus/ProfileCompletionStatus';
+import { withProfileCompletionStatusProps } from 'viewModel/header/beautyPreferences/profileCompletionStatus/withProfileCompletionStatusProps';
+
+const ConnectedProfileCompletionStatus = withProfileCompletionStatusProps(ProfileCompletionStatus);
+
+export default ConnectedProfileCompletionStatus;

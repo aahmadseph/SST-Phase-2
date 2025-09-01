@@ -1,0 +1,3 @@
+import BuyNowPayLaterContent from 'components/GlobalModals/BuyNowPayLaterModal/BuyNowPayLaterContent/BuyNowPayLaterContent';
+
+export default BuyNowPayLaterContent;

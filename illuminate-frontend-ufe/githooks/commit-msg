@@ -1,0 +1,14 @@
+#!/bin/bash
+# Symlink this into the .git/hooks/ directory
+
+#######################################################################################
+# Commit message should be formatted correctly: [ILLUPH-#] message || [NO-JIRA] message
+#######################################################################################
+
+MSG="$1"
+
+if ! grep -qE "ILLUPH|JIRA|UPC|UC|UML|UBS|UTS|AV|SER|PRO|DEF" "$MSG";then
+    printf "\n\033[41m\033[97m$(cat $MSG)\033[0m"
+    echo -e "\n\033[31m[ERROR] Please format your commit message correctly: [PROJ-#] message\033[0m\n"
+    exit 1
+fi

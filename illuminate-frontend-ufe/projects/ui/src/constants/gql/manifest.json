@@ -1,0 +1,48 @@
+{
+  "format": "apollo-persisted-query-manifest",
+  "version": 1,
+  "operations": [
+    {
+      "id": "903f929aab0e9d240a03bd54db41c3fc0472947aa0a09abe0d0c9a4a99569cf4",
+      "name": "CustomerLimitQuery",
+      "type": "query",
+      "body": "query CustomerLimitQuery($request: GetCustomerLimitInput!) {\n  customerLimit(request: $request) {\n    currency\n    balance {\n      initial\n      initialExpiryDate\n      totalSpend\n      available\n      __typename\n    }\n    __typename\n  }\n}"
+    },
+    {
+      "id": "3e894a5c09a6f8d42ec244d2f098e03c0f1c7e408650ad0a71bdffe2b17de031",
+      "name": "GuestBookingClientDetails",
+      "type": "query",
+      "body": "query GuestBookingClientDetails($guestBookingClientDetailsInput: GuestBookingClientDetailsInput!) {\n  guestBookingClientDetails(\n    guestBookingClientDetailsInput: $guestBookingClientDetailsInput\n  ) {\n    clientState\n    __typename\n  }\n}"
+    },
+    {
+      "id": "68890de6e87950badb6eb620d94be93115687db3b5066c483fed83098f7b8264",
+      "name": "Recommendations",
+      "type": "query",
+      "body": "query Recommendations($request: ProductRecommendationInput!) {\n  recommendations(request: $request) {\n    resultId\n    response {\n      pod {\n        id\n        displayName\n        __typename\n      }\n      results {\n        value\n        strategy {\n          id\n          __typename\n        }\n        data {\n          productId\n          brandName\n          url\n          imageUrl\n          rating\n          totalReviews\n          currentSku {\n            colorName\n            biExclusivityLevel\n            isBI\n            isNew\n            skuId\n            isBest\n            isNatural\n            isOrganic\n            imageAltText\n            isOnlineOnly\n            isFirstAccess\n            isAppExclusive\n            isLimitedEdition\n            isLimitedTimeOffer\n            isSephoraExclusive\n            variationValue\n            skuImages {\n              image135\n              image250\n              image450\n              __typename\n            }\n            sizeRefinement\n            __typename\n          }\n          variationId\n          facets {\n            name\n            values\n            __typename\n          }\n          __typename\n        }\n        variationsMap {\n          minListPrice\n          maxListPrice\n          minSalePrice\n          maxSalePrice\n          __typename\n        }\n        __typename\n      }\n      totalNumResults\n      __typename\n    }\n    __typename\n  }\n}"
+    },
+    {
+      "id": "a5c028db3999ade69d5fbfb905e3d0f28eae22fa20217ec16bd4355b4d7d6bc1",
+      "name": "Refinements",
+      "type": "query",
+      "body": "query Refinements($locale: String) {\n  refinements(locale: $locale) {\n    key\n    value\n    categoryId\n    refinements {\n      key\n      value\n      items {\n        key\n        value\n        visableInBP\n        filterable\n        image\n        __typename\n      }\n      __typename\n    }\n    __typename\n  }\n}"
+    },
+    {
+      "id": "c0831d15709e962181a656eb5ebe62e2c4e5644ad979009338686204a00553bc",
+      "name": "RefinementsBP",
+      "type": "query",
+      "body": "query RefinementsBP($standardLocale: StandardLocale, $country: StandardCountry) {\n  refinements(standardLocale: $standardLocale, country: $country) {\n    key\n    value\n    categoryId\n    orderId\n    refinements {\n      key\n      value\n      items {\n        key\n        value\n        visableInBP\n        filterable\n        image\n        orderId\n        avatarImageUrl\n        description\n        __typename\n      }\n      isBISignUp\n      isBVQuestion\n      largeDisplayType\n      orderId\n      selectionType\n      showSkip\n      smallDisplayType\n      syncedWorlds\n      __typename\n    }\n    __typename\n  }\n}"
+    },
+    {
+      "id": "f005074e0a08dccb7b531fad69cb2178182d072e1974a7c969c1bee9fc5d9a90",
+      "name": "ReservationSensitiveDetails",
+      "type": "query",
+      "body": "query ReservationSensitiveDetails($confirmationId: ID!) {\n  reservationSensitiveDetails(confirmationId: $confirmationId) {\n    clientDetails {\n      email\n      phone\n      __typename\n    }\n    __typename\n  }\n}"
+    },
+    {
+      "id": "1d9948be39df4a318d78b65b9f8093b7200a3e99ca90f19fba669edc501b8146",
+      "name": "guestBookingService",
+      "type": "mutation",
+      "body": "mutation guestBookingService($guestBookingServiceInput: GuestBookingServiceInput!) {\n  guestBookingService(guestBookingServiceInput: $guestBookingServiceInput) {\n    confirmationNumber\n    errorMessage\n    errorCode\n    __typename\n  }\n}"
+    }
+  ]
+}
