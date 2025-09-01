@@ -570,6 +570,7 @@ erDiagram
     reference_item ||--o{ behavior_tracking : "has"
     user_experience ||--|| privacy_consent : "requires"
 ```
+```
 
 ## Error Handling
 

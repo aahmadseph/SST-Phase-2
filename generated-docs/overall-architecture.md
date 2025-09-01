@@ -1099,6 +1099,7 @@ erDiagram
     products ||--o{ product_exp_items : "experienced_as"
     products ||--o{ sourcing_rules : "sourced_by"
 ```
+```
 
 ## Risk Assessment
 

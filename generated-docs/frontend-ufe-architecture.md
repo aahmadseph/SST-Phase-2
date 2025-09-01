@@ -201,6 +201,8 @@ sequenceDiagram
     API-->>Frontend: API Response
     Frontend-->>User: User Interface Update
 ```
+```
+```
 
 ## Error Handling Flow
 
@@ -217,6 +219,7 @@ sequenceDiagram
     Frontend->>Frontend: Handle Error
     Frontend->>Frontend: Show Error Message
     Frontend-->>User: Error Display
+```
 ```
 
 ## API Orchestration Flow
@@ -241,6 +244,7 @@ sequenceDiagram
     Frontend->>Frontend: Combine Data
     Frontend-->>User: Complete Product View
 ```
+```
 
 ## User Interaction Flow
 
@@ -260,6 +264,7 @@ sequenceDiagram
     API-->>Frontend: API Response
     Frontend->>State: Update Global State
     Frontend-->>User: UI Update
+```
 ```
 
 ## Performance Optimization Flow
@@ -286,6 +291,7 @@ sequenceDiagram
     
     Frontend-->>User: Optimized Response
 ```
+```
 
 ## State Management Flow
 
@@ -307,6 +313,7 @@ sequenceDiagram
     State->>State: Update State
     State-->>Component: State Update
     Component-->>User: UI Update
+```
 ```
 
 ## Deployment & DevOps Analysis
@@ -636,6 +643,7 @@ erDiagram
     user_interface ||--o{ api_integration : "uses"
     user_interface ||--o{ state_management : "manages"
     user_interface ||--o{ performance_metrics : "tracks"
+```
 ```
 
 ## Risk Assessment

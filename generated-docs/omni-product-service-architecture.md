@@ -203,6 +203,7 @@ sequenceDiagram
     Service-->>GraphQL: Processed Data
     GraphQL-->>Client: GraphQL Response
 ```
+```
 
 ## Error Handling Flow
 
@@ -222,6 +223,7 @@ sequenceDiagram
     Database-->>Service: Database Data
     Service-->>GraphQL: Fallback Response
     GraphQL-->>Client: Product Data
+```
 ```
 
 ## Product Creation Flow
@@ -244,6 +246,7 @@ sequenceDiagram
     Service->>Kafka: Publish Product Event
     Service-->>GraphQL: Product Created
     GraphQL-->>Client: Success Response
+```
 ```
 
 ## Product Retrieval Flow
@@ -269,6 +272,7 @@ sequenceDiagram
     Service-->>GraphQL: Aggregated Data
     GraphQL-->>Client: Product Response
 ```
+```
 
 ## Product Update Flow
 
@@ -291,6 +295,7 @@ sequenceDiagram
     Service-->>GraphQL: Product Updated
     GraphQL-->>Client: Success Response
 ```
+```
 
 ## Product Deletion Flow
 
@@ -312,6 +317,7 @@ sequenceDiagram
     Service->>Kafka: Publish Deletion Event
     Service-->>GraphQL: Product Deleted
     GraphQL-->>Client: Success Response
+```
 ```
 
 ## Product Search Flow
@@ -336,6 +342,8 @@ sequenceDiagram
     Service->>Cache: Cache Results
     Service-->>GraphQL: Search Results
     GraphQL-->>Client: Product List
+```
+```
 ```
 
 ## Deployment & DevOps Analysis

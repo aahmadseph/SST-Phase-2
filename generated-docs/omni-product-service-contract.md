@@ -753,3 +753,5 @@ erDiagram
     products ||--|| product_categories : "belongs_to"
     product_categories ||--o{ product_categories : "has_children"
 ```
+```
+```

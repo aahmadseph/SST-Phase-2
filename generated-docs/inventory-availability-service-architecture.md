@@ -201,6 +201,7 @@ sequenceDiagram
     Service-->>Inventory: Processed Data
     Inventory-->>Client: Inventory Response
 ```
+```
 
 ## Error Handling Flow
 
@@ -221,6 +222,7 @@ sequenceDiagram
     Service-->>Inventory: Fallback Response
     Inventory-->>Client: Inventory Data
 ```
+```
 
 ## Inventory Update Flow
 
@@ -239,6 +241,7 @@ sequenceDiagram
     Service->>Kafka: Publish Inventory Event
     Service-->>Inventory: Update Complete
     Inventory-->>External: Success Response
+```
 ```
 
 ## Inventory Query Flow
@@ -261,6 +264,7 @@ sequenceDiagram
     Service-->>Inventory: Inventory Data
     Inventory-->>Client: Inventory Response
 ```
+```
 
 ## Availability Calculation Flow
 
@@ -282,6 +286,7 @@ sequenceDiagram
     Service-->>Inventory: Availability Result
     Inventory-->>Client: Availability Response
 ```
+```
 
 ## Supply Update Flow
 
@@ -300,6 +305,7 @@ sequenceDiagram
     Service->>Kafka: Publish Supply Event
     Service-->>Inventory: Supply Updated
     Inventory-->>External: Success Response
+```
 ```
 
 ## Deployment & DevOps Analysis

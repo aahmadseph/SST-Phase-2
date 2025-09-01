@@ -574,6 +574,9 @@ erDiagram
     user_interface ||--o{ state_management : "manages"
     user_interface ||--o{ performance_metrics : "tracks"
 ```
+```
+```
+```
 
 ## Error Handling
 

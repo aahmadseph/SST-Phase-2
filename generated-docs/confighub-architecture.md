@@ -197,6 +197,7 @@ sequenceDiagram
     Security-->>ConfigHub: Authentication Status
     ConfigHub-->>Client: Configuration Response
 ```
+```
 
 ## Error Handling Flow
 
@@ -216,6 +217,7 @@ sequenceDiagram
     Repository-->>Service: Repository Exception
     Service-->>Controller: Service Exception
     Controller-->>Client: Error Response
+```
 ```
 
 ## Configuration Creation Flow
@@ -240,6 +242,7 @@ sequenceDiagram
     Service-->>Controller: Configuration Created
     Controller-->>Client: Success Response
 ```
+```
 
 ## Configuration Retrieval Flow
 
@@ -263,6 +266,7 @@ sequenceDiagram
     Service->>Cache: Update Cache
     Service-->>Controller: Configuration Data
     Controller-->>Client: Configuration Response
+```
 ```
 
 ## Configuration Update Flow
@@ -290,6 +294,7 @@ sequenceDiagram
     Service-->>Controller: Update Complete
     Controller-->>Client: Success Response
 ```
+```
 
 ## Configuration Deletion Flow
 
@@ -312,6 +317,7 @@ sequenceDiagram
     Audit->>Database: Save Audit Log
     Service-->>Controller: Deletion Complete
     Controller-->>Client: Success Response
+```
 ```
 
 ## Deployment & DevOps Analysis

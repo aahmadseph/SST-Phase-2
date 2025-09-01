@@ -201,6 +201,7 @@ sequenceDiagram
     Service-->>Sourcing: Processed Data
     Sourcing-->>Client: Sourcing Response
 ```
+```
 
 ## Error Handling Flow
 
@@ -221,6 +222,7 @@ sequenceDiagram
     Service-->>Sourcing: Fallback Response
     Sourcing-->>Client: Sourcing Data
 ```
+```
 
 ## Sourcing Calculation Flow
 
@@ -237,12 +239,11 @@ sequenceDiagram
     Sourcing->>Service: Calculate Sourcing Options
     Service->>Database: Get Sourcing Data
     Database-->>Service: Sourcing Data
-    Service->>Carrier: Get Carrier Options
-    Carrier-->>Service: Carrier Data
     Service->>Service: Calculate Optimal Sourcing
     Service->>Kafka: Publish Sourcing Event
     Service-->>Sourcing: Sourcing Options
     Sourcing-->>Client: Sourcing Response
+```
 ```
 
 ## Carrier Integration Flow
@@ -267,6 +268,7 @@ sequenceDiagram
     Service->>Service: Compare Options
     Service-->>Sourcing: Best Options
 ```
+```
 
 ## Sourcing Update Flow
 
@@ -285,6 +287,7 @@ sequenceDiagram
     Service->>Kafka: Publish Update Event
     Service-->>Sourcing: Update Complete
     Sourcing-->>External: Success Response
+```
 ```
 
 ## Fulfillment Optimization Flow
@@ -306,6 +309,7 @@ sequenceDiagram
     Service->>Service: Calculate Optimal Fulfillment
     Service-->>Sourcing: Fulfillment Options
     Sourcing-->>Client: Fulfillment Response
+```
 ```
 
 ## Deployment & DevOps Analysis

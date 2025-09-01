@@ -549,6 +549,7 @@ erDiagram
     reference_item ||--o{ product_aggregation : "has"
     product_data ||--|| product_source : "from"
 ```
+```
 
 ## Error Handling
 

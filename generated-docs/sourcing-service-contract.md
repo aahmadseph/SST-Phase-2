@@ -582,6 +582,7 @@ erDiagram
     fulfillment_strategy ||--o{ sourcing_rule : "has"
     carrier_service ||--|| carrier_integration : "configured_by"
 ```
+```
 
 ## Error Handling
 

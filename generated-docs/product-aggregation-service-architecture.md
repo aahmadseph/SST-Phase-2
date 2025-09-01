@@ -201,6 +201,7 @@ sequenceDiagram
     Service-->>ProductAgg: Processed Data
     ProductAgg-->>Client: Product Response
 ```
+```
 
 ## Error Handling Flow
 
@@ -221,6 +222,7 @@ sequenceDiagram
     Service-->>ProductAgg: Fallback Response
     ProductAgg-->>Client: Product Data
 ```
+```
 
 ## Product Aggregation Flow
 
@@ -239,6 +241,7 @@ sequenceDiagram
     Service->>Kafka: Publish Product Event
     Service-->>ProductAgg: Aggregation Complete
     ProductAgg-->>External: Success Response
+```
 ```
 
 ## Product Query Flow
@@ -261,6 +264,7 @@ sequenceDiagram
     Service-->>ProductAgg: Product Data
     ProductAgg-->>Client: Product Response
 ```
+```
 
 ## Data Enrichment Flow
 
@@ -282,6 +286,7 @@ sequenceDiagram
     Service-->>ProductAgg: Enriched Data
     ProductAgg-->>Client: Enriched Response
 ```
+```
 
 ## Product Update Flow
 
@@ -300,6 +305,7 @@ sequenceDiagram
     Service->>Kafka: Publish Update Event
     Service-->>ProductAgg: Update Complete
     ProductAgg-->>External: Success Response
+```
 ```
 
 ## Deployment & DevOps Analysis

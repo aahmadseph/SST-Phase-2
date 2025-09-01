@@ -603,6 +603,7 @@ erDiagram
     inventory ||--o{ supply : "has"
     inventory ||--o{ inventory_control : "has"
 ```
+```
 
 ## Error Handling
 

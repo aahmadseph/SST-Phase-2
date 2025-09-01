@@ -201,6 +201,7 @@ sequenceDiagram
     Service-->>ProductExp: Processed Data
     ProductExp-->>Client: Experience Response
 ```
+```
 
 ## Error Handling Flow
 
@@ -220,6 +221,7 @@ sequenceDiagram
     Database-->>Service: Database Data
     Service-->>ProductExp: Fallback Response
     ProductExp-->>Client: Experience Data
+```
 ```
 
 ## Experience Data Flow
@@ -242,6 +244,7 @@ sequenceDiagram
     Service-->>ProductExp: Processing Complete
     ProductExp-->>User: Success Response
 ```
+```
 
 ## Analytics Processing Flow
 
@@ -262,6 +265,7 @@ sequenceDiagram
     Service-->>ProductExp: Analytics Data
     ProductExp-->>Client: Analytics Response
 ```
+```
 
 ## User Behavior Tracking Flow
 
@@ -280,6 +284,7 @@ sequenceDiagram
     Service->>Kafka: Publish Behavior Event
     Service-->>ProductExp: Tracking Complete
     ProductExp-->>User: Success Response
+```
 ```
 
 ## Data Privacy Flow
@@ -300,6 +305,7 @@ sequenceDiagram
     Database-->>Service: Anonymized Data
     Service-->>ProductExp: Privacy Compliant Data
     ProductExp-->>User: Data Response
+```
 ```
 
 ## Deployment & DevOps Analysis
