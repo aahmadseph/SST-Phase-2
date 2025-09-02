@@ -431,26 +431,26 @@ No response body
 
 ```mermaid
 graph TB
-    subgraph "Product Management"
-        CREATE[POST /v1/products]
-        GET_ALL[GET /v1/products]
-        GET_ONE[GET /v1/products/{id}]
-        UPDATE[PUT /v1/products/{id}]
-        DELETE[DELETE /v1/products/{id}]
+    subgraph ProductManagement [Product Management]
+        CREATE["POST /v1/products"]
+        GET_ALL["GET /v1/products"]
+        GET_ONE["GET /v1/products/{id}"]
+        UPDATE["PUT /v1/products/{id}"]
+        DELETE["DELETE /v1/products/{id}"]
     end
     
-    subgraph "Data Enrichment"
-        ENRICH[POST /v1/products/{id}/enrich]
+    subgraph DataEnrichment [Data Enrichment]
+        ENRICH["POST /v1/products/{id}/enrich"]
     end
     
-    subgraph "Source Management"
-        SOURCES[GET /v1/products/{id}/sources]
-        SYNC[POST /v1/products/{id}/sync]
+    subgraph SourceManagement [Source Management]
+        SOURCES["GET /v1/products/{id}/sources"]
+        SYNC["POST /v1/products/{id}/sync"]
     end
     
-    subgraph "External Systems"
-        OPS[Omni Product Service]
-        KAFKA[Kafka Events]
+    subgraph ExternalSystems [External Systems]
+        OPS["Omni Product Service"]
+        KAFKA["Kafka Events"]
     end
     
     CREATE --> KAFKA
@@ -458,6 +458,7 @@ graph TB
     DELETE --> KAFKA
     ENRICH --> KAFKA
     SYNC --> OPS
+
 ```
 
 ## Request/Response Flow

@@ -487,55 +487,56 @@ The Product Aggregation Service manages product entities with the following doma
 ```mermaid
 classDiagram
     class ReferenceItem {
-        +String id
-        +String itemId
-        +String name
-        +String description
-        +String brand
-        +String category
-        +Map attributes
-        +List images
-        +DateTime createdAt
-        +DateTime updatedAt
+        +id : String
+        +itemId : String
+        +name : String
+        +description : String
+        +brand : String
+        +category : String
+        +attributes : Map
+        +images : List
+        +createdAt : DateTime
+        +updatedAt : DateTime
     }
     
     class ProductData {
-        +String dataId
-        +String itemId
-        +String source
-        +String dataType
-        +Object data
-        +DateTime receivedAt
+        +dataId : String
+        +itemId : String
+        +source : String
+        +dataType : String
+        +data : Object
+        +receivedAt : DateTime
     }
     
     class ProductEnrichment {
-        +String enrichmentId
-        +String itemId
-        +String enrichmentType
-        +Object enrichmentData
-        +DateTime enrichedAt
+        +enrichmentId : String
+        +itemId : String
+        +enrichmentType : String
+        +enrichmentData : Object
+        +enrichedAt : DateTime
     }
     
     class ProductAggregation {
-        +String aggregationId
-        +String itemId
-        +List sources
-        +Object aggregatedData
-        +DateTime aggregatedAt
+        +aggregationId : String
+        +itemId : String
+        +sources : List
+        +aggregatedData : Object
+        +aggregatedAt : DateTime
     }
     
     class ProductSource {
-        +String sourceId
-        +String sourceName
-        +String sourceType
-        +String status
-        +DateTime lastSync
+        +sourceId : String
+        +sourceName : String
+        +sourceType : String
+        +status : String
+        +lastSync : DateTime
     }
     
-    ReferenceItem ||--o{ ProductData : "has"
-    ReferenceItem ||--o{ ProductEnrichment : "has"
-    ReferenceItem ||--o{ ProductAggregation : "has"
-    ProductData ||--|| ProductSource : "from"
+    ReferenceItem "1" o-- "many" ProductData : has
+    ReferenceItem "1" o-- "many" ProductEnrichment : has
+    ReferenceItem "1" o-- "many" ProductAggregation : has
+    ProductData "1" -- "1" ProductSource : from
+
 ```
 
 ## Business Process Flow

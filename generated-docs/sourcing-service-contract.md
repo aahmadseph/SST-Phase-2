@@ -491,6 +491,7 @@ graph TB
     OPTIMIZE_FULFILLMENT --> INVENTORY
     OPTIMIZE_FULFILLMENT --> KAFKA
 ```
+```
 
 ## Request/Response Flow
 
@@ -524,6 +525,7 @@ sequenceDiagram
     Service->>EventBus: Publish Event
     Service-->>API: Service Response
     API-->>Client: API Response
+```
 ```
 
 ## Data Model Relationships
@@ -577,10 +579,11 @@ erDiagram
         DateTime lastSync
     }
     
-    carrier_service ||--o{ sourcing_option : "provides"
-    sourcing_option ||--|| fulfillment_strategy : "uses"
-    fulfillment_strategy ||--o{ sourcing_rule : "has"
-    carrier_service ||--|| carrier_integration : "configured_by"
+    carrier_service "1" o-- "many" sourcing_option : provides
+    sourcing_option "1" -- "1" fulfillment_strategy : uses
+    fulfillment_strategy "1" o-- "many" sourcing_rule : has
+    carrier_service "1" -- "1" carrier_integration : configured_by
+```
 ```
 ```
 

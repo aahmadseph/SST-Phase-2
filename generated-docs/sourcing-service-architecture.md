@@ -512,56 +512,56 @@ The Sourcing Service manages sourcing entities with the following domain model:
 ```mermaid
 classDiagram
     class CarrierService {
-        +String id
-        +String name
-        +String type
-        +String status
-        +Map capabilities
-        +Object configuration
-        +DateTime lastUpdated
+        +id : String
+        +name : String
+        +type : String
+        +status : String
+        +capabilities : Map
+        +configuration : Object
+        +lastUpdated : DateTime
     }
     
     class SourcingOption {
-        +String optionId
-        +String itemId
-        +String carrierId
-        +String fulfillmentType
-        +Double cost
-        +Integer leadTime
-        +Boolean available
+        +optionId : String
+        +itemId : String
+        +carrierId : String
+        +fulfillmentType : String
+        +cost : Double
+        +leadTime : Integer
+        +available : Boolean
     }
     
     class FulfillmentStrategy {
-        +String strategyId
-        +String name
-        +String description
-        +List rules
-        +Object configuration
-        +Boolean active
+        +strategyId : String
+        +name : String
+        +description : String
+        +rules : List
+        +configuration : Object
+        +active : Boolean
     }
     
     class SourcingRule {
-        +String ruleId
-        +String ruleType
-        +String condition
-        +String action
-        +Integer priority
-        +Boolean active
+        +ruleId : String
+        +ruleType : String
+        +condition : String
+        +action : String
+        +priority : Integer
+        +active : Boolean
     }
     
     class CarrierIntegration {
-        +String integrationId
-        +String carrierId
-        +String apiEndpoint
-        +Object credentials
-        +String status
-        +DateTime lastSync
+        +integrationId : String
+        +carrierId : String
+        +apiEndpoint : String
+        +credentials : Object
+        +status : String
+        +lastSync : DateTime
     }
     
-    CarrierService ||--o{ SourcingOption : "provides"
-    SourcingOption ||--|| FulfillmentStrategy : "uses"
-    FulfillmentStrategy ||--o{ SourcingRule : "has"
-    CarrierService ||--|| CarrierIntegration : "configured_by"
+    CarrierService "1" o-- "many" SourcingOption : provides
+    SourcingOption "1" -- "1" FulfillmentStrategy : uses
+    FulfillmentStrategy "1" o-- "many" SourcingRule : has
+    CarrierService "1" -- "1" CarrierIntegration : configured_by
 ```
 
 ## Business Process Flow
@@ -591,6 +591,7 @@ flowchart TD
     
     N --> S[Log Rejection]
     R --> T[Log Success]
+```
 ```
 
 ## Database Schema Diagram
@@ -644,10 +645,10 @@ erDiagram
         DateTime lastSync
     }
     
-    carrier_service ||--o{ sourcing_option : "provides"
-    sourcing_option ||--|| fulfillment_strategy : "uses"
-    fulfillment_strategy ||--o{ sourcing_rule : "has"
-    carrier_service ||--|| carrier_integration : "configured_by"
+    carrier_service "1" o-- "many" sourcing_option : provides
+    sourcing_option "1" -- "1" fulfillment_strategy : uses
+    fulfillment_strategy "1" o-- "many" sourcing_rule : has
+    carrier_service "1" -- "1" carrier_integration : configured_by
 ```
 
 ## Risk Assessment

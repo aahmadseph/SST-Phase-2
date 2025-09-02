@@ -501,57 +501,57 @@ The Product Exp Service manages experience entities with the following domain mo
 ```mermaid
 classDiagram
     class ReferenceItem {
-        +String id
-        +String itemId
-        +String name
-        +String description
-        +String brand
-        +String category
-        +Map attributes
-        +List images
-        +DateTime createdAt
-        +DateTime updatedAt
+        +id : String
+        +itemId : String
+        +name : String
+        +description : String
+        +brand : String
+        +category : String
+        +attributes : Map
+        +images : List
+        +createdAt : DateTime
+        +updatedAt : DateTime
     }
     
     class UserExperience {
-        +String experienceId
-        +String itemId
-        +String userId
-        +String interactionType
-        +Object interactionData
-        +DateTime timestamp
+        +experienceId : String
+        +itemId : String
+        +userId : String
+        +interactionType : String
+        +interactionData : Object
+        +timestamp : DateTime
     }
     
     class AnalyticsData {
-        +String analyticsId
-        +String itemId
-        +String metricType
-        +Object metricData
-        +DateTime calculatedAt
+        +analyticsId : String
+        +itemId : String
+        +metricType : String
+        +metricData : Object
+        +calculatedAt : DateTime
     }
     
     class BehaviorTracking {
-        +String behaviorId
-        +String userId
-        +String itemId
-        +String behaviorType
-        +Object behaviorData
-        +DateTime timestamp
+        +behaviorId : String
+        +userId : String
+        +itemId : String
+        +behaviorType : String
+        +behaviorData : Object
+        +timestamp : DateTime
     }
     
     class PrivacyConsent {
-        +String consentId
-        +String userId
-        +String consentType
-        +Boolean granted
-        +DateTime grantedAt
-        +DateTime expiresAt
+        +consentId : String
+        +userId : String
+        +consentType : String
+        +granted : Boolean
+        +grantedAt : DateTime
+        +expiresAt : DateTime
     }
     
-    ReferenceItem ||--o{ UserExperience : "has"
-    ReferenceItem ||--o{ AnalyticsData : "has"
-    ReferenceItem ||--o{ BehaviorTracking : "has"
-    UserExperience ||--|| PrivacyConsent : "requires"
+    ReferenceItem "1" o-- "many" UserExperience : has
+    ReferenceItem "1" o-- "many" AnalyticsData : has
+    ReferenceItem "1" o-- "many" BehaviorTracking : has
+    UserExperience "1" -- "1" PrivacyConsent : requires
 ```
 
 ## Business Process Flow
@@ -579,6 +579,7 @@ flowchart TD
     
     M --> Q[Log Access Attempt]
     P --> R[Return Response]
+```
 ```
 
 ## Database Schema Diagram
@@ -633,10 +634,10 @@ erDiagram
         DateTime expiresAt
     }
     
-    reference_item ||--o{ user_experience : "has"
-    reference_item ||--o{ analytics_data : "has"
-    reference_item ||--o{ behavior_tracking : "has"
-    user_experience ||--|| privacy_consent : "requires"
+    reference_item "1" o-- "many" user_experience : has
+    reference_item "1" o-- "many" analytics_data : has
+    reference_item "1" o-- "many" behavior_tracking : has
+    user_experience "1" -- "1" privacy_consent : requires
 ```
 
 ## Risk Assessment

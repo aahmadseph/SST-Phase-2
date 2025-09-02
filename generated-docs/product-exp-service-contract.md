@@ -478,6 +478,7 @@ graph TB
     UPDATE_CONSENT --> CONSENT
     GET_CONSENT --> CONSENT
 ```
+```
 
 ## Request/Response Flow
 
@@ -511,6 +512,7 @@ sequenceDiagram
     Service->>EventBus: Publish Event
     Service-->>API: Service Response
     API-->>Client: API Response
+```
 ```
 
 ## Data Model Relationships
@@ -565,10 +567,11 @@ erDiagram
         DateTime expiresAt
     }
     
-    reference_item ||--o{ user_experience : "has"
-    reference_item ||--o{ analytics_data : "has"
-    reference_item ||--o{ behavior_tracking : "has"
-    user_experience ||--|| privacy_consent : "requires"
+    reference_item "1" o-- "many" user_experience : has
+    reference_item "1" o-- "many" analytics_data : has
+    reference_item "1" o-- "many" behavior_tracking : has
+    user_experience "1" -- "1" privacy_consent : requires
+```
 ```
 ```
 
