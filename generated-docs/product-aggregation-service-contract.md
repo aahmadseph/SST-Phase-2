@@ -459,7 +459,6 @@ graph TB
     ENRICH --> KAFKA
     SYNC --> OPS
 ```
-```
 
 ## Request/Response Flow
 
@@ -493,7 +492,6 @@ sequenceDiagram
     Service->>EventBus: Publish Event
     Service-->>API: Service Response
     API-->>Client: API Response
-```
 ```
 
 ## Data Model Relationships
@@ -550,7 +548,6 @@ erDiagram
     reference_item ||--o{ product_enrichment : "has"
     reference_item ||--o{ product_aggregation : "has"
     product_data ||--|| product_source : "from"
-```
 ```
 
 ## Error Handling

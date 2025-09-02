@@ -537,7 +537,6 @@ classDiagram
     ReferenceItem ||--o{ ProductAggregation : "has"
     ProductData ||--|| ProductSource : "from"
 ```
-```
 
 ## Business Process Flow
 
@@ -565,6 +564,7 @@ flowchart TD
     
     M --> R[Return Response]
     Q --> R
+```
 ```
 
 ## Database Schema Diagram
@@ -621,7 +621,6 @@ erDiagram
     reference_item ||--o{ product_enrichment : "has"
     reference_item ||--o{ product_aggregation : "has"
     product_data ||--|| product_source : "from"
-```
 ```
 
 ## Risk Assessment
