@@ -520,49 +520,50 @@ The Frontend UFE Service manages user interface entities with the following doma
 ```mermaid
 classDiagram
     class UserInterface {
-        +String id
-        +String componentType
-        +String componentName
-        +Object props
-        +Object state
-        +DateTime createdAt
-        +DateTime updatedAt
+        +id : String
+        +componentType : String
+        +componentName : String
+        +props : Object
+        +state : Object
+        +createdAt : DateTime
+        +updatedAt : DateTime
     }
     
     class UserInteraction {
-        +String interactionId
-        +String userId
-        +String interactionType
-        +Object interactionData
-        +DateTime timestamp
+        +interactionId : String
+        +userId : String
+        +interactionType : String
+        +interactionData : Object
+        +timestamp : DateTime
     }
     
     class APIIntegration {
-        +String integrationId
-        +String serviceName
-        +String endpoint
-        +Object configuration
-        +String status
+        +integrationId : String
+        +serviceName : String
+        +endpoint : String
+        +configuration : Object
+        +status : String
     }
     
     class StateManagement {
-        +String stateId
-        +String stateType
-        +Object stateData
-        +DateTime lastUpdated
+        +stateId : String
+        +stateType : String
+        +stateData : Object
+        +lastUpdated : DateTime
     }
     
     class PerformanceMetrics {
-        +String metricId
-        +String metricType
-        +Object metricData
-        +DateTime measuredAt
+        +metricId : String
+        +metricType : String
+        +metricData : Object
+        +measuredAt : DateTime
     }
     
-    UserInterface ||--o{ UserInteraction : "handles"
-    UserInterface ||--o{ APIIntegration : "uses"
-    UserInterface ||--o{ StateManagement : "manages"
-    UserInterface ||--o{ PerformanceMetrics : "tracks"
+    UserInterface "1" o-- "many" UserInteraction : handles
+    UserInterface "1" o-- "many" APIIntegration : uses
+    UserInterface "1" o-- "many" StateManagement : manages
+    UserInterface "1" o-- "many" PerformanceMetrics : tracks
+```
 ```
 
 ## Business Process Flow
@@ -639,10 +640,11 @@ erDiagram
         DateTime measuredAt
     }
     
-    user_interface ||--o{ user_interaction : "handles"
-    user_interface ||--o{ api_integration : "uses"
-    user_interface ||--o{ state_management : "manages"
-    user_interface ||--o{ performance_metrics : "tracks"
+    user_interface "1" o-- "many" user_interaction : handles
+    user_interface "1" o-- "many" api_integration : uses
+    user_interface "1" o-- "many" state_management : manages
+    user_interface "1" o-- "many" performance_metrics : tracks
+```
 ```
 ```
 

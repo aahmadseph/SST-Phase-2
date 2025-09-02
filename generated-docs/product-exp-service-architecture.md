@@ -581,6 +581,7 @@ flowchart TD
     P --> R[Return Response]
 ```
 ```
+```
 
 ## Database Schema Diagram
 
@@ -638,6 +639,7 @@ erDiagram
     reference_item "1" o-- "many" analytics_data : has
     reference_item "1" o-- "many" behavior_tracking : has
     user_experience "1" -- "1" privacy_consent : requires
+```
 ```
 
 ## Risk Assessment

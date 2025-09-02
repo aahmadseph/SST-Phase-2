@@ -493,55 +493,56 @@ The Inventory Availability Service manages inventory entities with the following
 ```mermaid
 classDiagram
     class Inventory {
-        +String id
-        +String itemId
-        +String enterpriseCode
-        +String shipNode
-        +Long quantity
-        +String threshold
-        +Boolean infinite
-        +Long modifyts
+        +id : String
+        +itemId : String
+        +enterpriseCode : String
+        +shipNode : String
+        +quantity : Long
+        +threshold : String
+        +infinite : Boolean
+        +modifyts : Long
     }
     
     class ShipNode {
-        +String id
-        +String name
-        +String enterpriseCode
-        +String nodeType
-        +String timeZone
-        +String status
+        +id : String
+        +name : String
+        +enterpriseCode : String
+        +nodeType : String
+        +timeZone : String
+        +status : String
     }
     
     class Availability {
-        +String availabilityId
-        +String itemId
-        +String location
-        +Integer availableQuantity
-        +Boolean available
-        +DateTime calculatedAt
+        +availabilityId : String
+        +itemId : String
+        +location : String
+        +availableQuantity : Integer
+        +available : Boolean
+        +calculatedAt : DateTime
     }
     
     class Supply {
-        +String supplyId
-        +String itemId
-        +String source
-        +Integer quantity
-        +DateTime expectedDate
-        +String status
+        +supplyId : String
+        +itemId : String
+        +source : String
+        +quantity : Integer
+        +expectedDate : DateTime
+        +status : String
     }
     
     class InventoryControl {
-        +String controlId
-        +String itemId
-        +String controlType
-        +String value
-        +Boolean active
+        +controlId : String
+        +itemId : String
+        +controlType : String
+        +value : String
+        +active : Boolean
     }
     
-    Inventory ||--|| ShipNode : "belongs_to"
-    Inventory ||--o{ Availability : "has"
-    Inventory ||--o{ Supply : "has"
-    Inventory ||--o{ InventoryControl : "has"
+    Inventory "1" -- "1" ShipNode : belongs_to
+    Inventory "1" o-- "many" Availability : has
+    Inventory "1" o-- "many" Supply : has
+    Inventory "1" o-- "many" InventoryControl : has
+```
 ```
 
 ## Business Process Flow

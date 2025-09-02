@@ -479,6 +479,7 @@ graph TB
     GET_CONSENT --> CONSENT
 ```
 ```
+```
 
 ## Request/Response Flow
 
@@ -512,6 +513,7 @@ sequenceDiagram
     Service->>EventBus: Publish Event
     Service-->>API: Service Response
     API-->>Client: API Response
+```
 ```
 ```
 
@@ -571,6 +573,7 @@ erDiagram
     reference_item "1" o-- "many" analytics_data : has
     reference_item "1" o-- "many" behavior_tracking : has
     user_experience "1" -- "1" privacy_consent : requires
+```
 ```
 ```
 ```

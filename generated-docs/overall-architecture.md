@@ -831,65 +831,66 @@ graph TB
 ```mermaid
 classDiagram
     class Product {
-        +String productId
-        +String name
-        +String description
-        +String brandId
-        +String categoryId
-        +Boolean active
-        +DateTime createdAt
-        +DateTime updatedAt
+        +productId : String
+        +name : String
+        +description : String
+        +brandId : String
+        +categoryId : String
+        +active : Boolean
+        +createdAt : DateTime
+        +updatedAt : DateTime
     }
     
     class ProductVariant {
-        +String variantId
-        +String productId
-        +String sku
-        +String name
-        +Map~String, String~ attributes
+        +variantId : String
+        +productId : String
+        +sku : String
+        +name : String
+        +attributes : Map~String, String~
     }
     
     class Inventory {
-        +String inventoryId
-        +String productId
-        +String location
-        +Integer quantity
-        +Boolean available
-        +DateTime updatedAt
+        +inventoryId : String
+        +productId : String
+        +location : String
+        +quantity : Integer
+        +available : Boolean
+        +updatedAt : DateTime
     }
     
     class Configuration {
-        +Long configId
-        +String prop
-        +String val
-        +String valType
-        +String description
-        +String groupId
-        +DateTime createdDate
-        +DateTime modifiedDate
+        +configId : Long
+        +prop : String
+        +val : String
+        +valType : String
+        +description : String
+        +groupId : String
+        +createdDate : DateTime
+        +modifiedDate : DateTime
     }
     
     class UserInteraction {
-        +String interactionId
-        +String userId
-        +String productId
-        +String interactionType
-        +DateTime timestamp
+        +interactionId : String
+        +userId : String
+        +productId : String
+        +interactionType : String
+        +timestamp : DateTime
     }
     
     class SourcingRule {
-        +String ruleId
-        +String productId
-        +String sourceLocation
-        +String destinationLocation
-        +Integer priority
+        +ruleId : String
+        +productId : String
+        +sourceLocation : String
+        +destinationLocation : String
+        +priority : Integer
     }
     
-    Product ||--o{ ProductVariant : "has"
-    Product ||--o{ Inventory : "has"
-    Product ||--o{ UserInteraction : "interacts_with"
-    Product ||--o{ SourcingRule : "sourced_by"
-    Configuration ||--o{ Product : "configures"
+    Product "1" o-- "many" ProductVariant : has
+    Product "1" o-- "many" Inventory : has
+    Product "1" o-- "many" UserInteraction : interacts_with
+    Product "1" o-- "many" SourcingRule : sourced_by
+    Configuration "1" o-- "many" Product : configures
+```
 ```
 
 ## End-to-End Business Process Flow

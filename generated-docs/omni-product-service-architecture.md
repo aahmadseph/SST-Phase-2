@@ -541,80 +541,81 @@ The Omni Product Service manages product entities with the following domain mode
 ```mermaid
 classDiagram
     class Product {
-        +String productId
-        +String name
-        +String description
-        +String brandId
-        +String categoryId
-        +Boolean active
-        +DateTime createdAt
-        +DateTime updatedAt
-        +List~ProductVariant~ variants
-        +List~ProductMedia~ media
-        +ProductInventory inventory
-        +ProductPricing pricing
+        +productId : String
+        +name : String
+        +description : String
+        +brandId : String
+        +categoryId : String
+        +active : Boolean
+        +createdAt : DateTime
+        +updatedAt : DateTime
+        +variants : List~ProductVariant~
+        +media : List~ProductMedia~
+        +inventory : ProductInventory
+        +pricing : ProductPricing
     }
     
     class ProductVariant {
-        +String variantId
-        +String productId
-        +String sku
-        +String name
-        +Map~String, String~ attributes
-        +ProductInventory inventory
-        +ProductPricing pricing
+        +variantId : String
+        +productId : String
+        +sku : String
+        +name : String
+        +attributes : Map~String, String~
+        +inventory : ProductInventory
+        +pricing : ProductPricing
     }
     
     class ProductCategory {
-        +String categoryId
-        +String name
-        +String parentId
-        +Integer level
-        +Boolean active
+        +categoryId : String
+        +name : String
+        +parentId : String
+        +level : Integer
+        +active : Boolean
     }
     
     class ProductBrand {
-        +String brandId
-        +String name
-        +String description
-        +String logo
-        +Boolean active
+        +brandId : String
+        +name : String
+        +description : String
+        +logo : String
+        +active : Boolean
     }
     
     class ProductMedia {
-        +String mediaId
-        +String productId
-        +String type
-        +String url
-        +String altText
-        +Integer order
+        +mediaId : String
+        +productId : String
+        +type : String
+        +url : String
+        +altText : String
+        +order : Integer
     }
     
     class ProductInventory {
-        +String inventoryId
-        +String productId
-        +Integer quantity
-        +String location
-        +Boolean available
+        +inventoryId : String
+        +productId : String
+        +quantity : Integer
+        +location : String
+        +available : Boolean
     }
     
     class ProductPricing {
-        +String pricingId
-        +String productId
-        +BigDecimal price
-        +String currency
-        +BigDecimal salePrice
-        +DateTime validFrom
-        +DateTime validTo
+        +pricingId : String
+        +productId : String
+        +price : BigDecimal
+        +currency : String
+        +salePrice : BigDecimal
+        +validFrom : DateTime
+        +validTo : DateTime
     }
     
-    Product ||--o{ ProductVariant : "has"
-    Product ||--o{ ProductMedia : "has"
-    Product ||--|| ProductInventory : "has"
-    Product ||--|| ProductPricing : "has"
-    Product ||--|| ProductBrand : "belongs_to"
-    Product ||--|| ProductCategory : "belongs_to"
-    ProductCategory ||--o{ ProductCategory : "has_children"
+    Product "1" o-- "many" ProductVariant : has
+    Product "1" o-- "many" ProductMedia : has
+    Product "1" -- "1" ProductInventory : has
+    Product "1" -- "1" ProductPricing : has
+    Product "1" -- "1" ProductBrand : belongs_to
+    Product "1" -- "1" ProductCategory : belongs_to
+    ProductCategory "1" o-- "many" ProductCategory : has_children
+```
 ```
 
 ## Business Process Flow

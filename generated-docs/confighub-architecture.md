@@ -491,45 +491,46 @@ The ConfigHub service manages configuration entities with the following domain m
 ```mermaid
 classDiagram
     class Configuration {
-        +Long configId
-        +String prop
-        +String val
-        +String valType
-        +String description
-        +String groupId
-        +String userId
-        +LocalDateTime createdDate
-        +LocalDateTime modifiedDate
-        +String uiConsume
-        +List~AuditConfiguration~ auditLogs
+        +configId : Long
+        +prop : String
+        +val : String
+        +valType : String
+        +description : String
+        +groupId : String
+        +userId : String
+        +createdDate : LocalDateTime
+        +modifiedDate : LocalDateTime
+        +uiConsume : String
+        +auditLogs : List~AuditConfiguration~
     }
     
     class ConfigurationGroup {
-        +Long configId
-        +String groupName
-        +LocalDateTime createdDate
-        +LocalDateTime modifiedDate
+        +configId : Long
+        +groupName : String
+        +createdDate : LocalDateTime
+        +modifiedDate : LocalDateTime
     }
     
     class AuditConfiguration {
-        +Long configAuditId
-        +String userId
-        +String val
-        +String configId
-        +LocalDateTime createdDate
-        +Configuration configuration
+        +configAuditId : Long
+        +userId : String
+        +val : String
+        +configId : String
+        +createdDate : LocalDateTime
+        +configuration : Configuration
     }
     
     class PropertyValues {
-        +String prop
-        +String val
-        +String valType
-        +String description
+        +prop : String
+        +val : String
+        +valType : String
+        +description : String
     }
     
-    Configuration ||--o{ AuditConfiguration : "audited_by"
-    ConfigurationGroup ||--o{ Configuration : "contains"
-    Configuration ||--o{ PropertyValues : "has"
+    Configuration "1" o-- "many" AuditConfiguration : audited_by
+    ConfigurationGroup "1" o-- "many" Configuration : contains
+    Configuration "1" o-- "many" PropertyValues : has
+```
 ```
 
 ## Business Process Flow
